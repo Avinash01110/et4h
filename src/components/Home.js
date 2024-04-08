@@ -10,7 +10,7 @@ export default function Home() {
       
       <div className='h-[29rem] w-full flex'>
 
-        <div className='left w-1/2 h-full px-8 '>
+        <div className='left w-1/2 h-full px-20'>
           <div className='flex w-[25rem] h-full flex-col justify-center items-start gap-y-6'>
             <h1 className='text-5xl uppercase font-bold text-blue'>Revolutionzing Healthcare</h1>
             <h4 className='text-lg capitalize text-justify text-grey'>Welcome to Emerging Tech4 Health,
@@ -29,7 +29,7 @@ export default function Home() {
             <div className='h-52 w-full absolute top-0 shadow-xl shadow-grey'>
               <img className='h-full w-full object-cover' src={lp_image2} alt="error" />
             </div>
-            <div className='h-52 w-96 absolute top-24 -left-12 shadow-xl shadow-grey'>
+            <div className='h-52 w-96 absolute top-24 -left-20 shadow-xl shadow-grey'>
               <img className='h-full w-full object-cover' src={lp_image1} alt="error" />
             </div>
             <div className='h-52 w-64 absolute bottom-0 right-0 shadow-xl shadow-grey'>
