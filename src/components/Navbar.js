@@ -1,10 +1,10 @@
-import React, { useState, Fragment } from "react";
+import React, { useState, Fragment, useEffect } from "react";
 import logo from "../Photos/logo.png";
 import { IoIosArrowDown, IoIosPaper } from "react-icons/io";
 import { GiArchiveResearch } from "react-icons/gi";
 import { RiExchangeFundsLine, RiTeamFill } from "react-icons/ri";
 import { FaHandshake } from "react-icons/fa";
-import {Link} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 import { Popover, Transition } from "@headlessui/react";
 
 const solutions = [
@@ -36,7 +36,20 @@ const solutions = [
 ];
 
 export default function Navbar() {
+
+  const location = useLocation();
   const [activePage, setActivePage] = useState("Home");
+
+  useEffect(() => {
+    if (location.pathname === "/") {
+      setActivePage("Home");
+    } else if (location.pathname === "/About") {
+      setActivePage("About");
+    } else if(location.pathname === "/Projects"){
+      setActivePage("Projects");
+    }
+  }
+  , [location]);
 
   return (
     <>
@@ -48,20 +61,25 @@ export default function Navbar() {
             alt="error"
           />
         </div>
-        <div className="items w-96 h-9 bg-purewhite list-none flex flex-row justify-center items-center gap-5 rounded-full text-sm font-semibold border border-lightgrey">
-          <Link to={"/About"}><li
-            className={`hover:text-blue hover:bg-lightblue text-grey cursor-pointer flex items-center justify-center px-2 py-1 rounded-lg ${activePage === 'Home' ? 'bg-blue text-purewhite' : ''}`}
-            onClick={() => setActivePage("Home")}
+        <div className="items w-96 h-9 bg-purewhite list-none flex flex-row justify-center items-center gap-5 rounded-full text-sm font-semibold border-2 border-darkblue">
+          <Link to={"/"}><li
+            className={`text-grey cursor-pointer flex items-center justify-center px-2 py-1 rounded-lg ${activePage === 'Home' ? 'bg-blue text-purewhite' : 'hover:text-blue hover:bg-lightblue'} transition ease-in-out duration-300`}
           >
             Home
           </li>
           </Link>
-          <li className={`hover:text-blue hover:bg-lightblue text-grey cursor-pointer flex items-center justify-center px-2 py-1 rounded-lg ${activePage === 'About' ? 'bg-blue text-purewhite' : ''}`}  onClick={() => setActivePage('About')}>
+
+          <Link to= {"/About"}>
+          <li className={`text-grey cursor-pointer flex items-center justify-center px-2 py-1 rounded-lg ${activePage === 'About' ? 'bg-blue text-purewhite' : 'hover:text-blue hover:bg-lightblue'} transition ease-in-out duration-300`}>
             About
           </li>
-          <li className={`hover:text-blue hover:bg-lightblue text-grey cursor-pointer flex items-center justify-center px-2 py-1 rounded-lg ${activePage === 'Projects' ? 'bg-blue text-purewhite' : ''}`}  onClick={() => setActivePage('Projects')}>
+          </Link>
+
+          <Link to={"/Projects"}>
+          <li className={`text-grey cursor-pointer flex items-center justify-center px-2 py-1 rounded-lg ${activePage === 'Projects' ? 'bg-blue text-purewhite' : 'hover:text-blue hover:bg-lightblue'} transition ease-in-out duration-300`}>
             Projects
           </li>
+          </Link>
 
           {/* <li className= "group hover:text-blue text-grey flex items-center justify-center gap-x-2 h-full relative">More<IoIosArrowDown className='transition duration-500 ease-in-out group-hover:-rotate-180'/>
           </li> */}
@@ -69,7 +87,7 @@ export default function Navbar() {
           <Popover className="relative">
             {({ open }) => (
               <>
-                <Popover.Button className="hover:text-blue hover:bg-lightblue text-grey flex items-center justify-center gap-x-1 px-2 py-1 rounded-lg">
+                <Popover.Button className="hover:text-blue hover:bg-lightblue text-grey flex items-center justify-center gap-x-1 px-2 py-1 rounded-lg transition ease-in-out duration-300">
                   <span>More</span>
                   <IoIosArrowDown
                     className={
@@ -93,18 +111,18 @@ export default function Navbar() {
                         {solutions.map((item) => (
                           <div
                             key={item.name}
-                            className="group relative flex gap-x-4 rounded-lg p-4 hover:bg-lightblue"
+                            className="group relative flex gap-x-4 rounded-lg p-4 hover:bg-lightblue transition ease-in-out duration-300"
                           >
-                            <div className="mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full bg-lightgrey group-hover:bg-purewhite">
+                            <div className="mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full bg-lightgrey group-hover:bg-purewhite transition ease-in-out duration-300">
                               <item.icon
-                                className="h-5 w-5 text-grey group-hover:text-darkblue"
+                                className="h-5 w-5 text-grey group-hover:text-darkblue transition ease-in-out duration-300"
                                 aria-hidden="true"
                               />
                             </div>
                             <div>
                               <a
                                 href={item.href}
-                                className="font-semibold text-grey group-hover:text-blue"
+                                className="font-semibold text-grey group-hover:text-blue transition ease-in-out duration-300"
                               >
                                 {item.name}
                                 <span className="absolute inset-0" />
@@ -160,8 +178,9 @@ export default function Navbar() {
             </div>
             
           </div> */}
+          
         </div>
-        <button className="button bg-blue text-[#FFFFFF] py-2 px-5 rounded-lg text-sm font-medium hover:bg-darkblue">
+        <button className="button bg-blue text-[#FFFFFF] py-2 px-5 rounded-lg text-sm font-medium active:bg-blue hover:bg-darkblue transition ease-in-out duration-300">
           Contact us
         </button>
       </div>

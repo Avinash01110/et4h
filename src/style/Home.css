@@ -1,0 +1,41 @@
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  border-radius: 0.5rem;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* .about{
+  background: url(https://content.vu.edu.au/sites/default/files/images/2023-09/women-researchers-observing-vials.jpg);
+  object-fit: cover;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  background-repeat: no-repeat;
+} */
+
+.leadership{
+  -webkit-mask-image: url(https://www.w3schools.com/css/w3logo.png);
+  mask-image: url(https://www.w3schools.com/css/w3logo.png);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  height: 100%;
+  width: 100%;
+}

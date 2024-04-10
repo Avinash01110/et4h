@@ -4,18 +4,34 @@ module.exports = {
     "./src/**/*.js",
   ],
   theme: {
-    extend: {},
-    colors: {
-      "purewhite": "#FFFFFF",
-      "grey": "#2C374F",
-      "lightgrey": "#cfcfcf",
-      "blue": "#084DF2",
-      "lightblue": "#E8EEFD",
-      "darkblue": "#002577",
-      "rosepink":"#FF204E",
-      "mustardyellow":"#FFC94A"
-    }
+    extend: {
+      colors: {
+        "purewhite": "#FFFFFF",
+        "grey": "#2C374F",
+        "lightgrey": "#cfcfcf",
+        "blue": "#084DF2",
+        "lightblue": "#E8EEFD",
+        "darkblue": "#002577",
+        "rosepink":"#FF204E",
+        "mustardyellow":"#FFC94A"
+      },
+      animation: {
+        marquee: 'marquee 25s linear infinite',
+        marquee2: 'marquee2 25s linear infinite',
+      },
+      keyframes: {
+        marquee: {
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-100%)' },
+        },
+        marquee2: {
+          '0%': { transform: 'translateX(100%)' },
+          '100%': { transform: 'translateX(0%)' },
+        },
+      },
+    },
+    
   },
-  plugins: [],
+  plugins: [require("tailwind-gradient-mask-image"),require('@pyncz/tailwind-mask-image')],
 }
 
