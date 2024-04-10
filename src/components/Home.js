@@ -4,6 +4,7 @@ import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import lp_image1 from "../Photos/lp_image1.png";
 import lp_image2 from "../Photos/lp_image2.png";
 import lp_image3 from "../Photos/lp_image3.png";
+import leadership from "../Photos/leadership1.mp4";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -225,7 +226,7 @@ export default function Home() {
         <div className="w-[35rem] h-full flex flex-col justify-center items-center gap-y-10 absolute p-8 ml-10">
           <div className="flex flex-col gap-y-7">
           <h3 className="text-blue text-5xl font-bold">About Us</h3>
-          <span className="text-grey text-sm font-medium text-justify">
+          <span className="text-grey text-sm font-medium text-justify opacity-80">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
           eget lectus auctor, iaculis leo ut, malesuada urna. Phasellus
           tincidunt sit amet orci vitae laoreet. Quisque tellus lacus,
@@ -244,11 +245,32 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="h-96 w-full">
-        <div className="h-full w-7/12 bg-mustardyellow">
-            <img className=" h-full w-full object-cover" src={"https://img.freepik.com/free-photo/leader-authority-boss-coach-director-manager-concept_53876-133859.jpg?w=740&t=st=1712767152~exp=1712767752~hmac=9fcece6bb090dcda117b35ac42ce897f048d4bcc4132258324a2d0432982ff31"}/>
+      <div className="h-auto w-full flex flex-row items-center">
+        <div className="h-auto w-7/12">
+          <video src={leadership} className="h-full w-full object-cover" autoPlay loop muted/>
         </div>
-        <div></div>
+        <div className="h-full w-5/12">
+        <div className="w-[35rem] h-full flex flex-col justify-center items-center gap-y-10 px-8">
+          <div className="flex flex-col gap-y-7">
+          <h3 className="text-grey text-5xl font-bold">Our Leadership</h3>
+          <span className="text-grey text-sm font-medium text-justify opacity-80">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
+          eget lectus auctor, iaculis leo ut, malesuada urna. Phasellus
+          tincidunt sit amet orci vitae laoreet. Quisque tellus lacus,
+          bibendum nec diam a, laoreet commodo mauris. Nulla volutpat
+          congue dolor, sit amet vulputate nisl hendrerit pellentesque.
+          Cras sollicitudin est at lectus fringilla ornare. Aeneanngue
+          sollicitudin, dui nisi varius elit, sed ullamcorper nulla ligula sed
+          leo.
+          </span>
+          </div>
+          <div className="flex justify-start w-full">
+          <button className="button bg-blue text-[#FFFFFF] py-3 px-5 rounded-lg text-sm font-medium active:bg-blue hover:bg-darkblue hover:shadow-md hover:shadow-lightgrey transition ease-in-out duration-300">
+                Meet Team 
+          </button>
+          </div>
+        </div>
+        </div>
       </div>
     </>
   );
