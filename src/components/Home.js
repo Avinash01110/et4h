@@ -161,10 +161,8 @@ export default function Home() {
                 </span>{" "}
                 Healthcare
               </h1>
-              <h4 className="text-lg capitalize text-justify text-grey">
-                Welcome to Emerging Tech4 Health, a Biotechnology Startup that
-                leverages cutting edge technology, particularly AI, to
-                revolutionize healthcare.
+              <h4 className="text-base capitalize text-justify text-grey opacity-80 font-semibold">
+              Welcome to EmergingTech4Health, where AI meets medical innovation. Our mission: harness AI to tackle challenging medical problems, transforming diagnosis, treatment, and research. Bridging technology and healthcare, we innovate solutions to enhance care accessibility and efficiency. Join us in creating a healthier tomorrow.
               </h4>
               <button className="button bg-blue text-[#FFFFFF] py-2 px-5 rounded-lg text-sm font-medium active:bg-blue hover:bg-darkblue hover:shadow-md hover:shadow-lightgrey transition ease-in-out duration-300">
                 Learn More
@@ -382,14 +380,7 @@ export default function Home() {
           <div className="flex flex-col gap-y-7">
             <h3 className="text-blue text-5xl font-bold">About Us</h3>
             <span className="text-grey text-sm font-medium text-justify opacity-80">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-              eget lectus auctor, iaculis leo ut, malesuada urna. Phasellus
-              tincidunt sit amet orci vitae laoreet. Quisque tellus lacus,
-              bibendum nec diam a, laoreet commodo mauris. Nulla volutpat congue
-              dolor, sit amet vulputate nisl hendrerit pellentesque. Cras
-              sollicitudin est at lectus fringilla ornare. Aeneanngue
-              sollicitudin, dui nisi varius elit, sed ullamcorper nulla ligula
-              sed leo.
+            At EmergingTech4Health, our mission is to bridge the gap between technology and healthcare, leveraging the latest advancements in artificial intelligence to solve complex medical challenges. Our dedicated team of researchers, scientists, and technologists collaborate to develop AI-driven solutions that not only enhance diagnostic and treatment capabilities but also aim to make healthcare more accessible and efficient for everyone.
             </span>
           </div>
           <div className="flex justify-end w-full">
@@ -416,14 +407,7 @@ export default function Home() {
             <div className="flex flex-col gap-y-7">
               <h3 className="text-grey text-5xl font-bold">Our Leadership</h3>
               <span className="text-grey text-sm font-medium text-justify opacity-80">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-                eget lectus auctor, iaculis leo ut, malesuada urna. Phasellus
-                tincidunt sit amet orci vitae laoreet. Quisque tellus lacus,
-                bibendum nec diam a, laoreet commodo mauris. Nulla volutpat
-                congue dolor, sit amet vulputate nisl hendrerit pellentesque.
-                Cras sollicitudin est at lectus fringilla ornare. Aeneanngue
-                sollicitudin, dui nisi varius elit, sed ullamcorper nulla ligula
-                sed leo.
+              Meet the visionary leaders behind EmergingTech4Health. Our leadership team brings together expertise in artificial intelligence, medical research, and technology development, driving us forward in our mission to transform healthcare.
               </span>
             </div>
             <div className="flex justify-start w-full">
