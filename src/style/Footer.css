@@ -1,0 +1,24 @@
+.link::after{
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: #002577;
+    bottom: -2px;
+    left: 0;
+    transition: width 0.3s ease-in-out;
+}
+
+.link:hover::after{
+    animation: fadeIn 0.5s;
+    width: 100%;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
