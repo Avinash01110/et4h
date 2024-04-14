@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import logo from "../Photos/logo.png";
+import logo from "../Photos/Home/logo.png";
 import "../style/Footer.css";
 import { IoSend } from "react-icons/io5";
 import { FaGithub, FaYoutube, FaTwitter, FaLinkedin, FaInstagramSquare} from "react-icons/fa";

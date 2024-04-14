@@ -1,10 +1,7 @@
 import React from "react";
-import lp_image1 from "../Photos/lp_image1.png";
-import lp_image2 from "../Photos/lp_image2.png";
-import lp_image3 from "../Photos/lp_image3.png";
-import about_us1 from "../Photos/about_us1.png";
-import about_us2 from "../Photos/about_us2.png";
-import image from "../Photos/image.png";
+import about_us1 from "../Photos/Aboutus/about_us1.png";
+import about_us2 from "../Photos/Aboutus/about_us2.png";
+import image from "../Photos/Aboutus/image.png";
 import { FaRegLightbulb } from "react-icons/fa";
 import { GiShakingHands } from "react-icons/gi";
 import { IoAccessibilityOutline } from "react-icons/io5";
@@ -61,7 +58,8 @@ export default function About() {
           </div>
         </div>
       </div>
-
+     
+      {/* Our Mission */}
       <div className="h-auto w-full bg-lightblue flex items-center justify-center">
         <div className="h-96 w-full mt-60 flex flex-row px-12">
           <div className="left h-full w-6/12 flex flex-col justify-center gap-y-5 px-6">
@@ -84,7 +82,8 @@ export default function About() {
           </div>
         </div>
       </div>
-
+      
+      {/* Our Vision */}
       <div className="h-auto w-full px-16 flex flex-col items-center justify-center gap-y-10 py-16 bg-lightblue">
         <h2 className="text-4xl text-darkblue font-bold">Our Vision</h2>
         <div
@@ -102,6 +101,7 @@ export default function About() {
         </div>
       </div>
 
+      {/* Our Core Values */}
       <div className="h-auto w-full px-16 flex flex-col items-center justify-center gap-y-10 py-16 bg-white">
         <h2 className="text-4xl text-darkblue font-bold">Our Core Values</h2>
         <div className="h-96 w-full flex flex-row items-center justify-between px-10">
@@ -128,6 +128,8 @@ export default function About() {
           ))}
         </div>
       </div>
+
+      
     </>
   );
 }
