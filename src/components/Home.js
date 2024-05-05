@@ -23,8 +23,6 @@ import { FaRegLightbulb } from "react-icons/fa";
 import { GiShakingHands } from "react-icons/gi";
 import { IoAccessibilityOutline } from "react-icons/io5";
 
-
-
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "../style/Home.css";
@@ -36,11 +34,7 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
-
-
 export default function Home() {
-
-
   const latestPost = [
     {
       title: "The Future of Healthcare : AI Innovations",
@@ -70,31 +64,31 @@ export default function Home() {
       index: "01",
       title: "Liver Tumor Segmentation",
       description: "description",
-      link: "/"
+      link: "/",
     },
     {
       index: "02",
       title: "Kidney Tumor Segmentation",
       description: "description",
-      link: "/"
+      link: "/",
     },
     {
       index: "03",
       title: "Breast Tumor Segmentation",
       description: "description",
-      link: "/"
+      link: "/",
     },
     {
       index: "04",
       title: "Electroencephalogram (EEG)",
       description: "description",
-      link: "/"
+      link: "/",
     },
     {
       index: "05",
       title: "Electrocardiogram (ECG)",
       description: "description",
-      link: "/"
+      link: "/",
     },
   ];
 
@@ -178,12 +172,55 @@ export default function Home() {
       animation: animationRef.current,
       scrub: 1,
     });
+
+    let fs = document.getElementsByClassName("fs");
+    let elem = document.getElementsByClassName("elem");
+
+    let tl = gsap.timeline()
+
+
+
+    tl.to(fs, {
+      height: 0,
+      duration: 2.5,
+      ease: "expo.inOut"
+    });
+
+    tl.to(elem, {
+      height: "100%",
+      duration: 2.5,
+      delay: -2.5,
+      ease: "expo.inOut"
+    });
+
+    tl.to(".whiteelem", {
+      height: "100%",
+      duration: 2,
+      delay: -1.8,
+      ease: "expo.inOut"
+    })
+
+    tl.to(".loader", {
+        height: 0,
+        duration: 2,
+        delay: -1.8,
+        ease: "expo.inOut"
+    })
+    
   });
-
-
 
   return (
     <>
+      <div className="loader h-full w-full z-50 top-0 left-0 fixed">
+          <div className="fs h-full w-full bg-lightblue absolute flex justify-center items-center">
+            {/* <span className="w-64 h-32">
+              <span>Emerging Tech 4 Health</span>
+            </span> */}
+          </div>
+          <div className="elem h-0 w-full bg-indigo-400 absolute bottom-0"></div>
+          <div className="whiteelem h-0 w-full bg-indigo-200 absolute bottom-0"></div>
+      </div>
+
       {/* Landing page */}
       <div className="h-[100vh] w-full flex items-end relative z-10 overflow-hidden">
         <div className="absolute h-[45rem] w-[45rem] bg-lightblue z-0 rounded-xl rotate-45 -left-12 -bottom-16"></div>
@@ -199,7 +236,12 @@ export default function Home() {
                 Healthcare
               </h1>
               <h4 className="text-base capitalize text-justify text-grey opacity-80 font-semibold">
-              Welcome to EmergingTech4Health, where AI meets medical innovation. Our mission: harness AI to tackle challenging medical problems, transforming diagnosis, treatment, and research. Bridging technology and healthcare, we innovate solutions to enhance care accessibility and efficiency. Join us in creating a healthier tomorrow.
+                Welcome to EmergingTech4Health, where AI meets medical
+                innovation. Our mission: harness AI to tackle challenging
+                medical problems, transforming diagnosis, treatment, and
+                research. Bridging technology and healthcare, we innovate
+                solutions to enhance care accessibility and efficiency. Join us
+                in creating a healthier tomorrow.
               </h4>
               <button className="button bg-blue text-[#FFFFFF] py-2 px-5 rounded-lg text-sm font-medium active:bg-blue hover:bg-darkblue hover:shadow-md hover:shadow-lightgrey transition ease-in-out duration-300">
                 Learn More
@@ -208,16 +250,16 @@ export default function Home() {
           </div>
 
           <div className="right w-1/2 h-full flex justify-center items-center">
-          <div className="gallery">
-            <img src={lp1} alt="error"/>
-            <img src={lp2} alt="error"/>
-            <img src={lp4} alt="error" />
-            <img src={lp3} alt="error" />
-            <img src={lp6} alt="error" />
-            <img src={lp5} alt="error" />
-            <img src={lp8} alt="error" />
-            <img src={lp7} alt="error" />
-          </div>
+            <div className="gallery">
+              <img src={lp1} alt="error" />
+              <img src={lp2} alt="error" />
+              <img src={lp4} alt="error" />
+              <img src={lp3} alt="error" />
+              <img src={lp6} alt="error" />
+              <img src={lp5} alt="error" />
+              <img src={lp8} alt="error" />
+              <img src={lp7} alt="error" />
+            </div>
           </div>
         </div>
       </div>
@@ -263,8 +305,12 @@ export default function Home() {
       </div>
 
       {/* Latest Post */}
-      <div className="border-b-2 border-darkblue h-auto w-full bg-purewhite flex justify-center items-center py-20">
-        <div className="crousel h-auto w-3/4 bg-lightblue rounded-lg p-10 flex flex-col gap-y-10 shadow-lg shadow-grey">
+      <div className="border-b-2 border-darkblue h-auto w-full bg-purewhite flex justify-center items-center py-20 relative z-10 overflow-hidden">
+        <div className="bg-shape1 bg-teal opacity-50 bg-blur"></div>
+        <div className="bg-shape2 bg-primary opacity-50 bg-blur"></div>
+        <div className="bg-shape3 bg-purple opacity-50 bg-blur"></div>
+
+        <div className="crousel h-auto w-3/4 bg-lightblue rounded-lg p-10 flex flex-col gap-y-10 shadow-lg shadow-grey z-10">
           <h2 className="text-4xl text-grey font-bold uppercase [text-shadow:3px_6px_10px_var(--tw-shadow-color)] shadow-grey">
             Latest Posts
           </h2>
@@ -365,7 +411,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      
+
       {/* Our Vision */}
       <div className="border-b-2 border-grey h-auto w-full px-16 flex flex-col items-center justify-center gap-y-10 py-16 bg-lightblue">
         <h2 className="text-4xl text-darkblue font-bold">Our Vision</h2>
@@ -474,13 +520,32 @@ export default function Home() {
           <div className="flex flex-col gap-y-7">
             <h3 className="text-blue text-5xl font-bold">About Us</h3>
             <span className="text-grey text-sm font-medium text-justify opacity-80">
-            At EmergingTech4Health, our mission is to bridge the gap between technology and healthcare, leveraging the latest advancements in artificial intelligence to solve complex medical challenges. Our dedicated team of researchers, scientists, and technologists collaborate to develop AI-driven solutions that not only enhance diagnostic and treatment capabilities but also aim to make healthcare more accessible and efficient for everyone.
+              At EmergingTech4Health, our mission is to bridge the gap between
+              technology and healthcare, leveraging the latest advancements in
+              artificial intelligence to solve complex medical challenges. Our
+              dedicated team of researchers, scientists, and technologists
+              collaborate to develop AI-driven solutions that not only enhance
+              diagnostic and treatment capabilities but also aim to make
+              healthcare more accessible and efficient for everyone.
             </span>
           </div>
           <div className="flex justify-end w-full">
             <button className="button bg-blue text-[#FFFFFF] py-3 px-5 rounded-lg text-sm font-medium active:bg-blue hover:bg-darkblue hover:shadow-md hover:shadow-lightgrey transition ease-in-out duration-300">
               Discover More
             </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Projects */}
+      <div className="h-auto w-full bg-white">
+        <div className="flex h-screen w-full p-6 pt-24 flex-col items-center justify-center xl:text-slate-400">
+          <div className="grid h-full w-full grid-cols-3 gap-4">
+            <div className="col-span-2 row-span-3 rounded-3xl bg-slate-200 hover:scale-95 transition duration-500 ease-in-out"></div>
+            <div className="row-span-4 rounded-3xl bg-slate-200 text-center flex justify-center items-center text-3xl font-bold hover:scale-95 transition duration-500"></div>
+            <div className="row-span-3 rounded-3xl bg-slate-200 text-center flex justify-center items-center text-3xl font-bold hover:scale-95 transition duration-500"></div>
+            <div className="row-span-3 rounded-3xl bg-slate-200 text-center flex justify-center items-center text-3xl font-bold hover:scale-95 transition duration-500"></div>
+            <div className="row-span-2 rounded-3xl bg-slate-200 text-center flex justify-center items-center text-3xl font-bold hover:scale-95 transition duration-500"></div>
           </div>
         </div>
       </div>
@@ -501,7 +566,10 @@ export default function Home() {
             <div className="flex flex-col gap-y-7">
               <h3 className="text-grey text-5xl font-bold">Our Leadership</h3>
               <span className="text-grey text-sm font-medium text-justify opacity-80">
-              Meet the visionary leaders behind EmergingTech4Health. Our leadership team brings together expertise in artificial intelligence, medical research, and technology development, driving us forward in our mission to transform healthcare.
+                Meet the visionary leaders behind EmergingTech4Health. Our
+                leadership team brings together expertise in artificial
+                intelligence, medical research, and technology development,
+                driving us forward in our mission to transform healthcare.
               </span>
             </div>
             <div className="flex justify-start w-full">

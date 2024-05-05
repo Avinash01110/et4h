@@ -81,3 +81,121 @@
     }
   }
 }
+
+.bg-shape1{
+  width: 400px;
+  height: 400px;
+  border-radius: 9999px;
+  position: absolute;
+  animation: one 10s infinite;
+  top: 0;
+  left: 0;
+}
+
+.bg-shape2{
+  width: 300px;
+  height: 300px;
+  border-radius: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  animation: two 10s infinite;
+}
+
+.bg-shape3{
+  width: 300px;
+  height: 300px;
+  border-radius: 100%;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  animation: third 10s infinite;
+}
+
+
+@keyframes one {
+  0% {
+    left: 0px;
+    top: 0px;
+  }
+  25% {
+    left: 10px;
+    top: 50px;
+  }
+  50%{
+    left: 27px;
+    top: 200px;
+  }
+  75%{
+    left: -40px;
+    top: 350px;
+  }
+  100% {
+    left: 0px;
+    top: 0px;
+  }
+}
+
+@keyframes two {
+  0% {
+    right: 0px;
+    top: 0px;
+  }
+  25% {
+    right: 100px;
+    top: -10px;
+  }
+  50%{
+    right: 200px;
+    top: 27px;
+  }
+  75%{
+    right: 350px;
+    top: 40px;
+  }
+  100% {
+    right: 0px;
+    top: 0px;
+  }
+}
+
+@keyframes third{
+  0% {
+    right: 0px;
+    bottom: 0px;
+  }
+  25% {
+    right: 100px;
+    bottom: -10px;
+  }
+  50%{
+    right: 200px;
+    bottom: 27px;
+  }
+  75%{
+    right: 350px;
+    bottom: 40px;
+  }
+  100% {
+    right: 0px;
+    bottom: 0px;
+  }
+
+}
+
+.bg-blur{
+  filter: blur(90px);
+}
+
+.bg-primary{
+  background-color: rgb(30,0,255);
+}
+
+.bg-teal{
+  background-color: rgb(255,72,173);
+}
+
+.bg-purple{
+  background-color: rgb(140,0,215 );
+}
+
