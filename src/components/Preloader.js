@@ -1,12 +1,14 @@
 import React, { useEffect, useRef } from "react";
+import "../style/Preloader.css";
+import loadgif from "../Photos/Home/Dual Ring.gif"
+
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(useGSAP, ScrollTrigger);
-import "../style/loading.css";
-import loadgif from "../Photos/Home/Dual Ring.gif"
 
-export default function loading() {
+
+export default function Preloader() {
   useGSAP(() => {
     let fs = document.getElementsByClassName("fs");
     let elem = document.getElementsByClassName("elem");

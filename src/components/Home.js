@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
+
 import lp_image1 from "../Photos/Home/landingPage/lp_image1.png";
 import lp1 from "../Photos/Home/landingPage/lp1.jpg";
 import lp2 from "../Photos/Home/landingPage/lp2.jpg";
@@ -23,6 +24,8 @@ import { FaRegLightbulb } from "react-icons/fa";
 import { GiShakingHands } from "react-icons/gi";
 import { IoAccessibilityOutline } from "react-icons/io5";
 
+import Preloader from "./Preloader";
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "../style/Home.css";
@@ -33,8 +36,6 @@ import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(useGSAP, ScrollTrigger);
-
-import Loading from "./loading"
 
 
 
@@ -181,7 +182,7 @@ export default function Home() {
 
   return (
     <>
-      <Loading/>
+      <Preloader/>
 
       {/* Landing page */}
       <div className="h-[100vh] w-full flex items-end relative z-10 overflow-hidden">
