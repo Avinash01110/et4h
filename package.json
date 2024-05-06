@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@barba/core": "^2.9.7",
+    "@barba/css": "^2.1.15",
+    "@barba/prefetch": "^2.1.10",
     "@gsap/react": "^2.1.0",
     "@headlessui/react": "^1.7.18",
     "@pyncz/tailwind-mask-image": "^2.0.0",

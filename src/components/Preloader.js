@@ -47,7 +47,7 @@ export default function Preloader() {
     tl.to(load1, {
       strokeDashoffset: 0,
       duration: 2.5,
-      stagger: 0.5,
+      stagger: 0.6,
       reversed: true,
       ease: "circ.inOut",
     });
@@ -61,7 +61,7 @@ export default function Preloader() {
     tl.to(load2, {
       strokeDashoffset: 0,
       duration: 2.5,
-      stagger: 0.5,
+      stagger: 0.6,
       reversed: true,
       ease: "circ.inOut",
     });
@@ -101,7 +101,7 @@ export default function Preloader() {
       <div className="loader h-full w-full z-50 top-0 left-0 fixed">
         <div className="fs h-full w-full bg-lightblue absolute flex flex-col justify-center items-center overflow-hidden">
           <div className="h-48 w-auto flex justify-center items-center overflow-hidden">
-            
+            <div className="h-full w-full top-0 absolute bg-blur"></div>
             <div className="svg flex flex-col h-auto w-auto gap-y-24 translate-y-full">
 
             <svg
