@@ -34,6 +34,10 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
+import Loading from "./loader/loading"
+
+
+
 export default function Home() {
   const latestPost = [
     {
@@ -148,78 +152,36 @@ export default function Home() {
   const animationRef = useRef(null);
 
   useGSAP(() => {
-    const rightPhotoItems = gsap.utils.toArray(".right-photo-item");
+    // const rightPhotoItems = gsap.utils.toArray(".right-photo-item");
 
-    rightPhotoItems.forEach(function (item, index) {
-      item.style.zIndex = rightPhotoItems.length - index;
-    });
+    // rightPhotoItems.forEach(function (item, index) {
+    //   item.style.zIndex = rightPhotoItems.length - index;
+    // });
 
-    gsap.set(".right-photo-item", {
-      clipPath: "inset(0px 0px 0px 0px)",
-    });
+    // gsap.set(".right-photo-item", {
+    //   clipPath: "inset(0px 0px 0px 0px)",
+    // });
 
-    animationRef.current = gsap.to(".right-photo-item:not(:last-child)", {
-      clipPath: "inset(0px 0px 100% 0px)",
-      stagger: 0.5,
-      ease: "none",
-    });
+    // animationRef.current = gsap.to(".right-photo-item:not(:last-child)", {
+    //   clipPath: "inset(0px 0px 100% 0px)",
+    //   stagger: 0.5,
+    //   ease: "none",
+    // });
 
-    ScrollTrigger.create({
-      trigger: ".projects",
-      scroller: "body",
-      start: "top top",
-      end: "bottom bottom",
-      animation: animationRef.current,
-      scrub: 1,
-    });
-
-    let fs = document.getElementsByClassName("fs");
-    let elem = document.getElementsByClassName("elem");
-
-    let tl = gsap.timeline()
-
-
-
-    tl.to(fs, {
-      height: 0,
-      duration: 2.5,
-      ease: "expo.inOut"
-    });
-
-    tl.to(elem, {
-      height: "100%",
-      duration: 2.5,
-      delay: -2.5,
-      ease: "expo.inOut"
-    });
-
-    tl.to(".whiteelem", {
-      height: "100%",
-      duration: 2,
-      delay: -1.8,
-      ease: "expo.inOut"
-    })
-
-    tl.to(".loader", {
-        height: 0,
-        duration: 2,
-        delay: -1.8,
-        ease: "expo.inOut"
-    })
+    // ScrollTrigger.create({
+    //   trigger: ".projects",
+    //   scroller: "body",
+    //   start: "top top",
+    //   end: "bottom bottom",
+    //   animation: animationRef.current,
+    //   scrub: 1,
+    // });
     
   });
 
   return (
     <>
-      <div className="loader h-full w-full z-50 top-0 left-0 fixed">
-          <div className="fs h-full w-full bg-lightblue absolute flex justify-center items-center">
-            {/* <span className="w-64 h-32">
-              <span>Emerging Tech 4 Health</span>
-            </span> */}
-          </div>
-          <div className="elem h-0 w-full bg-indigo-400 absolute bottom-0"></div>
-          <div className="whiteelem h-0 w-full bg-indigo-200 absolute bottom-0"></div>
-      </div>
+      <Loading/>
 
       {/* Landing page */}
       <div className="h-[100vh] w-full flex items-end relative z-10 overflow-hidden">

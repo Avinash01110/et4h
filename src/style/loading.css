@@ -1,0 +1,31 @@
+#load path:nth-child(1) {
+  stroke-dasharray: 368;
+  stroke-dashoffset: 368;
+}
+
+#load path:nth-child(2) {
+  stroke-dasharray: 474;
+  stroke-dashoffset: 474;
+}   
+
+#load path:nth-child(3) {
+  stroke-dasharray: 334;
+  stroke-dashoffset: 334;
+}   
+
+#load path:nth-child(4) {
+  stroke-dasharray: 275;
+  stroke-dashoffset: 275;
+}   
+#load path:nth-child(5) {
+  stroke-dasharray: 241;
+  stroke-dashoffset: 241;
+}   
+#load path:nth-child(6) {
+  stroke-dasharray: 368;
+  stroke-dashoffset: 368;
+}   
+#load path:nth-child(7) {
+  stroke-dasharray: 609;
+  stroke-dashoffset: 609;
+}
