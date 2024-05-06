@@ -34,7 +34,7 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
-import Loading from "./loader/loading"
+import Loading from "./loading"
 
 
 
