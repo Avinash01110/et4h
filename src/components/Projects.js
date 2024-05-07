@@ -18,31 +18,31 @@ export default function Projects() {
       index: "01",
       title: "Liver Tumor Segmentation",
       description: "description",
-      link: "/",
+      link: "/Project",
     },
     {
       index: "02",
       title: "Kidney Tumor Segmentation",
       description: "description",
-      link: "/",
+      link: "/Project",
     },
     {
       index: "03",
       title: "Breast Tumor Segmentation",
       description: "description",
-      link: "/",
+      link: "/Project",
     },
     {
       index: "04",
       title: "Electroencephalogram (EEG)",
       description: "description",
-      link: "/",
+      link: "/Project",
     },
     {
       index: "05",
       title: "Electrocardiogram (ECG)",
       description: "description",
-      link: "/",
+      link: "/Project",
     },
   ];
 
@@ -65,6 +65,7 @@ export default function Projects() {
   ];
 
   const animationRef = useRef(null);
+  console.log(animationRef)
 
   useGSAP(() => {
     const rightPhotoItems = gsap.utils.toArray(".right-photo-item");
@@ -177,7 +178,7 @@ export default function Projects() {
                         {project.description}
                       </span>
                     </div>
-                    <Link to={project.link}>
+                    <Link to={project.link + "/" + project.title}>
                       <button className="button bg-blue text-[#FFFFFF] py-2 px-3 rounded-lg text-sm font-medium active:bg-blue hover:bg-darkblue hover:shadow-md hover:shadow-lightgrey transition ease-in-out duration-300">
                         View More
                       </button>

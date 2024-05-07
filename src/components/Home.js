@@ -20,6 +20,11 @@ import ECGimage from "../Photos/Projects/ECGimage.png";
 import EEGimage from "../Photos/Projects/EEGimage.png";
 import about_us2 from "../Photos/Home/about_us2.png";
 import image from "../Photos/Home/image.png";
+import v1 from "../Video/v1.mp4";
+import v2 from "../Video/v2.mp4";
+import v3 from "../Video/v3.mp4";
+import v4 from "../Video/v4.mp4";
+import v5 from "../Video/v5.mp4";
 import { FaRegLightbulb } from "react-icons/fa";
 import { GiShakingHands } from "react-icons/gi";
 import { IoAccessibilityOutline } from "react-icons/io5";
@@ -504,11 +509,21 @@ export default function Home() {
       <div className="h-auto w-full bg-white">
         <div className="flex h-screen w-full p-6 pt-24 flex-col items-center justify-center xl:text-slate-400">
           <div className="grid h-full w-full grid-cols-3 gap-4">
-            <div className="col-span-2 row-span-3 rounded-3xl bg-slate-200 hover:scale-95 transition duration-500 ease-in-out"></div>
-            <div className="row-span-4 rounded-3xl bg-slate-200 text-center flex justify-center items-center text-3xl font-bold hover:scale-95 transition duration-500"></div>
-            <div className="row-span-3 rounded-3xl bg-slate-200 text-center flex justify-center items-center text-3xl font-bold hover:scale-95 transition duration-500"></div>
-            <div className="row-span-3 rounded-3xl bg-slate-200 text-center flex justify-center items-center text-3xl font-bold hover:scale-95 transition duration-500"></div>
-            <div className="row-span-2 rounded-3xl bg-slate-200 text-center flex justify-center items-center text-3xl font-bold hover:scale-95 transition duration-500"></div>
+            <Link to={"/Projects"} className="col-span-2 row-span-3 rounded-3xl bg-slate-200 hover:scale-95 transition duration-500 ease-in-out overflow-hidden">
+              <video className="h-full w-full object-cover" src={v2} autoPlay loop muted/>
+            </Link>
+            <Link to={"/Projects"} className="row-span-4 rounded-3xl bg-slate-200 text-center flex justify-center items-center text-3xl font-bold hover:scale-95 transition duration-500 ease-in-out overflow-hidden">
+              <video className="h-full w-full object-cover" src={v1} autoPlay loop muted/>
+            </Link>
+            <Link to={"/Projects"} className="row-span-3 rounded-3xl bg-slate-200 text-center flex justify-center items-center text-3xl font-bold hover:scale-95 transition duration-500 ease-in-out overflow-hidden">
+              <video className="h-full w-full object-cover" src={v3} autoPlay loop muted/>
+            </Link>
+            <Link to={"/Projects"} className="row-span-3 rounded-3xl bg-slate-200 text-center flex justify-center items-center text-3xl font-bold hover:scale-95 transition duration-500 ease-in-out overflow-hidden">
+              <video className="h-full w-full object-cover" src={v4} autoPlay loop muted/>
+            </Link>
+            <Link to={"/Projects"} className="row-span-2 rounded-3xl bg-slate-200 text-center flex justify-center items-center text-3xl font-bold hover:scale-95 transition duration-500 ease-in-out overflow-hidden">
+              <video className="h-full w-full object-cover" src={v5} autoPlay loop muted/>
+            </Link>
           </div>
         </div>
       </div>

@@ -41,7 +41,7 @@ export default function Navbar() {
   ];
 
   const location = useLocation();
-  const [activePage, setActivePage] = useState("Home");
+  const [activePage, setActivePage] = useState(location.pathname);
 
   useEffect(() => {
     if (location.pathname === "/") {
@@ -50,9 +50,12 @@ export default function Navbar() {
       setActivePage("Team");
     } else if(location.pathname === "/Projects"){
       setActivePage("Projects");
+    } else if (location.pathname.startsWith("/Project/")) {
+      setActivePage("Projects");
     }
   }
   , [location]);
+
 
   return (
     <>
