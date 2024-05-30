@@ -58,13 +58,13 @@ export default function Preloader() {
       ease:"expo.inOut"
     })
 
-    tl.to(load2, {
-      strokeDashoffset: 0,
-      duration: 2.5,
-      stagger: 0.6,
-      reversed: true,
-      ease: "circ.inOut",
-    });
+    // tl.to(load2, {
+    //   strokeDashoffset: 0,
+    //   duration: 2.5,
+    //   stagger: 0.6,
+    //   reversed: true,
+    //   ease: "circ.inOut",
+    // });
 
     tl.to(fs, {
       height: 0,
