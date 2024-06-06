@@ -39,3 +39,163 @@
   height: 100%;
   width: 100%;
 }
+
+
+.gallery {
+  --size: 100px;
+  display: grid;
+  grid-template-columns: repeat(6, var(--size));
+  grid-auto-rows: var(--size);
+  margin-bottom: var(--size);
+  place-items: start center;
+  gap: 5px;
+  
+  &:has(:hover) img:not(:hover),
+  &:has(:focus) img:not(:focus){
+    filter: brightness(0.5) contrast(0.5);
+  }
+
+  & img {
+    object-fit: cover;
+    width: calc(var(--size) * 2);
+    height: calc(var(--size) * 2);
+    clip-path: path("M90,10 C100,0 100,0 110,10 190,90 190,90 190,90 200,100 200,100 190,110 190,110 110,190 110,190 100,200 100,200 90,190 90,190 10,110 10,110 0,100 0,100 10,90Z");
+    transition: clip-path 0.25s, filter 0.75s;
+    grid-column: auto / span 2;
+    border-radius: 5px;
+
+    &:nth-child(5n - 1) { 
+      grid-column: 2 / span 2 
+    }
+
+    &:hover,
+    &:focus {
+      clip-path: path("M0,0 C0,0 200,0 200,0 200,0 200,100 200,100 200,100 200,200 200,200 200,200 100,200 100,200 100,200 100,200 0,200 0,200 0,100 0,100 0,100 0,100 0,100Z");
+      z-index: 1;
+      transition: clip-path 0.25s, filter 0.25s;
+    }
+    
+    &:focus {
+      outline: 1px dashed black;
+      outline-offset: -5px;
+    }
+  }
+}
+
+.bg-shape1{
+  width: 400px;
+  height: 400px;
+  border-radius: 9999px;
+  position: absolute;
+  animation: one 10s infinite;
+  top: 0;
+  left: 0;
+}
+
+.bg-shape2{
+  width: 300px;
+  height: 300px;
+  border-radius: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  animation: two 10s infinite;
+}
+
+.bg-shape3{
+  width: 300px;
+  height: 300px;
+  border-radius: 100%;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  animation: third 10s infinite;
+}
+
+
+@keyframes one {
+  0% {
+    left: 0px;
+    top: 0px;
+  }
+  25% {
+    left: 10px;
+    top: 50px;
+  }
+  50%{
+    left: 27px;
+    top: 200px;
+  }
+  75%{
+    left: -40px;
+    top: 350px;
+  }
+  100% {
+    left: 0px;
+    top: 0px;
+  }
+}
+
+@keyframes two {
+  0% {
+    right: 0px;
+    top: 0px;
+  }
+  25% {
+    right: 100px;
+    top: -10px;
+  }
+  50%{
+    right: 200px;
+    top: 27px;
+  }
+  75%{
+    right: 350px;
+    top: 40px;
+  }
+  100% {
+    right: 0px;
+    top: 0px;
+  }
+}
+
+@keyframes third{
+  0% {
+    right: 0px;
+    bottom: 0px;
+  }
+  25% {
+    right: 100px;
+    bottom: -10px;
+  }
+  50%{
+    right: 200px;
+    bottom: 27px;
+  }
+  75%{
+    right: 350px;
+    bottom: 40px;
+  }
+  100% {
+    right: 0px;
+    bottom: 0px;
+  }
+
+}
+
+.bg-blur{
+  filter: blur(90px);
+}
+
+.bg-primary{
+  background-color: rgb(30,0,255);
+}
+
+.bg-teal{
+  background-color: rgb(255,72,173);
+}
+
+.bg-purple{
+  background-color: rgb(140,0,215 );
+}
+

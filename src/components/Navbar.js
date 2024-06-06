@@ -1,55 +1,61 @@
 import React, { useState, Fragment, useEffect } from "react";
-import logo from "../Photos/logo.png";
+import logo from "../Photos/Home/logo.png";
 import { IoIosArrowDown, IoIosPaper } from "react-icons/io";
 import { GiArchiveResearch } from "react-icons/gi";
 import { RiExchangeFundsLine, RiTeamFill } from "react-icons/ri";
 import { FaHandshake } from "react-icons/fa";
 import {Link, useLocation} from "react-router-dom";
 import { Popover, Transition } from "@headlessui/react";
+import "../style/Navbar.css";
 
-const solutions = [
-  {
-    name: "Research & Development",
-    description: "description",
-    href: "#",
-    icon: GiArchiveResearch,
-  },
-  {
-    name: "Publications",
-    description: "description",
-    href: "#",
-    icon: IoIosPaper,
-  },
-  {
-    name: "Grants",
-    description: "description",
-    href: "#",
-    icon: RiExchangeFundsLine,
-  },
-  {
-    name: "Collaboration Opportunities",
-    description: "description",
-    href: "#",
-    icon: FaHandshake,
-  },
-  { name: "Team", description: "description", href: "#", icon: RiTeamFill },
-];
+
 
 export default function Navbar() {
 
+  const More = [
+    {
+      name: "Research & Development",
+      description: "description",
+      href: "#",
+      icon: GiArchiveResearch,
+    },
+    {
+      name: "Publications",
+      description: "description",
+      href: "#",
+      icon: IoIosPaper,
+    },
+    {
+      name: "Grants",
+      description: "description",
+      href: "#",
+      icon: RiExchangeFundsLine,
+    },
+    {
+      name: "Collaboration Opportunities",
+      description: "description",
+      href: "#",
+      icon: FaHandshake,
+    },
+    // { name: "Team", description: "description", href: "#", icon: RiTeamFill },
+  ];
+
   const location = useLocation();
-  const [activePage, setActivePage] = useState("Home");
+  const [activePage, setActivePage] = useState(location.pathname);
 
   useEffect(() => {
     if (location.pathname === "/") {
       setActivePage("Home");
-    } else if (location.pathname === "/About") {
-      setActivePage("About");
+    } else if (location.pathname === "/Team") {
+      setActivePage("Team");
     } else if(location.pathname === "/Projects"){
+      setActivePage("Projects");
+    } else if (location.pathname.startsWith("/Project/")) {
       setActivePage("Projects");
     }
   }
   , [location]);
+
 
   return (
     <>
@@ -62,27 +68,42 @@ export default function Navbar() {
           />
         </div>
         <div className="items w-96 h-9 bg-purewhite list-none flex flex-row justify-center items-center gap-5 rounded-full text-sm font-semibold border-2 border-darkblue">
+
           <Link to={"/"}><li
-            className={`text-grey cursor-pointer flex items-center justify-center px-2 py-1 rounded-lg ${activePage === 'Home' ? 'bg-blue text-purewhite' : 'hover:text-blue hover:bg-lightblue'} transition ease-in-out duration-300`}
+            className={`group h-7 text-grey cursor-pointer flex flex-col items-center justify-center px-2 py-1 rounded-lg overflow-hidden ${activePage === 'Home' ? 'bg-blue text-purewhite' : 'hover:text-blue hover:bg-lightblue'} transition ease-in-out duration-100`}
           >
-            Home
+            <div className={`flex flex-col translate-y-5 gap-y-5 ${activePage === 'Home' ? '' : 'group-hover:-translate-y-5 transition ease-in-out duration-500'}`}>
+            <span>Home</span>
+            <span>Home</span>
+            </div>
           </li>
           </Link>
 
-          <Link to= {"/About"}>
+          {/* <Link to= {"/About"}>
           <li className={`text-grey cursor-pointer flex items-center justify-center px-2 py-1 rounded-lg ${activePage === 'About' ? 'bg-blue text-purewhite' : 'hover:text-blue hover:bg-lightblue'} transition ease-in-out duration-300`}>
             About
           </li>
-          </Link>
+          </Link> */}
 
           <Link to={"/Projects"}>
-          <li className={`text-grey cursor-pointer flex items-center justify-center px-2 py-1 rounded-lg ${activePage === 'Projects' ? 'bg-blue text-purewhite' : 'hover:text-blue hover:bg-lightblue'} transition ease-in-out duration-300`}>
-            Projects
+          <li className={`group h-7 text-grey cursor-pointer flex flex-col items-center justify-center px-2 py-1 rounded-lg overflow-hidden ${activePage === 'Projects' ? 'bg-blue text-purewhite' : 'hover:text-blue hover:bg-lightblue'} transition ease-in-out duration-100`}>
+          <div className={`flex flex-col translate-y-5 gap-y-5 ${activePage === 'Projects' ? '' : 'group-hover:-translate-y-5 transition ease-in-out duration-500'}`}>
+            <span>Projects</span>
+            <span>Projects</span>
+            </div>
           </li>
           </Link>
 
-          {/* <li className= "group hover:text-blue text-grey flex items-center justify-center gap-x-2 h-full relative">More<IoIosArrowDown className='transition duration-500 ease-in-out group-hover:-rotate-180'/>
-          </li> */}
+          <Link to={"/Team"}>
+          <li className={`group h-7 text-grey cursor-pointer flex flex-col items-center justify-center px-2 py-1 rounded-lg overflow-hidden ${activePage === 'Team' ? 'bg-blue text-purewhite' : 'hover:text-blue hover:bg-lightblue'} transition ease-in-out duration-100`}>
+          <div className={`flex flex-col translate-y-5 gap-y-5 ${activePage === 'Team' ? '' : 'group-hover:-translate-y-5 transition ease-in-out duration-500'}`}>
+            <span>Team</span>
+            <span>Team</span>
+            </div>
+          </li>
+          </Link>
+
+          
 
           <Popover className="relative">
             {({ open }) => (
@@ -108,7 +129,7 @@ export default function Navbar() {
                   <Popover.Panel className="absolute left-1/2 z-10 mt-5 flex w-screen max-w-max -translate-x-1/2 px-2">
                     <div className="w-screen max-w-72 flex-auto overflow-hidden rounded-lg bg-purewhite text-sm leading-6 border border-lightgrey">
                       <div className="p-2">
-                        {solutions.map((item) => (
+                        {More.map((item) => (
                           <div
                             key={item.name}
                             className="group relative flex gap-x-4 rounded-lg p-4 hover:bg-lightblue transition ease-in-out duration-300"
@@ -180,9 +201,11 @@ export default function Navbar() {
           </div> */}
           
         </div>
-        <button className="button bg-blue text-[#FFFFFF] py-2 px-5 rounded-lg text-sm font-medium active:bg-blue hover:bg-darkblue transition ease-in-out duration-300">
+
+        <button className="contactus bg-blue text-[#FFFFFF] py-2 px-5 rounded-lg text-sm font-medium active:bg-blue hover:bg-darkblue transition ease-in-out duration-300">
           Contact us
         </button>
+        
       </div>
     </>
   );
