@@ -17,7 +17,7 @@ export function sendOtp(email, navigate) {
     const toastId = toast.loading("Sending OTP...");
     dispatch(setLoading(true));
     try {
-      const response = await apiConnector(SENDOTP_API, "POST", {
+      const response = await apiConnector("POST",SENDOTP_API, {
         email,
         checkUserPresent: true,
       });
@@ -32,6 +32,7 @@ export function sendOtp(email, navigate) {
       toast.success("OTP Sent Successfully");
       navigate("/verify-email");
     } catch (error) {
+      console.log(email)
       console.log("SENDOTP API ERROR............", error);
       toast.error("Could Not Send OTP");
     }
@@ -45,7 +46,7 @@ export function signUp(username, email,password,confirmPassword,userType,otp, na
         const toastId = toast.loading("Signing Up...");
         dispatch(setLoading(true));
         try {
-            const response = await apiConnector(SIGNUP_API, "POST", {
+            const response = await apiConnector( "POST", SIGNUP_API,{
                 username,
                 email,
                 password,
@@ -64,6 +65,7 @@ export function signUp(username, email,password,confirmPassword,userType,otp, na
         } catch (error) {
             console.log("SIGNUP API ERROR............", error);
             toast.error("Could Not Sign Up");
+            navigate("/signup");
         }
         dispatch(setLoading(false));
         toast.dismiss(toastId);

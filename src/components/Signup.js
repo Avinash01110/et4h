@@ -3,6 +3,8 @@ import { toast } from "react-hot-toast"
 import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { sendOtp } from "../services/operations/authAPI"
+
+import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { setSignupData } from "../slices/authSlice"
 import { ACCOUNT_TYPE } from "../utils/constants"
 
@@ -19,11 +21,14 @@ const Signup = () => {
     const [showPassword, setShowPassword] = useState(false)
     const [showConfirmPassword, setShowConfirmPassword] = useState(false)
 
-    const { username, email, password, confirmPassword, userType } = formData
+    const { username, email, password, confirmPassword } = formData
 
     const handleOnChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value })
-    }
+        setFormData((prevData) => ({
+          ...prevData,
+          [e.target.name]: e.target.value,
+        }));
+      };
 
     const handleOnSubmit = async (e) => {
         e.preventDefault()
@@ -32,12 +37,14 @@ const Signup = () => {
             return
         }
         console.log("formData", formData)
+        const signupData = { ...formData };
+        console.log("signupData", signupData);
 
         try {
         
-            dispatch(setSignupData(formData))
-            dispatch(sendOtp(formData.email , navigate))
-            navigate("/new")
+            dispatch(setSignupData(signupData))
+            dispatch(sendOtp(signupData.email , navigate))
+            // navigate("/new")
         } catch (error) {
             console.error("Error:", error)
             toast.error("Signup failed. Please try again.")
@@ -57,11 +64,19 @@ const Signup = () => {
                 </label>
                 <label>
                     Password
-                    <input type="password" name="password" value={password} onChange={handleOnChange} />
+                    <input type={showPassword ? 'text' : 'password'}
+                     name="password" value={password} onChange={handleOnChange} />
+                      <span onClick={() => setShowPassword(!showPassword)}>
+            {showPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
+          </span>
                 </label>
                 <label>
                     Confirm Password
-                    <input type="password" name="confirmPassword" value={confirmPassword} onChange={handleOnChange} />
+                    <input type={showConfirmPassword ? 'text' : 'password'}name="confirmPassword" value={confirmPassword} 
+                    onChange={handleOnChange} />
+                     <span onClick={() => setShowConfirmPassword(!showConfirmPassword)}>
+            {showConfirmPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
+          </span>
                 </label>
                 <button type="submit">Signup</button>
             </form>
