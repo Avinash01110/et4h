@@ -14,7 +14,7 @@ import { Toaster } from "react-hot-toast";
 function App() {
   return (
     <>
-      {/* <Navbar /> */}
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
@@ -24,7 +24,7 @@ function App() {
         <Route path="/categories" element={<CategoryList />} />
         <Route path="/category/:categoryId" element={<CategoryPage />} />
       </Routes>
-      {/* <Footer /> */}
+      <Footer />
       <Toaster />
     </>
   );
