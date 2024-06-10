@@ -11,11 +11,11 @@ UPDATEPASSWORD_API:BASE_URL+"auth/update-password",
 
 // Category Endpoints
 export const categoryEndpoints = {
-ADD_CATEGORY_API: BASE_URL + "category/addCategory",
-GETALL_CATEGORIES_API: BASE_URL + "category/showAllCategories",
-UPDATE_CATEGORY_API: BASE_URL + "category/updateCategory",
-DELETE_CATEGORY_API: BASE_URL + "category/deleteCategory",
-GET_CATEGORY_PAGE_API: BASE_URL + "category/showCategoryPage",
+ADD_CATEGORY_API: BASE_URL + "/category/addCategory",
+GETALL_CATEGORIES_API: BASE_URL + "/category/showAllCategories",
+UPDATE_CATEGORY_API: BASE_URL + "/category/updateCategory",
+DELETE_CATEGORY_API: BASE_URL + "/category/deleteCategory",
+GET_CATEGORY_PAGE_API: BASE_URL + "/category/category",
 }
 
 // Post endpoints
