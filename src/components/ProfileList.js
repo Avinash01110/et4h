@@ -70,7 +70,7 @@ const ProfileList = () => {
     }));
   };
 
-  const handleSocialLinkChange = (index, field, value) => {
+  const handleSocialLinkChange = (index, field, value, form) => {
     const updatedSocialLinks = formData.socialLinks.map((link, i) =>
       i === index ? { ...link, [field]: value } : link
     );
@@ -103,23 +103,23 @@ const ProfileList = () => {
 
   const handleSubmit = async () => {
     const formDataToSend = new FormData();
-    
+
     // Append data common to both creating and updating profiles
     formDataToSend.append("name", formData.name);
     formDataToSend.append("email", formData.email);
     formDataToSend.append("about", formData.about);
-    
+
     // Append profile picture if available
     if (formData.profilePic) {
-      formDataToSend.append("profilePic", formData.profilePic);
+      formDataToSend.append("profilePic", formData.profilePic, formData.profilePic.name);
     }
-    
+
     // Append social links
     formData.socialLinks.forEach((link, index) => {
       formDataToSend.append(`socialLinks[${index}][name]`, link.name);
       formDataToSend.append(`socialLinks[${index}][url]`, link.url);
     });
-  
+    
     try {
       if (modalType === "add") {
         // Handle creating a new profile without appending ID
@@ -136,8 +136,6 @@ const ProfileList = () => {
       toast.error("Failed to update profile");
     }
   };
-  
-  
 
   const handleDelete = async (profileId) => {
     if (window.confirm("Are you sure you want to delete this profile?")) {
