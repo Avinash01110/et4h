@@ -35,8 +35,8 @@ DELETE_MILESTONE_API: BASE_URL + "post/deleteMilestone",
 }
 
 export const profileEndpoints = {
-   CREATE_PROFILE_API: BASE_URL + "profile/createProfile",
-    UPDATE_PROFILE_API: BASE_URL + "profile/updateProfile",
-    DELETE_PROFILE_API:BASE_URL+"profile/deleteProfile",
-    GET_ALL_PROFILE_API:BASE_URL+"profile/showAllProfiles", 
+   CREATE_PROFILE_API: BASE_URL + "/profile/createProfile",
+    UPDATE_PROFILE_API: BASE_URL + "/profile/updateProfile",
+    DELETE_PROFILE_API:BASE_URL+"/profile/deleteProfile",
+    GET_ALL_PROFILE_API:BASE_URL+"/profile/profiles", 
 }
