@@ -166,13 +166,14 @@ const ProfileList = () => {
                 <p>{profiles.name}</p>
                 <p>{profiles.email}</p>
                 <p>{profiles.about}</p>
+                <p><img src={profiles.profilePic} className="w-20"/></p>
                 {/* You can add more details here */}
               </div>
               {/* Buttons for editing and deleting profiles */}
-              <button onClick={() => handleOpenModal("edit", profiles)}>
+             { token && <button onClick={() => handleOpenModal("edit", profiles)}>
                 Edit
-              </button>
-              <button onClick={() => handleDelete(profiles._id)}>Delete</button>
+              </button>}
+             {token &&  <button onClick={() => handleDelete(profiles._id)}>Delete</button>}
             </li>
           ))
         ) : (

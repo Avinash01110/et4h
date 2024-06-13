@@ -20,18 +20,18 @@ GET_CATEGORY_PAGE_API: BASE_URL + "/category/category",
 
 // Post endpoints
 export const postEndpoints = {
-CREATE_POST_API: BASE_URL + "post/createPost",
-UPDATE_POST_API: BASE_URL + "post/updatePost",
-DELETE_POST_API: BASE_URL + "post/deletePost",
-GET_ALL_POSTS_API: BASE_URL + "post/getAllPosts",
-GETSINGLE_POST_API:BASE_URL+"post/getSinglePost",
-CREATE_SUBPOST_API: BASE_URL + "post/createSubPost",
-UPDATE_SUBPOST_API: BASE_URL + "post/updateSubPost",
-DELETE_SUBPOST_API: BASE_URL + "post/deleteSubPost",
-REMOVE_IMAGE_FROM_SUBPOST_API: BASE_URL + "post/removeImageFromSubPost",
-CREATE_MILESTONE_API: BASE_URL + "post/createMilestone",
-UPDATE_MILESTONE_API: BASE_URL + "post/updateMilestone",
-DELETE_MILESTONE_API: BASE_URL + "post/deleteMilestone",
+CREATE_POST_API: BASE_URL + "/post/createPost",
+UPDATE_POST_API: BASE_URL + "/post/updatePost",
+DELETE_POST_API: BASE_URL + "/post/deletePost",
+GET_ALL_POSTS_API: BASE_URL + "/post/getAllPosts",
+GETSINGLE_POST_API:BASE_URL+"/post/getSinglePost",
+CREATE_SUBPOST_API: BASE_URL + "/post/createSubPost",
+UPDATE_SUBPOST_API: BASE_URL + "/post/updateSubPost",
+DELETE_SUBPOST_API: BASE_URL + "/post/deleteSubPost",
+REMOVE_IMAGE_FROM_SUBPOST_API: BASE_URL + "/post/removeImageFromSubPost",
+CREATE_MILESTONE_API: BASE_URL + "/post/createMilestone",
+UPDATE_MILESTONE_API: BASE_URL + "/post/updateMilestone",
+DELETE_MILESTONE_API: BASE_URL + "/post/deleteMilestone",
 }
 
 export const profileEndpoints = {

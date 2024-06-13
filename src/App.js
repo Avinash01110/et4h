@@ -14,8 +14,9 @@ import Signup from "./components/Signup";
 import VerifyEmails from "./components/VerifyEmail";
 import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
-import ProfileComponent from "./components/ProfileComponent";
 import ProfileList from "./components/ProfileList";
+import ProjectList from "./components/ProjectList";
+import SinglePost from "./components/SinglePost";
 
 function App() {
   return (
@@ -35,6 +36,8 @@ function App() {
         <Route path="/login" element= {<Login/>}/>
         <Route path="/dashboard" element={<Dashboard/>}/>
         <Route path="/profile" element= {<ProfileList/>}/>
+        <Route path="post" element={<ProjectList/>}/>
+        <Route path="post/:postId" element={<SinglePost/>}/>
       </Routes>
       {/* <Footer /> */}
       <Toaster />
