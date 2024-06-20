@@ -3,7 +3,7 @@ const initalState={
     step:1,
     loading:false,
     editPost:false,
-    post:null,
+    post:[],
 
 }
 const postSlice = createSlice({
@@ -21,8 +21,11 @@ const postSlice = createSlice({
         },
         setPost(state,value){
             state.post=value.payload
-        }
+        },
+        setError(state, action) {
+            state.error = action.payload;
+        },
     }
 })
-export const {setStep,setLoading,setEditPost,setPost}=postSlice.actions;
+export const {setStep,setLoading,setEditPost,setPost,setError}=postSlice.actions;
 export default postSlice.reducer;

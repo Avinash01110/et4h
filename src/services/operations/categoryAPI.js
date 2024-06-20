@@ -32,7 +32,7 @@ export async function addCategory(data,token) {
     let result = null
     const toastId = toast.loading("Loading...")
     try {
-        const response = await apiConnector(ADD_CATEGORY_API, "POST", data, {
+        const response = await apiConnector("POST",ADD_CATEGORY_API,  data, {
             Authorization: `Bearer ${token}`,
           
         });

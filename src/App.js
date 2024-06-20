@@ -10,6 +10,13 @@ import Project from "./components/Project";
 import CategoryList from "./components/CategoryList";
 import CategoryPage from "./components/CategoryPage";
 import { Toaster } from "react-hot-toast";
+import Signup from "./components/Signup";
+import VerifyEmails from "./components/VerifyEmail";
+import Login from "./components/Login";
+import Dashboard from "./components/Dashboard";
+import ProfileList from "./components/ProfileList";
+import ProjectList from "./components/ProjectList";
+import SinglePost from "./components/SinglePost";
 
 function App() {
   return (
@@ -23,6 +30,14 @@ function App() {
         <Route path="/team" element={<Team />} />
         <Route path="/categories" element={<CategoryList />} />
         <Route path="/category/:categoryId" element={<CategoryPage />} />
+        <Route path="*" element={<Home />} />
+        <Route path="/signup" element={<Signup/>}/>
+        <Route path="/verify-email" element={<VerifyEmails/>}/>
+        <Route path="/login" element= {<Login/>}/>
+        <Route path="/dashboard" element={<Dashboard/>}/>
+        <Route path="/profile" element= {<ProfileList/>}/>
+        <Route path="post" element={<ProjectList/>}/>
+        <Route path="post/:postId" element={<SinglePost/>}/>
       </Routes>
       <Footer />
       <Toaster />
