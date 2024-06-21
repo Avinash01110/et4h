@@ -4,7 +4,7 @@ import { getAllPosts, createPost } from '../services/operations/postAPI';
 import { getAllCategory } from '../services/operations/categoryAPI';
 import { getAllProfile } from '../services/operations/profileAPI';
 import { useNavigate } from 'react-router-dom';
-import './ProjectList.css';
+import '../style/ProjectList.css';
 
 const ProjectList = () => {
     const dispatch = useDispatch();

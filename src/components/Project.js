@@ -41,7 +41,7 @@ export default function Project() {
       <div className="h-[82vh] w-full flex items-end bg-lightblue">
         <div className="h-96 w-full relative">
           <img className="h-full w-full object-cover" src={lp1} alt="error" />
-          <h4 className="text-5xl text-purewhite font-bold bottom-32 left-16 absolute">
+          <h4 className="text-5xl text-purewhite font-bold font-sans bottom-32 left-16 absolute">
             {title}
           </h4>
         </div>
@@ -50,36 +50,36 @@ export default function Project() {
       <div className="h-auto w-full bg-lightblue flex flex-row">
         <div className="left w-2/12 h-96 sticky top-0">
           <div className="menu flex flex-col items-start gap-y-2 px-6 py-36">
-            <button
+            <div
               onClick={menuChange}
-              className={`text-base font-bold border-b border-black ${
+              className={`text-base font-bold font-sans border-b border-black cursor-pointer ${
                 menu === "research"
                   ? "text-blue"
                   : "text-grey hover:text-blue transition ease-in-out duration-300"
               }`}
             >
               Research
-            </button>
-            <button
+            </div>
+            <div
               onClick={menuChange}
-              className={`text-base font-bold border-b border-black ${
+              className={`text-base font-bold font-sans border-b border-black cursor-pointer ${
                 menu === "contributors"
                   ? "text-blue"
                   : "text-grey hover:text-blue transition ease-in-out duration-300"
               } hover:text-blue transition ease-in-out duration-300`}
             >
               Contributors
-            </button>
-            <button
+            </div>
+            <div
               onClick={menuChange}
-              className={`text-base font-bold border-b border-black ${
+              className={`text-base font-bold font-sans border-b border-black cursor-pointer ${
                 menu === "faq's"
                   ? "text-blue"
                   : "text-grey hover:text-blue transition ease-in-out duration-300"
               }`}
             >
               FAQ's
-            </button>
+            </div>
           </div>
         </div>
 
@@ -93,10 +93,10 @@ export default function Project() {
           >
             <div className="research w-full h-auto">
               <div className="ro w-full h-auto flex flex-col gap-y-8">
-                <h4 className="text-lg text-darkblue font-bold">
+                <h4 className="text-lg text-darkblue font-bold font-sans">
                   Research Objective
                 </h4>
-                <p className="text-grey font-bold text-justify opacity-95">
+                <p className="text-grey font-bold text-justify opacity-95 font-sans">
                   We're pioneering a novel approach to kidney tumor detection
                   and segmentation, leveraging advanced computational
                   techniques. Our project aims to revolutionize medical imaging
@@ -115,10 +115,10 @@ export default function Project() {
 
             <div className="research w-full h-auto">
               <div className="ro w-full h-auto flex flex-col gap-y-8">
-                <h4 className="text-lg text-darkblue font-bold">
+                <h4 className="text-lg text-darkblue font-bold font-sans">
                   Advancements in Kidney Tumor Assessment
                 </h4>
-                <p className="text-grey font-bold text-justify opacity-95">
+                <p className="text-grey font-bold text-justify opacity-95 font-sans">
                   In this study, we developed and evaluated a computational
                   framework specifically designed for accurate kidney tumor
                   segmentation and detection, addressing a critical challenge in
@@ -143,10 +143,10 @@ export default function Project() {
 
             <div className="research w-full h-auto">
               <div className="ro w-full h-auto flex flex-col gap-y-8">
-                <h4 className="text-lg text-darkblue font-bold">
+                <h4 className="text-lg text-darkblue font-bold font-sans">
                   Kidney Tumor Research Hypothesis
                 </h4>
-                <p className="text-grey font-bold text-justify opacity-95">
+                <p className="text-grey font-bold text-justify opacity-95 font-sans">
                   Through harnessing advanced deep learning architectures,
                   including UNet, MIScnn, MONAI, and NNUnet, we hypothesize the
                   feasibility of constructing resilient computational
@@ -165,7 +165,7 @@ export default function Project() {
             </div>
 
             <div className="w-full h-auto bg-slate-200 py-6 flex flex-col gap-y-10 rounded-lg">
-              <h3 className="text-2xl text-darkblue font-semibold text-center">
+              <h3 className="text-2xl text-darkblue font-semibold font-sans text-center">
                 Research Progress
               </h3>
               <div className="min-h-96 w-full flex flex-row px-2 gap-x-2">
@@ -174,7 +174,7 @@ export default function Project() {
                     className={`rp h-10 w-full bg-white px-4 pb-6 cursor-pointer overflow-hidden rounded-lg`}
                   >
                     <div className="flex flex-row justify-between items-center h-10">
-                      <span className="text-sm text-grey font-semibold">
+                      <span className="text-sm text-grey font-semibold font-sans">
                         Contributed By - Rahul Lalwani, Akshada Telang
                       </span>
                       <FaPlus
@@ -182,7 +182,7 @@ export default function Project() {
                         className={`text-xl hover:text-blue rotate-${parameter.rotate} transition ease-in-out duration-500`}
                       />
                     </div>
-                    <p className="text-grey text-justify text-sm font-normal">
+                    <p className="text-grey text-justify text-sm font-normal font-sans">
                       In our pursuit of developing an effective methodology for
                       kidney tumor segmentation and detection, we systematically
                       explored and implemented various state-of-the-art models
@@ -218,7 +218,7 @@ export default function Project() {
                     </p>
                   </div>
                 </div>
-                <div className="w-5/12 h-96 sticky top-0">
+                <div className="w-5/12 h-96 sticky top-0 font-sans">
                   <Swiper
                     direction={"vertical"}
                     autoplay={{
@@ -248,10 +248,10 @@ export default function Project() {
 
             <div className="research w-full h-auto">
               <div className="ro w-full h-auto flex flex-col gap-y-8">
-                <h4 className="text-lg text-darkblue font-bold">
+                <h4 className="text-lg text-darkblue font-bold font-sans">
                   Impact of the Research
                 </h4>
-                <p className="text-grey font-bold text-justify opacity-95">
+                <p className="text-grey font-bold text-justify opacity-95 font-sans">
                   Clinical Impact: The development of a robust computational
                   framework for kidney tumor segmentation and detection presents
                   a substantial opportunity to revolutionize clinical practice.
@@ -322,9 +322,9 @@ export default function Project() {
                 />
               </div>
               <div className="flex flex-col items-center justify-center">
-                <span className="text-grey font-medium text-base">Name</span>
-                <span className="text-grey font-medium text-sm">Degree</span>
-                <span className="text-grey font-medium text-sm">
+                <span className="text-grey font-medium font-sans text-base">Name</span>
+                <span className="text-grey font-medium font-sans text-sm">Degree</span>
+                <span className="text-grey font-medium font-sans text-sm">
                   College Name
                 </span>
               </div>
@@ -341,9 +341,9 @@ export default function Project() {
                 />
               </div>
               <div className="flex flex-col items-center justify-center">
-                <span className="text-grey font-medium text-base">Name</span>
-                <span className="text-grey font-medium text-sm">Degree</span>
-                <span className="text-grey font-medium text-sm">
+                <span className="text-grey font-medium font-sans text-base">Name</span>
+                <span className="text-grey font-medium font-sans text-sm">Degree</span>
+                <span className="text-grey font-medium font-sans text-sm">
                   College Name
                 </span>
               </div>
@@ -355,7 +355,7 @@ export default function Project() {
               menu === "faq's" ? "flex flex-col gap-y-10" : "hidden"
             } w-full h-auto bg-slate-200 py-10 rounded-lg`}>
             {/* <!-- component --> */}
-            <h2 className="text-center text-xl text-darkblue font-semibold">For Any Query - Reach Out to Us </h2>
+            <h2 className="text-center text-xl text-darkblue font-semibold font-sans">For Any Query - Reach Out to Us </h2>
             <div className="flex items-center justify-center">
               <div className="mx-auto w-full max-w-[550px]">
               {/* action="https://formbold.com/s/FORM_ID" */}
@@ -363,7 +363,7 @@ export default function Project() {
                   <div className="mb-5">
                     <label
                       htmlFor="name"
-                      className="mb-3 block text-base font-medium text-[#07074D]"
+                      className="mb-3 block text-base font-medium font-sans text-[#07074D]"
                     >
                       Full Name
                     </label>
@@ -372,13 +372,13 @@ export default function Project() {
                       name="name"
                       id="name"
                       placeholder="Full Name"
-                      className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-darkblue focus:shadow-md"
+                      className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium font-sans text-[#6B7280] outline-none focus:border-darkblue focus:shadow-md"
                     />
                   </div>
                   <div className="mb-5">
                     <label
                       htmlFor="email"
-                      className="mb-3 block text-base font-medium text-[#07074D]"
+                      className="mb-3 block text-base font-medium font-sans text-[#07074D]"
                     >
                       Email Address
                     </label>
@@ -387,7 +387,7 @@ export default function Project() {
                       name="email"
                       id="email"
                       placeholder="example@domain.com"
-                      className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-darkblue focus:shadow-md"
+                      className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium font-sans text-[#6B7280] outline-none focus:border-darkblue focus:shadow-md"
                     />
                   </div>
                   {/* <div className="mb-5">
@@ -408,7 +408,7 @@ export default function Project() {
                   <div className="mb-5">
                     <label
                       htmlFor="message"
-                      className="mb-3 block text-base font-medium text-[#07074D]"
+                      className="mb-3 block text-base font-medium font-sans text-[#07074D]"
                     >
                       Message
                     </label>
@@ -417,11 +417,11 @@ export default function Project() {
                       name="message"
                       id="message"
                       placeholder="Type your message"
-                      className="w-full resize-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-darkblue focus:shadow-md"
+                      className="w-full resize-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium font-sans text-[#6B7280] outline-none focus:border-darkblue focus:shadow-md"
                     ></textarea>
                   </div>
                   <div>
-                    <button className="hover:shadow-form rounded-md bg-blue py-2 px-4 text-base font-semibold text-white outline-none active:bg-blue hover:scale-90 hover:bg-darkblue hover:shadow-md hover:shadow-lightgrey transition ease-in-out duration-300">
+                    <button className="hover:shadow-form rounded-md bg-blue py-2 px-4 text-base font-semibold font-sans text-white outline-none active:bg-blue hover:scale-90 hover:bg-darkblue hover:shadow-md hover:shadow-lightgrey transition ease-in-out duration-300">
                       Submit
                     </button>
                   </div>

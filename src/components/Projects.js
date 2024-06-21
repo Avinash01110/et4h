@@ -154,7 +154,7 @@ export default function Projects() {
 
       <div className="project h-auto w-full bg-lightblue pt-16 opacity-0">
         {/* Active Project */}
-        <div className="border-b-2 border-grey bg-lightblue h-auto w-full flex flex-col items-center gap-y-1">
+        <div className="bg-lightblue h-auto w-full flex flex-col items-center gap-y-1">
           {/* <h2 className="text-5xl text-blue font-bold uppercase [text-shadow:2px_4px_5px_var(--tw-shadow-color)] shadow-grey">
             Active Projects
           </h2> */}
@@ -168,18 +168,18 @@ export default function Projects() {
                     className="h-[100vh] project-info flex flex-col justify-center gap-y-10"
                   >
                     <div className="flex flex-col gap-y-1">
-                      <span className="text-2xl text-grey font-semibold">
+                      <span className="text-2xl text-grey font-semibold font-sans">
                         {project.index}
                       </span>
-                      <h3 className="text-4xl text-grey font-bold">
+                      <h3 className="text-4xl text-grey font-bold font-sans">
                         {project.title}
                       </h3>
-                      <span className="text-base text-grey">
+                      <span className="text-base text-grey font-sans">
                         {project.description}
                       </span>
                     </div>
                     <Link to={project.link + "/" + project.title}>
-                      <button className="button bg-blue text-[#FFFFFF] py-2 px-3 rounded-lg text-sm font-medium active:bg-blue hover:bg-darkblue hover:shadow-md hover:shadow-lightgrey transition ease-in-out duration-300">
+                      <button className="button bg-blue text-[#FFFFFF] py-2 px-3 rounded-lg text-sm font-medium font-sans active:bg-blue hover:bg-darkblue hover:shadow-md hover:shadow-lightgrey transition ease-in-out duration-300">
                         View More
                       </button>
                     </Link>

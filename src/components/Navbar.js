@@ -31,12 +31,12 @@ export default function Navbar() {
       href: "#",
       icon: RiExchangeFundsLine,
     },
-    {
-      name: "Collaboration Opportunities",
-      description: "description",
-      href: "#",
-      icon: FaHandshake,
-    },
+    // {
+    //   name: "Collaboration Opportunities",
+    //   description: "description",
+    //   href: "#",
+    //   icon: FaHandshake,
+    // },
     // { name: "Team", description: "description", href: "#", icon: RiTeamFill },
   ];
 
@@ -72,7 +72,7 @@ export default function Navbar() {
           <Link to={"/"}><li
             className={`group h-7 text-grey cursor-pointer flex flex-col items-center justify-center px-2 py-1 rounded-lg overflow-hidden ${activePage === 'Home' ? 'bg-blue text-purewhite' : 'hover:text-blue hover:bg-lightblue'} transition ease-in-out duration-100`}
           >
-            <div className={`flex flex-col translate-y-5 gap-y-5 ${activePage === 'Home' ? '' : 'group-hover:-translate-y-5 transition ease-in-out duration-500'}`}>
+            <div className={`flex flex-col translate-y-5 font-sans gap-y-5 ${activePage === 'Home' ? '' : 'group-hover:-translate-y-5 transition ease-in-out duration-500'}`}>
             <span>Home</span>
             <span>Home</span>
             </div>
@@ -87,7 +87,7 @@ export default function Navbar() {
 
           <Link to={"/Projects"}>
           <li className={`group h-7 text-grey cursor-pointer flex flex-col items-center justify-center px-2 py-1 rounded-lg overflow-hidden ${activePage === 'Projects' ? 'bg-blue text-purewhite' : 'hover:text-blue hover:bg-lightblue'} transition ease-in-out duration-100`}>
-          <div className={`flex flex-col translate-y-5 gap-y-5 ${activePage === 'Projects' ? '' : 'group-hover:-translate-y-5 transition ease-in-out duration-500'}`}>
+          <div className={`flex flex-col translate-y-5 font-sans gap-y-5 ${activePage === 'Projects' ? '' : 'group-hover:-translate-y-5 transition ease-in-out duration-500'}`}>
             <span>Projects</span>
             <span>Projects</span>
             </div>
@@ -96,7 +96,7 @@ export default function Navbar() {
 
           <Link to={"/Team"}>
           <li className={`group h-7 text-grey cursor-pointer flex flex-col items-center justify-center px-2 py-1 rounded-lg overflow-hidden ${activePage === 'Team' ? 'bg-blue text-purewhite' : 'hover:text-blue hover:bg-lightblue'} transition ease-in-out duration-100`}>
-          <div className={`flex flex-col translate-y-5 gap-y-5 ${activePage === 'Team' ? '' : 'group-hover:-translate-y-5 transition ease-in-out duration-500'}`}>
+          <div className={`flex flex-col translate-y-5 font-sans gap-y-5 ${activePage === 'Team' ? '' : 'group-hover:-translate-y-5 transition ease-in-out duration-500'}`}>
             <span>Team</span>
             <span>Team</span>
             </div>
@@ -108,7 +108,7 @@ export default function Navbar() {
           <Popover className="relative">
             {({ open }) => (
               <>
-                <Popover.Button className="hover:text-blue hover:bg-lightblue text-grey flex items-center justify-center gap-x-1 px-2 py-1 rounded-lg transition ease-in-out duration-300">
+                <Popover.Button className="hover:text-blue hover:bg-lightblue text-grey flex items-center justify-center gap-x-1 font-sans px-2 py-1 rounded-lg transition ease-in-out duration-300">
                   <span>More</span>
                   <IoIosArrowDown
                     className={
@@ -132,7 +132,7 @@ export default function Navbar() {
                         {More.map((item) => (
                           <div
                             key={item.name}
-                            className="group relative flex gap-x-4 rounded-lg p-4 hover:bg-lightblue transition ease-in-out duration-300"
+                            className="group relative flex gap-x-4 font-sans rounded-lg p-4 hover:bg-lightblue transition ease-in-out duration-300"
                           >
                             <div className="mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full bg-lightgrey group-hover:bg-purewhite transition ease-in-out duration-300">
                               <item.icon
@@ -141,13 +141,13 @@ export default function Navbar() {
                               />
                             </div>
                             <div>
-                              <a
-                                href={item.href}
+                              <Link
+                                to={item.href}
                                 className="font-semibold text-grey group-hover:text-blue transition ease-in-out duration-300"
                               >
                                 {item.name}
-                                <span className="absolute inset-0" />
-                              </a>
+                                <span className="absolute inset-0"/>
+                              </Link>
                               <p className="mt-1 text-grey text-xs">
                                 {item.description}
                               </p>
@@ -202,7 +202,7 @@ export default function Navbar() {
           
         </div>
 
-        <button className="contactus bg-blue text-[#FFFFFF] py-2 px-5 rounded-lg text-sm font-medium active:bg-blue hover:bg-darkblue transition ease-in-out duration-300">
+        <button className="contactus font-sans bg-blue text-[#FFFFFF] py-2 px-5 rounded-lg text-sm font-medium active:bg-blue hover:bg-darkblue transition ease-in-out duration-300">
           Contact us
         </button>
         

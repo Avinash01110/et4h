@@ -45,75 +45,76 @@ export default function Footer() {
             alt="error"
           />
         </div>
-        <h2 className="text-2xl text-grey font-bold">Emerging Tech4 Health</h2>
+        <h2 className="text-2xl text-grey font-bold font-sans">Emerging Tech4 Health</h2>
       </div>
 
       <div className="h-auto w-11/12 px-10 flex flex-row justify-between">
+      
+      {/* Links */}
         <div className="h-full w-60 px-4 flex flex-col gap-y-4">
-          <h3 className="text-xl text-blue font-bold">Important links</h3>
-          <ul className="list-none flex flex-col gap-y-1 text-grey font-semibold opacity-85">
+          <h3 className="text-xl text-blue font-bold font-sans">Important links</h3>
+          <div className="list-none flex flex-col gap-y-1 text-grey font-semibold font-sans opacity-85">
             <Link to={"/"}>
-              <li className="link w-fit text-sm relative h-auto hover:text-darkblue transition ease-in-out duration-300">
+              <div className="link w-fit text-sm relative h-auto hover:text-darkblue transition ease-in-out duration-300">
                 Home
-              </li>
+              </div>
             </Link>
-            <Link to={"/"}>
-              <li className="link w-fit text-sm relative h-auto hover:text-darkblue transition ease-in-out duration-300">
-                About
-              </li>
-            </Link>
-            <Link to={"/"}>
-              <li className="link w-fit text-sm relative h-auto hover:text-darkblue transition ease-in-out duration-300">
+            <Link to={"/projects"}>
+              <div className="link w-fit text-sm relative h-auto hover:text-darkblue transition ease-in-out duration-300">
                 Projects
-              </li>
+              </div>
+            </Link>
+            <Link to={"/team"}>
+              <div className="link w-fit text-sm relative h-auto hover:text-darkblue transition ease-in-out duration-300">
+                Team
+              </div>
             </Link>
             <Link to={"/"}>
-              <li className="link w-fit text-sm relative h-auto hover:text-darkblue transition ease-in-out duration-300">
+              <div className="link w-fit text-sm relative h-auto hover:text-darkblue transition ease-in-out duration-300">
                 Publications
-              </li>
+              </div>
             </Link>
             <Link to={"/"}>
-              <li className="link w-fit text-sm relative h-auto hover:text-darkblue transition ease-in-out duration-300">
+              <div className="link w-fit text-sm relative h-auto hover:text-darkblue transition ease-in-out duration-300">
                 Research & Development
-              </li>
+              </div>
             </Link>
             <Link to={"/"}>
-              <li className="link w-fit text-sm relative h-auto">Grants</li>
+              <div className="link w-fit text-sm relative h-auto">Grants</div>
             </Link>
-            <Link to={"/"}>
-              <li className="link w-fit text-sm relative h-auto">
-                Collaboration Opportunities
-              </li>
-            </Link>
-          </ul>
+          </div>
         </div>
+
+        {/* Address */}
         <div className="flex flex-col justify-start items-start mt-10">
-          <span className="text-xs text-grey font-semibold">
+          <span className="text-xs text-grey font-semibold font-sans">
             EmergencyHealth4you
           </span>
-          <span className="text-xs text-grey font-semibold">
+          <span className="text-xs text-grey font-semibold font-sans">
             4602 21st St. #1797
           </span>
-          <span className="text-xs text-grey font-semibold">
+          <span className="text-xs text-grey font-semibold font-sans">
             Long Island City, NY, 11101
           </span>
-          <span className="text-xs text-grey font-semibold">
+          <span className="text-xs text-grey font-semibold font-sans">
             EmergencyHealth4You@.org
           </span>
-          <span className="text-xs text-grey font-semibold">
+          <span className="text-xs text-grey font-semibold font-sans">
             © 2024-2029 EmergencyHealth4you. All rights reserved.
           </span>
         </div>
+
+        {/* Connect with us */}
         <div className="h-full w-80 flex flex-col gap-y-2">
           <div className="bg-gradient-to-bl from-darkblue to-blue h-32 w-full p-5 flex flex-col justify-center items-center gap-y-5 rounded-lg">
-            <h3 className="text-xl text-white font-bold">Connect with Us!</h3>
+            <h3 className="text-xl text-white font-bold font-sans">Connect with Us!</h3>
             <div className="w-full h-10 rounded-xl flex flex-row gap-x-4">
               <input
-                className="w-full h-full text-grey bg-lightblue border-2 border-lightblue rounded-lg p-2 focus:ring-1 focus:ring-white"
+                className="w-full h-full text-grey font-sans bg-lightblue border-2 border-lightblue rounded-lg p-2 focus:ring-1 focus:ring-white"
                 type="email"
                 placeholder="Email Address"
               />
-              <button className="bg-lightblue text-grey hover:bg-purewhite hover:text-darkblue rounded-full h-10 w-14 flex justify-center items-center transition ease-in-out duration-300">
+              <button className="bg-lightblue text-grey font-sans hover:bg-purewhite hover:text-darkblue rounded-full h-10 w-14 flex justify-center items-center transition ease-in-out duration-300">
                 <IoSend />
               </button>
             </div>
