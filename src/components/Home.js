@@ -292,6 +292,7 @@ export default function Home() {
             autoplay={{
               delay: 2000,
               disableOnInteraction: false,
+              pauseOnMouseEnter: true
             }}
             spaceBetween={30}
             loop={true}
