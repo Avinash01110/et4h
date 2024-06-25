@@ -92,7 +92,7 @@ export default function Team() {
   ];
 
   const [profInfo, setprofInfo] = useState({});
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   const openModal = (info) => {
     setprofInfo(info);
