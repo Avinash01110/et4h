@@ -16,19 +16,19 @@ export default function Navbar() {
     {
       name: "Research & Development",
       description: "description",
-      href: "#",
+      to: "#",
       icon: GiArchiveResearch,
     },
     {
       name: "Publications",
       description: "description",
-      href: "#",
+      to: "/Publications",
       icon: IoIosPaper,
     },
     {
       name: "Grants",
       description: "description",
-      href: "#",
+      to: "#",
       icon: RiExchangeFundsLine,
     },
     // {
@@ -52,6 +52,8 @@ export default function Navbar() {
       setActivePage("Projects");
     } else if (location.pathname.startsWith("/Project/")) {
       setActivePage("Projects");
+    } else if (location.pathname === "/Publications") {
+      setActivePage("Publications");
     }
   }
   , [location]);
@@ -142,7 +144,7 @@ export default function Navbar() {
                             </div>
                             <div>
                               <Link
-                                to={item.href}
+                                to={item.to}
                                 className="font-semibold text-grey group-hover:text-blue transition ease-in-out duration-300"
                               >
                                 {item.name}

@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 import Projects from "./components/Projects";
 import Footer from "./components/Footer";
 import Team from "./components/Team";
+import Publications from "./components/Publications";
 import Project from "./components/Project";
 import CategoryList from "./components/CategoryList";
 import CategoryPage from "./components/CategoryPage";
@@ -28,6 +29,7 @@ function App() {
         <Route path="/projects" element={<Projects />} />
         <Route path="/project/:title" element={<Project />} />
         <Route path="/team" element={<Team />} />
+        <Route path="/publications" element={<Publications />} />
         <Route path="/categories" element={<CategoryList />} />
         <Route path="/category/:categoryId" element={<CategoryPage />} />
         <Route path="*" element={<Home />} />
