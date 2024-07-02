@@ -1,0 +1,21 @@
+::-webkit-scrollbar {
+    /* width: 2px; */
+    display: none;
+  }
+  
+  /* ::-webkit-scrollbar-track {
+    background: #000000;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+      background: #cfcfcf;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+      background: #cfcfcf;
+  } */
+
+
+input[type="text"]:focus ~ .input-text{
+  @apply text-white bg-black transform -translate-y-[1.6rem] -translate-x-[0.6rem] scale-75; 
+}

@@ -145,6 +145,7 @@ export default function Team() {
               loop={true}
               mousewheel={true}
               slidesPerView={3}
+              speed={800}
               pagination={{ clickable: true }}
               modules={[Mousewheel, Pagination, Navigation, Autoplay]}
               className="mySwiper"
@@ -224,6 +225,7 @@ export default function Team() {
                   loop={true}
                   mousewheel={true}
                   slidesPerView={3}
+                  speed={800}
                   pagination={{ clickable: true }}
                   modules={[Mousewheel, Pagination, Navigation, Autoplay]}
                   className="mySwiper"
@@ -296,6 +298,7 @@ export default function Team() {
                   loop={true}
                   mousewheel={true}
                   slidesPerView={3}
+                  speed={800}
                   pagination={{ clickable: true }}
                   modules={[Mousewheel, Pagination, Navigation, Autoplay]}
                   className="mySwiper"
@@ -370,6 +373,7 @@ export default function Team() {
               loop={true}
               mousewheel={true}
               slidesPerView={3}
+              speed={800}
               pagination={{ clickable: true }}
               modules={[Mousewheel, Pagination, Navigation, Autoplay]}
               className="mySwiper"
