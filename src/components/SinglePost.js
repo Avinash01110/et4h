@@ -14,6 +14,7 @@ const SinglePost = () => {
       setLoading(true);
       try {
         const result = await getSinglePost(postId, toast);
+        console.log(result);  
         if (result) {
           setPost(result);
           setError(null);
@@ -42,11 +43,53 @@ const SinglePost = () => {
   }
 
   return (
-    <div>
-      <h1>{post.title}</h1>
-      <p>{post.content}</p>
-      {/* Add more post details as needed */}
-      <p>Category: {post.category}</p>
+    <div className="p-4">
+      <h1 className="text-2xl font-bold">{post.title}</h1>
+      <p className="mt-2">{post.content}</p>
+      <p className="mt-2"><strong>Short Description:</strong> {post.shortDesc}</p>
+      <p className="mt-2"><strong>Grant:</strong> {post.grant}</p>
+      <p className="mt-2"><strong>Category:</strong> {post.category.name}</p>
+      
+      <div className="mt-4">
+        <strong>References:</strong>
+        <ul className="list-disc ml-5">
+          {post.references.map((reference, index) => (
+            <li key={index}>{reference}</li>
+          ))}
+        </ul>
+      </div>
+      
+      <div className="mt-4">
+        <strong>Contributors:</strong>
+        <ul className="list-disc ml-5">
+          {post.contributors.map((contributor) => (
+            <li key={contributor._id}>{contributor.name}</li>
+          ))}
+        </ul>
+      </div>
+      
+      <div className="mt-4">
+        <strong>Sub Posts:</strong>
+        <ul className="list-disc ml-5">
+          {post.subPost.map((subPost) => (
+            <div>
+
+            <li key={subPost._id}>{subPost.sectionName}
+            <li key={subPost._id}>{subPost.subSectionContent}</li></li>
+           
+            </div>
+          ))}
+        </ul>
+      </div>
+      
+      <div className="mt-4">
+        <strong>Milestones:</strong>
+        <ul className="list-disc ml-5">
+          {post.milestones.map((milestone) => (
+            <li key={milestone._id}>{milestone.title}</li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };
