@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import Navbar from "./Navbar.js";
 import Sidebar from "./Sidebar.js";
 import "../../style/Dashboard.css";
+import CategoryList from "../CategoryList.js";
+import ProjectList from "../ProjectList.js";
+import ProfileList from "../ProfileList.js";
 
 export default function Dashboard() {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,7 +17,7 @@ export default function Dashboard() {
   const handleEvent = (e) => {
     setteamCategory(e.target.value);
   }
-  
+  console.log(currentMenu)
   
 
   return (
@@ -46,7 +49,7 @@ export default function Dashboard() {
           )}
 
           {/* Add Post Form */}
-          {currentMenu == "add post" && (
+          {/* {currentMenu == "add post" && (
             <div className="h-[28rem] w-[60rem] bg-black border border-solid border-white/30 rounded-lg mb-16 p-10 flex flex-col gap-y-5">
               <div className="grid grid-cols-2 gap-5">
                 <div>  
@@ -100,8 +103,19 @@ export default function Dashboard() {
                 </button>
               </div>
             </div>
-          )}
+          )} */}
 
+          {/* Projects page */}
+          {
+            currentMenu == "projects" && (
+              <div className="h-[28rem] w-[60rem] bg-black border
+               border-solid border-white/30 rounded-lg mb-16 p-10 flex flex-col
+                gap-y-5 overflow-y-scroll" >
+              <ProjectList/>
+                </div>
+            )
+          }
+ 
           {/* Add Projects Form */}
           {currentMenu == "add project" && (
             <div className="h-[28rem] w-[60rem] bg-black border border-solid border-white/30 rounded-lg mb-16 p-10 flex flex-col gap-y-5 overflow-y-scroll">
@@ -194,165 +208,17 @@ export default function Dashboard() {
           )}
 
           {/* Add Team Form */}
-          {currentMenu == "add team member" && (
-            <div className="h-[28rem] w-[60rem] bg-black border border-solid border-white/30 rounded-lg mb-16 p-10 flex flex-col gap-y-5 overflow-y-scroll">
-              <div className="grid grid-cols-2 gap-5">
-                
-                <div>  
-                <label className="relative">
-                  <input
-                    type="text"
-                    className="bg-black text-white font-sans border border-solid border-white/50 focus:border-blue-500 rounded-lg py-2 px-4 w-full h-12 tranition duration-200"
-                  />
-                  <span className="input-text absolute text-white/50 font-sans -top-1 left-0 ml-4 tranition duration-200">
-                    Name
-                  </span>
-                </label>
-                </div>
-
-                <div>  
-                <label className="relative">
-                  <input
-                    type="text"
-                    className="bg-black text-white font-sans border border-solid border-white/50 focus:border-blue-500 rounded-lg py-2 px-4 w-full h-12 tranition duration-200"
-                  />
-                  <span className="input-text absolute text-white/50 font-sans -top-1 left-0 ml-4 tranition duration-200">
-                    Designation
-                  </span>
-                </label>
-                </div>
-
-                <div>  
-                <label className="relative">
-                  <input
-                    type="text"
-                    className="bg-black text-white font-sans border border-solid border-white/50 focus:border-blue-500 rounded-lg py-2 px-4 w-full h-12 tranition duration-200"
-                  />
-                  <span className="input-text absolute text-white/50 font-sans -top-1 left-0 ml-4 tranition duration-200">
-                    Qualification
-                  </span>
-                </label>
-                </div>
-
-                <div>  
-                <label className="relative">
-                  <input
-                    type="text"
-                    className="bg-black text-white font-sans border border-solid border-white/50 focus:border-blue-500 rounded-lg py-2 px-4 w-full h-12 tranition duration-200"
-                  />
-                  <span className="input-text absolute text-white/50 font-sans -top-1 left-0 ml-4 tranition duration-200">
-                    Area Of Interest
-                  </span>
-                </label>
-                </div>
-
-                <div className="col-span-2">  
-                <label className="relative">
-                  <input
-                    type="text"
-                    className="bg-black text-white font-sans border border-solid border-white/50 focus:border-blue-500 rounded-lg py-2 px-4 w-full h-12 tranition duration-200"
-                  />
-                  <span className="input-text absolute text-white/50 font-sans -top-1 left-0 ml-4 tranition duration-200">
-                    Description
-                  </span>
-                </label>
-                </div>
-
-                <div className="col-span-2">  
-                <label className="relative">
-                  <input
-                    type="text"
-                    className="bg-black text-white font-sans border border-solid border-white/50 focus:border-blue-500 rounded-lg py-2 px-4 w-full h-12 tranition duration-200"
-                  />
-                  <span className="input-text absolute text-white/50 font-sans -top-1 left-0 ml-4 tranition duration-200">
-                    Profile Photo
-                  </span>
-                </label>
-                </div>
-
-                <div>  
-                <label className="relative">
-                  <input
-                    type="text"
-                    className="bg-black text-white font-sans border border-solid border-white/50 focus:border-blue-500 rounded-lg py-2 px-4 w-full h-12 tranition duration-200"
-                  />
-                  <span className="input-text absolute text-white/50 font-sans -top-1 left-0 ml-4 tranition duration-200">
-                    Email Account
-                  </span>
-                </label>
-                </div>
-
-                <div>  
-                <label className="relative">
-                  <input
-                    type="text"
-                    className="bg-black text-white font-sans border border-solid border-white/50 focus:border-blue-500 rounded-lg py-2 px-4 w-full h-12 tranition duration-200"
-                  />
-                  <span className="input-text absolute text-white/50 font-sans -top-1 left-0 ml-4 tranition duration-200">
-                    X Account
-                  </span>
-                </label>
-                </div>
-
-                <div>  
-                <label className="relative">
-                  <input
-                    type="text"
-                    className="bg-black text-white font-sans border border-solid border-white/50 focus:border-blue-500 rounded-lg py-2 px-4 w-full h-12 tranition duration-200"
-                  />
-                  <span className="input-text absolute text-white/50 font-sans -top-1 left-0 ml-4 tranition duration-200">
-                    Facebook Account
-                  </span>
-                </label>
-                </div>
-
-                <div>  
-                <label className="relative">
-                  <input
-                    type="text"
-                    className="bg-black text-white font-sans border border-solid border-white/50 focus:border-blue-500 rounded-lg py-2 px-4 w-full h-12 tranition duration-200"
-                  />
-                  <span className="input-text absolute text-white/50 font-sans -top-1 left-0 ml-4 tranition duration-200">
-                    LinkedIn Account
-                  </span>
-                </label>
-                </div>
-
-                <div>  
-                  <select
-                    onChange={handleEvent}
-                    name="category"
-                    className="bg-black text-white font-sans border border-solid border-white/50 focus:border-blue-500 rounded-lg py-2 px-4 w-full h-12 text-white/90 font-sans tranition duration-200"
-                  >
-                    <option value="" selected>Choose Category</option>
-                    <option value="Scientific Team">Scientific Team</option>
-                    <option value="Researchers">Researchers</option>
-                    <option value="Former & Emeritus Researchers">Former & Emeritus Researchers</option>
-                  </select>
-                  
-                </div>
-
-                {teamCategory == "Researchers" && <div>  
-                  <select
-                    name="category"
-                    className="bg-black text-white font-sans border border-solid border-white/50 focus:border-blue-500 rounded-lg py-2 px-4 w-full h-12 text-white/90 font-sans tranition duration-200"
-                  >
-                    <option value="" selected>Choose Category</option>
-                    <option value="Non-Medical Group">Non-Medical Group</option>
-                    <option value="Signal Processing Group">Signal Processing Group</option>
-                  </select>
-                  
-                </div>}
-
-                
-              </div>
+          {
+            currentMenu ==="profiles" && (
               <div>
-                <button className="rounded-md bg-black py-2 px-4 text-base font-semibold font-sans text-white outline-none active:bg-white/30 hover:scale-90 hover:bg-white/20 hover:text-white hover:[text-shadow:1px_3px_15px_var(--tw-shadow-color)] shadow-white border border-solid border-white/50 transition ease-in-out duration-300">
-                  Submit
-                </button>
+                <div className="h-[28rem] w-[60rem] bg-black
+                 border border-solid border-white/30 rounded-lg 
+                 mb-16 p-10 flex flex-col gap-y-5 overflow-y-scroll" >
+                 <ProfileList/>
+                 </div>
               </div>
-            </div>
-          )}
+            )
+          }
 
           {/* Add Paper Form */}
           {currentMenu == "add paper" && (
@@ -416,7 +282,12 @@ export default function Dashboard() {
               </div>
             </div>
           )}
-
+          {/* Category */}
+          {currentMenu == "category" && (
+            <div>
+              <CategoryList/>
+            </div>
+          )}
         </div>
 
         

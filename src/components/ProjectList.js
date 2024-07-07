@@ -161,7 +161,8 @@ const ProjectList = () => {
 
   return (
     <div>
-      <button onClick={handleCreatePostClick}>Create Post</button>
+      <button onClick={handleCreatePostClick} className="
+      text-white font-bold py-2 px-4 rounded bg-blue-700 hover:bg-blue-700">Create Post</button>
       <ul>
         {post.map((postItem) => (
           <li key={postItem._id}>
