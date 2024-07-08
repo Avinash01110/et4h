@@ -101,15 +101,17 @@ const ProjectList = () => {
 
   // Modify handleInputChange function
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value, files } = e.target;
     if (name === "references") {
-      // Split the input by commas and trim whitespace
       const referencesArray = value.split(",").map((ref) => ref.trim());
       setFormData((prev) => ({ ...prev, [name]: referencesArray }));
+    } else if (name === "image" && files.length > 0) {
+      setFormData((prev) => ({ ...prev, [name]: files[0] }));
     } else {
       setFormData((prev) => ({ ...prev, [name]: value }));
     }
   };
+  
 
   const handleContributorsChange = (e) => {
     const options = e.target.options;
@@ -124,14 +126,26 @@ const ProjectList = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const formDataToSubmit = new FormData();
+    Object.keys(formData).forEach((key) => {
+      if (key === "contributors" || key === "references") {
+        formDataToSubmit.append(key, JSON.stringify(formData[key]));
+      } else {
+        formDataToSubmit.append(key, formData[key]);
+      }
+    });
+  
     if (isUpdateModalOpen) {
-      dispatch(updatePostAction({ ...formData, postId: currentPostId }, token));
+      formDataToSubmit.append("postId", currentPostId);
+      dispatch(updatePostAction(formDataToSubmit, token));
     } else {
-      dispatch(createPostAction(formData, token));
+      dispatch(createPostAction(formDataToSubmit, token));
     }
+  
     setIsModalOpen(false);
     setIsUpdateModalOpen(false);
   };
+  
 
   const handleEditPostClick = (postItem) => {
     setFormData({
@@ -226,6 +240,14 @@ const ProjectList = () => {
                   required
                 ></textarea>
               </div>
+              <div>
+    <label>Image:</label>
+    <input
+      type="file"
+      name="image"
+      onChange={handleInputChange}
+    />
+  </div>
               <div>
                 <label>References:</label>
                 <input
