@@ -88,11 +88,11 @@ export const getAllPosts = () => async (dispatch) => {
     return result;
   }
   
-  export async function deletePost(id, token) {
+  export async function deletePost(data, token) {
     let result = null;
     const toastId = toast.loading("Deleting Post...");
     try {
-      const response = await apiConnector("DELETE", DELETE_POST_API, { id }, {
+      const response = await apiConnector("DELETE", DELETE_POST_API, data, {
         Authorization: `Bearer ${token}`,
       });
       console.log("DELETE_POST_API RESPONSE:", response);
@@ -176,11 +176,11 @@ export const getAllPosts = () => async (dispatch) => {
     return result;
   }
   
-  export async function deleteSubpost(id, token) {
+  export async function deleteSubpost(data, token) {
     let result = null;
     const toastId = toast.loading("Deleting Subpost...");
     try {
-      const response = await apiConnector("DELETE",DELETE_SUBPOST_API,  { id }, {
+      const response = await apiConnector("DELETE",DELETE_SUBPOST_API,  data, {
         Authorization: `Bearer ${token}`,
       });
       console.log("DELETE_SUBPOST_API RESPONSE:", response);
