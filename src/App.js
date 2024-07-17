@@ -28,7 +28,7 @@ function App() {
 
   return (
     <>
-      {/* {showNavbarAndFooter && <Navbar />} */}
+      {showNavbarAndFooter && <Navbar />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
@@ -47,7 +47,7 @@ function App() {
         <Route path="post" element={<ProjectList/>}/>
         <Route path="post/:postId" element={<SinglePost/>}/>
       </Routes>
-      {/* {showNavbarAndFooter && <Footer />} */}
+      {showNavbarAndFooter && <Footer />}
       <Toaster />
     </>
   );
