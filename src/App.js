@@ -18,6 +18,8 @@ import Dashboard from "./components/admin/Dashboard";
 import ProfileList from "./components/ProfileList";
 import ProjectList from "./components/ProjectList";
 import SinglePost from "./components/SinglePost";
+import PageNotFound from "./components/PageNotFound";
+
 
 function App() {
   const location = useLocation();
@@ -38,7 +40,7 @@ function App() {
         <Route path="/publications" element={<Publications />} />
         <Route path="/categories" element={<CategoryList />} />
         <Route path="/category/:categoryId" element={<CategoryPage />} />
-        <Route path="*" element={<Home />} />
+        <Route path="*" element={<PageNotFound />} />
         <Route path="/signup" element={<Signup/>}/>
         <Route path="/verify-email" element={<VerifyEmails/>}/>
         <Route path="/login" element= {<Login/>}/>

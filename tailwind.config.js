@@ -4,6 +4,9 @@ module.exports = {
   content: ["./src/**/*.js"],
   theme: {
     extend: {
+      fontFamily: {
+        stix: ['STIX Two Text', 'serif'],
+      },
       colors: {
         purewhite: "#FFFFFF",
         grey: "#2C374F",

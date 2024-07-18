@@ -48,10 +48,10 @@ export default function Footer() {
         <h2 className="text-2xl text-grey font-bold font-sans">Emerging Tech4 Health</h2>
       </div>
 
-      <div className="h-auto w-11/12 px-10 flex flex-row justify-between">
+      <div className="h-auto w-11/12 px-10 flex flex-wrap flex-row justify-between gap-y-10 sm:gap-y-10 lg:gap-y-10 xl:gap-0 2xl:gap-0">
       
       {/* Links */}
-        <div className="h-full w-60 px-4 flex flex-col gap-y-4">
+        <div className="h-full w-60 flex flex-col justify-start items-start gap-y-4">
           <h3 className="text-xl text-blue font-bold font-sans">Important links</h3>
           <div className="list-none flex flex-col gap-y-1 text-grey font-semibold font-sans opacity-85">
             <Link to={"/"}>
@@ -86,7 +86,7 @@ export default function Footer() {
         </div>
 
         {/* Address */}
-        <div className="flex flex-col justify-start items-start mt-10">
+        <div className="flex flex-col justify-start items-start md:mt-10 lg:mt-10 xl:mt-10 2xl:mt-10">
           <span className="text-xs text-grey font-semibold font-sans">
             EmergencyHealth4you
           </span>
@@ -106,20 +106,20 @@ export default function Footer() {
 
         {/* Connect with us */}
         <div className="h-full w-80 flex flex-col gap-y-2">
-          <div className="bg-gradient-to-bl from-darkblue to-blue h-32 w-full p-5 flex flex-col justify-center items-center gap-y-5 rounded-lg">
+          <div className="bg-gradient-to-bl from-darkblue to-blue h-auto w-full p-5 flex flex-wrap flex-col justify-center items-center gap-y-5 rounded-lg">
             <h3 className="text-xl text-white font-bold font-sans">Connect with Us!</h3>
-            <div className="w-full h-10 rounded-xl flex flex-row gap-x-4">
+            <div className="w-auto h-auto rounded-xl flex flex-wrap flex-row gap-x-4 gap-y-4">
               <input
-                className="w-full h-full text-grey font-sans bg-lightblue border-2 border-lightblue rounded-lg p-2 focus:ring-1 focus:ring-white"
+                className="w-auto h-10 text-grey font-sans bg-lightblue border-2 border-lightblue rounded-lg p-2 focus:ring-1 focus:ring-white"
                 type="email"
                 placeholder="Email Address"
               />
-              <button className="bg-lightblue text-grey font-sans hover:bg-purewhite hover:text-darkblue rounded-full h-10 w-14 flex justify-center items-center transition ease-in-out duration-300">
+              <button className="bg-lightblue text-grey font-sans hover:bg-purewhite hover:text-darkblue rounded-full h-10 w-10 flex justify-center items-center transition ease-in-out duration-300">
                 <IoSend />
               </button>
             </div>
           </div>
-          <div className="h-auto w-full flex flex-row gap-x-2">
+          <div className="h-auto w-full flex flex-wrap flex-row gap-x-2">
             {socialMedia.map((item, index) => (
             <Link key={index} to={item.link}>
             <div className="mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full bg-lightgrey group hover:bg-purewhite transition ease-in-out duration-300">
@@ -132,6 +132,7 @@ export default function Footer() {
             ))}
           </div>
         </div>
+
       </div>
     </div>
   );
