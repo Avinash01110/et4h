@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { IoIosArrowUp } from "react-icons/io";
 import "../../style/Sidebar.css";
 
-export default function Sidebar({setcurrentMenu}) {
+export default function Sidebar({ setcurrentMenu }) {
   const [Home, setHome] = useState(false);
   const [Projects, setProjects] = useState(false);
   const [Team, setTeam] = useState(false);
@@ -14,6 +14,7 @@ export default function Sidebar({setcurrentMenu}) {
   const handleMenuClick = (menu) => {
     setcurrentMenu(menu);
   };
+
   return (
     <>
       <div className="min-w-56 h-full bg-black flex flex-col overflow-y-scroll no-scrollbar border-r border-solid border-white/20">
@@ -31,7 +32,7 @@ export default function Sidebar({setcurrentMenu}) {
               onClick={() => {
                 setHome(!Home);
               }}
-              className="h-auto w-full flex justify-center py-2 px-4 flex flex-row justify-between items-center cursor-pointer group rounded-lg hover:bg-white/10 hover:bg-opacity-10 active:bg-white/15 border border-solid border-white/20"
+              className="h-auto w-full py-2 px-4 flex flex-row justify-between items-center cursor-pointer group rounded-lg hover:bg-white/10 hover:bg-opacity-10 active:bg-white/15 border border-solid border-white/20"
             >
               <span className="text-white text-md font-semibold font-sans group-hover:[text-shadow:1px_3px_15px_var(--tw-shadow-color)] shadow-white tracking-wide">
                 Home
@@ -46,22 +47,52 @@ export default function Sidebar({setcurrentMenu}) {
               <div
                 className={`transition duration-500 ease-in-out text-white py-2 px-2 flex flex-col justify-between items-center gap-y-2`}
               >
-                <span onClick={()=>{setcurrentMenu("add member")}} className="w-full py-1 px-2 text-center rounded-lg hover:bg-white/10 hover:bg-opacity-20 active:bg-white/15 hover:[text-shadow:1px_3px_15px_var(--tw-shadow-color)] shadow-white cursor-pointer">
+                <span
+                  onClick={() => {
+                    setcurrentMenu("add member");
+                  }}
+                  className="w-full py-1 px-2 text-center rounded-lg hover:bg-white/10 hover:bg-opacity-20 active:bg-white/15 hover:[text-shadow:1px_3px_15px_var(--tw-shadow-color)] shadow-white cursor-pointer"
+                >
                   Add Member
                 </span>
-                <span onClick={()=>{setcurrentMenu("update member")}} className="w-full py-1 px-2 text-center rounded-lg hover:bg-white/10 hover:bg-opacity-20 active:bg-white/15 hover:[text-shadow:1px_3px_15px_var(--tw-shadow-color)] shadow-white cursor-pointer">
+                <span
+                  onClick={() => {
+                    setcurrentMenu("update member");
+                  }}
+                  className="w-full py-1 px-2 text-center rounded-lg hover:bg-white/10 hover:bg-opacity-20 active:bg-white/15 hover:[text-shadow:1px_3px_15px_var(--tw-shadow-color)] shadow-white cursor-pointer"
+                >
                   Update Member
                 </span>
-                <span onClick={()=>{setcurrentMenu("delete member")}} className="w-full py-1 px-2 text-center rounded-lg hover:bg-white/10 hover:bg-opacity-20 active:bg-white/15 hover:[text-shadow:1px_3px_15px_var(--tw-shadow-color)] shadow-white cursor-pointer">
+                <span
+                  onClick={() => {
+                    setcurrentMenu("delete member");
+                  }}
+                  className="w-full py-1 px-2 text-center rounded-lg hover:bg-white/10 hover:bg-opacity-20 active:bg-white/15 hover:[text-shadow:1px_3px_15px_var(--tw-shadow-color)] shadow-white cursor-pointer"
+                >
                   Delete Member
                 </span>
-                <span onClick={()=>{setcurrentMenu("add post")}} className="w-full py-1 px-2 text-center rounded-lg hover:bg-white/10 hover:bg-opacity-20 active:bg-white/15 hover:[text-shadow:1px_3px_15px_var(--tw-shadow-color)] shadow-white cursor-pointer">
+                <span
+                  onClick={() => {
+                    setcurrentMenu("add post");
+                  }}
+                  className="w-full py-1 px-2 text-center rounded-lg hover:bg-white/10 hover:bg-opacity-20 active:bg-white/15 hover:[text-shadow:1px_3px_15px_var(--tw-shadow-color)] shadow-white cursor-pointer"
+                >
                   Add Post
                 </span>
-                <span onClick={()=>{setcurrentMenu("update post")}} className="w-full py-1 px-2 text-center rounded-lg hover:bg-white/10 hover:bg-opacity-20 active:bg-white/15 hover:[text-shadow:1px_3px_15px_var(--tw-shadow-color)] shadow-white cursor-pointer">
+                <span
+                  onClick={() => {
+                    setcurrentMenu("update post");
+                  }}
+                  className="w-full py-1 px-2 text-center rounded-lg hover:bg-white/10 hover:bg-opacity-20 active:bg-white/15 hover:[text-shadow:1px_3px_15px_var(--tw-shadow-color)] shadow-white cursor-pointer"
+                >
                   Update Post
                 </span>
-                <span onClick={()=>{setcurrentMenu("delete post")}} className="w-full py-1 px-2 text-center rounded-lg hover:bg-white/10 hover:bg-opacity-20 active:bg-white/15 hover:[text-shadow:1px_3px_15px_var(--tw-shadow-color)] shadow-white cursor-pointer">
+                <span
+                  onClick={() => {
+                    setcurrentMenu("delete post");
+                  }}
+                  className="w-full py-1 px-2 text-center rounded-lg hover:bg-white/10 hover:bg-opacity-20 active:bg-white/15 hover:[text-shadow:1px_3px_15px_var(--tw-shadow-color)] shadow-white cursor-pointer"
+                >
                   Delete Post
                 </span>
               </div>
@@ -100,39 +131,26 @@ export default function Sidebar({setcurrentMenu}) {
                 </span>
               </div>
             )}
-          </div> */
-          <div className="flex flex-col">
-            <div
-              onClick={() => {
-                setCategory(!category);
-              }}
-              className="h-auto w-full flex justify-center py-2 px-4 flex flex-row justify-between items-center cursor-pointer group rounded-lg hover:bg-white/10 hover:bg-opacity-10 active:bg-white/15 border border-solid border-white/20"
-            >
-              <span className="text-white text-md font-semibold font-sans group-hover:[text-shadow:1px_3px_15px_var(--tw-shadow-color)] shadow-white tracking-wide">
-              <button onClick={() => handleMenuClick("projects")}>Projects</button>
-              </span>
-             
-              
-            </div>
-           
+          </div> */}
+
+          {/* Projects */}
+          <div
+            onClick={() => handleMenuClick("projects")}
+            className="h-auto w-full py-2 px-4 flex flex-row justify-between items-center cursor-pointer group rounded-lg hover:bg-white/10 hover:bg-opacity-10 active:bg-white/15 border border-solid border-white/20"
+          >
+            <span className="text-white text-md font-semibold font-sans group-hover:[text-shadow:1px_3px_15px_var(--tw-shadow-color)] shadow-white tracking-wide">
+              Projects
+            </span>
           </div>
-          }
 
           {/* Team */}
-          <div className="flex flex-col">
-            <div
-              onClick={() => {
-                setCategory(!category);
-              }}
-              className="h-auto w-full flex justify-center py-2 px-4 flex flex-row justify-between items-center cursor-pointer group rounded-lg hover:bg-white/10 hover:bg-opacity-10 active:bg-white/15 border border-solid border-white/20"
-            >
-              <span className="text-white text-md font-semibold font-sans group-hover:[text-shadow:1px_3px_15px_var(--tw-shadow-color)] shadow-white tracking-wide">
-              <button onClick={() => handleMenuClick("profiles")}>Profiles</button>
-              </span>
-             
-              
-            </div>
-           
+          <div
+            onClick={() => handleMenuClick("profiles")}
+            className="h-auto w-full py-2 px-4 flex flex-row justify-between items-center cursor-pointer group rounded-lg hover:bg-white/10 hover:bg-opacity-10 active:bg-white/15 border border-solid border-white/20"
+          >
+            <span className="text-white text-md font-semibold font-sans group-hover:[text-shadow:1px_3px_15px_var(--tw-shadow-color)] shadow-white tracking-wide">
+              Profiles
+            </span>
           </div>
 
           {/* Publications */}
@@ -141,7 +159,7 @@ export default function Sidebar({setcurrentMenu}) {
               onClick={() => {
                 setPublications(!Publications);
               }}
-              className="h-auto w-full flex justify-center py-2 px-4 flex flex-row justify-between items-center cursor-pointer group rounded-lg hover:bg-white/10 hover:bg-opacity-10 active:bg-white/15 border border-solid border-white/20"
+              className="h-auto w-full py-2 px-4 flex flex-row justify-between items-center cursor-pointer group rounded-lg hover:bg-white/10 hover:bg-opacity-10 active:bg-white/15 border border-solid border-white/20"
             >
              <span className="text-white text-md font-semibold font-sans group-hover:[text-shadow:1px_3px_15px_var(--tw-shadow-color)] shadow-white tracking-wide">
               <button onClick={() => handleMenuClick("publications")}>Publications</button>
@@ -156,7 +174,7 @@ export default function Sidebar({setcurrentMenu}) {
               onClick={() => {
                 setGrants(!Grants);
               }}
-              className="h-auto w-full flex justify-center py-2 px-4 flex flex-row justify-between items-center cursor-pointer group rounded-lg hover:bg-white/10 hover:bg-opacity-10 active:bg-white/15 border border-solid border-white/20"
+              className="h-auto w-full py-2 px-4 flex flex-row justify-between items-center cursor-pointer group rounded-lg hover:bg-white/10 hover:bg-opacity-10 active:bg-white/15 border border-solid border-white/20"
             >
               <span className="text-white text-md font-semibold font-sans group-hover:[text-shadow:1px_3px_15px_var(--tw-shadow-color)] shadow-white tracking-wide">
                 Grants
@@ -190,7 +208,7 @@ export default function Sidebar({setcurrentMenu}) {
               onClick={() => {
                 setResearch(!Research);
               }}
-              className="h-auto w-full flex justify-center py-2 px-4 flex flex-row justify-between items-center cursor-pointer group rounded-lg hover:bg-white/10 hover:bg-opacity-10 active:bg-white/15 border border-solid border-white/20"
+              className="h-auto w-full py-2 px-4 flex flex-row justify-between items-center cursor-pointer group rounded-lg hover:bg-white/10 hover:bg-opacity-10 active:bg-white/15 border border-solid border-white/20"
             >
               <span className="text-white text-md font-semibold font-sans group-hover:[text-shadow:1px_3px_15px_var(--tw-shadow-color)] shadow-white tracking-wide">
                 Research
@@ -217,25 +235,17 @@ export default function Sidebar({setcurrentMenu}) {
               </div>
             )}
           </div>
-            
-            {/* Category */}
-          <div className="flex flex-col">
-            <div
-              onClick={() => {
-                setCategory(!category);
-              }}
-              className="h-auto w-full flex justify-center py-2 px-4 flex flex-row justify-between items-center cursor-pointer group rounded-lg hover:bg-white/10 hover:bg-opacity-10 active:bg-white/15 border border-solid border-white/20"
-            >
-              <span className="text-white text-md font-semibold font-sans group-hover:[text-shadow:1px_3px_15px_var(--tw-shadow-color)] shadow-white tracking-wide">
-              <button onClick={() => handleMenuClick("category")}>Category</button>
-              </span>
-             
-              
-            </div>
-           
+
+          {/* Category */}
+          <div
+            onClick={() => handleMenuClick("category")}
+            className="h-auto w-full py-2 px-4 flex flex-row justify-between items-center cursor-pointer group rounded-lg hover:bg-white/10 hover:bg-opacity-10 active:bg-white/15 border border-solid border-white/20"
+          >
+            <span className="text-white text-md font-semibold font-sans group-hover:[text-shadow:1px_3px_15px_var(--tw-shadow-color)] shadow-white tracking-wide">
+              Category
+            </span>
           </div>
-
-
+          
         </div>
       </div>
     </>

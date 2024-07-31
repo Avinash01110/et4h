@@ -18,7 +18,6 @@ import Dashboard from "./components/admin/Dashboard";
 import ProfileList from "./components/ProfileList";
 import ProjectList from "./components/ProjectList";
 import SinglePost from "./components/SinglePost";
-import PageNotFound from "./components/PageNotFound";
 
 import Publication from "./components/publicatoin";
 function App() {
@@ -30,7 +29,7 @@ function App() {
 
   return (
     <>
-      {/* {showNavbarAndFooter && <Navbar />} */}
+      {showNavbarAndFooter && <Navbar />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
@@ -40,7 +39,7 @@ function App() {
         <Route path="/publications" element={<Publications />} />
         <Route path="/categories" element={<CategoryList />} />
         <Route path="/category/:categoryId" element={<CategoryPage />} />
-        <Route path="*" element={<Home />} />
+        <Route path="*" element={<PageNotFound />} />
         <Route path="/signup" element={<Signup/>}/>
         <Route path="/verify-email" element={<VerifyEmails/>}/>
         <Route path="/login" element= {<Login/>}/>
@@ -50,7 +49,7 @@ function App() {
         <Route path="post/:postId" element={<SinglePost/>}/>
         <Route path="pub" element={<Publication/>}/>
       </Routes>
-      {/* {showNavbarAndFooter && <Footer />} */}
+      {showNavbarAndFooter && <Footer />}
       <Toaster />
     </>
   );

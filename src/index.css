@@ -1,6 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400..700;1,400..700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  font-family: "STIX Two Text", serif;
+}
 
 ::-webkit-scrollbar {
   width: 10px;
