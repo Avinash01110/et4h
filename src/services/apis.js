@@ -40,3 +40,10 @@ export const profileEndpoints = {
     DELETE_PROFILE_API:BASE_URL+"/profile/deleteProfile",
     GET_ALL_PROFILE_API:BASE_URL+"/profile/profiles", 
 }
+
+export const publicationEndpoints = {
+ADD_PUBLICATION_API: BASE_URL + "/publication/addPublication",
+GET_ALL_PUBLICATIONS_API: BASE_URL + "/publication/showAllPublications",
+UPDATE_PUBLICATION_API: BASE_URL + "/publication/updatePublication",
+DELETE_PUBLICATION_API: BASE_URL + "/publication/deletePublication",
+}

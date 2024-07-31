@@ -18,7 +18,7 @@ import Dashboard from "./components/admin/Dashboard";
 import ProfileList from "./components/ProfileList";
 import ProjectList from "./components/ProjectList";
 import SinglePost from "./components/SinglePost";
-
+import Publication from "./components/publicatoin";
 function App() {
   const location = useLocation();
 
@@ -46,6 +46,7 @@ function App() {
         <Route path="/profile" element= {<ProfileList/>}/>
         <Route path="post" element={<ProjectList/>}/>
         <Route path="post/:postId" element={<SinglePost/>}/>
+        <Route path="pub" element={<Publication/>}/>
       </Routes>
       {/* {showNavbarAndFooter && <Footer />} */}
       <Toaster />

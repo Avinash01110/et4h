@@ -5,6 +5,7 @@ import "../../style/Dashboard.css";
 import CategoryList from "../CategoryList.js";
 import ProjectList from "../ProjectList.js";
 import ProfileList from "../ProfileList.js";
+import Publications from "../publicatoin.js";
 
 export default function Dashboard() {
   const [isOpen, setIsOpen] = useState(false);
@@ -288,6 +289,14 @@ export default function Dashboard() {
               <CategoryList/>
             </div>
           )}
+
+          {
+            currentMenu == "publications" && (
+              <div>
+                <Publications/>
+              </div>
+            )
+          }
         </div>
 
         

@@ -10,6 +10,7 @@ export default function Sidebar({setcurrentMenu}) {
   const [Grants, setGrants] = useState(false);
   const [Research, setResearch] = useState(false);
   const [category, setCategory] = useState(false); 
+  // const [publications, setPublications] = useState([]);
   const handleMenuClick = (menu) => {
     setcurrentMenu(menu);
   };
@@ -142,30 +143,11 @@ export default function Sidebar({setcurrentMenu}) {
               }}
               className="h-auto w-full flex justify-center py-2 px-4 flex flex-row justify-between items-center cursor-pointer group rounded-lg hover:bg-white/10 hover:bg-opacity-10 active:bg-white/15 border border-solid border-white/20"
             >
-              <span className="text-white text-md font-semibold font-sans group-hover:[text-shadow:1px_3px_15px_var(--tw-shadow-color)] shadow-white tracking-wide">
-                Publications
+             <span className="text-white text-md font-semibold font-sans group-hover:[text-shadow:1px_3px_15px_var(--tw-shadow-color)] shadow-white tracking-wide">
+              <button onClick={() => handleMenuClick("publications")}>Publications</button>
               </span>
-              <IoIosArrowUp
-                className={`text-white text-xl transition duration-300  ease-in-out ${
-                  Publications == true ? "rotate-180" : "rotate-0"
-                }`}
-              />
             </div>
-            {Publications && (
-              <div
-                className={`transition duration-500 ease-in-out text-white py-2 px-2 flex flex-col justify-between items-center gap-y-2`}
-              >
-                <span onClick={()=> {setcurrentMenu("add paper")}} className="w-full py-1 px-2 text-center rounded-lg hover:bg-white/10 hover:bg-opacity-20 active:bg-white/15 hover:[text-shadow:1px_3px_15px_var(--tw-shadow-color)] shadow-white cursor-pointer">
-                  Add Paper
-                </span>
-                <span onClick={()=> {setcurrentMenu("update paper")}} className="w-full py-1 px-2 text-center rounded-lg hover:bg-white/10 hover:bg-opacity-20 active:bg-white/15 hover:[text-shadow:1px_3px_15px_var(--tw-shadow-color)] shadow-white cursor-pointer">
-                  Update Paper
-                </span>
-                <span onClick={()=> {setcurrentMenu("delete paper")}} className="w-full py-1 px-2 text-center rounded-lg hover:bg-white/10 hover:bg-opacity-20 active:bg-white/15 hover:[text-shadow:1px_3px_15px_var(--tw-shadow-color)] shadow-white cursor-pointer">
-                  Delete Paper
-                </span>
-              </div>
-            )}
+           
           </div>
 
           {/* Grants */}
