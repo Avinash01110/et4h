@@ -23,6 +23,9 @@ const ProfileList = () => {
     about: "",
     socialLinks: [],
     profilePic: null,
+    qualifications: "",
+    designation: "",
+    AreaofInterest: "",
   });
 
   useEffect(() => {
@@ -44,8 +47,14 @@ const ProfileList = () => {
             about: profile.about,
             socialLinks: profile.socialLinks || [],
             profilePic: null,
+            qualifications: profile.qualifications,
+            designation: profile.designation,
+            AreaofInterest: profile.AreaofInterest,
           }
-        : { name: "", email: "", about: "", socialLinks: [], profilePic: null }
+        : { name: "", email: "", about: "", socialLinks: [], profilePic: null, 
+          qualifications: "", designation: "", AreaofInterest: "" }
+
+
     );
     setIsModalOpen(true);
   };
@@ -59,6 +68,10 @@ const ProfileList = () => {
       about: "",
       socialLinks: [],
       profilePic: null,
+      qualifications: "",
+      designation: "",
+      AreaofInterest: "",
+
     });
   };
 
@@ -119,6 +132,9 @@ const ProfileList = () => {
       formDataToSend.append(`socialLinks[${index}][name]`, link.name);
       formDataToSend.append(`socialLinks[${index}][url]`, link.url);
     });
+    formDataToSend.append("qualifications", formData.qualifications);
+    formDataToSend.append("designation", formData.designation);
+    formDataToSend.append("AreaofInterest", formData.AreaofInterest);
     
     try {
       if (modalType === "add") {
@@ -244,6 +260,42 @@ const ProfileList = () => {
               </div>
               <div className="mb-4">
                 <label className="block text-sm font-medium text-gray-700">
+                  Qualifications
+                </label>
+                <input
+                  type="text"
+                  name="qualifications"
+                  value={formData.qualifications}
+                  onChange={handleInputChange}
+                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md"
+                />
+              </div>
+              <div className="mb-4">
+                <label className="block text-sm font-medium text-gray-700">
+                  Designation
+                </label>
+                <input
+                  type="text"
+                  name="designation"
+                  value={formData.designation}
+                  onChange={handleInputChange}
+                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md"
+                />
+              </div>
+              <div className="mb-4">
+                <label className="block text-sm font-medium text-gray-700">
+                  AreaofInterest
+                </label>
+                <input
+                  type="text"
+                  name="AreaofInterest"
+                  value={formData.AreaofInterest}
+                  onChange={handleInputChange}
+                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md"
+                />
+              </div>
+              <div className="mb-4">
+                <label className="block text-sm font-medium text-gray-700">
                   Social Links
                 </label>
                 {formData.socialLinks.map((link, index) => (
@@ -268,6 +320,7 @@ const ProfileList = () => {
                       }
                       className="block w-full px-3 py-2 border border-gray-300 rounded-md"
                     />
+                    
                     <button
                       type="button"
                       onClick={() => handleRemoveSocialLink(index)}
