@@ -18,7 +18,7 @@ import Dashboard from "./components/admin/Dashboard";
 import ProfileList from "./components/ProfileList";
 import ProjectList from "./components/ProjectList";
 import SinglePost from "./components/SinglePost";
-
+import PageNotFound from "./components/PageNotFound";
 import Publication from "./components/publicatoin";
 function App() {
   const location = useLocation();
