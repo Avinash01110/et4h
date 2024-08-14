@@ -38,8 +38,8 @@ export default function Publications() {
   return (
     <>
       <div className="pt-28 sm:pt-28 sm:h-auto md:h-[35rem] lg:h-[32rem] w-full flex items-end bg-indigo-100/50 pb-14 border-b-2 border-solid border-darkblue">
-        <div className="h-auto sm:w-full md:w-3/5 lg:w-3/5 xl:w-3/5 2xl:w-3/5 flex flex-col gap-y-10 px-20">
-          <div className="flex flex-row gap-x-4 items-end justify-start">
+        <div className="h-auto sm:w-full md:w-3/5 lg:w-3/5 xl:w-3/5 2xl:w-3/5 flex flex-wrap flex-col gap-y-10 px-6 sm:px-20">
+          <div className="flex flex-wrap flex-row gap-x-4 items-end justify-start">
             <h1 className="text-4xl text-grey font-bold font-sans text-center">
               Our
             </h1>
@@ -61,7 +61,7 @@ export default function Publications() {
         </div>
       </div>
 
-      <div className="h-auto w-full px-20 py-28 bg-[url('https://static.vecteezy.com/system/resources/thumbnails/013/717/509/small_2x/school-education-and-science-doodle-background-free-vector.jpg')] relative">
+      <div className="h-auto w-full px-6 sm:px-20 md:px-20 lg:px-20 xl:px-20 2xl:px-20 py-28 bg-[url('https://static.vecteezy.com/system/resources/thumbnails/013/717/509/small_2x/school-education-and-science-doodle-background-free-vector.jpg')] relative">
       <div className="h-full w-full absolute top-0 left-0 z-10 bg-white/90"></div>
         <div className="h-auto w-full flex flex-wrap items-center justify-center sm:justify-center md:justify-center lg:justify-between xl:justify-between 2xl:justify-between flex-row gap-y-12 gap-x-12 z-20 relative">
           
