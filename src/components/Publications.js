@@ -56,7 +56,7 @@ export default function Publications() {
             better.
           </p>
         </div>
-        <div className="sm:hidden md:flex lg:flex xl:flex 2xl:flex md:h-80 lg:h-96 w-2/5 overflow-hidden">
+        <div className="hidden sm:hidden md:flex lg:flex xl:flex 2xl:flex md:h-80 lg:h-96 w-2/5 overflow-hidden">
           <img className="h-full w-full object-contain" src={research} />
         </div>
       </div>

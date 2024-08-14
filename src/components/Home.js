@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
-
 import lp_image1 from "../Photos/Home/landingPage/lp_image1.png";
 import lp1 from "../Photos/Home/landingPage/lp1.jpg";
 import lp2 from "../Photos/Home/landingPage/lp2.jpg";
@@ -19,6 +18,7 @@ import breastimage from "../Photos/Projects/breastimage.png";
 import ECGimage from "../Photos/Projects/ECGimage.png";
 import EEGimage from "../Photos/Projects/EEGimage.png";
 import about_us2 from "../Photos/Home/about_us2.png";
+import vision from "../Photos/Home/vision1.jpg";
 import image from "../Photos/Home/image.png";
 import v1 from "../Video/v1.mp4";
 import v2 from "../Video/v2.mp4";
@@ -26,8 +26,12 @@ import v3 from "../Video/v3.mp4";
 import v4 from "../Video/v4.mp4";
 import v5 from "../Video/v5.mp4";
 import { FaRegLightbulb } from "react-icons/fa";
-import { GiShakingHands } from "react-icons/gi";
+import { GiShakingHands, GiArtificialIntelligence } from "react-icons/gi";
 import { IoAccessibilityOutline } from "react-icons/io5";
+import { SiFuturelearn } from "react-icons/si";
+import { GrTechnology } from "react-icons/gr";
+import { MdOutlineHealthAndSafety } from "react-icons/md";
+
 
 import Preloader from "./Preloader";
 
@@ -41,8 +45,6 @@ import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(useGSAP, ScrollTrigger);
-
-
 
 export default function Home() {
   const latestPost = [
@@ -159,21 +161,17 @@ export default function Home() {
 
   useGSAP(() => {
     // const rightPhotoItems = gsap.utils.toArray(".right-photo-item");
-
     // rightPhotoItems.forEach(function (item, index) {
     //   item.style.zIndex = rightPhotoItems.length - index;
     // });
-
     // gsap.set(".right-photo-item", {
     //   clipPath: "inset(0px 0px 0px 0px)",
     // });
-
     // animationRef.current = gsap.to(".right-photo-item:not(:last-child)", {
     //   clipPath: "inset(0px 0px 100% 0px)",
     //   stagger: 0.5,
     //   ease: "none",
     // });
-
     // ScrollTrigger.create({
     //   trigger: ".projects",
     //   scroller: "body",
@@ -182,7 +180,6 @@ export default function Home() {
     //   animation: animationRef.current,
     //   scrub: 1,
     // });
-    
   });
 
   return (
@@ -292,7 +289,7 @@ export default function Home() {
             autoplay={{
               delay: 2000,
               disableOnInteraction: false,
-              pauseOnMouseEnter: true
+              pauseOnMouseEnter: true,
             }}
             spaceBetween={30}
             loop={true}
@@ -361,7 +358,9 @@ export default function Home() {
       <div className="h-auto w-full bg-lightblue flex items-center justify-center">
         <div className="h-96 w-full flex flex-row px-12">
           <div className="left h-full w-6/12 flex flex-col justify-center gap-y-5 px-6">
-            <h3 className="text-4xl text-darkblue font-bold font-sans">Our Mission</h3>
+            <h3 className="text-4xl text-darkblue font-bold font-sans">
+              Our Mission
+            </h3>
             <p className="text-grey font-semibold opacity-80 text-justify font-sans">
               At EmergingTech4Health, our mission is to harness the power of AI
               and emerging technologies to create a future where healthcare is
@@ -383,25 +382,58 @@ export default function Home() {
 
       {/* Our Vision */}
       <div className="border-b-2 border-grey h-auto w-full px-16 flex flex-col items-center justify-center gap-y-10 py-16 bg-lightblue">
-        <h2 className="text-4xl text-darkblue font-bold font-sans">Our Vision</h2>
-        <div
-          className="w-full h-[35rem] rounded-lg relative bg-cover bg-center bg-no-repeat px-60 py-4"
-          style={{ backgroundImage: `url(${image})` }}
-        >
-          <p className="text-sm text-grey items-center font-bold opacity-80 font-sans">
-            Our vision is to lead the way in integrating AI with healthcare,
-            creating solutions that not only solve today’s medical problems but
-            also anticipate tomorrow's challenges. We believe in a world where
-            every patient benefits from the advancements in medical technology,
-            and every healthcare provider is empowered with the tools they need
-            to deliver exceptional care.
-          </p>
+        <h2 className="text-4xl text-darkblue font-bold font-sans">
+          Our Vision
+        </h2>
+        <p className="px-32 font-sans font-bold text-sm text-grey text-justify opacity-80">
+          Our vision is to lead the way in integrating AI with healthcare,
+          creating solutions that not only solve today’s medical problems but
+          also anticipate tomorrow's challenges. We believe in a world where
+          every patient benefits from the advancements in medical technology,
+          and every healthcare provider is empowered with the tools they need to
+          deliver exceptional care.
+        </p>
+        <div className="h-[40rem] w-full flex flex-row px-12">
+          <div className="left h-full w-6/12 flex flex-col justify-start gap-y-5 px-6">
+
+            <div className="h-auto w-full py-5 flex flex-col gap-y-2 border-b-2 border-grey hover:border-blue group transition ease-in-out duration-300 cursor-pointer">
+              <div className="h-10 w-10 bg-white rounded-lg flex justify-center items-center border border-grey group-hover:border-blue transition ease-in-out duration-300"><GiArtificialIntelligence className="text-2xl group-hover:text-blue transition ease-in-out duration-300"/></div>
+              <h3 className="text-lg font-sans font-bold text-grey group-hover:text-blue transition ease-in-out duration-300">Integrating AI with Healthcare</h3>
+              <span className="text-sm text-grey font-sans font-bold opacity-80">Pioneering the integration of AI to revolutionize medical solutions.</span>
+            </div>
+            <div className="h-auto w-full py-5 flex flex-col gap-y-2 border-b-2 border-grey hover:border-blue group transition ease-in-out duration-300 cursor-pointer">
+            <div className="h-10 w-10 bg-white rounded-lg flex justify-center items-center border border-grey group-hover:border-blue transition ease-in-out duration-300"><SiFuturelearn className="text-2xl group-hover:text-blue transition ease-in-out duration-300"/></div>
+              <h3 className="text-lg font-sans font-bold text-grey group-hover:text-blue transition ease-in-out duration-300">Anticipating Future Challenges</h3>
+              <span className="text-sm text-grey font-sans font-bold opacity-80">Innovating today to solve tomorrow's healthcare challenges.</span>
+            </div>
+            <div className="h-auto w-full py-5 flex flex-col gap-y-2 border-b-2 border-grey hover:border-blue group transition ease-in-out duration-300 cursor-pointer">
+            <div className="h-10 w-10 bg-white rounded-lg flex justify-center items-center border border-grey group-hover:border-blue transition ease-in-out duration-300"><GrTechnology className="text-2xl group-hover:text-blue transition ease-in-out duration-300"/></div>
+            
+              <h3 className="text-lg font-sans font-bold text-grey group-hover:text-blue transition ease-in-out duration-300">Patient-Centered Technology</h3>
+              <span className="text-sm text-grey font-sans font-bold opacity-80">Ensuring every patient benefits from cutting-edge medical advancements.</span>
+            </div>
+            <div className="h-auto w-full py-5 flex flex-col gap-y-2 border-b-2 border-grey hover:border-blue group transition ease-in-out duration-300 cursor-pointer">
+              <div className="h-10 w-10 bg-white rounded-lg flex justify-center items-center border border-grey group-hover:border-blue transition ease-in-out duration-300"><MdOutlineHealthAndSafety className="text-2xl group-hover:text-blue transition ease-in-out duration-300"/></div>
+              <h3 className="text-lg font-sans font-bold text-grey group-hover:text-blue transition ease-in-out duration-300">Empowering Healthcare Providers</h3>
+              <span className="text-sm text-grey font-sans font-bold opacity-80">Equipping healthcare providers with AI tools for exceptional care delivery.</span>
+            </div>
+
+          </div>
+          <div className="right h-full w-6/12 px-6 rounded-lg">
+            <img
+              className="h-full w-full object-cover rounded-lg border-2 border-grey"
+              src={vision}
+              alt="error"
+            />
+          </div>
         </div>
       </div>
 
       {/* Our Core Values */}
       <div className="h-auto w-full px-16 flex flex-col items-center justify-center gap-y-10 py-16 bg-white">
-        <h2 className="text-4xl text-darkblue font-bold font-sans">Our Core Values</h2>
+        <h2 className="text-4xl text-darkblue font-bold font-sans">
+          Our Core Values
+        </h2>
         <div className="h-96 w-full flex flex-row items-center justify-between px-10">
           {coreValues.map((value, index) => (
             <div
@@ -507,7 +539,7 @@ export default function Home() {
       </div>
 
       {/* Projects */}
-      <div className="h-auto w-full bg-white">
+      {/* <div className="h-auto w-full bg-white">
         <div className="flex h-screen w-full p-6 pt-24 flex-col items-center justify-center xl:text-slate-400">
           <div className="grid h-full w-full grid-cols-3 gap-4">
             <Link to={"/Projects"} className="col-span-2 row-span-3 rounded-3xl bg-slate-200 hover:scale-95 transition duration-500 ease-in-out overflow-hidden">
@@ -527,7 +559,7 @@ export default function Home() {
             </Link>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* Our Leadership */}
       <div className="h-auto w-full flex flex-row items-center bg-white">
@@ -543,7 +575,9 @@ export default function Home() {
         <div className="h-full w-5/12">
           <div className="w-[35rem] h-full flex flex-col justify-center items-center gap-y-10 px-8">
             <div className="flex flex-col gap-y-7">
-              <h3 className="text-grey text-5xl font-bold font-sans">Our Leadership</h3>
+              <h3 className="text-grey text-5xl font-bold font-sans">
+                Our Leadership
+              </h3>
               <span className="text-grey text-sm font-medium text-justify opacity-80 font-sans">
                 Meet the visionary leaders behind EmergingTech4Health. Our
                 leadership team brings together expertise in artificial

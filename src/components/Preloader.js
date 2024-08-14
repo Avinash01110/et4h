@@ -135,7 +135,7 @@ export default function Preloader() {
 
   return (
     <>
-      <div className="loader h-full w-full z-50 top-0 left-0 fixed">
+      <div className="loader h-full w-full z-50 top-0 left-0 fixed bg-white">
         <div className="fs h-full w-full absolute flex flex-col justify-center items-center overflow-hidden bg-[url(https://st.depositphotos.com/3470617/4869/v/600/depositphotos_48698185-stock-illustration-medical-icons-pattern.jpg)]">
           <div className="h-full w-full bg-white/80 absolute z-10"></div>
           <div className="h-48 w-3/5 flex flex-row justify-center items-center overflow-hidden relative mb-20">
