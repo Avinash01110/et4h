@@ -167,7 +167,7 @@ export default function Projects() {
                   >
                     <div className="flex sm:flex lg:hidden h-96 w-auto">
                       <div
-                        className="w-[38rem] h-96 px-4"
+                        className="w-96 xs:w-[30rem] sm:w-[38rem] h-96 sm:h-96  px-4 sm:px-4"
                       >
                         <img
                           className="h-full w-full object-cover rounded-lg block border-2 border-grey"
@@ -176,11 +176,11 @@ export default function Projects() {
                         />
                       </div>
                     </div>
-                    <div className="flex flex-col w-full sm:w-full lg:w-auto px-6 sm:px-6 lg:px-0 gap-y-1">
+                    <div className="flex flex-wrap flex-col w-full sm:w-full lg:w-auto px-6 sm:px-6 lg:px-0 gap-y-1">
                       {/* <span className="text-2xl text-grey font-semibold font-sans">
                         {project.index}
                       </span> */}
-                      <h3 className="text-4xl text-grey font-bold font-sans">
+                      <h3 className="text-2xl sm:text-4xl text-grey font-bold font-sans">
                         {project.title}
                       </h3>
                       <span className="text-base text-grey font-sans">
