@@ -10,39 +10,42 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
-
 export default function Projects() {
-
   const Projects = [
     {
       index: "01",
       title: "Liver Tumor Segmentation",
       description: "description",
       link: "/Project",
+      image: liverimage,
     },
     {
       index: "02",
       title: "Kidney Tumor Segmentation",
       description: "description",
       link: "/Project",
+      image: kidneyimage,
     },
     {
       index: "03",
       title: "Breast Tumor Segmentation",
       description: "description",
       link: "/Project",
+      image: breastimage,
     },
     {
       index: "04",
       title: "Electroencephalogram (EEG)",
       description: "description",
       link: "/Project",
+      image: EEGimage,
     },
     {
       index: "05",
       title: "Electrocardiogram (ECG)",
       description: "description",
       link: "/Project",
+      image: ECGimage,
     },
   ];
 
@@ -65,7 +68,6 @@ export default function Projects() {
   ];
 
   const animationRef = useRef(null);
-  console.log(animationRef)
 
   useGSAP(() => {
     const rightPhotoItems = gsap.utils.toArray(".right-photo-item");
@@ -101,16 +103,16 @@ export default function Projects() {
     let elem = document.getElementsByClassName("elem");
 
     function height() {
-      gsap.set(fs,{
-        height:0
-      })
+      gsap.set(fs, {
+        height: 0,
+      });
     }
 
     tl.to(fs, {
       height: "100%",
       duration: 1.5,
       ease: "expo.inOut",
-      onComplete: height()
+      onComplete: height(),
     });
 
     tl.to(elem, {
@@ -132,45 +134,52 @@ export default function Projects() {
       ease: "expo.inOut",
     });
 
-    tl.to(".project",{
+    tl.to(".project", {
       opacity: 1,
       duration: 0.5,
       ease: "expo.in",
-    })
-
-
-
+    });
   });
-
 
   return (
     <>
-      <div className="loader h-full w-full z-50 top-0 left-0 fixed">
+      {/* <div className="loader h-full w-full z-50 top-0 left-0 fixed">
         <div className="fs h-0 w-full bg-lightblue absolute flex flex-col justify-center items-center overflow-hidden">
         </div>
         <div className="elem h-full w-0 bg-indigo-400 absolute left-0"></div>
         <div className="whiteelem h-0 w-full bg-indigo-200 absolute bottom-0"></div>
-      </div>
+      </div> */}
 
-      <div className="project h-auto w-full bg-lightblue pt-16 opacity-0">
+      <div className="project h-auto w-full bg-lightblue pt-16 opacity-100">
         {/* Active Project */}
         <div className="bg-lightblue h-auto w-full flex flex-col items-center gap-y-1">
           {/* <h2 className="text-5xl text-blue font-bold uppercase [text-shadow:2px_4px_5px_var(--tw-shadow-color)] shadow-grey">
             Active Projects
           </h2> */}
 
-          <div className="projects w-full h-auto px-16 flex flex-row">
-            <div className="left w-1/2 h-auto flex items-center justify-center">
-              <div className="projects-text">
+          <div className="projects w-full h-auto px-4 py-36 sm:py-36 lg:py-0 lg:px-6 xl:px-10 2xl:px-16 flex flex-row">
+            <div className="left w-full sm:w-full lg:w-1/2 h-auto flex items-center justify-center">
+              <div className="projects-text flex flex-col gap-y-36">
                 {Projects.map((project, index) => (
                   <div
                     key={index}
-                    className="h-[100vh] project-info flex flex-col justify-center gap-y-10"
+                    className="h-auto sm:h-auto lg:h-[100vh] project-info flex flex-col justify-center items-center sm:items-center lg:items-start gap-y-10"
                   >
-                    <div className="flex flex-col gap-y-1">
-                      <span className="text-2xl text-grey font-semibold font-sans">
+                    <div className="flex sm:flex lg:hidden h-96 w-auto">
+                      <div
+                        className="w-[38rem] h-96 px-4"
+                      >
+                        <img
+                          className="h-full w-full object-cover rounded-lg block border-2 border-grey"
+                          src={project.image}
+                          alt="error"
+                        />
+                      </div>
+                    </div>
+                    <div className="flex flex-col w-full sm:w-full lg:w-auto px-6 sm:px-6 lg:px-0 gap-y-1">
+                      {/* <span className="text-2xl text-grey font-semibold font-sans">
                         {project.index}
-                      </span>
+                      </span> */}
                       <h3 className="text-4xl text-grey font-bold font-sans">
                         {project.title}
                       </h3>
@@ -188,13 +197,13 @@ export default function Projects() {
               </div>
             </div>
 
-            <div className="right w-1/2 h-auto">
+            <div className="right hidden sm:hidden lg:flex w-1/2 h-auto">
               <div className="right-b1 flex flex-col justify-center sticky top-0 w-full h-[100vh]">
                 <div
                   useRef={animationRef}
-                  className="right-photo h-96 w-[40rem] relative"
+                  className="right-photo h-[28rem] xl:w-auto 2xl:w-auto relative"
                 >
-                  {Projectsimage.map((project, index) => (
+                  {Projects.map((project, index) => (
                     <div
                       key={index}
                       className="right-photo-item w-full h-full py-5 px-10 absolute"
