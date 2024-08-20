@@ -184,10 +184,10 @@ export default function Home() {
 
   return (
     <>
-      <Preloader/>
+      {/* <Preloader/> */}
 
       {/* Landing page */}
-      <div className="h-[100vh] w-full flex items-end bg-white relative z-10 overflow-hidden">
+      {/* <div className="h-[100vh] w-full flex items-end bg-white relative z-10 overflow-hidden">
         <div className="absolute h-[45rem] w-[45rem] bg-lightblue z-0 rounded-xl rotate-45 -left-12 -bottom-16"></div>
         <div className="h-96 w-96 rounded-xl absolute right-14 top-0 -rotate-45 bg-lightgrey opacity-60"></div>
         <div className="h-[29rem] w-full flex z-10">
@@ -227,10 +227,10 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* Our Members - Logos */}
-      <div className="border-b-2 border-darkblue h-auto w-full bg-lightblue px-28 py-28 flex flex-col items-center gap-y-12">
+      {/* <div className="border-b-2 border-darkblue h-auto w-full bg-lightblue px-28 py-28 flex flex-col items-center gap-y-12">
         <h2 className="text-5xl text-blue font-sans font-bold uppercase [text-shadow:3px_6px_10px_var(--tw-shadow-color)] shadow-grey">
           Our Members
         </h2>
@@ -267,15 +267,15 @@ export default function Home() {
             <span className="text-4xl mx-20">Logo 5</span>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* Latest Post */}
-      <div className="border-b-2 border-darkblue h-auto w-full bg-purewhite flex justify-center items-center py-20 relative z-10 overflow-hidden">
+      <div className="border-b-2 border-darkblue h-auto w-full bg-purewhite flex justify-center items-center py-20 px-4 sm:px-0 relative z-10 overflow-hidden">
         <div className="bg-shape1 bg-teal opacity-50 bg-blur"></div>
         <div className="bg-shape2 bg-primary opacity-50 bg-blur"></div>
         <div className="bg-shape3 bg-purple opacity-50 bg-blur"></div>
 
-        <div className="crousel h-auto w-3/4 bg-lightblue rounded-lg p-10 flex flex-col gap-y-10 shadow-lg shadow-grey z-10">
+        <div className="crousel h-auto w-full sm:w-[35rem] md:w-11/12 lg:w-5/6 xl:w-4/5 2xl:w-3/4 bg-lightblue rounded-lg p-5 sm:p-10 flex flex-col gap-y-10 shadow-lg shadow-grey z-10">
           <h2 className="text-4xl text-grey font-sans font-bold uppercase [text-shadow:3px_6px_10px_var(--tw-shadow-color)] shadow-grey">
             Latest Posts
           </h2>
@@ -301,17 +301,17 @@ export default function Home() {
           >
             {latestPost.map((post, index) => (
               <SwiperSlide key={index}>
-                <div className="h-[20rem] w-full bg-white p-10 flex flex-row rounded-lg">
-                  <div className="h-full w-7/12 p-4 flex flex-col justify-between">
-                    <div className="flex flex-col gap-y-5 pr-16">
-                      <h3 className="text-2xl text-blue font-bold font-sans">
+                <div className="h-auto lg:h-[20rem] w-full bg-white p-5 sm:p-10 flex flex-col-reverse lg:flex-row rounded-lg">
+                  <div className="h-auto md:h-full w-auto lg:w-7/12 p-4 flex flex-col justify-between items-center lg:items-start gap-y-8">
+                    <div className="flex flex-col gap-y-5 pr-2 lg:pr-16">
+                      <h3 className="text-2xl text-justify sm:text-start text-blue font-bold font-sans">
                         {post.title}
                       </h3>
-                      <p className="text-grey text-sm font-medium font-sans">
+                      <p className="text-grey text-justify text-sm font-medium font-sans">
                         {post.description}
                       </p>
                     </div>
-                    <div>
+                    <div className="content-start">
                       <Link to={post.link}>
                         <button className="button bg-blue text-[#FFFFFF] py-2 px-3 rounded-lg text-sm font-medium font-sans active:bg-blue hover:bg-darkblue hover:shadow-md hover:shadow-lightgrey transition ease-in-out duration-300">
                           Read More
@@ -319,7 +319,7 @@ export default function Home() {
                       </Link>
                     </div>
                   </div>
-                  <div className="h-full w-5/12">
+                  <div className="h-full w-auto lg:w-5/12">
                     <img
                       className="h-full w-full object-cover rounded-lg"
                       src={post.image}
@@ -356,8 +356,8 @@ export default function Home() {
 
       {/* Our Mission */}
       <div className="h-auto w-full bg-lightblue flex items-center justify-center">
-        <div className="h-96 w-full flex flex-row px-12">
-          <div className="left h-full w-6/12 flex flex-col justify-center gap-y-5 px-6">
+        <div className="h-auto lg:h-96 w-full flex flex-col-reverse lg:flex-row justify-center items-center px-4 sm:px-12">
+          <div className="left h-full w-full lg:w-6/12 flex flex-col justify-center gap-y-5 px-0 lg:px-6">
             <h3 className="text-4xl text-darkblue font-bold font-sans">
               Our Mission
             </h3>
@@ -370,7 +370,7 @@ export default function Home() {
               future of healthcare – we are building it.
             </p>
           </div>
-          <div className="right h-full w-6/12 px-6 py-12 rounded-lg">
+          <div className="right h-full w-full lg:w-6/12 px-0 lg:px-6 py-12 rounded-lg">
             <img
               className="h-full w-full object-cover rounded-lg border-2 border-grey"
               src={about_us2}
@@ -381,11 +381,11 @@ export default function Home() {
       </div>
 
       {/* Our Vision */}
-      <div className="border-b-2 border-grey h-auto w-full px-16 flex flex-col items-center justify-center gap-y-10 py-16 bg-lightblue">
+      <div className="border-b-2 border-grey h-auto w-full lg:px-4 xl:px-10 2xl:px-16 flex flex-col items-center justify-center gap-y-10 py-16 bg-lightblue">
         <h2 className="text-4xl text-darkblue font-bold font-sans">
           Our Vision
         </h2>
-        <p className="px-32 font-sans font-bold text-sm text-grey text-justify opacity-80">
+        <p className="px-4 sm:px-12 md:px-12 lg:px-24 xl:px-32 font-sans font-bold text-sm text-grey text-justify opacity-80">
           Our vision is to lead the way in integrating AI with healthcare,
           creating solutions that not only solve today’s medical problems but
           also anticipate tomorrow's challenges. We believe in a world where
@@ -393,8 +393,8 @@ export default function Home() {
           and every healthcare provider is empowered with the tools they need to
           deliver exceptional care.
         </p>
-        <div className="h-[40rem] w-full flex flex-row px-12">
-          <div className="left h-full w-6/12 flex flex-col justify-start gap-y-5 px-6">
+        <div className="lg:h-[45rem] xl:h-[40rem] w-full flex flex-col-reverse sm:flex-col-reverse lg:flex-row px-4 sm:px-12 gap-x-4 justify-center items-center">
+          <div className="left h-full w-full lg:w-6/12 flex flex-col justify-start gap-y-5 px-0 sm:px-0 lg:px-6">
 
             <div className="h-auto w-full py-5 flex flex-col gap-y-2 border-b-2 border-grey hover:border-blue group transition ease-in-out duration-300 cursor-pointer">
               <div className="h-10 w-10 bg-white rounded-lg flex justify-center items-center border border-grey group-hover:border-blue transition ease-in-out duration-300"><GiArtificialIntelligence className="text-2xl group-hover:text-blue transition ease-in-out duration-300"/></div>
@@ -419,7 +419,7 @@ export default function Home() {
             </div>
 
           </div>
-          <div className="right h-full w-6/12 px-6 rounded-lg">
+          <div className="right h-96 xl:h-full w-full lg:w-6/12 px-0 sm:px-0 lg:px-6 rounded-lg">
             <img
               className="h-full w-full object-cover rounded-lg border-2 border-grey"
               src={vision}
@@ -430,15 +430,15 @@ export default function Home() {
       </div>
 
       {/* Our Core Values */}
-      <div className="h-auto w-full px-16 flex flex-col items-center justify-center gap-y-10 py-16 bg-white">
+      <div className="h-auto w-full px-4 sm:px-10 xl:px-16 flex flex-col items-center justify-center gap-y-10 py-16 bg-white">
         <h2 className="text-4xl text-darkblue font-bold font-sans">
           Our Core Values
         </h2>
-        <div className="h-96 w-full flex flex-row items-center justify-between px-10">
+        <div className="h-auto xl:h-96 w-full flex flex-wrap gap-10 flex-row items-center justify-center xl:justify-between sm:px-5 xl:px-10">
           {coreValues.map((value, index) => (
             <div
               key={index}
-              className="h-80 w-[19rem] bg-blue flex flex-col justify-center items-center px-6 gap-y-8 rounded-lg group"
+              className="h-auto sm:h-80 w-[19rem] bg-blue flex flex-col justify-center items-center p-6 sm:px-6 gap-y-8 rounded-lg group"
             >
               <div className="flex flex-row gap-x-4 items-center justify-start w-full">
                 <div className="flex h-10 w-10 flex-none items-center justify-center rounded-full bg-lightgrey group-hover:bg-purewhite transition ease-in-out duration-300">
@@ -459,65 +459,12 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Active Project */}
-      {/* <div className="border-b-2 border-grey bg-lightblue h-auto w-full flex flex-col items-center py-20 gap-y-1">
-        <h2 className="text-5xl text-blue font-bold uppercase [text-shadow:2px_4px_5px_var(--tw-shadow-color)] shadow-grey">
-          Active Projects
-        </h2>
-
-        <div className="projects w-full h-auto px-16 flex flex-row">
-          
-          <div className="left w-1/2 h-auto flex items-center justify-center">
-              <div className="projects-text">
-              {Projects.map((project, index) => (
-                <div key={index} className="h-[100vh] project-info flex flex-col justify-center gap-y-10">
-                  <div className="flex flex-col gap-y-1">
-                    <span className="text-2xl text-grey font-semibold">
-                      {project.index}
-                    </span>
-                    <h3 className="text-4xl text-grey font-bold">
-                      {project.title}
-                    </h3>
-                    <span className="text-base text-grey">
-                      {project.description}
-                    </span>
-                  </div>
-                  <Link to={project.link}>
-                    <button className="button bg-blue text-[#FFFFFF] py-2 px-3 rounded-lg text-sm font-medium active:bg-blue hover:bg-darkblue hover:shadow-md hover:shadow-lightgrey transition ease-in-out duration-300">
-                      View More
-                    </button>
-                  </Link>
-                </div>
-              ))}
-              </div>
-          </div>
-
-
-          <div className="right w-1/2 h-auto">
-            <div className="right-b1 flex flex-col justify-center sticky top-0 w-full h-[100vh]">
-              <div
-                useRef={animationRef}
-                className="right-photo h-96 w-[40rem] relative"
-              >
-                {Projectsimage.map((project, index) => (
-                <div key={index} className="right-photo-item w-full h-full py-5 px-10 absolute">
-                  <img
-                    className="h-full w-full object-cover rounded-lg block border-2 border-grey"
-                    src={project.image}
-                    alt="error"
-                  />
-                </div>
-                 ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> */}
+      
 
       {/* About us */}
       <div className="h-[30rem] w-full bg-lightblue flex justify-start items-center relative group overflow-hidden">
-        <div className="about bg-[url('https://img.freepik.com/free-photo/medium-shot-scientists-lab_23-2148970019.jpg?t=st=1712730077~exp=1712733677~hmac=bedf57e8cb70e08b3778d1ee268ea54a591de2697719a6ed13c7327098a90c1c&w=740')] h-full w-full bg-cover bg-no-repeat gradient-mask-l-[rgba(0,0,0,1.0)_10%,rgba(0,0,0,1.0)_30px,rgba(0,0,0,0.3)_40%] group-hover:scale-110 transition ease-in-out duration-1000"></div>
-        <div className="w-[35rem] h-full flex flex-col justify-center items-center gap-y-10 absolute p-8 ml-10">
+        <div className="about bg-[url('https://img.freepik.com/free-photo/medium-shot-scientists-lab_23-2148970019.jpg?t=st=1712730077~exp=1712733677~hmac=bedf57e8cb70e08b3778d1ee268ea54a591de2697719a6ed13c7327098a90c1c&w=740')] h-full w-full bg-cover bg-no-repeat bg-start gradient-mask-l-[rgba(0,0,0,1.0)_10%,rgba(0,0,0,1.0)_30px,rgba(0,0,0,0.3)_40%] group-hover:scale-110 transition ease-in-out duration-1000"></div>
+        <div className="w-full lg:w-[35rem] h-full flex flex-col justify-center items-center gap-y-10 absolute p-8 lg:ml-10 bg-white bg-opacity-10 backdrop-blur-sm">
           <div className="flex flex-col gap-y-7">
             <h3 className="text-blue text-5xl font-bold font-sans">About Us</h3>
             <span className="text-grey text-sm font-medium text-justify opacity-80 font-sans">
@@ -562,8 +509,8 @@ export default function Home() {
       </div> */}
 
       {/* Our Leadership */}
-      <div className="h-auto w-full flex flex-row items-center bg-white">
-        <div className="h-auto w-7/12">
+      <div className="h-auto w-full flex flex-col pb-16 sm:pb-16 sm:flex-col lg:py-0 lg:flex-row items-center bg-white">
+        <div className="h-auto w-auto lg:w-5/10 xl:w-6/12 2xl:w-7/12">
           <video
             src={leadership}
             className="h-full w-full object-cover p-2"
@@ -572,9 +519,9 @@ export default function Home() {
             muted
           />
         </div>
-        <div className="h-full w-5/12">
-          <div className="w-[35rem] h-full flex flex-col justify-center items-center gap-y-10 px-8">
-            <div className="flex flex-col gap-y-7">
+        <div className="h-full w-auto lg:py-16 lg:w-5/10 xl:w-6/12 2xl:py-0 2xl:w-5/12">
+          <div className="w-auto h-full flex flex-col justify-center items-center gap-y-10 px-8">
+            <div className="flex flex-col flex-wrap gap-y-7">
               <h3 className="text-grey text-5xl font-bold font-sans">
                 Our Leadership
               </h3>
