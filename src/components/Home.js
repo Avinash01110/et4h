@@ -182,25 +182,46 @@ export default function Home() {
     // });
   });
 
+  // window.onload = function() {
+  //   const video = document.getElementById('myVideo');
+  //   video.playbackRate = 0.5;
+  // };
+
   return (
     <>
       {/* <Preloader/> */}
 
       {/* Landing page */}
-      {/* <div className="h-[100vh] w-full flex items-end bg-white relative z-10 overflow-hidden">
-        <div className="absolute h-[45rem] w-[45rem] bg-lightblue z-0 rounded-xl rotate-45 -left-12 -bottom-16"></div>
-        <div className="h-96 w-96 rounded-xl absolute right-14 top-0 -rotate-45 bg-lightgrey opacity-60"></div>
-        <div className="h-[29rem] w-full flex z-10">
-          <div className="left w-1/2 h-full px-20 font-sans">
-            <div className="flex w-[25rem] h-full flex-col justify-center items-start gap-y-6">
-              <h1 className="text-5xl uppercase font-bold text-blue">
+      <div className="h-[120vh] sm:h-[72vh] xl:h-[75vh] w-full flex items-end bg-white relative z-10 overflow-hidden">
+        
+        <div className="absolute sm:hidden xl:flex xl:h-[50rem] xl:w-[50rem] 2xl:h-[55rem] 2xl:w-[55rem] bg-lightblue z-0 rounded-xl rotate-45 -left-12 -bottom-16"></div>
+        
+        <div className="sm:hidden xl:flex xl:h-[26rem] xl:w-[26rem] 2xl:h-[30rem] 2xl:w-[30rem] rounded-xl absolute right-14 top-0 -rotate-45 bg-lightgrey opacity-60"></div>
+
+        <div className="xl:hidden h-full w-full absolute overflow-hidden">
+          <video
+            src={"https://cdn.pixabay.com/video/2023/09/01/178597-860270761_tiny.mp4"}
+            className="h-full w-full object-cover"
+            autoPlay
+            loop
+            muted
+            id="myVideo"
+          /> 
+        </div>
+
+        <div className="h-full w-full bg-lightblue bg-opacity-65 backdrop-blur-5xl absolute"></div>
+        
+        <div className="h-full sm:h-full xl:h-[39rem] 2xl:h-[35rem] w-full flex sm:items-center sm:justify-center z-10">
+          <div className="left xl:w-1/2 2xl:w-2/3 h-full px-4 sm:px-4 md:px-10 lg:px-20 font-sans mt-0 lg:mt-8 xl:mt-0">
+            <div className="flex w-full 2xl:w-full h-full flex-col justify-center items-center sm:items-center xl:items-start gap-y-10 sm:gap-y-10 xl:gap-y-6">
+              <h1 className="text-4xl xs:text-5xl text-center sm:text-center lg:text-start uppercase font-bold text-blue">
                 Revolution
-                <span className="text-5xl uppercase font-bold text-grey">
+                <span className="text-4xl xs:text-5xl text-center sm:text-center lg:text-start uppercase font-bold text-grey">
                   izing
                 </span>{" "}
                 Healthcare
               </h1>
-              <h4 className="text-base capitalize text-justify text-grey opacity-80 font-semibold">
+              <h4 className="text-xl sm:text-xl xl:text-base capitalize text-center sm:text-center xl:text-justify text-grey xl:opacity-80 font-bold xl:font-semibold">
                 Welcome to EmergingTech4Health, where AI meets medical
                 innovation. Our mission: harness AI to tackle challenging
                 medical problems, transforming diagnosis, treatment, and
@@ -214,7 +235,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="right w-1/2 h-full flex justify-center items-center">
+          <div className="right xl:w-1/2 2xl:w-2/3 h-full hidden sm:hidden xl:flex justify-center items-center">
             <div className="gallery">
               <img src={lp1} alt="error" />
               <img src={lp2} alt="error" />
@@ -227,24 +248,24 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </div> */}
+      </div>
 
       {/* Our Members - Logos */}
-      {/* <div className="border-b-2 border-darkblue h-auto w-full bg-lightblue px-28 py-28 flex flex-col items-center gap-y-12">
-        <h2 className="text-5xl text-blue font-sans font-bold uppercase [text-shadow:3px_6px_10px_var(--tw-shadow-color)] shadow-grey">
+      <div className="border-b-2 border-darkblue h-auto w-full bg-lightblue px-0 sm:px-2 md:px-18 lg:px-24 xl:px-28 py-28 flex flex-col items-center gap-y-12">
+        <h2 className="text-4xl sm:text-5xl text-blue font-sans font-bold uppercase [text-shadow:3px_6px_10px_var(--tw-shadow-color)] shadow-grey">
           Our Members
         </h2>
 
         <div className="h-full w-full relative flex overflow-x-hidden justify-center items-center">
           <div
-            className="absolute h-full w-96 top-0 left-0 z-10 gradient"
+            className="absolute h-full w-40 xs:w-60 sm:w-80 md:w-96 top-0 left-0 z-10 gradient"
             style={{
               background:
                 "linear-gradient(to left, rgba(255, 255, 255, 0), #E8EEFD",
             }}
           ></div>
           <div
-            className="absolute h-full w-96 top-0 right-0 z-10 gradient"
+            className="absolute h-full w-40 xs:w-60 sm:w-80 md:w-96 top-0 right-0 z-10 gradient"
             style={{
               background:
                 "linear-gradient(to right, rgba(255, 255, 255, 0), #E8EEFD",
@@ -267,7 +288,7 @@ export default function Home() {
             <span className="text-4xl mx-20">Logo 5</span>
           </div>
         </div>
-      </div> */}
+      </div>
 
       {/* Latest Post */}
       <div className="border-b-2 border-darkblue h-auto w-full bg-purewhite flex justify-center items-center py-20 px-4 sm:px-0 relative z-10 overflow-hidden">
@@ -419,7 +440,7 @@ export default function Home() {
             </div>
 
           </div>
-          <div className="right h-96 xl:h-full w-full lg:w-6/12 px-0 sm:px-0 lg:px-6 rounded-lg">
+          <div className="right h-96 lg:h-full w-full lg:w-6/12 px-0 sm:px-0 lg:px-6 rounded-lg">
             <img
               className="h-full w-full object-cover rounded-lg border-2 border-grey"
               src={vision}
