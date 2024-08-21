@@ -189,14 +189,14 @@ export default function Home() {
 
   return (
     <>
-      {/* <Preloader/> */}
+      <Preloader/>
 
       {/* Landing page */}
-      <div className="h-[120vh] sm:h-[72vh] xl:h-[75vh] w-full flex items-end bg-white relative z-10 overflow-hidden">
+      <div className="h-[120vh] sm:h-[72vh] xl:h-[105vh] 2xl:h-[105vh] w-full flex items-end bg-white relative z-10 overflow-hidden">
         
-        <div className="absolute sm:hidden xl:flex xl:h-[50rem] xl:w-[50rem] 2xl:h-[55rem] 2xl:w-[55rem] bg-lightblue z-0 rounded-xl rotate-45 -left-12 -bottom-16"></div>
+        <div className="absolute sm:hidden xl:flex xl:h-[45rem] xl:w-[45rem] 2xl:h-[50rem] 2xl:w-[50rem] bg-lightblue z-0 rounded-xl rotate-45 -left-12 -bottom-16"></div>
         
-        <div className="sm:hidden xl:flex xl:h-[26rem] xl:w-[26rem] 2xl:h-[30rem] 2xl:w-[30rem] rounded-xl absolute right-14 top-0 -rotate-45 bg-lightgrey opacity-60"></div>
+        <div className="sm:hidden xl:flex xl:h-96 xl:w-96 2xl:h-[28rem] 2xl:w-[28rem] rounded-xl absolute right-14 top-0 -rotate-45 bg-lightgrey opacity-60"></div>
 
         <div className="xl:hidden h-full w-full absolute overflow-hidden">
           <video
@@ -209,9 +209,9 @@ export default function Home() {
           /> 
         </div>
 
-        <div className="h-full w-full bg-lightblue bg-opacity-65 backdrop-blur-5xl absolute"></div>
+        <div className="xl:hidden h-full w-full bg-lightblue bg-opacity-65 backdrop-blur-5xl absolute"></div>
         
-        <div className="h-full sm:h-full xl:h-[39rem] 2xl:h-[35rem] w-full flex sm:items-center sm:justify-center z-10">
+        <div className="h-full sm:h-full xl:h-[35rem] 2xl:h-[30rem] w-full flex sm:items-center sm:justify-center z-10">
           <div className="left xl:w-1/2 2xl:w-2/3 h-full px-4 sm:px-4 md:px-10 lg:px-20 font-sans mt-0 lg:mt-8 xl:mt-0">
             <div className="flex w-full 2xl:w-full h-full flex-col justify-center items-center sm:items-center xl:items-start gap-y-10 sm:gap-y-10 xl:gap-y-6">
               <h1 className="text-4xl xs:text-5xl text-center sm:text-center lg:text-start uppercase font-bold text-blue">

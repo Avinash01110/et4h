@@ -103,32 +103,32 @@ export default function Preloader() {
       ease: "expo.inOut",
     });
 
-    tl.to(".fs", {
-      height: 0,
-      duration: 2.5,
-      ease: "expo.inOut",
-    });
+    // tl.to(".fs", {
+    //   height: 0,
+    //   duration: 2.5,
+    //   ease: "expo.inOut",
+    // });
 
-    tl.to(".elem", {
-      height: "100%",
-      duration: 2.5,
-      delay: -2.5,
-      ease: "expo.inOut",
-    });
+    // tl.to(".elem", {
+    //   height: "100%",
+    //   duration: 2.5,
+    //   delay: -2.5,
+    //   ease: "expo.inOut",
+    // });
 
-    tl.to(".whiteelem", {
-      height: "100%",
-      duration: 2,
-      delay: -1.8,
-      ease: "expo.inOut",
-    });
+    // tl.to(".whiteelem", {
+    //   height: "100%",
+    //   duration: 2,
+    //   delay: -1.8,
+    //   ease: "expo.inOut",
+    // });
 
-    tl.to(".loader", {
-      height: 0,
-      duration: 2,
-      delay: -1.8,
-      ease: "expo.inOut",
-    });
+    // tl.to(".loader", {
+    //   height: 0,
+    //   duration: 2,
+    //   delay: -1.8,
+    //   ease: "expo.inOut",
+    // });
 
     
   });
@@ -138,9 +138,9 @@ export default function Preloader() {
       <div className="loader h-full w-full z-50 top-0 left-0 fixed bg-white">
         <div className="fs h-full w-full absolute flex flex-col justify-center items-center overflow-hidden bg-[url(https://st.depositphotos.com/3470617/4869/v/600/depositphotos_48698185-stock-illustration-medical-icons-pattern.jpg)]">
           <div className="h-full w-full bg-white/80 absolute z-10"></div>
-          <div className="h-48 w-3/5 flex flex-row justify-center items-center overflow-hidden relative mb-20">
+          <div className="h-48 w-3/5 hidden sm:hidden xl:flex flex-row justify-center items-center overflow-hidden relative mb-20">
 
-            <img src={dash} alt="dash" className="dash h-44 w-full absolute z-10  -bottom-12 left-0 rotate-0"/>
+            <img src={dash} alt="dash" className=" h-44 xl:w-full 2xl:w-11/12 absolute z-10  -bottom-12 left-0 rotate-0"/>
 
             <div className="text-6xl text-grey font-stix font-semibold h-auto overflow-hidden flex justify-center items-center w-auto py-2 px-2 z-20">
               <span className="Emerging">E</span>
@@ -220,7 +220,7 @@ export default function Preloader() {
 
           </div>
 
-          <div className="gif absolute bottom-12 opacity-0 z-20">
+          <div className="gif absolute hidden sm:hidden xl:flex bottom-12 opacity-0 z-20">
             <img className="h-16 w-16" src={loadgif} alt="error" />
           </div>
         </div>
