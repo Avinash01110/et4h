@@ -75,6 +75,7 @@ export default function Navbar() {
     <>
       {/* Desktop Nav */}
       <div className="w-full h-14 hidden sm:hidden md:hidden lg:flex justify-between items-center px-6 mt-6 fixed z-50">
+        <Link to={"/"}>
         <div className="logo h-20 w-20">
           <img
             className="h-full w-full object-cover cursor-pointer"
@@ -82,6 +83,7 @@ export default function Navbar() {
             alt="error"
           />
         </div>
+        </Link>
         <div className="items w-96 h-9 bg-purewhite list-none flex flex-row justify-center items-center gap-5 rounded-full text-sm font-semibold border-2 border-darkblue">
           <Link to={"/"}>
             <li
@@ -258,6 +260,7 @@ export default function Navbar() {
 
       {/* Mobile Nav */}
       <div className="w-full h-20 flex sm:flex md:flex lg:hidden justify-between items-center px-6 fixed z-50 bg-lightblue bg-opacity-20 backdrop-blur-lg">
+        <Link to={"/"}>
         <div className="logo h-20 w-20">
           <img
             className="h-full w-full object-cover cursor-pointer"
@@ -265,6 +268,7 @@ export default function Navbar() {
             alt="error"
           />
         </div>
+        </Link>
         {menu == "invisible" ? (
           <IoIosMenu
             onClick={togglemenu}

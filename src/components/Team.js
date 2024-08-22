@@ -9,6 +9,8 @@ import { Autoplay, Mousewheel, Navigation, Pagination } from "swiper/modules";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "../style/Team.css";
+import { Helmet } from 'react-helmet-async';
+
 
 import Profile from "./Profile";
 
@@ -106,19 +108,24 @@ export default function Team() {
 
   return (
     <>
-      <Profile info={profInfo} open={isOpen} close={closeModal} />
+      <Helmet>
+        <title>Team | Emerging Tech 4 Health - AI-Powered Health Research</title>
+        <meta name="description" content="Emerging Tech 4 Health is a platform dedicated to showcasing cutting-edge research in the health sector, powered by Artificial Intelligence. Explore the latest innovations, breakthroughs, and applications of AI in healthcare." />
+      </Helmet>
 
-      <div className="h-96 sm:h-96 lg:h-[33vh] 2xl:h-[48vh] w-full flex items-end bg-lightblue">
+      <Profile info={profInfo} open={isOpen} close={closeModal} />
+    
+      <div className="h-[28rem] xs:h-96 sm:h-96 lg:h-[35vh] xl:h-[46vh] 2xl:h-[48vh] w-full flex items-end bg-lightblue">
         <div className="h-auto w-full flex flex-col gap-y-10">
           <div className="flex flex-row gap-x-1 items-end justify-center">
-            <h3 className="text-xl text-grey font-bold font-sans text-center">
+            <h3 className="text-2xl text-grey font-bold font-sans text-center">
               Meet our
             </h3>
-            <span className="text-5xl text-darkblue font-bold font-sans">
+            <span className="text-6xl text-darkblue font-bold font-sans">
               Team
             </span>
           </div>
-          <p className="text-sm text-grey font-semibold font-sans text-center px-6 sm:px-10 md:px-20 lg:px-32 xl:px-48 2xl:px-72">
+          <p className="text-base text-grey font-semibold font-sans text-center px-6 sm:px-10 md:px-20 lg:px-32 xl:px-48 2xl:px-72">
             Welcome to our team page! Our team is dedicated to pioneering
             advancements in preventive healthcare through the integration of
             artificial intelligence. Our diverse group of experts, researchers,

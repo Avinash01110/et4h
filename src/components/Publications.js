@@ -2,6 +2,8 @@ import React from "react";
 import { IoIosArrowRoundUp } from "react-icons/io";
 import research from "../Photos/Publications/research.png";
 import { Link } from "react-router-dom";
+import { Helmet } from 'react-helmet-async';
+
 
 export default function Publications() {
   const publications = [
@@ -37,6 +39,11 @@ export default function Publications() {
 
   return (
     <>
+      <Helmet>
+        <title>Publications | Emerging Tech 4 Health - AI-Powered Health Research</title>
+        <meta name="description" content="Emerging Tech 4 Health is a platform dedicated to showcasing cutting-edge research in the health sector, powered by Artificial Intelligence. Explore the latest innovations, breakthroughs, and applications of AI in healthcare." />
+      </Helmet>
+
       <div className="pt-28 sm:pt-28 sm:h-auto md:h-[35rem] lg:h-[32rem] w-full flex items-end bg-indigo-100/50 pb-14 border-b-2 border-solid border-darkblue">
         <div className="h-auto sm:w-full md:w-3/5 lg:w-3/5 xl:w-3/5 2xl:w-3/5 flex flex-wrap flex-col gap-y-10 px-6 sm:px-20">
           <div className="flex flex-wrap flex-row gap-x-4 items-end justify-start">

@@ -33,8 +33,6 @@ import { GrTechnology } from "react-icons/gr";
 import { MdOutlineHealthAndSafety } from "react-icons/md";
 
 
-import Preloader from "./Preloader";
-
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "../style/Home.css";
@@ -45,6 +43,8 @@ import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(useGSAP, ScrollTrigger);
+import { Helmet } from 'react-helmet-async';
+
 
 export default function Home() {
 
@@ -161,6 +161,11 @@ export default function Home() {
   return (
     <>
 
+      <Helmet>
+        <title>Home | Emerging Tech 4 Health - AI-Powered Health Research</title>
+        <meta name="description" content="Emerging Tech 4 Health is a platform dedicated to showcasing cutting-edge research in the health sector, powered by Artificial Intelligence. Explore the latest innovations, breakthroughs, and applications of AI in healthcare." />
+      </Helmet>
+
       {/* Landing page */}
       <div className="h-[120vh] sm:h-[72vh] xl:h-[110vh] 2xl:h-[75vh] w-full flex items-end bg-white relative z-10 overflow-hidden">
         
@@ -170,7 +175,7 @@ export default function Home() {
 
         <div className="xl:hidden h-full w-full absolute overflow-hidden">
           <video
-            src={"https://cdn.pixabay.com/video/2023/09/01/178597-860270761_tiny.mp4"}
+            src={v2}
             className="h-full w-full object-cover"
             autoPlay
             loop

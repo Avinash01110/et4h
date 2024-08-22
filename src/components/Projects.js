@@ -10,6 +10,7 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Loader from "./Loader";
 gsap.registerPlugin(useGSAP, ScrollTrigger);
+import { Helmet } from 'react-helmet-async';
 
 export default function Projects() {
   const Projects = [
@@ -101,6 +102,11 @@ export default function Projects() {
 
   return (
     <>
+      <Helmet>
+        <title>Projects | Emerging Tech 4 Health - AI-Powered Health Research</title>
+        <meta name="description" content="Emerging Tech 4 Health is a platform dedicated to showcasing cutting-edge research in the health sector, powered by Artificial Intelligence. Explore the latest innovations, breakthroughs, and applications of AI in healthcare." />
+      </Helmet>
+
       <div className="project h-auto w-full bg-lightblue pt-16 opacity-100">
         {/* Active Project */}
         <div className="bg-lightblue h-auto w-full flex flex-col items-center gap-y-1">
