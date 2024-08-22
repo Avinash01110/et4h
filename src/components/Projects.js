@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import { Link } from "react-router-dom";
+import { Helmet } from 'react-helmet-async';
 import liverimage from "../Photos/Projects/liverimage.png";
 import kidneyimage from "../Photos/Projects/kidneyimage.png";
 import breastimage from "../Photos/Projects/breastimage.png";
@@ -10,7 +11,7 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Loader from "./Loader";
 gsap.registerPlugin(useGSAP, ScrollTrigger);
-import { Helmet } from 'react-helmet-async';
+
 
 export default function Projects() {
   const Projects = [

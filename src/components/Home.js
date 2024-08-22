@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import { Helmet } from 'react-helmet-async';
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 import lp_image1 from "../Photos/Home/landingPage/lp_image1.png";
@@ -43,7 +44,7 @@ import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(useGSAP, ScrollTrigger);
-import { Helmet } from 'react-helmet-async';
+
 
 
 export default function Home() {

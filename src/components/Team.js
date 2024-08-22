@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { Helmet } from 'react-helmet-async';
 import { FaFacebookF, FaLinkedinIn } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -9,7 +10,6 @@ import { Autoplay, Mousewheel, Navigation, Pagination } from "swiper/modules";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "../style/Team.css";
-import { Helmet } from 'react-helmet-async';
 
 
 import Profile from "./Profile";
