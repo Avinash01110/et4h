@@ -38,7 +38,7 @@ function App() {
     if (showPreloader) {
       setTimeout(() => {
         setShowPreloader(false);
-      }, 10900);
+      }, 12900);
     }
   }, [showPreloader]);
   
