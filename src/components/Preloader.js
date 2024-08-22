@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import "../style/Preloader.css";
 import loadgif from "../Photos/Home/Dual Ring.gif";
 import dash from "../Photos/Preloader/dash.png"
+import animation from "../Photos/Preloader/animation.gif"
 
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -218,6 +219,13 @@ export default function Preloader() {
               </svg>
             </div>
 
+          </div>
+
+          <div className="h-44 w-auto xl:hidden relative z-10">
+            <img
+            className="h-full w-full object-cover rounded-lg"
+            src= {animation}
+            />
           </div>
 
           <div className="gif absolute hidden sm:hidden xl:flex bottom-12 opacity-0 z-20">
