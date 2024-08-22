@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
@@ -47,6 +47,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 export default function Home() {
+
   const latestPost = [
     {
       title: "The Future of Healthcare : AI Innovations",
@@ -155,41 +156,10 @@ export default function Home() {
     if (swiperRef && swiperRef.current && swiperRef.current.swiper) {
       swiperRef.current.swiper.slidePrev();
     }
-  };
-
-  const animationRef = useRef(null);
-
-  useGSAP(() => {
-    // const rightPhotoItems = gsap.utils.toArray(".right-photo-item");
-    // rightPhotoItems.forEach(function (item, index) {
-    //   item.style.zIndex = rightPhotoItems.length - index;
-    // });
-    // gsap.set(".right-photo-item", {
-    //   clipPath: "inset(0px 0px 0px 0px)",
-    // });
-    // animationRef.current = gsap.to(".right-photo-item:not(:last-child)", {
-    //   clipPath: "inset(0px 0px 100% 0px)",
-    //   stagger: 0.5,
-    //   ease: "none",
-    // });
-    // ScrollTrigger.create({
-    //   trigger: ".projects",
-    //   scroller: "body",
-    //   start: "top top",
-    //   end: "bottom bottom",
-    //   animation: animationRef.current,
-    //   scrub: 1,
-    // });
-  });
-
-  // window.onload = function() {
-  //   const video = document.getElementById('myVideo');
-  //   video.playbackRate = 0.5;
-  // };
+  };  
 
   return (
     <>
-      <Preloader/>
 
       {/* Landing page */}
       <div className="h-[120vh] sm:h-[72vh] xl:h-[105vh] 2xl:h-[105vh] w-full flex items-end bg-white relative z-10 overflow-hidden">
