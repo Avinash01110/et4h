@@ -162,7 +162,7 @@ export default function Home() {
     <>
 
       {/* Landing page */}
-      <div className="h-[120vh] sm:h-[72vh] xl:h-[75vh] 2xl:h-[75vh] w-full flex items-end bg-white relative z-10 overflow-hidden">
+      <div className="h-[120vh] sm:h-[72vh] xl:h-[110vh] 2xl:h-[75vh] w-full flex items-end bg-white relative z-10 overflow-hidden">
         
         <div className="absolute sm:hidden xl:flex xl:h-[50rem] xl:w-[50rem] 2xl:h-[55rem] 2xl:w-[55rem] bg-lightblue z-0 rounded-xl rotate-45 -left-12 -bottom-16"></div>
         
