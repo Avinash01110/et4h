@@ -42,6 +42,9 @@
 
 
 .gallery {
+  @media screen and (min-width: 1536px) {
+    --size: 110px;
+  }
   --size: 100px;
   display: grid;
   grid-template-columns: repeat(6, var(--size));

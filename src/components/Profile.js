@@ -45,7 +45,7 @@ export default function Profile({ info, open, close }) {
       --> */}
               <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg h-auto border border-solid border-darkblue">
 
-                <div className="h-auto w-full bg-lightblue p-5 flex flex-row items-start gap-x-5 border-b border-solid border-darkblue">
+                <div className="h-auto w-full bg-lightblue p-5 flex flex-col sm:flex-row items-center gap-x-5 gap-y-2 border-b border-solid border-darkblue">
                   <div className="profile h-40 w-40 bg-blue overflow-hidden border border-solid border-grey">
                     <img
                       className="h-full w-full object-cover"
@@ -53,9 +53,9 @@ export default function Profile({ info, open, close }) {
                       alt="error"
                     />
                   </div>
-                  <div className="flex flex-col gap-y-4">
-                    <div className="h-auto w-52 flex flex-col gap-y-1 mt-2">
-                      <span className="text-base font-sans font-semibold text-darkblue capitalize">
+                  <div className="flex flex-col gap-y-4 w-full sm:w-auto">
+                    <div className="h-auto w-auto sm:w-52 flex flex-col gap-y-1 mt-2">
+                      <span className="text-center sm:text-start text-base font-sans font-semibold text-darkblue capitalize">
                         Avinash Gupta
                       </span>
                       <span className="text-sm font-sans font-semibold">
@@ -103,7 +103,7 @@ export default function Profile({ info, open, close }) {
                   </div>
                 </div>
 
-                <div className="bg-gray-50 h-52 w-full p-5 overflow-hidden text-sm text-justify font-medium font-sans">
+                <div className="bg-gray-50 h-52 w-full p-5 overflow-y-scroll text-sm text-justify font-medium font-sans">
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
                 </div>
 
@@ -111,7 +111,7 @@ export default function Profile({ info, open, close }) {
                   <button
                     onClick={close}
                     type="button"
-                    className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 bg-lightblue shadow-sm ring-1 ring-inset ring-darkblue hover:bg-gray-50 sm:mt-0 sm:w-auto"
+                    className="mt-3 inline-flex w-full justify-center rounded-md px-3 py-2 text-sm font-semibold text-gray-900 bg-white shadow-sm ring-1 ring-inset ring-darkblue hover:bg-gray-50 sm:mt-0 sm:w-auto"
                   >
                     Close
                   </button>

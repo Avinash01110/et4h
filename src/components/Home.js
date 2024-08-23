@@ -1,7 +1,7 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import { Helmet } from 'react-helmet-async';
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-
 
 import lp_image1 from "../Photos/Home/landingPage/lp_image1.png";
 import lp1 from "../Photos/Home/landingPage/lp1.jpg";
@@ -19,6 +19,7 @@ import breastimage from "../Photos/Projects/breastimage.png";
 import ECGimage from "../Photos/Projects/ECGimage.png";
 import EEGimage from "../Photos/Projects/EEGimage.png";
 import about_us2 from "../Photos/Home/about_us2.png";
+import vision from "../Photos/Home/vision1.jpg";
 import image from "../Photos/Home/image.png";
 import v1 from "../Video/v1.mp4";
 import v2 from "../Video/v2.mp4";
@@ -26,10 +27,12 @@ import v3 from "../Video/v3.mp4";
 import v4 from "../Video/v4.mp4";
 import v5 from "../Video/v5.mp4";
 import { FaRegLightbulb } from "react-icons/fa";
-import { GiShakingHands } from "react-icons/gi";
+import { GiShakingHands, GiArtificialIntelligence } from "react-icons/gi";
 import { IoAccessibilityOutline } from "react-icons/io5";
+import { SiFuturelearn } from "react-icons/si";
+import { GrTechnology } from "react-icons/gr";
+import { MdOutlineHealthAndSafety } from "react-icons/md";
 
-import Preloader from "./Preloader";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -45,6 +48,7 @@ gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 
 export default function Home() {
+
   const latestPost = [
     {
       title: "The Future of Healthcare : AI Innovations",
@@ -153,57 +157,47 @@ export default function Home() {
     if (swiperRef && swiperRef.current && swiperRef.current.swiper) {
       swiperRef.current.swiper.slidePrev();
     }
-  };
-
-  const animationRef = useRef(null);
-
-  useGSAP(() => {
-    // const rightPhotoItems = gsap.utils.toArray(".right-photo-item");
-
-    // rightPhotoItems.forEach(function (item, index) {
-    //   item.style.zIndex = rightPhotoItems.length - index;
-    // });
-
-    // gsap.set(".right-photo-item", {
-    //   clipPath: "inset(0px 0px 0px 0px)",
-    // });
-
-    // animationRef.current = gsap.to(".right-photo-item:not(:last-child)", {
-    //   clipPath: "inset(0px 0px 100% 0px)",
-    //   stagger: 0.5,
-    //   ease: "none",
-    // });
-
-    // ScrollTrigger.create({
-    //   trigger: ".projects",
-    //   scroller: "body",
-    //   start: "top top",
-    //   end: "bottom bottom",
-    //   animation: animationRef.current,
-    //   scrub: 1,
-    // });
-    
-  });
+  };  
 
   return (
     <>
-      <Preloader/>
+
+      <Helmet>
+        <title>Home | Emerging Tech 4 Health - AI-Powered Health Research</title>
+        <meta name="description" content="Emerging Tech 4 Health is a platform dedicated to showcasing cutting-edge research in the health sector, powered by Artificial Intelligence. Explore the latest innovations, breakthroughs, and applications of AI in healthcare." />
+      </Helmet>
 
       {/* Landing page */}
-      <div className="h-[100vh] w-full flex items-end bg-white relative z-10 overflow-hidden">
-        <div className="absolute h-[45rem] w-[45rem] bg-lightblue z-0 rounded-xl rotate-45 -left-12 -bottom-16"></div>
-        <div className="h-96 w-96 rounded-xl absolute right-14 top-0 -rotate-45 bg-lightgrey opacity-60"></div>
-        <div className="h-[29rem] w-full flex z-10">
-          <div className="left w-1/2 h-full px-20 font-sans">
-            <div className="flex w-[25rem] h-full flex-col justify-center items-start gap-y-6">
-              <h1 className="text-5xl uppercase font-bold text-blue">
+      <div className="h-[120vh] sm:h-[72vh] xl:h-[110vh] 2xl:h-[75vh] w-full flex items-end bg-white relative z-10 overflow-hidden">
+        
+        <div className="absolute sm:hidden xl:flex xl:h-[50rem] xl:w-[50rem] 2xl:h-[55rem] 2xl:w-[55rem] bg-lightblue z-0 rounded-xl rotate-45 -left-12 -bottom-16"></div>
+        
+        <div className="sm:hidden xl:flex xl:h-[26rem] xl:w-[26rem] 2xl:h-[30rem] 2xl:w-[30rem] rounded-xl absolute right-14 top-0 -rotate-45 bg-lightgrey opacity-60"></div>
+
+        <div className="xl:hidden h-full w-full absolute overflow-hidden">
+          <video
+            src={v2}
+            className="h-full w-full object-cover"
+            autoPlay
+            loop
+            muted
+            id="myVideo"
+          /> 
+        </div>
+
+        <div className="xl:hidden h-full w-full bg-lightblue bg-opacity-65 backdrop-blur-5xl absolute"></div>
+        
+        <div className="h-full sm:h-full xl:h-[39rem] 2xl:h-[35rem] w-full flex sm:items-center sm:justify-center z-10">
+          <div className="left xl:w-1/2 2xl:w-2/3 h-full px-4 sm:px-4 md:px-10 lg:px-20 font-sans mt-0 lg:mt-8 xl:mt-0">
+            <div className="flex w-full 2xl:w-full h-full flex-col justify-center items-center sm:items-center xl:items-start gap-y-10 sm:gap-y-10 xl:gap-y-6">
+              <h1 className="text-4xl xs:text-5xl text-center sm:text-center lg:text-start uppercase font-bold text-blue">
                 Revolution
-                <span className="text-5xl uppercase font-bold text-grey">
+                <span className="text-4xl xs:text-5xl text-center sm:text-center lg:text-start uppercase font-bold text-grey">
                   izing
                 </span>{" "}
                 Healthcare
               </h1>
-              <h4 className="text-base capitalize text-justify text-grey opacity-80 font-semibold">
+              <h4 className="text-xl sm:text-xl xl:text-base capitalize text-center sm:text-center xl:text-justify text-grey xl:opacity-80 font-bold xl:font-semibold">
                 Welcome to EmergingTech4Health, where AI meets medical
                 innovation. Our mission: harness AI to tackle challenging
                 medical problems, transforming diagnosis, treatment, and
@@ -217,7 +211,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="right w-1/2 h-full flex justify-center items-center">
+          <div className="right xl:w-1/2 2xl:w-2/3 h-full hidden sm:hidden xl:flex justify-center items-center">
             <div className="gallery">
               <img src={lp1} alt="error" />
               <img src={lp2} alt="error" />
@@ -233,21 +227,21 @@ export default function Home() {
       </div>
 
       {/* Our Members - Logos */}
-      <div className="border-b-2 border-darkblue h-auto w-full bg-lightblue px-28 py-28 flex flex-col items-center gap-y-12">
-        <h2 className="text-5xl text-blue font-sans font-bold uppercase [text-shadow:3px_6px_10px_var(--tw-shadow-color)] shadow-grey">
+      <div className="border-b-2 border-darkblue h-auto w-full bg-lightblue px-0 sm:px-2 md:px-18 lg:px-24 xl:px-28 py-28 flex flex-col items-center gap-y-12">
+        <h2 className="text-4xl sm:text-5xl text-blue font-sans font-bold uppercase [text-shadow:3px_6px_10px_var(--tw-shadow-color)] shadow-grey">
           Our Members
         </h2>
 
         <div className="h-full w-full relative flex overflow-x-hidden justify-center items-center">
           <div
-            className="absolute h-full w-96 top-0 left-0 z-10 gradient"
+            className="absolute h-full w-40 xs:w-60 sm:w-80 md:w-96 top-0 left-0 z-10 gradient"
             style={{
               background:
                 "linear-gradient(to left, rgba(255, 255, 255, 0), #E8EEFD",
             }}
           ></div>
           <div
-            className="absolute h-full w-96 top-0 right-0 z-10 gradient"
+            className="absolute h-full w-40 xs:w-60 sm:w-80 md:w-96 top-0 right-0 z-10 gradient"
             style={{
               background:
                 "linear-gradient(to right, rgba(255, 255, 255, 0), #E8EEFD",
@@ -273,12 +267,12 @@ export default function Home() {
       </div>
 
       {/* Latest Post */}
-      <div className="border-b-2 border-darkblue h-auto w-full bg-purewhite flex justify-center items-center py-20 relative z-10 overflow-hidden">
+      <div className="border-b-2 border-darkblue h-auto w-full bg-purewhite flex justify-center items-center py-20 px-4 sm:px-0 relative z-10 overflow-hidden">
         <div className="bg-shape1 bg-teal opacity-50 bg-blur"></div>
         <div className="bg-shape2 bg-primary opacity-50 bg-blur"></div>
         <div className="bg-shape3 bg-purple opacity-50 bg-blur"></div>
 
-        <div className="crousel h-auto w-3/4 bg-lightblue rounded-lg p-10 flex flex-col gap-y-10 shadow-lg shadow-grey z-10">
+        <div className="crousel h-auto w-full sm:w-[35rem] md:w-11/12 lg:w-5/6 xl:w-4/5 2xl:w-3/4 bg-lightblue rounded-lg p-5 sm:p-10 flex flex-col gap-y-10 shadow-lg shadow-grey z-10">
           <h2 className="text-4xl text-grey font-sans font-bold uppercase [text-shadow:3px_6px_10px_var(--tw-shadow-color)] shadow-grey">
             Latest Posts
           </h2>
@@ -292,7 +286,7 @@ export default function Home() {
             autoplay={{
               delay: 2000,
               disableOnInteraction: false,
-              pauseOnMouseEnter: true
+              pauseOnMouseEnter: true,
             }}
             spaceBetween={30}
             loop={true}
@@ -304,17 +298,17 @@ export default function Home() {
           >
             {latestPost.map((post, index) => (
               <SwiperSlide key={index}>
-                <div className="h-[20rem] w-full bg-white p-10 flex flex-row rounded-lg">
-                  <div className="h-full w-7/12 p-4 flex flex-col justify-between">
-                    <div className="flex flex-col gap-y-5 pr-16">
-                      <h3 className="text-2xl text-blue font-bold font-sans">
+                <div className="h-auto lg:h-[20rem] w-full bg-white p-5 sm:p-10 flex flex-col-reverse lg:flex-row rounded-lg">
+                  <div className="h-auto md:h-full w-auto lg:w-7/12 p-4 flex flex-col justify-between items-center lg:items-start gap-y-8">
+                    <div className="flex flex-col gap-y-5 pr-2 lg:pr-16">
+                      <h3 className="text-2xl text-justify sm:text-start text-blue font-bold font-sans">
                         {post.title}
                       </h3>
-                      <p className="text-grey text-sm font-medium font-sans">
+                      <p className="text-grey text-justify text-sm font-medium font-sans">
                         {post.description}
                       </p>
                     </div>
-                    <div>
+                    <div className="content-start">
                       <Link to={post.link}>
                         <button className="button bg-blue text-[#FFFFFF] py-2 px-3 rounded-lg text-sm font-medium font-sans active:bg-blue hover:bg-darkblue hover:shadow-md hover:shadow-lightgrey transition ease-in-out duration-300">
                           Read More
@@ -322,7 +316,7 @@ export default function Home() {
                       </Link>
                     </div>
                   </div>
-                  <div className="h-full w-5/12">
+                  <div className="h-full w-auto lg:w-5/12">
                     <img
                       className="h-full w-full object-cover rounded-lg"
                       src={post.image}
@@ -359,9 +353,11 @@ export default function Home() {
 
       {/* Our Mission */}
       <div className="h-auto w-full bg-lightblue flex items-center justify-center">
-        <div className="h-96 w-full flex flex-row px-12">
-          <div className="left h-full w-6/12 flex flex-col justify-center gap-y-5 px-6">
-            <h3 className="text-4xl text-darkblue font-bold font-sans">Our Mission</h3>
+        <div className="h-auto lg:h-96 w-full flex flex-col-reverse lg:flex-row justify-center items-center px-4 sm:px-12">
+          <div className="left h-full w-full lg:w-6/12 flex flex-col justify-center gap-y-5 px-0 lg:px-6">
+            <h3 className="text-4xl text-darkblue font-bold font-sans">
+              Our Mission
+            </h3>
             <p className="text-grey font-semibold opacity-80 text-justify font-sans">
               At EmergingTech4Health, our mission is to harness the power of AI
               and emerging technologies to create a future where healthcare is
@@ -371,7 +367,7 @@ export default function Home() {
               future of healthcare – we are building it.
             </p>
           </div>
-          <div className="right h-full w-6/12 px-6 py-12 rounded-lg">
+          <div className="right h-full w-full lg:w-6/12 px-0 lg:px-6 py-12 rounded-lg">
             <img
               className="h-full w-full object-cover rounded-lg border-2 border-grey"
               src={about_us2}
@@ -382,31 +378,64 @@ export default function Home() {
       </div>
 
       {/* Our Vision */}
-      <div className="border-b-2 border-grey h-auto w-full px-16 flex flex-col items-center justify-center gap-y-10 py-16 bg-lightblue">
-        <h2 className="text-4xl text-darkblue font-bold font-sans">Our Vision</h2>
-        <div
-          className="w-full h-[35rem] rounded-lg relative bg-cover bg-center bg-no-repeat px-60 py-4"
-          style={{ backgroundImage: `url(${image})` }}
-        >
-          <p className="text-sm text-grey items-center font-bold opacity-80 font-sans">
-            Our vision is to lead the way in integrating AI with healthcare,
-            creating solutions that not only solve today’s medical problems but
-            also anticipate tomorrow's challenges. We believe in a world where
-            every patient benefits from the advancements in medical technology,
-            and every healthcare provider is empowered with the tools they need
-            to deliver exceptional care.
-          </p>
+      <div className="border-b-2 border-grey h-auto w-full lg:px-4 xl:px-10 2xl:px-16 flex flex-col items-center justify-center gap-y-10 py-16 bg-lightblue">
+        <h2 className="text-4xl text-darkblue font-bold font-sans">
+          Our Vision
+        </h2>
+        <p className="px-4 sm:px-12 md:px-12 lg:px-24 xl:px-32 font-sans font-bold text-sm text-grey text-justify opacity-80">
+          Our vision is to lead the way in integrating AI with healthcare,
+          creating solutions that not only solve today’s medical problems but
+          also anticipate tomorrow's challenges. We believe in a world where
+          every patient benefits from the advancements in medical technology,
+          and every healthcare provider is empowered with the tools they need to
+          deliver exceptional care.
+        </p>
+        <div className="lg:h-[45rem] xl:h-[40rem] w-full flex flex-col-reverse sm:flex-col-reverse lg:flex-row px-4 sm:px-12 gap-x-4 justify-center items-center">
+          <div className="left h-full w-full lg:w-6/12 flex flex-col justify-start gap-y-5 px-0 sm:px-0 lg:px-6">
+
+            <div className="h-auto w-full py-5 flex flex-col gap-y-2 border-b-2 border-grey hover:border-blue group transition ease-in-out duration-300 cursor-pointer">
+              <div className="h-10 w-10 bg-white rounded-lg flex justify-center items-center border border-grey group-hover:border-blue transition ease-in-out duration-300"><GiArtificialIntelligence className="text-2xl group-hover:text-blue transition ease-in-out duration-300"/></div>
+              <h3 className="text-lg font-sans font-bold text-grey group-hover:text-blue transition ease-in-out duration-300">Integrating AI with Healthcare</h3>
+              <span className="text-sm text-grey font-sans font-bold opacity-80">Pioneering the integration of AI to revolutionize medical solutions.</span>
+            </div>
+            <div className="h-auto w-full py-5 flex flex-col gap-y-2 border-b-2 border-grey hover:border-blue group transition ease-in-out duration-300 cursor-pointer">
+            <div className="h-10 w-10 bg-white rounded-lg flex justify-center items-center border border-grey group-hover:border-blue transition ease-in-out duration-300"><SiFuturelearn className="text-2xl group-hover:text-blue transition ease-in-out duration-300"/></div>
+              <h3 className="text-lg font-sans font-bold text-grey group-hover:text-blue transition ease-in-out duration-300">Anticipating Future Challenges</h3>
+              <span className="text-sm text-grey font-sans font-bold opacity-80">Innovating today to solve tomorrow's healthcare challenges.</span>
+            </div>
+            <div className="h-auto w-full py-5 flex flex-col gap-y-2 border-b-2 border-grey hover:border-blue group transition ease-in-out duration-300 cursor-pointer">
+            <div className="h-10 w-10 bg-white rounded-lg flex justify-center items-center border border-grey group-hover:border-blue transition ease-in-out duration-300"><GrTechnology className="text-2xl group-hover:text-blue transition ease-in-out duration-300"/></div>
+            
+              <h3 className="text-lg font-sans font-bold text-grey group-hover:text-blue transition ease-in-out duration-300">Patient-Centered Technology</h3>
+              <span className="text-sm text-grey font-sans font-bold opacity-80">Ensuring every patient benefits from cutting-edge medical advancements.</span>
+            </div>
+            <div className="h-auto w-full py-5 flex flex-col gap-y-2 border-b-2 border-grey hover:border-blue group transition ease-in-out duration-300 cursor-pointer">
+              <div className="h-10 w-10 bg-white rounded-lg flex justify-center items-center border border-grey group-hover:border-blue transition ease-in-out duration-300"><MdOutlineHealthAndSafety className="text-2xl group-hover:text-blue transition ease-in-out duration-300"/></div>
+              <h3 className="text-lg font-sans font-bold text-grey group-hover:text-blue transition ease-in-out duration-300">Empowering Healthcare Providers</h3>
+              <span className="text-sm text-grey font-sans font-bold opacity-80">Equipping healthcare providers with AI tools for exceptional care delivery.</span>
+            </div>
+
+          </div>
+          <div className="right h-96 lg:h-full w-full lg:w-6/12 px-0 sm:px-0 lg:px-6 rounded-lg">
+            <img
+              className="h-full w-full object-cover rounded-lg border-2 border-grey"
+              src={vision}
+              alt="error"
+            />
+          </div>
         </div>
       </div>
 
       {/* Our Core Values */}
-      <div className="h-auto w-full px-16 flex flex-col items-center justify-center gap-y-10 py-16 bg-white">
-        <h2 className="text-4xl text-darkblue font-bold font-sans">Our Core Values</h2>
-        <div className="h-96 w-full flex flex-row items-center justify-between px-10">
+      <div className="h-auto w-full px-4 sm:px-10 xl:px-16 flex flex-col items-center justify-center gap-y-10 py-16 bg-white">
+        <h2 className="text-4xl text-darkblue font-bold font-sans">
+          Our Core Values
+        </h2>
+        <div className="h-auto xl:h-96 w-full flex flex-wrap gap-10 flex-row items-center justify-center xl:justify-between sm:px-5 xl:px-10">
           {coreValues.map((value, index) => (
             <div
               key={index}
-              className="h-80 w-[19rem] bg-blue flex flex-col justify-center items-center px-6 gap-y-8 rounded-lg group"
+              className="h-auto sm:h-80 w-[19rem] bg-blue flex flex-col justify-center items-center p-6 sm:px-6 gap-y-8 rounded-lg group"
             >
               <div className="flex flex-row gap-x-4 items-center justify-start w-full">
                 <div className="flex h-10 w-10 flex-none items-center justify-center rounded-full bg-lightgrey group-hover:bg-purewhite transition ease-in-out duration-300">
@@ -427,65 +456,12 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Active Project */}
-      {/* <div className="border-b-2 border-grey bg-lightblue h-auto w-full flex flex-col items-center py-20 gap-y-1">
-        <h2 className="text-5xl text-blue font-bold uppercase [text-shadow:2px_4px_5px_var(--tw-shadow-color)] shadow-grey">
-          Active Projects
-        </h2>
-
-        <div className="projects w-full h-auto px-16 flex flex-row">
-          
-          <div className="left w-1/2 h-auto flex items-center justify-center">
-              <div className="projects-text">
-              {Projects.map((project, index) => (
-                <div key={index} className="h-[100vh] project-info flex flex-col justify-center gap-y-10">
-                  <div className="flex flex-col gap-y-1">
-                    <span className="text-2xl text-grey font-semibold">
-                      {project.index}
-                    </span>
-                    <h3 className="text-4xl text-grey font-bold">
-                      {project.title}
-                    </h3>
-                    <span className="text-base text-grey">
-                      {project.description}
-                    </span>
-                  </div>
-                  <Link to={project.link}>
-                    <button className="button bg-blue text-[#FFFFFF] py-2 px-3 rounded-lg text-sm font-medium active:bg-blue hover:bg-darkblue hover:shadow-md hover:shadow-lightgrey transition ease-in-out duration-300">
-                      View More
-                    </button>
-                  </Link>
-                </div>
-              ))}
-              </div>
-          </div>
-
-
-          <div className="right w-1/2 h-auto">
-            <div className="right-b1 flex flex-col justify-center sticky top-0 w-full h-[100vh]">
-              <div
-                useRef={animationRef}
-                className="right-photo h-96 w-[40rem] relative"
-              >
-                {Projectsimage.map((project, index) => (
-                <div key={index} className="right-photo-item w-full h-full py-5 px-10 absolute">
-                  <img
-                    className="h-full w-full object-cover rounded-lg block border-2 border-grey"
-                    src={project.image}
-                    alt="error"
-                  />
-                </div>
-                 ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> */}
+      
 
       {/* About us */}
       <div className="h-[30rem] w-full bg-lightblue flex justify-start items-center relative group overflow-hidden">
-        <div className="about bg-[url('https://img.freepik.com/free-photo/medium-shot-scientists-lab_23-2148970019.jpg?t=st=1712730077~exp=1712733677~hmac=bedf57e8cb70e08b3778d1ee268ea54a591de2697719a6ed13c7327098a90c1c&w=740')] h-full w-full bg-cover bg-no-repeat gradient-mask-l-[rgba(0,0,0,1.0)_10%,rgba(0,0,0,1.0)_30px,rgba(0,0,0,0.3)_40%] group-hover:scale-110 transition ease-in-out duration-1000"></div>
-        <div className="w-[35rem] h-full flex flex-col justify-center items-center gap-y-10 absolute p-8 ml-10">
+        <div className="about bg-[url('https://img.freepik.com/free-photo/medium-shot-scientists-lab_23-2148970019.jpg?t=st=1712730077~exp=1712733677~hmac=bedf57e8cb70e08b3778d1ee268ea54a591de2697719a6ed13c7327098a90c1c&w=740')] h-full w-full bg-cover bg-no-repeat bg-start gradient-mask-l-[rgba(0,0,0,1.0)_10%,rgba(0,0,0,1.0)_30px,rgba(0,0,0,0.3)_40%] group-hover:scale-110 transition ease-in-out duration-1000"></div>
+        <div className="w-full lg:w-[35rem] h-full flex flex-col justify-center items-center gap-y-10 absolute p-8 lg:ml-10 bg-white bg-opacity-10 backdrop-blur-sm">
           <div className="flex flex-col gap-y-7">
             <h3 className="text-blue text-5xl font-bold font-sans">About Us</h3>
             <span className="text-grey text-sm font-medium text-justify opacity-80 font-sans">
@@ -507,7 +483,7 @@ export default function Home() {
       </div>
 
       {/* Projects */}
-      <div className="h-auto w-full bg-white">
+      {/* <div className="h-auto w-full bg-white">
         <div className="flex h-screen w-full p-6 pt-24 flex-col items-center justify-center xl:text-slate-400">
           <div className="grid h-full w-full grid-cols-3 gap-4">
             <Link to={"/Projects"} className="col-span-2 row-span-3 rounded-3xl bg-slate-200 hover:scale-95 transition duration-500 ease-in-out overflow-hidden">
@@ -527,11 +503,11 @@ export default function Home() {
             </Link>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* Our Leadership */}
-      <div className="h-auto w-full flex flex-row items-center bg-white">
-        <div className="h-auto w-7/12">
+      <div className="h-auto w-full flex flex-col pb-16 sm:pb-16 sm:flex-col lg:py-0 lg:flex-row items-center bg-white">
+        <div className="h-auto w-auto lg:w-5/10 xl:w-6/12 2xl:w-7/12">
           <video
             src={leadership}
             className="h-full w-full object-cover p-2"
@@ -540,10 +516,12 @@ export default function Home() {
             muted
           />
         </div>
-        <div className="h-full w-5/12">
-          <div className="w-[35rem] h-full flex flex-col justify-center items-center gap-y-10 px-8">
-            <div className="flex flex-col gap-y-7">
-              <h3 className="text-grey text-5xl font-bold font-sans">Our Leadership</h3>
+        <div className="h-full w-auto lg:py-16 lg:w-5/10 xl:w-6/12 2xl:py-0 2xl:w-5/12">
+          <div className="w-auto h-full flex flex-col justify-center items-center gap-y-10 px-8">
+            <div className="flex flex-col flex-wrap gap-y-7">
+              <h3 className="text-grey text-5xl font-bold font-sans">
+                Our Leadership
+              </h3>
               <span className="text-grey text-sm font-medium text-justify opacity-80 font-sans">
                 Meet the visionary leaders behind EmergingTech4Health. Our
                 leadership team brings together expertise in artificial

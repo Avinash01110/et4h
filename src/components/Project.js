@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
+import { Helmet } from 'react-helmet-async';
 import about_us2 from "../Photos/Home/about_us2.png";
 import lp1 from "../Photos/Home/landingPage/lp1.jpg";
 import { FaPlus } from "react-icons/fa6";
@@ -38,6 +39,11 @@ export default function Project() {
 
   return (
     <>
+      <Helmet>
+        <title>{title} | Emerging Tech 4 Health - AI-Powered Health Research</title>
+        <meta name="description" content="Emerging Tech 4 Health is a platform dedicated to showcasing cutting-edge research in the health sector, powered by Artificial Intelligence. Explore the latest innovations, breakthroughs, and applications of AI in healthcare." />
+      </Helmet>
+
       <div className="h-[82vh] w-full flex items-end bg-lightblue">
         <div className="h-96 w-full relative">
           <img className="h-full w-full object-cover" src={lp1} alt="error" />

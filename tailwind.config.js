@@ -17,6 +17,9 @@ module.exports = {
         rosepink: "#FF204E",
         mustardyellow: "#FFC94A",
       },
+      screens: {
+        'xs': '480px',
+      },
       animation: {
         marquee: "marquee 25s linear infinite",
         marquee2: "marquee2 25s linear infinite",

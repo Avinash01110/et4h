@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import Home from "./components/Home";
 import About from "./components/About";
@@ -19,17 +19,49 @@ import ProfileList from "./components/ProfileList";
 import ProjectList from "./components/ProjectList";
 import SinglePost from "./components/SinglePost";
 import PageNotFound from "./components/PageNotFound";
+
 import Publication from "./components/publicatoin";
+
+import Preloader from "./components/Preloader";
+import Loader from "./components/Loader";
+
 function App() {
+
+  const [showPreloader, setShowPreloader] = useState(true);
+  const [loading, setLoading] = useState(false);
+
   const location = useLocation();
 
   const paths = ["/admin/dashboard", "/admin/login", "/admin/signup", "/admin/verify-email", "/admin/profile"];
 
   const showNavbarAndFooter = !paths.includes(location.pathname.toLowerCase());
 
+  useEffect(() => {
+    if (showPreloader) {
+      setTimeout(() => {
+        setShowPreloader(false);
+      }, 17100);
+    }
+  }, [showPreloader]);
+  
+  
+  useEffect(() => {
+    if(!showPreloader){
+      setLoading(true);
+    }
+    const timeoutId = setTimeout(() => {
+      setLoading(false);
+    }, 5050);
+
+    return () => clearTimeout(timeoutId);
+  }, [location]);
+
   return (
     <>
-      {showNavbarAndFooter && <Navbar />}
+    {showPreloader && <Preloader />}
+    {loading && <Loader/>}
+      {!showPreloader && !loading && showNavbarAndFooter && <Navbar />}
+      {!showPreloader && !loading && (
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
@@ -49,7 +81,8 @@ function App() {
         <Route path="post/:postId" element={<SinglePost/>}/>
         <Route path="pub" element={<Publication/>}/>
       </Routes>
-      {showNavbarAndFooter && <Footer />}
+      )}
+      {!showPreloader && !loading && showNavbarAndFooter && <Footer />}
       <Toaster />
     </>
   );
