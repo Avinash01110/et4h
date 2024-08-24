@@ -47,3 +47,10 @@ GET_ALL_PUBLICATIONS_API: BASE_URL + "/publication/showAllPublications",
 UPDATE_PUBLICATION_API: BASE_URL + "/publication/updatePublication",
 DELETE_PUBLICATION_API: BASE_URL + "/publication/deletePublication",
 }
+
+export const frontPageEndpoints = {
+CREATE_FRONT_PAGE_API: BASE_URL + "/frontPage/createFrontPage",
+UPDATE_FRONT_PAGE_API: BASE_URL + "/frontPage/updateFrontPage",
+DELETE_FRONT_PAGE_API: BASE_URL + "/frontPage/deleteFrontPage",
+GET_ALL_FRONT_PAGES_API: BASE_URL + "/frontPage/frontPages",
+}

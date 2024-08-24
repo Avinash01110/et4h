@@ -19,14 +19,14 @@ export default function Sidebar({setcurrentMenu}) {
       <div className="min-w-56 h-full bg-black flex flex-col overflow-y-scroll no-scrollbar border-r border-solid border-white/20">
         <div className="flex flex-col gap-y-5 w-full py-12 px-6">
           {/* Analytics */}
-          <div className="h-auto w-full flex justify-center py-2 px-2 group hover:bg-white/10 hover:bg-opacity-10 rounded-lg active:bg-white/15 border border-solid border-white/20">
+          {/* <div className="h-auto w-full flex justify-center py-2 px-2 group hover:bg-white/10 hover:bg-opacity-10 rounded-lg active:bg-white/15 border border-solid border-white/20">
             <span className="text-white text-md font-semibold font-sans group-hover:[text-shadow:1px_3px_15px_var(--tw-shadow-color)] shadow-white tracking-wide">
               Analytics
             </span>
-          </div>
+          </div> */}
 
           {/* Home */}
-          <div className="flex flex-col">
+          {/* <div className="flex flex-col">
             <div
               onClick={() => {
                 setHome(!Home);
@@ -66,7 +66,7 @@ export default function Sidebar({setcurrentMenu}) {
                 </span>
               </div>
             )}
-          </div>
+          </div> */}
 
           {/* Projects */}
           {/* <div className="flex flex-col">
@@ -105,11 +105,12 @@ export default function Sidebar({setcurrentMenu}) {
             <div
               onClick={() => {
                 setCategory(!category);
+                handleMenuClick("projects")
               }}
               className="h-auto w-full flex justify-center py-2 px-4 flex flex-row justify-between items-center cursor-pointer group rounded-lg hover:bg-white/10 hover:bg-opacity-10 active:bg-white/15 border border-solid border-white/20"
             >
               <span className="text-white text-md font-semibold font-sans group-hover:[text-shadow:1px_3px_15px_var(--tw-shadow-color)] shadow-white tracking-wide">
-              <button onClick={() => handleMenuClick("projects")}>Projects</button>
+             Projects
               </span>
              
               
@@ -123,11 +124,12 @@ export default function Sidebar({setcurrentMenu}) {
             <div
               onClick={() => {
                 setCategory(!category);
+                handleMenuClick("profiles")
               }}
               className="h-auto w-full flex justify-center py-2 px-4 flex flex-row justify-between items-center cursor-pointer group rounded-lg hover:bg-white/10 hover:bg-opacity-10 active:bg-white/15 border border-solid border-white/20"
             >
               <span className="text-white text-md font-semibold font-sans group-hover:[text-shadow:1px_3px_15px_var(--tw-shadow-color)] shadow-white tracking-wide">
-              <button onClick={() => handleMenuClick("profiles")}>Profiles</button>
+              Profiles
               </span>
              
               
@@ -140,11 +142,12 @@ export default function Sidebar({setcurrentMenu}) {
             <div
               onClick={() => {
                 setCategory(!category);
+                handleMenuClick("publications")
               }}
               className="h-auto w-full flex justify-center py-2 px-4 flex flex-row justify-between items-center cursor-pointer group rounded-lg hover:bg-white/10 hover:bg-opacity-10 active:bg-white/15 border border-solid border-white/20"
             >
               <span className="text-white text-md font-semibold font-sans group-hover:[text-shadow:1px_3px_15px_var(--tw-shadow-color)] shadow-white tracking-wide">
-              <button onClick={() => handleMenuClick("publications")}>Publications</button>
+              Publications
               </span>
              
               
@@ -152,7 +155,7 @@ export default function Sidebar({setcurrentMenu}) {
            
           </div>
           {/* Grants */}
-          <div className="flex flex-col">
+          {/* <div className="flex flex-col">
             <div
               onClick={() => {
                 setGrants(!Grants);
@@ -183,10 +186,10 @@ export default function Sidebar({setcurrentMenu}) {
                 </span>
               </div>
             )}
-          </div>
+          </div> */}
 
           {/* Research & Development */}
-          <div className="flex flex-col">
+          {/* <div className="flex flex-col">
             <div
               onClick={() => {
                 setResearch(!Research);
@@ -217,18 +220,19 @@ export default function Sidebar({setcurrentMenu}) {
                 </span>
               </div>
             )}
-          </div>
+          </div> */}
             
             {/* Category */}
           <div className="flex flex-col">
             <div
               onClick={() => {
                 setCategory(!category);
+                handleMenuClick("categories")
               }}
               className="h-auto w-full flex justify-center py-2 px-4 flex flex-row justify-between items-center cursor-pointer group rounded-lg hover:bg-white/10 hover:bg-opacity-10 active:bg-white/15 border border-solid border-white/20"
             >
               <span className="text-white text-md font-semibold font-sans group-hover:[text-shadow:1px_3px_15px_var(--tw-shadow-color)] shadow-white tracking-wide">
-              <button onClick={() => handleMenuClick("categories")}>Category</button>
+              Category
               </span>
              
               
@@ -236,7 +240,7 @@ export default function Sidebar({setcurrentMenu}) {
            
           </div>
           {/* Publications */}
-          <div className="flex flex-col">
+          {/* <div className="flex flex-col">
             <div
               onClick={() => {
                 setCategory(!category);
@@ -247,6 +251,25 @@ export default function Sidebar({setcurrentMenu}) {
               font-sans group-hover:[text-shadow:1px_3px_15px_var(--tw-shadow-color)] 
               shadow-white tracking-wide" onClick={() => setcurrentMenu("publications")} >
   Publications
+              </span>
+             
+              
+            </div>
+           
+          </div> */}
+              {/* Front Page */}
+              <div className="flex flex-col">
+            <div
+              onClick={() => {
+                setCategory(!category);
+                setcurrentMenu("front")
+              }}
+              className="h-auto w-full flex justify-center py-2 px-4 flex flex-row justify-between items-center cursor-pointer group rounded-lg hover:bg-white/10 hover:bg-opacity-10 active:bg-white/15 border border-solid border-white/20"
+            >
+              <span className="text-white text-md font-semibold menu-item 
+              font-sans group-hover:[text-shadow:1px_3px_15px_var(--tw-shadow-color)] 
+              shadow-white tracking-wide"  >
+ Front Page
               </span>
              
               

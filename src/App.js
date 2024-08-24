@@ -24,7 +24,7 @@ import Publication from "./components/publicatoin";
 
 import Preloader from "./components/Preloader";
 import Loader from "./components/Loader";
-
+import FrontPagePosts from "./components/frontPagePosts";
 function App() {
 
   const [showPreloader, setShowPreloader] = useState(false);
@@ -80,6 +80,7 @@ function App() {
         <Route path="post" element={<ProjectList/>}/>
         <Route path="post/:postId" element={<SinglePost/>}/>
         <Route path="pub" element={<Publication/>}/>
+        <Route path="f" element={<FrontPagePosts/>}/>
       </Routes>
       )}
       {!showPreloader && !loading && showNavbarAndFooter && <Footer />}
