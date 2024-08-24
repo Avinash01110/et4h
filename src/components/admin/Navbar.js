@@ -12,6 +12,10 @@ export default function Navbar() {
   const toggleNav = () => {
     setNav(!Nav);
   }
+  const logout = () => {
+    localStorage.removeItem("token");
+    window.location.href = "/login";
+  }
 
   return (
     <>
@@ -67,22 +71,16 @@ export default function Navbar() {
                       tabindex="-1"
                     >
                       {/* <!-- Active: "bg-gray-100", Not Active: "" --> */}
-                      <a
-                        href="#"
-                        className="block px-4 py-2 text-sm text-gray-700"
-                        role="menuitem"
-                        tabindex="-1"
-                        id="user-menu-item-0"
-                      >
-                        Your Profile
-                      </a>
+                    
                       <a
                         href="#"
                         className="block px-4 py-2 text-sm text-gray-700"
                         role="menuitem"
                         tabindex="-1"
                         id="user-menu-item-2"
+                        onClick={logout}
                       >
+
                         Sign out
                       </a>
                     </div>}

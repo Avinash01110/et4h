@@ -56,7 +56,7 @@ export default function Dashboard() {
             )}
 
             {/* Add Projects Form */}
-            {currentMenu === "add project" && (
+            {/* {currentMenu === "add project" && (
               <div className="h-[28rem] w-[60rem] bg-black border border-solid border-white/30 rounded-lg mb-16 p-10 flex flex-col gap-y-5 overflow-y-scroll">
                 <div className="grid grid-cols-2 gap-5">
                   <div>
@@ -143,7 +143,7 @@ export default function Dashboard() {
                   </button>
                 </div>
               </div>
-            )}
+            )} */}
 
             {/* Add Team Form */}
             {currentMenu === "profiles" && (
@@ -203,6 +203,13 @@ export default function Dashboard() {
             {currentMenu === "publications" && (
               <div className="h-[28rem] w-[60rem] bg-black border border-solid border-white/30 rounded-lg mb-16 p-10 flex flex-col gap-y-5 overflow-y-scroll">
                 <Publications />
+              </div>
+            )}
+
+            {/* Add Category Form */}
+            {currentMenu === "categories" && (
+              <div className="h-[28rem] w-[60rem] bg-black border border-solid border-white/30 rounded-lg mb-16 p-10 flex flex-col gap-y-5 overflow-y-scroll">
+                <CategoryList />
               </div>
             )}
           </div>
