@@ -8,6 +8,7 @@ import ProfileList from "../ProfileList.js";
 import Publications from "../publicatoin.js";
 import { IoDesktopOutline } from "react-icons/io5";
 import FrontPagePosts from "../frontPagePosts.js"; // Correctly import the component
+import TeamManagement from "../TeamManagement.js";
 
 export default function Dashboard() {
   const [isOpen, setIsOpen] = useState(false);
@@ -128,6 +129,12 @@ export default function Dashboard() {
             {currentMenu === "front" && (
               <div className="h-[28rem] w-[60rem] bg-black border border-solid border-white/30 rounded-lg mb-16 p-10 flex flex-col gap-y-5 overflow-y-scroll">
                 <FrontPagePosts /> {/* Correctly render the FrontPagePosts component */}
+              </div>
+            )}
+            {/* Team */}
+            {currentMenu === "team" && (
+              <div className="h-[28rem] w-[60rem] bg-black border border-solid border-white/30 rounded-lg mb-16 p-10 flex flex-col gap-y-5 overflow-y-scroll">
+                <TeamManagement /> {/* Correctly render the FrontPagePosts component */}
               </div>
             )}
           </div>

@@ -54,3 +54,10 @@ UPDATE_FRONT_PAGE_API: BASE_URL + "/frontPage/updateFrontPage",
 DELETE_FRONT_PAGE_API: BASE_URL + "/frontPage/deleteFrontPage",
 GET_ALL_FRONT_PAGES_API: BASE_URL + "/frontPage/frontPages",
 }
+
+export const teamEndpoints = {
+ADD_TEAM_API: BASE_URL + "/team/add",
+GET_ALL_TEAMS_API: BASE_URL + "/team/all",
+UPDATE_TEAM_API: BASE_URL + "/team/update",
+DELETE_TEAM_API: BASE_URL + "/team/delete",
+}
