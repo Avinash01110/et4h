@@ -139,17 +139,18 @@ export default function Sidebar({setcurrentMenu}) {
           <div className="flex flex-col">
             <div
               onClick={() => {
-                setPublications(!Publications);
+                setCategory(!category);
               }}
               className="h-auto w-full flex justify-center py-2 px-4 flex flex-row justify-between items-center cursor-pointer group rounded-lg hover:bg-white/10 hover:bg-opacity-10 active:bg-white/15 border border-solid border-white/20"
             >
-             <span className="text-white text-md font-semibold font-sans group-hover:[text-shadow:1px_3px_15px_var(--tw-shadow-color)] shadow-white tracking-wide">
+              <span className="text-white text-md font-semibold font-sans group-hover:[text-shadow:1px_3px_15px_var(--tw-shadow-color)] shadow-white tracking-wide">
               <button onClick={() => handleMenuClick("publications")}>Publications</button>
               </span>
+             
+              
             </div>
            
           </div>
-
           {/* Grants */}
           <div className="flex flex-col">
             <div
@@ -234,7 +235,24 @@ export default function Sidebar({setcurrentMenu}) {
             </div>
            
           </div>
-
+          {/* Publications */}
+          <div className="flex flex-col">
+            <div
+              onClick={() => {
+                setCategory(!category);
+              }}
+              className="h-auto w-full flex justify-center py-2 px-4 flex flex-row justify-between items-center cursor-pointer group rounded-lg hover:bg-white/10 hover:bg-opacity-10 active:bg-white/15 border border-solid border-white/20"
+            >
+              <span className="text-white text-md font-semibold menu-item 
+              font-sans group-hover:[text-shadow:1px_3px_15px_var(--tw-shadow-color)] 
+              shadow-white tracking-wide" onClick={() => setcurrentMenu("publications")} >
+  Publications
+              </span>
+             
+              
+            </div>
+           
+          </div>
 
         </div>
       </div>

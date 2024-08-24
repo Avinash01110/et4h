@@ -8,6 +8,7 @@ import {
     getAllPublications
 } from '../services/operations/publicationAPI';
 import './publication.css'
+
 const Publications = () => {
     const [publications, setPublications] = useState([]);
     const [form, setForm] = useState({
@@ -103,11 +104,10 @@ const Publications = () => {
     };
 
     return (
-        <div>
+        <div className="container">
             <h1>Publications</h1>
-            <div className='bg-white'>
-
-            <button onClick={openModal}>Add New Publication</button>
+            <div>
+                <button onClick={openModal}>Add New Publication</button>
             </div>
 
             {isModalOpen && (
