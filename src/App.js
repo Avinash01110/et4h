@@ -19,13 +19,16 @@ import ProfileList from "./components/ProfileList";
 import ProjectList from "./components/ProjectList";
 import SinglePost from "./components/SinglePost";
 import PageNotFound from "./components/PageNotFound";
+
+import Publication from "./components/publicatoin";
+
 import Preloader from "./components/Preloader";
 import Loader from "./components/Loader";
-
-
+import FrontPagePosts from "./components/frontPagePosts";
+import TeamManagement from "./components/TeamManagement";
 function App() {
 
-  const [showPreloader, setShowPreloader] = useState(true);
+  const [showPreloader, setShowPreloader] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const location = useLocation();
@@ -45,7 +48,7 @@ function App() {
   
   useEffect(() => {
     if(!showPreloader){
-      setLoading(true);
+      // setLoading(true);
     }
     const timeoutId = setTimeout(() => {
       setLoading(false);
@@ -77,6 +80,9 @@ function App() {
         <Route path="/profile" element= {<ProfileList/>}/>
         <Route path="post" element={<ProjectList/>}/>
         <Route path="post/:postId" element={<SinglePost/>}/>
+        <Route path="pub" element={<Publication/>}/>
+        <Route path="f" element={<FrontPagePosts/>}/>
+        <Route path="t" element={<TeamManagement/>}/>
       </Routes>
       )}
       {!showPreloader && !loading && showNavbarAndFooter && <Footer />}

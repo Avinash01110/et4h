@@ -52,7 +52,7 @@ const Signup = () => {
     }
 
     return (
-        <div>
+        <div className="py-24">
             <form onSubmit={handleOnSubmit} className="flex flex-col">
                 <label>
                     Username

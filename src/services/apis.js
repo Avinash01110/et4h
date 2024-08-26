@@ -40,3 +40,24 @@ export const profileEndpoints = {
     DELETE_PROFILE_API:BASE_URL+"/profile/deleteProfile",
     GET_ALL_PROFILE_API:BASE_URL+"/profile/profiles", 
 }
+
+export const publicationEndpoints = {
+ADD_PUBLICATION_API: BASE_URL + "/publication/addPublication",
+GET_ALL_PUBLICATIONS_API: BASE_URL + "/publication/showAllPublications",
+UPDATE_PUBLICATION_API: BASE_URL + "/publication/updatePublication",
+DELETE_PUBLICATION_API: BASE_URL + "/publication/deletePublication",
+}
+
+export const frontPageEndpoints = {
+CREATE_FRONT_PAGE_API: BASE_URL + "/frontPage/createFrontPage",
+UPDATE_FRONT_PAGE_API: BASE_URL + "/frontPage/updateFrontPage",
+DELETE_FRONT_PAGE_API: BASE_URL + "/frontPage/deleteFrontPage",
+GET_ALL_FRONT_PAGES_API: BASE_URL + "/frontPage/frontPages",
+}
+
+export const teamEndpoints = {
+ADD_TEAM_API: BASE_URL + "/team/add",
+GET_ALL_TEAMS_API: BASE_URL + "/team/all",
+UPDATE_TEAM_API: BASE_URL + "/team/update",
+DELETE_TEAM_API: BASE_URL + "/team/delete",
+}

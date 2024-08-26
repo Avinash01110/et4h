@@ -23,6 +23,9 @@ const ProfileList = () => {
     about: "",
     socialLinks: [],
     profilePic: null,
+    qualifications: "",
+    designation: "",
+    AreaofInterest: "",
   });
 
   useEffect(() => {
@@ -44,8 +47,14 @@ const ProfileList = () => {
             about: profile.about,
             socialLinks: profile.socialLinks || [],
             profilePic: null,
+            qualifications: profile.qualifications,
+            designation: profile.designation,
+            AreaofInterest: profile.AreaofInterest,
           }
-        : { name: "", email: "", about: "", socialLinks: [], profilePic: null }
+        : { name: "", email: "", about: "", socialLinks: [], profilePic: null, 
+          qualifications: "", designation: "", AreaofInterest: "" }
+
+
     );
     setIsModalOpen(true);
   };
@@ -59,6 +68,10 @@ const ProfileList = () => {
       about: "",
       socialLinks: [],
       profilePic: null,
+      qualifications: "",
+      designation: "",
+      AreaofInterest: "",
+
     });
   };
 
@@ -119,6 +132,9 @@ const ProfileList = () => {
       formDataToSend.append(`socialLinks[${index}][name]`, link.name);
       formDataToSend.append(`socialLinks[${index}][url]`, link.url);
     });
+    formDataToSend.append("qualifications", formData.qualifications);
+    formDataToSend.append("designation", formData.designation);
+    formDataToSend.append("AreaofInterest", formData.AreaofInterest);
     
     try {
       if (modalType === "add") {
@@ -190,121 +206,159 @@ const ProfileList = () => {
       )}
 
       {isModalOpen && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white p-4 rounded-md">
-            <h2 className="text-xl mb-4">
-              {modalType === "add" ? "Add Profile" : "Edit Profile"}
-            </h2>
-            <form>
-              <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md"
-                />
-              </div>
-              <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700">
-                  Email
-                </label>
-                <input
-                  type="text"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md"
-                />
-              </div>
-              <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700">
-                  About
-                </label>
-                <textarea
-                  name="about"
-                  value={formData.about}
-                  onChange={handleInputChange}
-                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md"
-                />
-              </div>
-              <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700">
-                  Profile Picture
-                </label>
-                <input
-                  type="file"
-                  name="profilePic"
-                  onChange={handleFileChange}
-                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md"
-                />
-              </div>
-              <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700">
-                  Social Links
-                </label>
-                {formData.socialLinks.map((link, index) => (
-                  <div key={index} className="flex mb-2">
-                    <input
-                      type="text"
-                      name={`socialLinkName-${index}`}
-                      placeholder="Name"
-                      value={link.name}
-                      onChange={(e) =>
-                        handleSocialLinkChange(index, "name", e.target.value)
-                      }
-                      className="mr-2 block w-full px-3 py-2 border border-gray-300 rounded-md"
-                    />
-                    <input
-                      type="text"
-                      name={`socialLinkUrl-${index}`}
-                      placeholder="URL"
-                      value={link.url}
-                      onChange={(e) =>
-                        handleSocialLinkChange(index, "url", e.target.value)
-                      }
-                      className="block w-full px-3 py-2 border border-gray-300 rounded-md"
-                    />
-                    <button
-                      type="button"
-                      onClick={() => handleRemoveSocialLink(index)}
-                      className="ml-2 bg-red-500 text-white px-4 py-2 rounded-md"
-                    >
-                      Remove
-                    </button>
-                  </div>
-                ))}
-                <button
-                  type="button"
-                  onClick={handleAddSocialLink}
-                  className="bg-green-500 text-black px-4 py-2 rounded-md mt-2"
-                >
-                  Add Social Link
-                </button>
-              </div>
-              <div className="flex justify-end">
-                <button
-                  type="button"
-                  onClick={handleCloseModal}
-                  className="bg-gray-500 text-white px-4 py-2 rounded-md mr-2"
-                >
-                  Cancel
-                </button>
-                <button
-                  type="button"
-                  onClick={handleSubmit}
-                  className="bg-blue-500 text-black px-4 py-2 rounded-md"
-                >
-                  {modalType === "add" ? "Save" : "Update"}
-                </button>
-              </div>
-            </form>
-          </div>
+  <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+    <div className="bg-white p-6 rounded-lg shadow-lg max-w-lg w-full max-h-[90vh] overflow-y-auto">
+      <h2 className="text-2xl font-semibold mb-4">
+        {modalType === "add" ? "Add Profile" : "Edit Profile"}
+      </h2>
+      <form>
+        <div className="mb-4">
+          <label className="block text-sm font-medium text-gray-700">
+            Name
+          </label>
+          <input
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleInputChange}
+            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+          />
         </div>
-      )}
+        <div className="mb-4">
+          <label className="block text-sm font-medium text-gray-700">
+            Email
+          </label>
+          <input
+            type="text"
+            name="email"
+            value={formData.email}
+            onChange={handleInputChange}
+            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+          />
+        </div>
+        <div className="mb-4">
+          <label className="block text-sm font-medium text-gray-700">
+            About
+          </label>
+          <textarea
+            name="about"
+            value={formData.about}
+            onChange={handleInputChange}
+            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+          />
+        </div>
+        <div className="mb-4">
+          <label className="block text-sm font-medium text-gray-700">
+            Profile Picture
+          </label>
+          <input
+            type="file"
+            name="profilePic"
+            onChange={handleFileChange}
+            className="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:border file:border-gray-300 file:rounded-md file:text-sm file:font-medium file:bg-gray-50 file:text-gray-700 hover:file:bg-gray-100"
+          />
+        </div>
+        <div className="mb-4">
+          <label className="block text-sm font-medium text-gray-700">
+            Qualifications
+          </label>
+          <input
+            type="text"
+            name="qualifications"
+            value={formData.qualifications}
+            onChange={handleInputChange}
+            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+          />
+        </div>
+        <div className="mb-4">
+          <label className="block text-sm font-medium text-gray-700">
+            Designation
+          </label>
+          <input
+            type="text"
+            name="designation"
+            value={formData.designation}
+            onChange={handleInputChange}
+            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+          />
+        </div>
+        <div className="mb-4">
+          <label className="block text-sm font-medium text-gray-700">
+            Area of Interest
+          </label>
+          <input
+            type="text"
+            name="AreaofInterest"
+            value={formData.AreaofInterest}
+            onChange={handleInputChange}
+            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+          />
+        </div>
+        <div className="mb-4">
+          <label className="block text-sm font-medium text-gray-700">
+            Social Links
+          </label>
+          {formData.socialLinks.map((link, index) => (
+            <div key={index} className="flex mb-2 items-center">
+              <input
+                type="text"
+                name={`socialLinkName-${index}`}
+                placeholder="Name"
+                value={link.name}
+                onChange={(e) =>
+                  handleSocialLinkChange(index, "name", e.target.value)
+                }
+                className="mr-2 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+              />
+              <input
+                type="text"
+                name={`socialLinkUrl-${index}`}
+                placeholder="URL"
+                value={link.url}
+                onChange={(e) =>
+                  handleSocialLinkChange(index, "url", e.target.value)
+                }
+                className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+              />
+              <button
+                type="button"
+                onClick={() => handleRemoveSocialLink(index)}
+                className="ml-2 bg-red-500 text-white px-3 py-1 rounded-md text-sm"
+              >
+                Remove
+              </button>
+            </div>
+          ))}
+          <button
+            type="button"
+            onClick={handleAddSocialLink}
+            className="bg-green-500 text-white px-4 py-2 rounded-md mt-2 text-sm"
+          >
+            Add Social Link
+          </button>
+        </div>
+        <div className="flex justify-end space-x-2">
+          <button
+            type="button"
+            onClick={handleCloseModal}
+            className="bg-gray-500 text-white px-4 py-2 rounded-md"
+          >
+            Cancel
+          </button>
+          <button
+            type="button"
+            onClick={handleSubmit}
+            className="bg-blue-500 text-white px-4 py-2 rounded-md"
+          >
+            {modalType === "add" ? "Save" : "Update"}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+)}
+
+
     </div>
   );
 };

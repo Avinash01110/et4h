@@ -5,15 +5,14 @@ import "../../style/Dashboard.css";
 import CategoryList from "../CategoryList.js";
 import ProjectList from "../ProjectList.js";
 import ProfileList from "../ProfileList.js";
+import Publications from "../publicatoin.js";
 import { IoDesktopOutline } from "react-icons/io5";
-
-
+import FrontPagePosts from "../frontPagePosts.js"; // Correctly import the component
+import TeamManagement from "../TeamManagement.js";
 
 export default function Dashboard() {
   const [isOpen, setIsOpen] = useState(false);
-
   const [currentMenu, setcurrentMenu] = useState("");
-
   const [teamCategory, setteamCategory] = useState("");
 
   const handleEvent = (e) => {
@@ -23,14 +22,14 @@ export default function Dashboard() {
 
   return (
     <>
-      
       <div className="hidden sm:hidden xl:flex xl:flex-col">
         <Navbar />
         <div className="bg-black h-screen w-full flex flex-row">
           <Sidebar setcurrentMenu={setcurrentMenu} />
           <div className='h-full w-full bg-[url("https://e1.pxfuel.com/desktop-wallpaper/404/977/desktop-wallpaper-math-formula-science-formula.jpg")] flex justify-center items-center'>
+            
             {/* Add Member Form */}
-            {currentMenu == "add member" && (
+            {/* {currentMenu === "add member" && (
               <div className="h-[28rem] w-[60rem] bg-black border border-solid border-white/30 rounded-lg mb-16 p-10 flex flex-col gap-y-5">
                 <div>
                   <label className="relative">
@@ -49,181 +48,24 @@ export default function Dashboard() {
                   </button>
                 </div>
               </div>
-            )}
-
-            {/* Add Post Form */}
-            {/* {currentMenu == "add post" && (
-            <div className="h-[28rem] w-[60rem] bg-black border border-solid border-white/30 rounded-lg mb-16 p-10 flex flex-col gap-y-5">
-              <div className="grid grid-cols-2 gap-5">
-                <div>  
-                <label className="relative">
-                  <input
-                    type="text"
-                    className="bg-black text-white font-sans border border-solid border-white/50 focus:border-blue-500 rounded-lg py-2 px-4 w-full h-12 tranition duration-200"
-                  />
-                  <span className="input-text absolute text-white/50 font-sans -top-1 left-0 ml-4 tranition duration-200">
-                    Post Title
-                  </span>
-                </label>
-                </div>
-                <div>  
-                <label className="relative">
-                  <input
-                    type="text"
-                    className="bg-black text-white font-sans border border-solid border-white/50 focus:border-blue-500 rounded-lg py-2 px-4 w-full h-12 tranition duration-200"
-                  />
-                  <span className="input-text absolute text-white/50 font-sans -top-1 left-0 ml-4 tranition duration-200">
-                    Post Descrip.
-                  </span>
-                </label>
-                </div>
-                <div>  
-                <label className="relative">
-                  <input
-                    type="text"
-                    className="bg-black text-white font-sans border border-solid border-white/50 focus:border-blue-500 rounded-lg py-2 px-4 w-full h-12 tranition duration-200"
-                  />
-                  <span className="input-text absolute text-white/50 font-sans -top-1 left-0 ml-4 tranition duration-200">
-                    Post Image
-                  </span>
-                </label>
-                </div>
-                <div>  
-                <label className="relative">
-                  <input
-                    type="text"
-                    className="bg-black text-white font-sans border border-solid border-white/50 focus:border-blue-500 rounded-lg py-2 px-4 w-full h-12 tranition duration-200"
-                  />
-                  <span className="input-text absolute text-white/50 font-sans -top-1 left-0 ml-4 tranition duration-200">
-                    Post Link
-                  </span>
-                </label>
-                </div>
-              </div>
-              <div>
-                <button className="rounded-md bg-black py-2 px-4 text-base font-semibold font-sans text-white outline-none active:bg-white/30 hover:scale-90 hover:bg-white/20 hover:text-white hover:[text-shadow:1px_3px_15px_var(--tw-shadow-color)] shadow-white border border-solid border-white/50 transition ease-in-out duration-300">
-                  Submit
-                </button>
-              </div>
-            </div>
-          )} */}
+            )} */}
 
             {/* Projects page */}
-            {currentMenu == "projects" && (
-              <div
-                className="h-[28rem] w-[60rem] bg-black border
-               border-solid border-white/30 rounded-lg mb-16 p-10 flex flex-col
-                gap-y-5 overflow-y-scroll"
-              >
-                <ProjectList />
-              </div>
-            )}
-
-            {/* Add Projects Form */}
-            {currentMenu == "add project" && (
+            {currentMenu === "projects" && (
               <div className="h-[28rem] w-[60rem] bg-black border border-solid border-white/30 rounded-lg mb-16 p-10 flex flex-col gap-y-5 overflow-y-scroll">
-                <div className="grid grid-cols-2 gap-5">
-                  <div>
-                    <label className="relative">
-                      <input
-                        type="text"
-                        className="bg-black text-white font-sans border border-solid border-white/50 focus:border-blue-500 rounded-lg py-2 px-4 w-full h-12 tranition duration-200"
-                      />
-                      <span className="input-text absolute text-white/50 font-sans -top-1 left-0 ml-4 tranition duration-200">
-                        Project Title
-                      </span>
-                    </label>
-                  </div>
-                  <div>
-                    <label className="relative">
-                      <input
-                        type="text"
-                        className="bg-black text-white font-sans border border-solid border-white/50 focus:border-blue-500 rounded-lg py-2 px-4 w-full h-12 tranition duration-200"
-                      />
-                      <span className="input-text absolute text-white/50 font-sans -top-1 left-0 ml-4 tranition duration-200">
-                        Project Descrip.
-                      </span>
-                    </label>
-                  </div>
-                  <div className="col-span-2">
-                    <label className="relative">
-                      <input
-                        type="text"
-                        className="bg-black text-white font-sans border border-solid border-white/50 focus:border-blue-500 rounded-lg py-2 px-4 w-full h-12 tranition duration-200"
-                      />
-                      <span className="input-text absolute text-white/50 font-sans -top-1 left-0 ml-4 tranition duration-200">
-                        Project Image
-                      </span>
-                    </label>
-                  </div>
-                  <div className="col-span-2">
-                    <label className="relative">
-                      <input
-                        type="text"
-                        className="bg-black text-white font-sans border border-solid border-white/50 focus:border-blue-500 rounded-lg py-2 px-4 w-full h-12 tranition duration-200"
-                      />
-                      <span className="input-text absolute text-white/50 font-sans -top-1 left-0 ml-4 tranition duration-200">
-                        Research obj.
-                      </span>
-                    </label>
-                  </div>
-                  <div className="col-span-2">
-                    <label className="relative">
-                      <input
-                        type="text"
-                        className="bg-black text-white font-sans border border-solid border-white/50 focus:border-blue-500 rounded-lg py-2 px-4 w-full h-12 tranition duration-200"
-                      />
-                      <span className="input-text absolute text-white/50 font-sans -top-1 left-0 ml-4 tranition duration-200">
-                        Advancement
-                      </span>
-                    </label>
-                  </div>
-                  <div className="col-span-2">
-                    <label className="relative">
-                      <input
-                        type="text"
-                        className="bg-black text-white font-sans border border-solid border-white/50 focus:border-blue-500 rounded-lg py-2 px-4 w-full h-12 tranition duration-200"
-                      />
-                      <span className="input-text absolute text-white/50 font-sans -top-1 left-0 ml-4 tranition duration-200">
-                        Hypothesis
-                      </span>
-                    </label>
-                  </div>
-                  <div className="col-span-2">
-                    <label className="relative">
-                      <input
-                        type="text"
-                        className="bg-black text-white font-sans border border-solid border-white/50 focus:border-blue-500 rounded-lg py-2 px-4 w-full h-12 tranition duration-200"
-                      />
-                      <span className="input-text absolute text-white/50 font-sans -top-1 left-0 ml-4 tranition duration-200">
-                        Impact
-                      </span>
-                    </label>
-                  </div>
-                </div>
-                <div>
-                  <button className="rounded-md bg-black py-2 px-4 text-base font-semibold font-sans text-white outline-none active:bg-white/30 hover:scale-90 hover:bg-white/20 hover:text-white hover:[text-shadow:1px_3px_15px_var(--tw-shadow-color)] shadow-white border border-solid border-white/50 transition ease-in-out duration-300">
-                    Submit
-                  </button>
-                </div>
+                <ProjectList />
               </div>
             )}
 
             {/* Add Team Form */}
             {currentMenu === "profiles" && (
-              <div>
-                <div
-                  className="h-[28rem] w-[60rem] bg-black
-                 border border-solid border-white/30 rounded-lg 
-                 mb-16 p-10 flex flex-col gap-y-5 overflow-y-scroll"
-                >
-                  <ProfileList />
-                </div>
+              <div className="h-[28rem] w-[60rem] bg-black border border-solid border-white/30 rounded-lg mb-16 p-10 flex flex-col gap-y-5 overflow-y-scroll">
+                <ProfileList />
               </div>
             )}
 
             {/* Add Paper Form */}
-            {currentMenu == "add paper" && (
+            {/* {currentMenu === "add paper" && (
               <div className="h-[28rem] w-[60rem] bg-black border border-solid border-white/30 rounded-lg mb-16 p-10 flex flex-col gap-y-5 overflow-y-scroll">
                 <div className="grid grid-cols-2 gap-5">
                   <div className="col-span-2">
@@ -245,11 +87,10 @@ export default function Dashboard() {
                         className="bg-black text-white font-sans border border-solid border-white/50 focus:border-blue-500 rounded-lg py-2 px-4 w-full h-12 tranition duration-200"
                       />
                       <span className="input-text absolute text-white/50 font-sans -top-1 left-0 ml-4 tranition duration-200">
-                        Author's Name
+                        Image
                       </span>
                     </label>
                   </div>
-
                   <div className="col-span-2">
                     <label className="relative">
                       <input
@@ -257,19 +98,7 @@ export default function Dashboard() {
                         className="bg-black text-white font-sans border border-solid border-white/50 focus:border-blue-500 rounded-lg py-2 px-4 w-full h-12 tranition duration-200"
                       />
                       <span className="input-text absolute text-white/50 font-sans -top-1 left-0 ml-4 tranition duration-200">
-                        Publication Name
-                      </span>
-                    </label>
-                  </div>
-
-                  <div className="col-span-2">
-                    <label className="relative">
-                      <input
-                        type="text"
-                        className="bg-black text-white font-sans border border-solid border-white/50 focus:border-blue-500 rounded-lg py-2 px-4 w-full h-12 tranition duration-200"
-                      />
-                      <span className="input-text absolute text-white/50 font-sans -top-1 left-0 ml-4 tranition duration-200">
-                        Access Link
+                        Authors
                       </span>
                     </label>
                   </div>
@@ -280,25 +109,37 @@ export default function Dashboard() {
                   </button>
                 </div>
               </div>
+            )} */}
+
+            {/* Add Publication List */}
+            {currentMenu === "publications" && (
+              <div className="h-[28rem] w-[60rem] bg-black border border-solid border-white/30 rounded-lg mb-16 p-10 flex flex-col gap-y-5 overflow-y-scroll">
+                <Publications />
+              </div>
             )}
 
-            {/* Category */}
-            {currentMenu == "category" && (
-              <div>
+            {/* Add Category Form */}
+            {currentMenu === "categories" && (
+              <div className="h-[28rem] w-[60rem] bg-black border border-solid border-white/30 rounded-lg mb-16 p-10 flex flex-col gap-y-5 overflow-y-scroll">
                 <CategoryList />
+              </div>
+            )}
+
+            {/* Front Page Posts */}
+            {currentMenu === "front" && (
+              <div className="h-[28rem] w-[60rem] bg-black border border-solid border-white/30 rounded-lg mb-16 p-10 flex flex-col gap-y-5 overflow-y-scroll">
+                <FrontPagePosts /> {/* Correctly render the FrontPagePosts component */}
+              </div>
+            )}
+            {/* Team */}
+            {currentMenu === "team" && (
+              <div className="h-[28rem] w-[60rem] bg-black border border-solid border-white/30 rounded-lg mb-16 p-10 flex flex-col gap-y-5 overflow-y-scroll">
+                <TeamManagement /> {/* Correctly render the FrontPagePosts component */}
               </div>
             )}
           </div>
         </div>
       </div>
-      
-      <div className="xl:hidden h-screen w-full bg-black flex justify-center items-center gap-x-10 px-4">
-            
-            <div className="animate-pulse h-auto w-auto text-white text-3xl font-mono flex flex-row flex-wrap justify-center items-center gap-10">
-            <IoDesktopOutline className="text-white text-5xl" /> Please use Desktop / Laptop for using this page
-            </div>
-      </div>
-    
     </>
   );
 }
