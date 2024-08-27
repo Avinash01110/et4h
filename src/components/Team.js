@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from 'react-helmet-async';
 import { FaFacebookF, FaLinkedinIn } from "react-icons/fa";
@@ -11,10 +11,36 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "../style/Team.css";
 
+import { fetchTeamProfiles } from "../services/fetchData";
+
 
 import Profile from "./Profile";
 
 export default function Team() {
+
+  const [teams, setTeams] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const getTeams = async () => {
+      try {
+        const data = await fetchTeamProfiles();
+        console.log(data.profiles);
+        // setTeams(data.profiles);
+      } catch (err) {
+        console.log(err);
+        // setError("Failed to load teams");
+      } finally {
+        
+        // setLoading(false);
+      }
+    };
+
+    getTeams();
+  }, []);
+
+
   const pic =
     "https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
 

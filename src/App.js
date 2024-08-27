@@ -28,7 +28,7 @@ import FrontPagePosts from "./components/frontPagePosts";
 import TeamManagement from "./components/TeamManagement";
 function App() {
 
-  const [showPreloader, setShowPreloader] = useState(false);
+  const [showPreloader, setShowPreloader] = useState(true);
   const [loading, setLoading] = useState(false);
 
   const location = useLocation();
@@ -48,7 +48,7 @@ function App() {
   
   useEffect(() => {
     if(!showPreloader){
-      // setLoading(true);
+      setLoading(true);
     }
     const timeoutId = setTimeout(() => {
       setLoading(false);

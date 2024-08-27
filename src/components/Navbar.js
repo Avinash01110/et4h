@@ -87,7 +87,7 @@ export default function Navbar() {
         <div className="items w-96 h-9 bg-purewhite list-none flex flex-row justify-center items-center gap-5 rounded-full text-sm font-semibold border-2 border-darkblue">
           <Link to={"/"}>
             <li
-              className={`group h-7 text-grey cursor-pointer flex flex-col items-center justify-center px-2 py-1 rounded-lg overflow-hidden ${
+              className={`group h-7 text-grey cursor-pointer flex flex-col items-center justify-center px-2 py-1 rounded-lg overflow-hidden border-none shadow-none ${
                 activePage === "Home"
                   ? "bg-blue text-purewhite"
                   : "hover:text-blue hover:bg-lightblue"
@@ -114,7 +114,7 @@ export default function Navbar() {
 
           <Link to={"/Projects"}>
             <li
-              className={`group h-7 text-grey cursor-pointer flex flex-col items-center justify-center px-2 py-1 rounded-lg overflow-hidden ${
+              className={`group h-7 text-grey cursor-pointer flex flex-col items-center justify-center px-2 py-1 rounded-lg overflow-hidden border-none shadow-none ${
                 activePage === "Projects"
                   ? "bg-blue text-purewhite"
                   : "hover:text-blue hover:bg-lightblue"
@@ -135,7 +135,7 @@ export default function Navbar() {
 
           <Link to={"/Team"}>
             <li
-              className={`group h-7 text-grey cursor-pointer flex flex-col items-center justify-center px-2 py-1 rounded-lg overflow-hidden ${
+              className={`group h-7 text-grey cursor-pointer flex flex-col items-center justify-center px-2 py-1 rounded-lg overflow-hidden border-none shadow-none ${
                 activePage === "Team"
                   ? "bg-blue text-purewhite"
                   : "hover:text-blue hover:bg-lightblue"
@@ -157,7 +157,7 @@ export default function Navbar() {
           <Popover className="relative">
             {({ open }) => (
               <>
-                <Popover.Button className="hover:text-blue hover:bg-lightblue text-grey flex items-center justify-center gap-x-1 font-sans px-2 py-1 rounded-lg transition ease-in-out duration-300">
+                <Popover.Button className="hover:text-blue hover:bg-lightblue text-grey flex flex-row items-center justify-center gap-x-1 font-sans px-2 py-1 rounded-lg transition ease-in-out duration-300 border-none shadow-none">
                   <span>More</span>
                   <IoIosArrowDown
                     className={

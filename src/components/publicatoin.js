@@ -7,7 +7,7 @@ import {
     deletePublication,
     getAllPublications
 } from '../services/operations/publicationAPI';
-import './publication.css'
+import '../style/publication.css';
 
 const Publications = () => {
     const [publications, setPublications] = useState([]);
@@ -105,10 +105,10 @@ const Publications = () => {
 
     return (
         <div className="container">
-            <h1>Publications</h1>
-            <div>
-                <button onClick={openModal}>Add New Publication</button>
-            </div>
+            {/* <h1>Publications</h1> */}
+            <button className='py-2 px-4 bg-black hover:bg-black border border-solid border-white/20 text-white text-md font-semibold menu-item 
+              font-sans hover:[text-shadow:1px_3px_15px_var(--tw-shadow-color)] 
+              shadow-white tracking-wide' onClick={openModal}>Add New Publication</button>
 
             {isModalOpen && (
                 <div className="modal">
@@ -168,15 +168,15 @@ const Publications = () => {
                 </div>
             )}
 
-            <ul>
+            <ul className='py-16 overflow-y-scroll w-full h-auto'>
                 {publications.map((publication) => (
-                    <li key={publication.id}>
+                    <li className='w-full text-white bg-black hover:bg-black' key={publication.id}>
                         <h2>{publication.title}</h2>
                         <p>{publication.authors}</p>
                         <p>{publication.publicationDate}</p>
                         <p>{publication.publicationType}</p>
                         <p><a href={publication.publicationLink} target="_blank" rel="noopener noreferrer">Link</a></p>
-                        <p>{publication.publicationSummary}</p>
+                        <p className='truncate'>{publication.publicationSummary}</p>
                         <button onClick={() => handleUpdate(publication)}>Update</button>
                         <button onClick={() => handleDelete(publication._id)}>Delete</button>
                     </li>

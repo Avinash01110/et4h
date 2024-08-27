@@ -107,7 +107,7 @@ export default function Sidebar({setcurrentMenu}) {
                 setCategory(!category);
                 handleMenuClick("projects")
               }}
-              className="h-auto w-full flex justify-center py-2 px-4 flex flex-row justify-between items-center cursor-pointer group rounded-lg hover:bg-white/10 hover:bg-opacity-10 active:bg-white/15 border border-solid border-white/20"
+              className="h-auto w-full flex justify-center py-2 px-4 items-center cursor-pointer group rounded-lg hover:bg-white/10 hover:bg-opacity-10 active:bg-white/15 border border-solid border-white/20"
             >
               <span className="text-white text-md font-semibold font-sans group-hover:[text-shadow:1px_3px_15px_var(--tw-shadow-color)] shadow-white tracking-wide">
              Projects
@@ -126,7 +126,7 @@ export default function Sidebar({setcurrentMenu}) {
                 setCategory(!category);
                 handleMenuClick("profiles")
               }}
-              className="h-auto w-full flex justify-center py-2 px-4 flex flex-row justify-between items-center cursor-pointer group rounded-lg hover:bg-white/10 hover:bg-opacity-10 active:bg-white/15 border border-solid border-white/20"
+              className="h-auto w-full flex justify-center py-2 px-4 items-center cursor-pointer group rounded-lg hover:bg-white/10 hover:bg-opacity-10 active:bg-white/15 border border-solid border-white/20"
             >
               <span className="text-white text-md font-semibold font-sans group-hover:[text-shadow:1px_3px_15px_var(--tw-shadow-color)] shadow-white tracking-wide">
               Profiles
@@ -144,7 +144,7 @@ export default function Sidebar({setcurrentMenu}) {
                 setCategory(!category);
                 handleMenuClick("publications")
               }}
-              className="h-auto w-full flex justify-center py-2 px-4 flex flex-row justify-between items-center cursor-pointer group rounded-lg hover:bg-white/10 hover:bg-opacity-10 active:bg-white/15 border border-solid border-white/20"
+              className="h-auto w-full flex justify-center py-2 px-4 items-center cursor-pointer group rounded-lg hover:bg-white/10 hover:bg-opacity-10 active:bg-white/15 border border-solid border-white/20"
             >
               <span className="text-white text-md font-semibold font-sans group-hover:[text-shadow:1px_3px_15px_var(--tw-shadow-color)] shadow-white tracking-wide">
               Publications
@@ -229,7 +229,7 @@ export default function Sidebar({setcurrentMenu}) {
                 setCategory(!category);
                 handleMenuClick("categories")
               }}
-              className="h-auto w-full flex justify-center py-2 px-4 flex flex-row justify-between items-center cursor-pointer group rounded-lg hover:bg-white/10 hover:bg-opacity-10 active:bg-white/15 border border-solid border-white/20"
+              className="h-auto w-full flex justify-center py-2 px-4 items-center cursor-pointer group rounded-lg hover:bg-white/10 hover:bg-opacity-10 active:bg-white/15 border border-solid border-white/20"
             >
               <span className="text-white text-md font-semibold font-sans group-hover:[text-shadow:1px_3px_15px_var(--tw-shadow-color)] shadow-white tracking-wide">
               Category
@@ -264,11 +264,11 @@ export default function Sidebar({setcurrentMenu}) {
                 setCategory(!category);
                 setcurrentMenu("front")
               }}
-              className="h-auto w-full flex justify-center py-2 px-4 flex flex-row justify-between items-center cursor-pointer group rounded-lg hover:bg-white/10 hover:bg-opacity-10 active:bg-white/15 border border-solid border-white/20"
+              className="h-auto w-full flex justify-center py-2 px-4 items-center cursor-pointer group rounded-lg hover:bg-white/10 hover:bg-opacity-10 active:bg-white/15 border border-solid border-white/20"
             >
               <span className="text-white text-md font-semibold menu-item 
               font-sans group-hover:[text-shadow:1px_3px_15px_var(--tw-shadow-color)] 
-              shadow-white tracking-wide"  >
+              shadow-white tracking-wide">
  Front Page
               </span>
              
@@ -283,7 +283,7 @@ export default function Sidebar({setcurrentMenu}) {
                 setCategory(!category);
                 setcurrentMenu("team")
               }}
-              className="h-auto w-full flex justify-center py-2 px-4 flex flex-row justify-between items-center cursor-pointer group rounded-lg hover:bg-white/10 hover:bg-opacity-10 active:bg-white/15 border border-solid border-white/20"
+              className="h-auto w-full flex justify-center py-2 px-4 items-center cursor-pointer group rounded-lg hover:bg-white/10 hover:bg-opacity-10 active:bg-white/15 border border-solid border-white/20"
             >
               <span className="text-white text-md font-semibold menu-item 
               font-sans group-hover:[text-shadow:1px_3px_15px_var(--tw-shadow-color)] 
