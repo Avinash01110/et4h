@@ -26,6 +26,7 @@ import Preloader from "./components/Preloader";
 import Loader from "./components/Loader";
 import FrontPagePosts from "./components/frontPagePosts";
 import TeamManagement from "./components/TeamManagement";
+import LogoManagement from "./components/LogoManagement";
 function App() {
 
   const [showPreloader, setShowPreloader] = useState(true);
@@ -83,6 +84,7 @@ function App() {
         <Route path="pub" element={<Publication/>}/>
         <Route path="f" element={<FrontPagePosts/>}/>
         <Route path="t" element={<TeamManagement/>}/>
+        <Route path="l" element={<LogoManagement/>}/>
       </Routes>
       )}
       {!showPreloader && !loading && showNavbarAndFooter && <Footer />}

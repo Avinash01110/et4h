@@ -61,3 +61,9 @@ GET_ALL_TEAMS_API: BASE_URL + "/team/all",
 UPDATE_TEAM_API: BASE_URL + "/team/update",
 DELETE_TEAM_API: BASE_URL + "/team/delete",
 }
+
+export const logoEndpoints = {
+ADD_LOGO_API: BASE_URL + "/logo/addLogo",
+GET_LOGO_API: BASE_URL + "/logo/getLogo",
+DELETE_LOGO_API: BASE_URL + "/logo/deleteLogo",
+}

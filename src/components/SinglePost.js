@@ -204,12 +204,15 @@ const SinglePost = () => {
             <div key={subPost._id}>
               <li>{subPost.sectionName}</li>
               <li>{subPost.subSectionContent}</li>
+              {subPost.imageUrls.map((imageUrl, index) => (
+                <img key={index} src={imageUrl} alt="subpost" className="w-1/4" />
+              ))}
               <button className="ml-2 bg-yellow-500 text-white px-2 py-1 rounded" onClick={() => openSubPostModal(subPost)}>Update</button>
               <button className="ml-2 bg-red-500 text-white px-2 py-1 rounded" onClick={() => handleDeleteSubPost(subPost._id)}>Delete</button>
             </div>
           ))}
         </ul>
-        <button className="mt-4 bg-blue-500 text-white px-4 py-2 rounded" onClick={() => openSubPostModal()}>Add SubPost</button>
+        <button className="mt-4 bg-blue text-white px-4 py-2 rounded" onClick={() => openSubPostModal()}>Add SubPost</button>
       </div>
 
       <div className="mt-4">
@@ -223,7 +226,7 @@ const SinglePost = () => {
             </li>
           ))}
         </ul>
-        <button className="mt-4 bg-blue-500 text-white px-4 py-2 rounded" onClick={() => openModal()}>Add Milestone</button>
+        <button className="mt-4 bg-blue text-white px-4 py-2 rounded" onClick={() => openModal()}>Add Milestone</button>
       </div>
 
       <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel="Milestone Modal">
