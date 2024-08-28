@@ -109,11 +109,7 @@ export default function Projects() {
       </Helmet>
 
       <div className="project h-auto w-full bg-lightblue pt-16 opacity-100">
-        {/* Active Project */}
         <div className="bg-lightblue h-auto w-full flex flex-col items-center gap-y-1">
-          {/* <h2 className="text-5xl text-blue font-bold uppercase [text-shadow:2px_4px_5px_var(--tw-shadow-color)] shadow-grey">
-            Active Projects
-          </h2> */}
 
           <div className="projects w-full h-auto px-4 py-36 sm:py-36 lg:py-0 lg:px-6 xl:px-10 2xl:px-16 flex flex-row">
             <div className="left w-full sm:w-full lg:w-1/2 h-auto flex items-center justify-center">
@@ -169,7 +165,8 @@ export default function Projects() {
                       <img
                         className="h-full w-full object-cover rounded-lg block border-2 border-grey"
                         src={project.image}
-                        alt="error"
+                        alt="Project Image"
+                        loading="lazy"
                       />
                     </div>
                   ))}

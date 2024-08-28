@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from 'react-helmet-async';
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import LazyLoadedVideo from "../utils/lazyLoadedVideo";
 
 import lp_image1 from "../Photos/Home/landingPage/lp_image1.png";
 import lp1 from "../Photos/Home/landingPage/lp1.jpg";
@@ -174,15 +175,17 @@ export default function Home() {
         
         <div className="sm:hidden xl:flex xl:h-[26rem] xl:w-[26rem] 2xl:h-[30rem] 2xl:w-[30rem] rounded-xl absolute right-14 top-0 -rotate-45 bg-lightgrey opacity-60"></div>
 
+        {/* mobile banner video */}
         <div className="xl:hidden h-full w-full absolute overflow-hidden">
-          <video
+          {/* <video
             src={v2}
             className="h-full w-full object-cover"
             autoPlay
             loop
             muted
             id="myVideo"
-          /> 
+          />  */}
+          <LazyLoadedVideo src={v2} />
         </div>
 
         <div className="xl:hidden h-full w-full bg-lightblue bg-opacity-65 backdrop-blur-5xl absolute"></div>
@@ -320,7 +323,8 @@ export default function Home() {
                     <img
                       className="h-full w-full object-cover rounded-lg"
                       src={post.image}
-                      alt="error"
+                      alt="post image"
+                      loading="lazy"
                     />
                   </div>
                 </div>
@@ -371,7 +375,8 @@ export default function Home() {
             <img
               className="h-full w-full object-cover rounded-lg border-2 border-grey"
               src={about_us2}
-              alt="error"
+              alt="Our Mission"
+              loading="lazy"
             />
           </div>
         </div>
@@ -420,7 +425,8 @@ export default function Home() {
             <img
               className="h-full w-full object-cover rounded-lg border-2 border-grey"
               src={vision}
-              alt="error"
+              alt="Our Vision"
+              loading="lazy"
             />
           </div>
         </div>
@@ -456,7 +462,6 @@ export default function Home() {
         </div>
       </div>
 
-      
 
       {/* About us */}
       <div className="h-[30rem] w-full bg-lightblue flex justify-start items-center relative group overflow-hidden">
@@ -482,39 +487,11 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Projects */}
-      {/* <div className="h-auto w-full bg-white">
-        <div className="flex h-screen w-full p-6 pt-24 flex-col items-center justify-center xl:text-slate-400">
-          <div className="grid h-full w-full grid-cols-3 gap-4">
-            <Link to={"/Projects"} className="col-span-2 row-span-3 rounded-3xl bg-slate-200 hover:scale-95 transition duration-500 ease-in-out overflow-hidden">
-              <video className="h-full w-full object-cover" src={v2} autoPlay loop muted/>
-            </Link>
-            <Link to={"/Projects"} className="row-span-4 rounded-3xl bg-slate-200 text-center flex justify-center items-center text-3xl font-bold hover:scale-95 transition duration-500 ease-in-out overflow-hidden">
-              <video className="h-full w-full object-cover" src={v1} autoPlay loop muted/>
-            </Link>
-            <Link to={"/Projects"} className="row-span-3 rounded-3xl bg-slate-200 text-center flex justify-center items-center text-3xl font-bold hover:scale-95 transition duration-500 ease-in-out overflow-hidden">
-              <video className="h-full w-full object-cover" src={v3} autoPlay loop muted/>
-            </Link>
-            <Link to={"/Projects"} className="row-span-3 rounded-3xl bg-slate-200 text-center flex justify-center items-center text-3xl font-bold hover:scale-95 transition duration-500 ease-in-out overflow-hidden">
-              <video className="h-full w-full object-cover" src={v4} autoPlay loop muted/>
-            </Link>
-            <Link to={"/Projects"} className="row-span-2 rounded-3xl bg-slate-200 text-center flex justify-center items-center text-3xl font-bold hover:scale-95 transition duration-500 ease-in-out overflow-hidden">
-              <video className="h-full w-full object-cover" src={v5} autoPlay loop muted/>
-            </Link>
-          </div>
-        </div>
-      </div> */}
 
       {/* Our Leadership */}
       <div className="h-auto w-full flex flex-col pb-16 sm:pb-16 sm:flex-col lg:py-0 lg:flex-row items-center bg-white">
         <div className="h-auto w-auto lg:w-5/10 xl:w-6/12 2xl:w-7/12">
-          <video
-            src={leadership}
-            className="h-full w-full object-cover p-2"
-            autoPlay
-            loop
-            muted
-          />
+          <LazyLoadedVideo className="p-2" src={leadership} />
         </div>
         <div className="h-full w-auto lg:py-16 lg:w-5/10 xl:w-6/12 2xl:py-0 2xl:w-5/12">
           <div className="w-auto h-full flex flex-col justify-center items-center gap-y-10 px-8">

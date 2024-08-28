@@ -1,11 +1,34 @@
-import React from "react";
-import { Helmet } from 'react-helmet-async';
+import React, { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import research from "../Photos/Publications/research.png";
 import { IoIosArrowRoundUp } from "react-icons/io";
+import { LineWave } from 'react-loader-spinner'
+import { fetchPublications } from "../services/fetchData";
 
 
 export default function Publications() {
+  const [publication, setPublications] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const getPublications = async () => {
+      try {
+        const data = await fetchPublications();
+        console.log(data);
+        setPublications(data.publications);
+      } catch (error) {
+        setError("Failed to load teams");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    getPublications();
+  }, []);
+
+
   const publications = [
     {
       title:
@@ -40,8 +63,13 @@ export default function Publications() {
   return (
     <>
       <Helmet>
-        <title>Publications | Emerging Tech 4 Health - AI-Powered Health Research</title>
-        <meta name="description" content="Emerging Tech 4 Health is a platform dedicated to showcasing cutting-edge research in the health sector, powered by Artificial Intelligence. Explore the latest innovations, breakthroughs, and applications of AI in healthcare." />
+        <title>
+          Publications | Emerging Tech 4 Health - AI-Powered Health Research
+        </title>
+        <meta
+          name="description"
+          content="Emerging Tech 4 Health is a platform dedicated to showcasing cutting-edge research in the health sector, powered by Artificial Intelligence. Explore the latest innovations, breakthroughs, and applications of AI in healthcare."
+        />
       </Helmet>
 
       <div className="pt-28 sm:pt-28 sm:h-auto md:h-[35rem] lg:h-[32rem] w-full flex items-end bg-indigo-100/50 pb-14 border-b-2 border-solid border-darkblue">
@@ -64,32 +92,34 @@ export default function Publications() {
           </p>
         </div>
         <div className="hidden sm:hidden md:flex lg:flex xl:flex 2xl:flex md:h-80 lg:h-96 w-2/5 overflow-hidden">
-          <img className="h-full w-full object-contain" src={research} />
+          <img className="h-full w-full object-contain" src={research} alt="research" loading="lazy" />
         </div>
       </div>
 
       <div className="h-auto w-full px-6 sm:px-20 md:px-20 lg:px-20 xl:px-20 2xl:px-20 py-28 bg-[url('https://static.vecteezy.com/system/resources/thumbnails/013/717/509/small_2x/school-education-and-science-doodle-background-free-vector.jpg')] relative">
-      <div className="h-full w-full absolute top-0 left-0 z-10 bg-white/90"></div>
+        <div className="h-full w-full absolute top-0 left-0 z-10 bg-white/90"></div>
         <div className="h-auto w-full flex flex-wrap items-center justify-center sm:justify-center md:justify-center lg:justify-between xl:justify-between 2xl:justify-between flex-row gap-y-12 gap-x-12 z-20 relative">
-          
-          {publications.map((publication, index) => (
-            <div key={index} className="h-auto w-80 bg-white border-t-4 border-solid border-grey py-4 flex flex-col gap-y-5">
+          {publication && !loading && publication.map((publication, index) => (
+            <div
+              key={index}
+              className="h-auto w-80 bg-white border-t-4 border-solid border-grey py-4 flex flex-col gap-y-5"
+            >
               <div className="flex flex-col gap-y-2">
-                <Link to={publication.link}>
+                <Link to={publication.publicationLink}>
                   <h2 className="text-xl text-justify text-grey font-sans font-medium hover:underline hover:underline-offset-4 decoration-orange-500 transition-all ease-in-out duration-300">
-                    {publication.title}
+                  {publication.title.length > 55 ? `${publication.title.slice(0, 55)}...` : publication.title}
                   </h2>
                 </Link>
-                <span className="text-sm text-grey font-sans">
+                <span className="text-sm text-grey font-sans truncate capitalize">
                   {publication.authors}
                 </span>
-                <span className="text-sm text-grey font-semibold font-sans">
-                  {publication.publication}
+                <span className="text-sm text-grey font-semibold font-sans uppercase">
+                  {publication.publicationType}
                 </span>
               </div>
               <Link
-                to={publication.link}
-                className="flex flex-row -gap-x-2 group cursor-pointer w-fit"
+                to={publication.publicationLink}
+                className="flex flex-row justify-center items-center -gap-x-2 group cursor-pointer w-fit"
               >
                 <button className="text-sm font-sans underline underline-offset-2 group-hover:bg-white group-hover:text-darkblue transition ease-in-out duration-500">
                   {" "}
@@ -99,6 +129,22 @@ export default function Publications() {
               </Link>
             </div>
           ))}
+
+          {loading && <div className="w-full h-auto flex justify-center items-center">
+             <LineWave
+              visible={true}
+              height="120"
+              width="120"
+              color="#084df2"
+              ariaLabel="line-wave-loading"
+              wrapperStyle={{}}
+              wrapperClass=""
+              firstLineColor=""
+              middleLineColor=""
+              lastLineColor=""
+              />
+          </div>
+          }
 
         </div>
       </div>

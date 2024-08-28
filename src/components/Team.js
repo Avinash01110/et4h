@@ -217,6 +217,7 @@ export default function Team() {
                         className="h-full w-full object-cover"
                         src={team.profile}
                         alt="profile"
+                        loading="lazy"
                       />
                     </div>
                     <div className="flex flex-row justify-between item-start">
@@ -316,6 +317,7 @@ export default function Team() {
                             className="h-full w-full object-cover"
                             src={team.profile}
                             alt="profile"
+                            loading="lazy"
                           />
                         </div>
                         <div className="flex flex-row justify-between item-start">
@@ -408,6 +410,7 @@ export default function Team() {
                             className="h-full w-full object-cover"
                             src={team.profile}
                             alt="profile"
+                            loading="lazy"
                           />
                         </div>
                         <div className="flex flex-row justify-between item-start">
@@ -502,6 +505,7 @@ export default function Team() {
                         className="h-full w-full object-cover"
                         src={team.profile}
                         alt="profile"
+                        loading="lazy"
                       />
                     </div>
                     <div className="flex flex-row justify-between item-start">

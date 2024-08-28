@@ -12,7 +12,6 @@ gsap.registerPlugin(useGSAP, ScrollTrigger);
 export default function Preloader() {
   useGSAP(() => {
     let load1 = document.querySelectorAll("#load1 path");
-    // let load2 = document.querySelectorAll("#load2 path");
 
     function loadsvg() {
       for (let i = 0; i < load1.length; i++) {
@@ -100,7 +99,7 @@ export default function Preloader() {
     tl.from(".dash", {
       width: 0,
       opacity: 0,
-      duration: 5,
+      duration: 2,
       ease: "expo.inOut",
     });
 
@@ -225,6 +224,8 @@ export default function Preloader() {
             <img
             className="h-full w-full object-cover rounded-lg"
             src= {animation}
+            alt="animation"
+            loading="lazy"
             />
           </div>
 
