@@ -52,7 +52,7 @@ function App() {
     }
     const timeoutId = setTimeout(() => {
       setLoading(false);
-    }, 1);
+    }, 5050);
 
     return () => clearTimeout(timeoutId);
   }, [location]);
