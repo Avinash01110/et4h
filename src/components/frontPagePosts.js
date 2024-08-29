@@ -90,7 +90,6 @@ const FrontPagePost = () => {
       dispatch(getAllFrontPages());
       handleCloseModal();
     } catch (error) {
-      console.error("Error handling post:", error);
       toast.error("Failed to handle post");
     }
   };
@@ -98,11 +97,9 @@ const FrontPagePost = () => {
   const handleDelete = async (postId) => {
     if (window.confirm("Are you sure you want to delete this post?")) {
       try {
-        console.log(postId)
         await deleteFrontPage({postId}, token);
         dispatch(getAllFrontPages());
       } catch (error) {
-        console.error("Error deleting post:", error);
         toast.error("Failed to delete post");
       }
     }
@@ -112,18 +109,18 @@ const FrontPagePost = () => {
   if (error) return <p className="text-center mt-4 text-red-500">Error: {error}</p>;
 
   return (
-    <div className="flex items-center justify-center min-h-screen">
-      <div className="w-full max-w-2xl text-center bg-white p-4 rounded-lg shadow-lg">
-        <ul className="text-black">
+    <div className="flex items-center justify-center h-auto">
+      <div className="h-auto w-full text-center bg-black p-4 rounded-lg shadow-lg">
+        <ul className="text-black py-10">
           {frontPage && frontPage.length > 0 ? (
             frontPage.map((post) => (
               <li
                 key={post._id}
-                className="cursor-pointer py-2 px-4 mb-2 rounded-md bg-blue-500 text-black hover:bg-blue-600 flex justify-between items-center"
+                className="cursor-pointer py-2 px-4 mb-2 rounded-md bg-black text-white flex flex-col gap-y-6 justify-between items-end hover:bg-slate-300 hover:text-black"
               >
-                <div>
-                  <h2>{post.title}</h2>
-                  <p>{post.description}</p>
+                <div className="flex flex-col justify-center items-start w-full">
+                  <h2 className="text-justify">{post.title}</h2>
+                  <p className="text-justify">{post.description}</p>
                   <img src={post.pic} className="w-20" alt={post.title} />
                   <a href={post.link} target="_blank" rel="noreferrer">
                     {post.link}

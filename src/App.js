@@ -34,7 +34,7 @@ function App() {
 
   const location = useLocation();
 
-  const paths = ["/admin/dashboard", "/admin/login", "/admin/signup", "/admin/verify-email", "/admin/profile"];
+  const paths = ["/admin/dashboard", "/login", "/signup", "/verify-email", "/admin/profile"];
 
   const showNavbarAndFooter = !paths.includes(location.pathname.toLowerCase());
 
