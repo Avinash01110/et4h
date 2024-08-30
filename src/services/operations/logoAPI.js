@@ -16,13 +16,13 @@ export const addLogo = async (data,token) => {
         const response = await apiConnector("POST", ADD_LOGO_API, data, {
             Authorization: `Bearer ${token}`,
         });
-        console.log("ADD_LOGO_API RESPONSE:", response);
+        // console.log("ADD_LOGO_API RESPONSE:", response);
 
        
         result = response?.data?.data;
         toast.success("Logo Added Successfully");
     } catch (error) {
-        console.error("ADD_LOGO_API ERROR:", error);
+        // console.error("ADD_LOGO_API ERROR:", error);
         toast.error("Could Not Add Logo");
     } finally {
         toast.dismiss(toastId);
@@ -35,13 +35,13 @@ export const getLogo = async () => {
     const toastId = toast.loading("Getting Logo...");
     try {
         const response = await apiConnector("GET", GET_LOGO_API);
-        console.log("GET_LOGO_API RESPONSE:", response);
+        // console.log("GET_LOGO_API RESPONSE:", response);
 
         
         result = response?.data;
         toast.success("Logo Fetched Successfully");
     } catch (error) {
-        console.error("GET_LOGO_API ERROR:", error);
+        // console.error("GET_LOGO_API ERROR:", error);
         toast.error("Could Not Fetch Logo");
     } finally {
         toast.dismiss(toastId);
@@ -56,12 +56,12 @@ export const deleteLogo = async (data, token) => {
         const response = await apiConnector("DELETE", DELETE_LOGO_API, data, {
             Authorization: `Bearer ${token}`,
         });
-        console.log("DELETE_LOGO_API RESPONSE:", response);
+        // console.log("DELETE_LOGO_API RESPONSE:", response);
 
         result = response?.data?.data;
         toast.success("Logo Deleted Successfully");
     } catch (error) {
-        console.error("DELETE_LOGO_API ERROR:", error);
+        // console.error("DELETE_LOGO_API ERROR:", error);
         toast.error("Could Not Delete Logo");
     } finally {
         toast.dismiss(toastId);

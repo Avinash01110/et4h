@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Helmet } from 'react-helmet-async';
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import LazyLoadedVideo from "../utils/lazyLoadedVideo";
+import { fetchLogo, fetchLatestPost } from "../services/fetchData";
 
 import lp_image1 from "../Photos/Home/landingPage/lp_image1.png";
 import lp1 from "../Photos/Home/landingPage/lp1.jpg";
@@ -50,29 +51,65 @@ gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 export default function Home() {
 
-  const latestPost = [
-    {
-      title: "The Future of Healthcare : AI Innovations",
-      description:
-        "Welcome to Emerging Tech4 Health, a Biotechnology Startup that leverages cutting-edge technology, particularly",
-      link: "/",
-      image: lp_image1,
-    },
-    {
-      title: "The Future of Healthcare : AI Innovations",
-      description:
-        "Welcome to Emerging Tech4 Health, a Biotechnology Startup that leverages cutting-edge technology, particularly",
-      link: "/",
-      image: lp_image1,
-    },
-    {
-      title: "The Future of Healthcare : AI Innovations",
-      description:
-        "Welcome to Emerging Tech4 Health, a Biotechnology Startup that leverages cutting-edge technology, particularly",
-      link: "/",
-      image: lp_image1,
-    },
-  ];
+  const [logo, setLogo] = useState([]);
+  const [loadinglogo, setLoadinglogo] = useState(true);
+  const [errorlogo, setErrorlogo] = useState(null);
+  
+  const [latestPost, setLatestPost] = useState([]);
+  const [loadingpost, setLoadingPost] = useState(true);
+  const [errorpost, setErrorPost] = useState(null);
+
+  useEffect(() => {
+    const getLogos = async () => {
+      try {
+        const data = await fetchLogo();
+        setLogo(data.logo);
+      } catch (error) {
+        setErrorlogo("Failed to load teams");
+      } finally {
+        setLoadinglogo(false);
+      }
+    };
+
+    const getLatestPost = async () => {
+      try {
+        const data = await fetchLatestPost();
+        setLatestPost(data.frontPages);
+      } catch (error) {
+        setErrorPost("Failed to load teams");
+      } finally {
+        setLoadingPost(false);
+      }
+    };
+
+    getLogos();
+    getLatestPost();
+
+  }, []);
+
+  // const latestPost = [
+  //   {
+  //     title: "The Future of Healthcare : AI Innovations",
+  //     description:
+  //       "Welcome to Emerging Tech4 Health, a Biotechnology Startup that leverages cutting-edge technology, particularly",
+  //     link: "/",
+  //     image: lp_image1,
+  //   },
+  //   {
+  //     title: "The Future of Healthcare : AI Innovations",
+  //     description:
+  //       "Welcome to Emerging Tech4 Health, a Biotechnology Startup that leverages cutting-edge technology, particularly",
+  //     link: "/",
+  //     image: lp_image1,
+  //   },
+  //   {
+  //     title: "The Future of Healthcare : AI Innovations",
+  //     description:
+  //       "Welcome to Emerging Tech4 Health, a Biotechnology Startup that leverages cutting-edge technology, particularly",
+  //     link: "/",
+  //     image: lp_image1,
+  //   },
+  // ];
 
   const Projects = [
     {
@@ -251,20 +288,26 @@ export default function Home() {
             }}
           ></div>
 
-          <div className="py-12 animate-marquee whitespace-nowrap">
-            <span className="text-4xl mx-20">Logo 1</span>
-            <span className="text-4xl mx-20">Logo 2</span>
-            <span className="text-4xl mx-20">Logo 3</span>
-            <span className="text-4xl mx-20">Logo 4</span>
-            <span className="text-4xl mx-20">Logo 5</span>
+          <div className="py-12 flex flex-row animate-marquee whitespace-nowrap">
+            {logo.map((logo, index) => (
+            <div key={index} className="h-32 w-32 mx-20 overflow-hidden rounded-full">
+              <img className="h-full w-full object-contain" 
+                src={logo.link}
+                alt="logo"
+              />
+            </div>
+            ))}
           </div>
 
-          <div className="absolute py-12 animate-marquee2 whitespace-nowrap">
-            <span className="text-4xl mx-20">Logo 1</span>
-            <span className="text-4xl mx-20">Logo 2</span>
-            <span className="text-4xl mx-20">Logo 3</span>
-            <span className="text-4xl mx-20">Logo 4</span>
-            <span className="text-4xl mx-20">Logo 5</span>
+          <div className="absolute py-12 flex flex-row animate-marquee2 whitespace-nowrap">
+          {logo.map((logo, index) => (
+            <div key={index} className="h-32 w-32 mx-20 overflow-hidden rounded-full">
+              <img className="h-full w-full object-contain" 
+                src={logo.logo}
+                alt="logo"
+              />
+            </div>
+            ))}
           </div>
         </div>
       </div>
@@ -281,6 +324,7 @@ export default function Home() {
           </h2>
 
           <Swiper
+            key={latestPost ? latestPost.length : 'no-posts'}
             ref={swiperRef}
             navigation={{
               prevEl: ".custom-prev",
@@ -305,10 +349,10 @@ export default function Home() {
                   <div className="h-auto md:h-full w-auto lg:w-7/12 p-4 flex flex-col justify-between items-center lg:items-start gap-y-8">
                     <div className="flex flex-col gap-y-5 pr-2 lg:pr-16">
                       <h3 className="text-2xl text-justify sm:text-start text-blue font-bold font-sans">
-                        {post.title}
+                        {post.title.length > 60 ? `${post.title.slice(0, 60)}...` : post.title}
                       </h3>
                       <p className="text-grey text-justify text-sm font-medium font-sans">
-                        {post.description}
+                      {post.description.length > 226 ? `${post.description.slice(0, 226)}...` : post.description}
                       </p>
                     </div>
                     <div className="content-start">
@@ -322,7 +366,7 @@ export default function Home() {
                   <div className="h-full w-auto lg:w-5/12">
                     <img
                       className="h-full w-full object-cover rounded-lg"
-                      src={post.image}
+                      src={post.pic}
                       alt="post image"
                       loading="lazy"
                     />

@@ -108,7 +108,7 @@ const Publications = () => {
             {/* <h1>Publications</h1> */}
             <button className='py-2 px-4 bg-black hover:bg-black border border-solid border-white/20 text-white text-md font-semibold menu-item 
               font-sans hover:[text-shadow:1px_3px_15px_var(--tw-shadow-color)] 
-              shadow-white tracking-wide' onClick={openModal}>Add New Publication</button>
+              shadow-white tracking-wide rounded-lg' onClick={openModal}>Add New Publication</button>
 
             {isModalOpen && (
                 <div className="modal">
