@@ -32,6 +32,9 @@ REMOVE_IMAGE_FROM_SUBPOST_API: BASE_URL + "/post/removeImageFromSubPost",
 CREATE_MILESTONE_API: BASE_URL + "/post/createMilestone",
 UPDATE_MILESTONE_API: BASE_URL + "/post/updateMilestone",
 DELETE_MILESTONE_API: BASE_URL + "/post/deleteMilestone",
+ADD_VIDEO_API: BASE_URL + "/post/addVideo",
+DELETE_VIDEO_API: BASE_URL + "/post/deleteVideo",
+GET_VIDEOS_API: BASE_URL + "/post/getVideos",
 }
 
 export const profileEndpoints = {
