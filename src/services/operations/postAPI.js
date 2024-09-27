@@ -17,9 +17,6 @@ const{
     CREATE_MILESTONE_API,
     UPDATE_MILESTONE_API,
     DELETE_MILESTONE_API,
-    ADD_VIDEO_API,
-    DELETE_VIDEO_API,
-    GET_VIDEOS_API
 
 } = postEndpoints;
 
@@ -288,70 +285,3 @@ export const getAllPosts = () => async (dispatch) => {
     toast.dismiss(toastId);
     return result;
   }
-
-  export async function addVideo(data, token) {
-    let result = null;
-    const toastId = toast.loading("Adding Video...");
-    try {
-      const response = await apiConnector("POST",ADD_VIDEO_API,  data, {
-        Authorization: `Bearer ${token}`,
-      });
-      console.log("ADD_VIDEO_API RESPONSE:", response);
-  
-      if (!response?.data?.success) {
-        throw new Error(response.data.message);
-      }
-      result = response?.data?.data;
-      toast.success("Video Added Successfully");
-    } catch (error) {
-      console.error("ADD_VIDEO_API ERROR:", error);
-      toast.error("Could Not Add Video");
-    }
-    toast.dismiss(toastId);
-    return result;
-  }
-
-  export async function deleteVideo(data, token) {
-    let result = null;
-    const toastId = toast.loading("Deleting Video...");
-    try {
-      const response = await apiConnector("DELETE",DELETE_VIDEO_API,  data, {
-        Authorization: `Bearer ${token}`,
-      });
-      console.log("DELETE_VIDEO_API RESPONSE:", response);
-  
-      if (!response?.data?.success) {
-        throw new Error(response.data.message);
-      }
-      result = response?.data?.data;
-      toast.success("Video Deleted Successfully");
-    } catch (error) {
-      console.error("DELETE_VIDEO_API ERROR:", error);
-      toast.error("Could Not Delete Video");
-    }
-    toast.dismiss(toastId);
-    return result;
-  }
-  export async function getVideos(data) {
-    console.log("GET_VIDEOS_API DATA:", data);
-    let result = null;
-    const toastId = toast.loading("Fetching Videos...");
-    try {
-      const queryString = new URLSearchParams(data).toString();
-      const url = `${GET_VIDEOS_API}?${queryString}`;
-      console.log("API URL:", url);
-      console.log("Request method:", "GET");
-      const response = await apiConnector("GET", url);
-      console.log("GET_VIDEOS_API RESPONSE:", response);
-  
-      if (!response?.data?.success) {
-        throw new Error(response.data.message);
-      }
-      result = response?.data;
-    } catch (error) {
-      console.error("GET_VIDEOS_API ERROR:", error);
-      toast.error("Could Not Fetch Videos");
-    }
-    toast.dismiss(toastId);
-    return result;
-}
