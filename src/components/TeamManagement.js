@@ -91,10 +91,10 @@ const TeamManagement = () => {
     if (error) return <p className="text-center mt-4 text-red-500">Error: {error}</p>;
 
     return (
-        <div className="flex items-center justify-center min-h-screen py-24 bg-gray-100">
-            <div className="w-full max-w-4xl bg-white p-6 rounded-lg shadow-lg">
+        <div className="flex items-center justify-center min-h-screen py-24 bg-black">
+            <div className="w-full max-w-4xl bg-black p-6 rounded-lg shadow-lg">
                 <h1 className="text-2xl font-bold mb-4 text-center">Team Management</h1>
-                <ul className="text-black">
+                <ul className="text-white bg-black">
                     {teams && teams.length > 0 ? (
                         teams.map((team) => (
                             <li

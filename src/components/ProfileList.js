@@ -176,20 +176,20 @@ const ProfileList = () => {
           profile.profiles.map((profiles) => (
             <li
               key={profiles._id}
-              className="cursor-pointer py-2 px-4 mb-2 rounded-md bg-blue-500 text-black hover:bg-blue-600 flex justify-between items-center"
+              className="cursor-pointer py-2 px-4 mb-2 rounded-md bg-black text-white hover:bg-black flex flex-col justify-between items-start overflow-hidden"
             >
               <div onClick={() => handleProfileClick(profiles._id)}>
                 <p>{profiles.name}</p>
                 <p>{profiles.email}</p>
-                <p>{profiles.about}</p>
+                <p className="truncate">{profiles.about}</p>
                 <p><img src={profiles.profilePic} className="w-20"/></p>
                 {/* You can add more details here */}
               </div>
               {/* Buttons for editing and deleting profiles */}
-             { token && <button onClick={() => handleOpenModal("edit", profiles)}>
+             { token && <button className="mt-2" onClick={() => handleOpenModal("edit", profiles)}>
                 Edit
               </button>}
-             {token &&  <button onClick={() => handleDelete(profiles._id)}>Delete</button>}
+             {token &&  <button className="mt-2" onClick={() => handleDelete(profiles._id)}>Delete</button>}
             </li>
           ))
         ) : (
@@ -198,11 +198,13 @@ const ProfileList = () => {
       </ul>
       {token && (
         <button
+        className="mt-2 bg-black hover:bg-black border border-solid border-white/20 text-white text-md font-semibold menu-item 
+          font-sans hover:[text-shadow:1px_3px_15px_var(--tw-shadow-color)] 
+          shadow-white tracking-wide py-2 px-4 rounded-lg"
           onClick={() => handleOpenModal("add")}
-          className="bg-green-500 text-black px-4 py-2 rounded-md mt-4"
-        >
-          Add Profile
-        </button>
+      >
+        Add Profile
+      </button>
       )}
 
       {isModalOpen && (

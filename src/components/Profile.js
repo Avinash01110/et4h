@@ -45,41 +45,41 @@ export default function Profile({ info, open, close }) {
       --> */}
               <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg h-auto border border-solid border-darkblue">
 
-                <div className="h-auto w-full bg-lightblue p-5 flex flex-col sm:flex-row items-center gap-x-5 gap-y-2 border-b border-solid border-darkblue">
+                <div className="h-auto w-full bg-lightblue p-5 flex flex-col sm:flex-row items-center gap-x-16 gap-y-2 border-b border-solid border-darkblue">
                   <div className="profile h-40 w-40 bg-blue overflow-hidden border border-solid border-grey">
                     <img
                       className="h-full w-full object-cover"
-                      src={info.profile}
+                      src={info.profilePic}
                       alt="error"
                     />
                   </div>
                   <div className="flex flex-col gap-y-4 w-full sm:w-auto">
                     <div className="h-auto w-auto sm:w-52 flex flex-col gap-y-1 mt-2">
                       <span className="text-center sm:text-start text-base font-sans font-semibold text-darkblue capitalize">
-                        Avinash Gupta
+                        {info.name}
                       </span>
-                      <span className="text-sm font-sans font-semibold">
+                      <span className="text-sm font-sans text-justify font-semibold">
                         Designation:{" "}
-                        <span className="text-sm font-sans font-normal capitalize">
+                        <span className="text-sm font-sans text-justify font-normal capitalize">
                           {info.designation}
                         </span>
                       </span>
-                      <span className="text-sm font-sans font-semibold">
+                      <span className="text-sm font-sans text-justify font-semibold">
                         Qualification:{" "}
-                        <span className="text-sm font-sans font-normal capitalize">
-                          {info.designation}
+                        <span className="text-sm font-sans text-justify font-normal capitalize">
+                          {info.qualifications}
                         </span>
                       </span>
-                      <span className="text-sm font-sans font-semibold">
+                      <span className="text-sm font-sans text-justify font-semibold">
                         Area of Interest:{" "}
-                        <span className="text-sm font-sans font-normal capitalize">
-                          {info.designation}
+                        <span className="text-sm font-sans text-justify font-normal capitalize">
+                          {info.AreaofInterest}
                         </span>
                       </span>
                       <span className="text-sm font-sans font-semibold">
                         Email id:{" "}
                         <span className="text-sm font-sans font-normal capitalize">
-                          {info.designation}
+                          {info.email}
                         </span>
                       </span>
                     </div>
@@ -104,7 +104,7 @@ export default function Profile({ info, open, close }) {
                 </div>
 
                 <div className="bg-gray-50 h-52 w-full p-5 overflow-y-scroll text-sm text-justify font-medium font-sans">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                {info.about}
                 </div>
 
                 <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">

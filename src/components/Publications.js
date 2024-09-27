@@ -16,7 +16,6 @@ export default function Publications() {
     const getPublications = async () => {
       try {
         const data = await fetchPublications();
-        console.log(data);
         setPublications(data.publications);
       } catch (error) {
         setError("Failed to load teams");
@@ -107,13 +106,13 @@ export default function Publications() {
               <div className="flex flex-col gap-y-2">
                 <Link to={publication.publicationLink}>
                   <h2 className="text-xl text-justify text-grey font-sans font-medium hover:underline hover:underline-offset-4 decoration-orange-500 transition-all ease-in-out duration-300">
-                  {publication.title.length > 55 ? `${publication.title.slice(0, 55)}...` : publication.title}
+                  {publication.title.length > 50 ? `${publication.title.slice(0, 50)}...` : publication.title}
                   </h2>
                 </Link>
                 <span className="text-sm text-grey font-sans truncate capitalize">
                   {publication.authors}
                 </span>
-                <span className="text-sm text-grey font-semibold font-sans uppercase">
+                <span className="text-sm text-grey font-semibold font-sans truncate uppercase">
                   {publication.publicationType}
                 </span>
               </div>
