@@ -99,13 +99,13 @@ const TeamManagement = () => {
                         teams.map((team) => (
                             <li
                                 key={team._id}
-                                className="cursor-pointer py-2 px-4 mb-2 rounded-md bg-blue-500 text-black hover:bg-blue-600 flex justify-between items-center"
+                                className="cursor-pointer py-2 px-4 mb-2 rounded-md bg-blue-500 text-black hover:bg-blue-600 flex flex-col justify-between items-start gap-y-2"
                             >
                                 <div>
                                     <p>{team.name}</p>
                                     <p>Profiles: {team.peoples.map(profile => profile.name).join(", ")}</p>
                                 </div>
-                                <div>
+                                <div className="flex flex-row gap-x-2">
                                     <button onClick={() => handleOpenModal("edit", team)} className="bg-yellow-500 text-black px-3 py-1 rounded-md mr-2 hover:bg-yellow-600">
                                         Edit
                                     </button>
@@ -120,10 +120,12 @@ const TeamManagement = () => {
                     )}
                 </ul>
                 <button
+                    className="mt-2 bg-black hover:bg-black border border-solid border-white/20 text-white text-md font-semibold menu-item 
+                    font-sans hover:[text-shadow:1px_3px_15px_var(--tw-shadow-color)] 
+                    shadow-white tracking-wide py-2 px-4 rounded-lg"
                     onClick={() => handleOpenModal("add")}
-                    className="bg-green-500 text-white px-4 py-2 rounded-md mt-4 hover:bg-green-600"
                 >
-                    Add Team
+                    Add Profile
                 </button>
 
                 {isModalOpen && (
