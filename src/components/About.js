@@ -6,9 +6,7 @@ import { FaRegLightbulb } from "react-icons/fa";
 import { GiShakingHands } from "react-icons/gi";
 import { IoAccessibilityOutline } from "react-icons/io5";
 
-
 export default function About() {
-  
   const coreValues = [
     {
       title: "Innovation",
@@ -58,7 +56,7 @@ export default function About() {
           </div>
         </div>
       </div>
-     
+
       {/* Our Mission */}
       <div className="h-auto w-full bg-lightblue flex items-center justify-center">
         <div className="h-96 w-full mt-60 flex flex-row px-12">
@@ -82,7 +80,7 @@ export default function About() {
           </div>
         </div>
       </div>
-      
+
       {/* Our Vision */}
       <div className="h-auto w-full px-16 flex flex-col items-center justify-center gap-y-10 py-16 bg-lightblue">
         <h2 className="text-4xl text-darkblue font-bold">Our Vision</h2>
@@ -128,8 +126,6 @@ export default function About() {
           ))}
         </div>
       </div>
-
-      
     </>
   );
 }
