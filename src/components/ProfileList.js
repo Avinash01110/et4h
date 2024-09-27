@@ -35,7 +35,6 @@ const ProfileList = () => {
   const handleProfileClick = (profileId) => {
     navigate(`/profile/${profileId}`);
   };
-
   const handleOpenModal = (type, profile = null) => {
     setModalType(type);
     setSelectedProfile(profile);
@@ -45,19 +44,26 @@ const ProfileList = () => {
             name: profile.name,
             email: profile.email,
             about: profile.about,
-            socialLinks: profile.socialLinks || [],
+            socialLinks: profile.socialLinks || [], // Initialize as an empty array if it's null
             profilePic: null,
             qualifications: profile.qualifications,
             designation: profile.designation,
             AreaofInterest: profile.AreaofInterest,
           }
-        : { name: "", email: "", about: "", socialLinks: [], profilePic: null, 
-          qualifications: "", designation: "", AreaofInterest: "" }
-
-
+        : {
+            name: "",
+            email: "",
+            about: "",
+            socialLinks: [], // Initialize as an empty array here
+            profilePic: null,
+            qualifications: "",
+            designation: "",
+            AreaofInterest: "",
+          }
     );
     setIsModalOpen(true);
   };
+  
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
@@ -83,15 +89,15 @@ const ProfileList = () => {
     }));
   };
 
-  const handleSocialLinkChange = (index, field, value, form) => {
-    const updatedSocialLinks = formData.socialLinks.map((link, i) =>
-      i === index ? { ...link, [field]: value } : link
-    );
+  const handleSocialLinkChange = (index, field, value) => {
+    const updatedSocialLinks = [...formData.socialLinks];
+    updatedSocialLinks[index] = { ...updatedSocialLinks[index], [field]: value };
+    
     setFormData((prevFormData) => ({
       ...prevFormData,
       socialLinks: updatedSocialLinks,
     }));
-  };
+};
 
   const handleAddSocialLink = () => {
     setFormData((prevFormData) => ({
