@@ -4,7 +4,7 @@ import { toast } from 'react-hot-toast';
 import { getSinglePost, createMilestone, updateMilestone, deleteMilestone, createSubpost, updateSubpost, deleteSubpost } from '../services/operations/postAPI';
 import { useSelector } from "react-redux";
 import Modal from 'react-modal';
-
+import VideoManagement from './VideoManagement';
 Modal.setAppElement('#root');
 
 const SinglePost = () => {
@@ -207,6 +207,7 @@ const SinglePost = () => {
               {subPost.imageUrls.map((imageUrl, index) => (
                 <img key={index} src={imageUrl} alt="subpost" className="w-1/4" />
               ))}
+              <VideoManagement subPostId={subPost._id}  token={token}/>
               <button className="ml-2 bg-yellow-500 text-white px-2 py-1 rounded" onClick={() => openSubPostModal(subPost)}>Update</button>
               <button className="ml-2 bg-red-500 text-white px-2 py-1 rounded" onClick={() => handleDeleteSubPost(subPost._id)}>Delete</button>
             </div>
