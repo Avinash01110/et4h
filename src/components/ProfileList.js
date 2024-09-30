@@ -177,31 +177,31 @@ const ProfileList = () => {
 
   return (
     <div className="mt-4">
-      <ul className="text-black">
-        {profile && profile.profiles && profile.profiles.length > 0 ? (
-          profile.profiles.map((profiles) => (
-            <li
-              key={profiles._id}
-              className="cursor-pointer py-2 px-4 mb-2 rounded-md bg-black text-white hover:bg-black flex flex-col justify-between items-start overflow-hidden"
-            >
-              <div onClick={() => handleProfileClick(profiles._id)}>
-                <p>{profiles.name}</p>
-                <p>{profiles.email}</p>
-                <p className="truncate">{profiles.about}</p>
-                <p><img src={profiles.profilePic} className="w-20"/></p>
-                {/* You can add more details here */}
-              </div>
-              {/* Buttons for editing and deleting profiles */}
-             { token && <button className="mt-2" onClick={() => handleOpenModal("edit", profiles)}>
-                Edit
-              </button>}
-             {token &&  <button className="mt-2" onClick={() => handleDelete(profiles._id)}>Delete</button>}
-            </li>
-          ))
-        ) : (
-          <p className="text-center mt-4">No profiles available</p>
-        )}
-      </ul>
+    <ul className="text-black">
+      {profile.length > 0 ? (
+        profile.map((profileItem) => (
+          <li
+            key={profileItem._id}
+            className="cursor-pointer py-2 px-4 mb-2 rounded-md bg-black text-white hover:bg-black flex flex-col justify-between items-start overflow-hidden"
+          >
+            <div onClick={() => handleProfileClick(profileItem._id)}>
+              <p>{profileItem.name}</p>
+              <p>{profileItem.email}</p>
+              <p className="truncate">{profileItem.about}</p>
+              {profileItem.profilePic && <img src={profileItem.profilePic} className="w-20"/>}
+            </div>
+            {token && (
+              <>
+                <button className="mt-2" onClick={() => handleOpenModal("edit", profileItem)}>Edit</button>
+                <button className="mt-2" onClick={() => handleDelete(profileItem._id)}>Delete</button>
+              </>
+            )}
+          </li>
+        ))
+      ) : (
+        <p className="text-center mt-4">No profiles available</p>
+      )}
+    </ul>
       {token && (
         <button
         className="mt-2 bg-black hover:bg-black border border-solid border-white/20 text-white text-md font-semibold menu-item 

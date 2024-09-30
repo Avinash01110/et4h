@@ -2,9 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import Home from "./components/Home";
 import About from "./components/About";
-import Navbar from "./components/Navbar";
 import Projects from "./components/Projects";
-import Footer from "./components/Footer";
 import Team from "./components/Team";
 import Publications from "./components/Publications";
 import Project from "./components/Project";
@@ -19,75 +17,81 @@ import ProfileList from "./components/ProfileList";
 import ProjectList from "./components/ProjectList";
 import SinglePost from "./components/SinglePost";
 import PageNotFound from "./components/PageNotFound";
-
 import Publication from "./components/publicatoin";
-
 import Preloader from "./components/Preloader";
 import Loader from "./components/Loader";
 import FrontPagePosts from "./components/frontPagePosts";
 import TeamManagement from "./components/TeamManagement";
 import LogoManagement from "./components/LogoManagement";
-function App() {
+import Wrapper from "./components/Wrapper"; // Import the new Wrapper component
 
+function App() {
   const [showPreloader, setShowPreloader] = useState(true);
   const [loading, setLoading] = useState(false);
-
   const location = useLocation();
 
-  const paths = ["/admin/dashboard", "/login", "/signup", "/verify-email", "/admin/profile"];
-
-  const showNavbarAndFooter = !paths.includes(location.pathname.toLowerCase());
-
   useEffect(() => {
-    if (showPreloader) {
-      setTimeout(() => {
-        setShowPreloader(false);
-      }, 14100);
+    const preloaderState = localStorage.getItem("showPreloader");
+    const loadingState = localStorage.getItem("loading");
+
+    if (preloaderState === "false") {
+      setShowPreloader(false);
     }
-  }, [showPreloader]);
-  
-  
-  useEffect(() => {
-    if(!showPreloader){
+
+    if (loadingState === "true") {
       setLoading(true);
+    }
+
+    // Set timeout for preloader
+    const timer = setTimeout(() => {
+      setShowPreloader(false);
+      localStorage.setItem("showPreloader", "false");
+    }, 14100); // duration for preloader
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    if (!showPreloader) {
+      setLoading(true);
+      localStorage.setItem("loading", "true");
     }
     const timeoutId = setTimeout(() => {
       setLoading(false);
-    }, 5050);
+      localStorage.setItem("loading", "false");
+    }, 5050); // duration for loading
 
     return () => clearTimeout(timeoutId);
-  }, [location]);
+  }, [location, showPreloader]);
 
   return (
     <>
-    {showPreloader && <Preloader />}
-    {loading && <Loader/>}
-      {!showPreloader && !loading && showNavbarAndFooter && <Navbar />}
-      {!showPreloader && !loading && (
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/projects" element={<Projects />} />
-        <Route path="/project/:title" element={<Project />} />
-        <Route path="/team" element={<Team />} />
-        <Route path="/publications" element={<Publications />} />
-        <Route path="/categories" element={<CategoryList />} />
-        <Route path="/category/:categoryId" element={<CategoryPage />} />
-        <Route path="*" element={<PageNotFound />} />
-        <Route path="/signup" element={<Signup/>}/>
-        <Route path="/verify-email" element={<VerifyEmails/>}/>
-        <Route path="/login" element= {<Login/>}/>
-        <Route path="/admin/dashboard" element={<Dashboard/>}/>
-        <Route path="/profile" element= {<ProfileList/>}/>
-        <Route path="post" element={<ProjectList/>}/>
-        <Route path="post/:postId" element={<SinglePost/>}/>
-        <Route path="pub" element={<Publication/>}/>
-        <Route path="f" element={<FrontPagePosts/>}/>
-        <Route path="t" element={<TeamManagement/>}/>
-        <Route path="l" element={<LogoManagement/>}/>
-      </Routes>
-      )}
-      {!showPreloader && !loading && showNavbarAndFooter && <Footer />}
+      {showPreloader && <Preloader />}
+      {loading && <Loader />}
+      <Wrapper showPreloader={showPreloader} loading={loading}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/project/:title" element={<Project />} />
+          <Route path="/team" element={<Team />} />
+          <Route path="/publications" element={<Publications />} />
+          <Route path="/categories" element={<CategoryList />} />
+          <Route path="/category/:categoryId" element={<CategoryPage />} />
+          <Route path="*" element={<PageNotFound />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/verify-email" element={<VerifyEmails />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/admin/dashboard" element={<Dashboard />} />
+          <Route path="/profile" element={<ProfileList />} />
+          <Route path="post" element={<ProjectList />} />
+          <Route path="post/:postId" element={<SinglePost />} />
+          <Route path="pub" element={<Publication />} />
+          <Route path="f" element={<FrontPagePosts />} />
+          <Route path="t" element={<TeamManagement />} />
+          <Route path="l" element={<LogoManagement />} />
+        </Routes>
+      </Wrapper>
       <Toaster />
     </>
   );

@@ -4,6 +4,7 @@ import { toast } from 'react-hot-toast';
 import { getSinglePost, createMilestone, updateMilestone, deleteMilestone, createSubpost, updateSubpost, deleteSubpost } from '../services/operations/postAPI';
 import { useSelector } from "react-redux";
 import Modal from 'react-modal';
+import ResearchProgressComponent from './ResearchProgressComponent';
 
 Modal.setAppElement('#root');
 
@@ -187,7 +188,7 @@ const SinglePost = () => {
           ))}
         </ul>
       </div>
-      
+      <ResearchProgressComponent postId={postId} token={token} />
       <div className="mt-4">
         <strong>Contributors:</strong>
         <ul className="list-disc ml-5">
