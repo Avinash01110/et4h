@@ -67,3 +67,10 @@ ADD_LOGO_API: BASE_URL + "/logo/addLogo",
 GET_LOGO_API: BASE_URL + "/logo/getLogo",
 DELETE_LOGO_API: BASE_URL + "/logo/deleteLogo",
 }
+
+export const researchProgressEndpoints = {
+CREATE_RESEARCH_PROGRESS_API: BASE_URL + "/researchProgress/createResearchProgress",
+UPDATE_RESEARCH_PROGRESS_API: BASE_URL + "/researchProgress/updateResearchProgress",
+DELETE_SINGLE_IMAGE_API: BASE_URL + "/researchProgress/deleteSingleImage",
+GET_RESEARCH_PROGRESS_API: BASE_URL + "/researchProgress/getResearchProgress",
+}

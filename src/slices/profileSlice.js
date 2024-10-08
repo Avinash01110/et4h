@@ -1,28 +1,28 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initalState= {
-    profile:[],
-    loading:false,
-    error:null
+const initialState = {
+    profile: [], // Correctly initialized as an empty array
+    loading: false,
+    error: null
 }
 
 const profileSlice = createSlice({
-    name:'profile',
-    initialState:initalState,
-    reducers:{
-        setProfile(state,value){
-            state.profile=value.payload
+    name: 'profile',
+    initialState,
+    reducers: {
+        setProfile(state, action) {
+            state.profile = action.payload.profiles; // Ensure only profiles are set
         },
-        setLoading(state,value){
-            state.loading=value.payload
+        setLoading(state, action) {
+            state.loading = action.payload;
         },
-        setError(state,value){
-            state.error=value.payload
+        setError(state, action) {
+            state.error = action.payload;
         }
     }
 })
 
-export const {setProfile,setLoading,setError}=profileSlice.actions;
+export const { setProfile, setLoading, setError } = profileSlice.actions;
 
 // Reducers
 export default profileSlice.reducer;
