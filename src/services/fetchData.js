@@ -5,6 +5,7 @@ import {
   logoEndpoints,
   frontPageEndpoints,
   teamEndpoints,
+  postEndpoints
 } from "./apis";
 
 export const fetchTeamProfiles = async () => {
@@ -54,4 +55,13 @@ export const fetchTeam = async () => {
   } catch (error) {
     throw error(error);
   }
-}
+};
+
+export const fetchProject = async () => {
+  try {
+    const response = await axios.get(postEndpoints.GET_ALL_POSTS_API);
+    return response.data;
+  } catch (error) {
+    throw error(error);
+  }
+};

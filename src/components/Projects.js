@@ -1,6 +1,6 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from "react-helmet-async";
 import liverimage from "../Photos/Projects/liverimage.png";
 import kidneyimage from "../Photos/Projects/kidneyimage.png";
 import breastimage from "../Photos/Projects/breastimage.png";
@@ -12,8 +12,13 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Loader from "./Loader";
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
+import { fetchProject } from "../services/fetchData";
 
 export default function Projects() {
+  const [projects, setProjects] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
+
   const Projects = [
     {
       index: "01",
@@ -97,32 +102,47 @@ export default function Projects() {
       animation: animationRef.current,
       scrub: 1,
     });
-
-    
   });
+
+  const getProjects = async () => {
+    try {
+      const data = await fetchProject();
+      setProjects(data.posts)
+    } catch (err) {
+      setError("Failed to load teams");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    getProjects();
+  }, []);
 
   return (
     <>
       <Helmet>
-        <title>Projects | Emerging Tech 4 Health - AI-Powered Health Research</title>
-        <meta name="description" content="Emerging Tech 4 Health is a platform dedicated to showcasing cutting-edge research in the health sector, powered by Artificial Intelligence. Explore the latest innovations, breakthroughs, and applications of AI in healthcare." />
+        <title>
+          Projects | Emerging Tech 4 Health - AI-Powered Health Research
+        </title>
+        <meta
+          name="description"
+          content="Emerging Tech 4 Health is a platform dedicated to showcasing cutting-edge research in the health sector, powered by Artificial Intelligence. Explore the latest innovations, breakthroughs, and applications of AI in healthcare."
+        />
       </Helmet>
 
       <div className="project h-auto w-full bg-lightblue pt-16 opacity-100">
         <div className="bg-lightblue h-auto w-full flex flex-col items-center gap-y-1">
-
           <div className="projects w-full h-auto px-4 py-36 sm:py-36 lg:py-0 lg:px-6 xl:px-10 2xl:px-16 flex flex-row">
             <div className="left w-full sm:w-full lg:w-1/2 h-auto flex items-center justify-center">
               <div className="projects-text flex flex-col gap-y-36">
-                {Projects.map((project, index) => (
+                {projects && projects.map((project, index) => (
                   <div
-                    key={index}
+                    key={project._id}
                     className="h-auto sm:h-auto lg:h-[100vh] project-info flex flex-col justify-center items-center sm:items-center lg:items-start gap-y-10"
                   >
                     <div className="flex sm:flex lg:hidden h-96 w-auto">
-                      <div
-                        className="w-96 xs:w-[30rem] sm:w-[38rem] h-96 sm:h-96  px-4 sm:px-4"
-                      >
+                      <div className="w-96 xs:w-[30rem] sm:w-[38rem] h-96 sm:h-96  px-4 sm:px-4">
                         <img
                           className="h-full w-full object-cover rounded-lg block border-2 border-grey"
                           src={project.image}
@@ -138,7 +158,7 @@ export default function Projects() {
                         {project.title}
                       </h3>
                       <span className="text-base text-grey font-sans">
-                        {project.description}
+                        {project.shortDesc}
                       </span>
                     </div>
                     <Link to={project.link + "/" + project.title}>
@@ -157,7 +177,7 @@ export default function Projects() {
                   useRef={animationRef}
                   className="right-photo h-[28rem] xl:w-auto 2xl:w-auto relative"
                 >
-                  {Projects.map((project, index) => (
+                  {projects && projects.map((project, index) => (
                     <div
                       key={index}
                       className="right-photo-item w-full h-full py-5 px-10 absolute"

@@ -20,20 +20,20 @@ export default function Team() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    const getTeams = async () => {
-      try {
-        const data = await fetchTeam();
-        console.log(data.teams);
-        setTeams(data.teams);
-      } catch (err) {
-        console.log(err);
-        setError("Failed to load teams");
-      } finally {
-        setLoading(false);
-      }
-    };
+  const getTeams = async () => {
+    try {
+      const data = await fetchTeam();
+      console.log(data.teams);
+      setTeams(data.teams);
+    } catch (err) {
+      console.log(err);
+      setError("Failed to load teams");
+    } finally {
+      setLoading(false);
+    }
+  };
 
+  useEffect(() => {
     getTeams();
   }, []);
 
