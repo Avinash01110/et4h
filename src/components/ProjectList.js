@@ -16,7 +16,7 @@ const ProjectList = () => {
   const navigate = useNavigate();
   const { post = [], loading, error } = useSelector((state) => state.post);
   const { categories } = useSelector((state) => state.category);
-  const { profile } = useSelector((state) => state.profile);
+  // const { profile } = useSelector((state) => state.profile);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
   const [currentPostId, setCurrentPostId] = useState(null);
@@ -77,6 +77,10 @@ const ProjectList = () => {
       dispatch(getAllProfile());
     }
   }, [isModalOpen, isUpdateModalOpen, dispatch]);
+  
+  const { profile } = useSelector((state) => state.profile);
+  console.log("profile data :::",profile); // Check what data is being fetched
+  
 
   const handlePostClick = (postId) => {
     navigate(`/post/${postId}`);
@@ -294,11 +298,12 @@ const ProjectList = () => {
                   onChange={handleContributorsChange}
                   required
                 >
-                  {(profile?.profiles || []).map((profile) => (
-                    <option key={profile._id} value={profile._id}>
-                      {profile.name}
-                    </option>
-                  ))}
+                 {profile.map((profileItem) => (
+  <option key={profileItem._id} value={profileItem._id}>
+    {profileItem.name}
+  </option>
+))}
+
                 </select>
               </div>
               <button type="submit">Submit</button>
