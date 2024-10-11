@@ -77,10 +77,9 @@ const ProjectList = () => {
       dispatch(getAllProfile());
     }
   }, [isModalOpen, isUpdateModalOpen, dispatch]);
-  
+
   const { profile } = useSelector((state) => state.profile);
-  console.log("profile data :::",profile); // Check what data is being fetched
-  
+  console.log("profile data :::", profile); // Check what data is being fetched
 
   const handlePostClick = (postId) => {
     navigate(`/post/${postId}`);
@@ -115,7 +114,6 @@ const ProjectList = () => {
       setFormData((prev) => ({ ...prev, [name]: value }));
     }
   };
-  
 
   const handleContributorsChange = (e) => {
     const options = e.target.options;
@@ -138,18 +136,17 @@ const ProjectList = () => {
         formDataToSubmit.append(key, formData[key]);
       }
     });
-  
+
     if (isUpdateModalOpen) {
       formDataToSubmit.append("postId", currentPostId);
       dispatch(updatePostAction(formDataToSubmit, token));
     } else {
       dispatch(createPostAction(formDataToSubmit, token));
     }
-  
+
     setIsModalOpen(false);
     setIsUpdateModalOpen(false);
   };
-  
 
   const handleEditPostClick = (postItem) => {
     setFormData({
@@ -173,14 +170,20 @@ const ProjectList = () => {
     return <div>Error: {error}</div>;
   }
 
-  if (!post || post.length === 0) {
-    return <div>No posts available</div>;
-  }
-
   return (
-    <div>
-      <button onClick={handleCreatePostClick} className="
-      text-white font-bold py-2 px-4 rounded bg-blue-700 hover:bg-blue-700">Create Post</button>
+    <div className="h-auto w-full flex flex-col gap-4">
+      <button
+        className=" w-fit py-2 px-4 bg-black hover:bg-black border border-solid border-white/20 text-white text-md font-semibold menu-item 
+              font-sans hover:[text-shadow:1px_3px_15px_var(--tw-shadow-color)] 
+              shadow-white tracking-wide rounded-lg"
+        onClick={handleCreatePostClick}
+      >
+        Create Projects
+      </button>
+      {!post ||
+        (post.length === 0 && (
+          <span className="text-white">No posts available</span>
+        ))}
       <ul>
         {post.map((postItem) => (
           <li key={postItem._id}>
@@ -194,7 +197,7 @@ const ProjectList = () => {
               Edit
             </button>
             <button
-            className="bg-blue-700 hover:bg-blue-700 text-black font-bold py-2 px-4 rounded ml-2"
+              className="bg-blue-700 hover:bg-blue-700 text-black font-bold py-2 px-4 rounded ml-2"
               onClick={() =>
                 handleDeletePostClick(postItem._id, postItem.category)
               }
@@ -245,13 +248,9 @@ const ProjectList = () => {
                 ></textarea>
               </div>
               <div>
-    <label>Image:</label>
-    <input
-      type="file"
-      name="image"
-      onChange={handleInputChange}
-    />
-  </div>
+                <label>Image:</label>
+                <input type="file" name="image" onChange={handleInputChange} />
+              </div>
               <div>
                 <label>References:</label>
                 <input
@@ -298,12 +297,11 @@ const ProjectList = () => {
                   onChange={handleContributorsChange}
                   required
                 >
-                 {profile.map((profileItem) => (
-  <option key={profileItem._id} value={profileItem._id}>
-    {profileItem.name}
-  </option>
-))}
-
+                  {profile.map((profileItem) => (
+                    <option key={profileItem._id} value={profileItem._id}>
+                      {profileItem.name}
+                    </option>
+                  ))}
                 </select>
               </div>
               <button type="submit">Submit</button>

@@ -76,7 +76,7 @@ export default function Projects() {
 
   const animationRef = useRef(null);
 
-  useGSAP(() => {
+  useEffect(() => {
     const rightPhotoItems = gsap.utils.toArray(".right-photo-item");
 
     rightPhotoItems.forEach(function (item, index) {
@@ -154,14 +154,14 @@ export default function Projects() {
                         {/* <span className="text-2xl text-grey font-semibold font-sans">
                         {project.index}
                       </span> */}
-                        <h3 className="text-2xl sm:text-4xl text-grey font-bold font-sans">
+                        <h3 className="text-2xl sm:text-4xl text-grey font-bold font-sans capitalize">
                           {project.title}
                         </h3>
-                        <span className="text-base text-grey font-sans">
-                          {project.shortDesc}
+                        <span className="text-base text-grey font-sans text-justify">
+                          {project.shortDesc.length > 600 ? project.shortDesc.substring(0, 600) + "..." : project.shortDesc}
                         </span>
                       </div>
-                      <Link to={project.link + "/" + project.title}>
+                      <Link to={"/Project/" + project._id + "/" + project.title}>
                         <button className="button bg-blue text-[#FFFFFF] py-2 px-3 rounded-lg text-sm font-medium font-sans active:bg-blue hover:bg-darkblue hover:shadow-md hover:shadow-lightgrey transition ease-in-out duration-300">
                           View More
                         </button>
@@ -174,13 +174,13 @@ export default function Projects() {
             <div className="right hidden sm:hidden lg:flex w-1/2 h-auto">
               <div className="right-b1 flex flex-col justify-center sticky top-0 w-full h-[100vh]">
                 <div
-                  useRef={animationRef}
+                  useref={animationRef}
                   className="right-photo h-[28rem] xl:w-auto 2xl:w-auto relative"
                 >
                   {projects &&
-                    projects.map((project, index) => (
+                    projects?.map((project, index) => (
                       <div
-                        key={index}
+                        key={project._id}
                         className="right-photo-item w-full h-full py-5 px-10 absolute"
                       >
                         <img

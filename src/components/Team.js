@@ -117,6 +117,7 @@ export default function Team() {
 
   const [profInfo, setprofInfo] = useState({});
   const [isOpen, setIsOpen] = useState(false);
+  const [research, setResearch] = useState(false);
 
   const openModal = (info) => {
     setprofInfo(info);
@@ -166,6 +167,9 @@ export default function Team() {
         {teams &&
           teams.map((team, index) => {
             const isResearchers = team.name.startsWith("Researchers");
+            if (research == false && isResearchers) {
+              setResearch(true);
+            }
             const [researchers, group] = isResearchers
               ? team.name.split(" - ")
               : [];
@@ -278,7 +282,7 @@ export default function Team() {
           })}
 
         {/* Researchers */}
-        <div className="h-auto w-full bg-white px-4 sm:px-10 py-5 rounded-lg flex flex-col gap-y-5 border border-solid border-grey">
+        {teams && research && <div className="h-auto w-full bg-white px-4 sm:px-10 py-5 rounded-lg flex flex-col gap-y-5 border border-solid border-grey">
           <h2 className="text-grey font-sans text-3xl text-center font-semibold">
             Researchers
           </h2>
@@ -343,7 +347,7 @@ export default function Team() {
                             {team.peoples.map((people, index) => (
                               <SwiperSlide
                                 onClick={() => {
-                                  openModal(team);
+                                  openModal(people);
                                 }}
                                 className="bg-white bg-opacity-0 py-7"
                                 key={index}
@@ -395,11 +399,7 @@ export default function Team() {
                 }
               })}
           </div>
-        </div>
-
-        {/* Researchers */}
-
-        {/* Former & Emeritus Researchers */}
+        </div>}
       </div>
     </>
   );

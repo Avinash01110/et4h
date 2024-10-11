@@ -65,3 +65,12 @@ export const fetchProject = async () => {
     throw error(error);
   }
 };
+
+export const fetchSingleProject = async () => {
+  try {
+    const response = await axios.get(postEndpoints.GETSINGLE_POST_API);
+    return response.data;
+  } catch (error) {
+    throw error(error);
+  }
+};

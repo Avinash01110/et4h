@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Helmet } from 'react-helmet-async';
-import about_us2 from "../Photos/Home/about_us2.png";
+import { Helmet } from "react-helmet-async";
 import lp1 from "../Photos/Home/landingPage/lp1.jpg";
 import { FaPlus } from "react-icons/fa6";
+import { fetchSingleProject } from "../services/fetchData";
+import { getSinglePost } from "../services/operations/postAPI";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -12,15 +13,23 @@ import "swiper/css/pagination";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import toast from "react-hot-toast";
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 export default function Project() {
   const params = useParams();
-  const { title } = params;
+  const { id, title } = params;
+  console.log(id);
 
   const [parameter, setparameter] = useState({ rotate: 0 });
 
   const [menu, setmenu] = useState("research");
+
+  const [project, setProject] = useState(null);
+  const [subPost, setSubPost] = useState(null);
+  const [contributors, setContributors] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const researchProgress = () => {
     if (parameter.rotate == 0) {
@@ -34,27 +43,102 @@ export default function Project() {
 
   const menuChange = (e) => {
     setmenu(e.target.innerText.toLowerCase());
-    // alert(e.target.innerText.toLowerCase());
   };
+
+  const getSingleProject = async () => {
+    try {
+      const data = await getSinglePost(id, toast);
+      if (data) {
+        setProject(data);
+        setSubPost(data.subPost);
+        setContributors(data.contributors);
+      }
+    } catch (err) {
+      setError("Failed to load teams");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    getSingleProject();
+  }, []);
 
   return (
     <>
       <Helmet>
-        <title>{title} | Emerging Tech 4 Health - AI-Powered Health Research</title>
-        <meta name="description" content="Emerging Tech 4 Health is a platform dedicated to showcasing cutting-edge research in the health sector, powered by Artificial Intelligence. Explore the latest innovations, breakthroughs, and applications of AI in healthcare." />
+        <title>
+          {title} | Emerging Tech 4 Health - AI-Powered Health Research
+        </title>
+        <meta
+          name="description"
+          content="Emerging Tech 4 Health is a platform dedicated to showcasing cutting-edge research in the health sector, powered by Artificial Intelligence. Explore the latest innovations, breakthroughs, and applications of AI in healthcare."
+        />
       </Helmet>
 
       <div className="h-[82vh] w-full flex items-end bg-lightblue">
-        <div className="h-96 w-full relative">
+        <div className="h-96 w-full relative flex flex-wrap items-end justify-start">
           <img className="h-full w-full object-cover" src={lp1} alt="error" />
-          <h4 className="text-5xl text-purewhite font-bold font-sans bottom-32 left-16 absolute">
+          <h4 className="capitalize text-3xl sm:text-4xl lg:text-5xl px-4 sm:px-10 py-20 text-purewhite font-bold font-sans absolute">
             {title}
           </h4>
         </div>
       </div>
 
-      <div className="h-auto w-full bg-lightblue flex flex-row">
-        <div className="left w-2/12 h-96 sticky top-0">
+      <div className="h-auto w-full bg-lightblue flex flex-col lg:flex-row">
+      {/* mobile side menu */}
+        <div className="flex flex-row items-start justify-center gap-6 xs:gap-10 sm:gap-16 md:gap-20 lg:hidden w-full h-10 my-16 border-t-2 border-solid border-grey/40">
+          <div
+          onClick={menuChange}
+            className={`flex justify-center items-center group rounded-b-lg border-t-2 border-solid transition-all duration-300 ease-in-out ${
+              menu === "research" ? "border-darkblue" : ""
+            }`}
+          >
+            <button
+              className={`font-sans text-sm md:text-base px-1 py-2 font-semibold hover:bg-lightblue transition-all duration-300 ease-in-out w-full h-full ${
+                menu === "research"
+                  ? "text-darkblue"
+                  : "text-grey group-hover:text-darkblue"
+              }`}
+            >
+              Research
+            </button>
+          </div>
+          <div
+          onClick={menuChange}
+            className={`flex justify-center items-center group rounded-b-lg border-t-2 border-solid transition-all duration-300 ease-in-out ${
+              menu === "contributors" ? "border-darkblue" : ""
+            }`}
+          >
+            <button
+              className={`font-sans px-1 py-2 text-sm md:text-base font-semibold hover:bg-lightblue transition-all duration-300 ease-in-out w-full h-full ${
+                menu === "contributors"
+                  ? "text-darkblue"
+                  : "text-grey group-hover:text-darkblue"
+              }`}
+            >
+              Contributors
+            </button>
+          </div>
+          <div
+          onClick={menuChange}
+            className={`flex justify-center items-center group rounded-b-lg border-t-2 border-solid transition-all duration-300 ease-in-out ${
+              menu === "faq's" ? "border-darkblue" : ""
+            }`}
+          >
+            <button
+              className={`font-sans px-1 py-2 text-sm md:text-base font-semibold hover:bg-lightblue transition-all duration-300 ease-in-out w-full h-full ${
+                menu === "faq's"
+                  ? "text-darkblue"
+                  : "text-grey group-hover:text-darkblue"
+              }`}
+            >
+              FAQ's
+            </button>
+          </div>
+        </div>
+
+        <div className="left hidden lg:flex w-2/12 h-96 sticky top-0">
           <div className="menu flex flex-col items-start gap-y-2 px-6 py-36">
             <div
               onClick={menuChange}
@@ -89,93 +173,36 @@ export default function Project() {
           </div>
         </div>
 
-        <div className="right w-10/12 h-full px-10 py-32">
-
+        <div className="right w-full lg:w-10/12 h-full px-4 sm:px-6 md:px-10 pt-6 lg:pt-32 pb-32">
           {/* research */}
           <div
             className={`${
               menu === "research" ? "flex flex-col gap-y-20" : "hidden"
             }`}
           >
-            <div className="research w-full h-auto">
-              <div className="ro w-full h-auto flex flex-col gap-y-8">
-                <h4 className="text-lg text-darkblue font-bold font-sans">
-                  Research Objective
-                </h4>
-                <p className="text-grey font-bold text-justify opacity-95 font-sans">
-                  We're pioneering a novel approach to kidney tumor detection
-                  and segmentation, leveraging advanced computational
-                  techniques. Our project aims to revolutionize medical imaging
-                  analysis through the development of a sophisticated framework.
-                  By exploring diverse datasets, we ensure the adaptability and
-                  robustness of our methodology across various clinical
-                  scenarios. Through rigorous evaluation, we'll validate the
-                  accuracy and clinical relevance of our system, benchmarking it
-                  against existing methods. Our ultimate goal is seamless
-                  integration into clinical workflows, enhancing diagnostic
-                  precision and treatment planning for improved patient
-                  outcomes.
-                </p>
-              </div>
-            </div>
+            {subPost &&
+              subPost.slice(0, subPost.length - 1).map((post) => {
+                return (
+                  <div key={post._id} className="research w-full h-auto">
+                    <div className="ro w-full h-auto flex flex-col gap-y-8">
+                      <h4 className="capitalize text-lg text-darkblue font-bold font-sans">
+                        {post.sectionName}
+                      </h4>
+                      <p className="text-grey font-bold text-justify opacity-95 font-sans">
+                        {post.subSectionContent}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
 
-            <div className="research w-full h-auto">
-              <div className="ro w-full h-auto flex flex-col gap-y-8">
-                <h4 className="text-lg text-darkblue font-bold font-sans">
-                  Advancements in Kidney Tumor Assessment
-                </h4>
-                <p className="text-grey font-bold text-justify opacity-95 font-sans">
-                  In this study, we developed and evaluated a computational
-                  framework specifically designed for accurate kidney tumor
-                  segmentation and detection, addressing a critical challenge in
-                  healthcare. Leveraging cutting-edge techniques in medical
-                  image analysis and machine learning, our primary objectives
-                  included creating a novel framework, assessing its performance
-                  on diverse datasets, and evaluating its accuracy and clinical
-                  relevance. Through a thorough literature review, key
-                  methodologies and trends in kidney tumor segmentation and
-                  detection were identified, guiding our methodology. Advanced
-                  techniques such as UNet, MIScnn, MONAI, and NNUnet were
-                  employed, tailored for medical image analysis. Experimental
-                  results showcased promising outcomes, achieving high accuracy
-                  in segmenting kidney tumors from CT scans using the KiTS19
-                  dataset. These findings underscore the transformative
-                  potential of deep learning in advancing medical imaging
-                  analysis, with continued research promising further
-                  enhancements in patient care.
-                </p>
-              </div>
-            </div>
-
-            <div className="research w-full h-auto">
-              <div className="ro w-full h-auto flex flex-col gap-y-8">
-                <h4 className="text-lg text-darkblue font-bold font-sans">
-                  Kidney Tumor Research Hypothesis
-                </h4>
-                <p className="text-grey font-bold text-justify opacity-95 font-sans">
-                  Through harnessing advanced deep learning architectures,
-                  including UNet, MIScnn, MONAI, and NNUnet, we hypothesize the
-                  feasibility of constructing resilient computational
-                  methodologies for kidney tumor segmentation and detection.
-                  These methodologies are envisioned to bridge the divide
-                  between theoretical research findings and practical
-                  implementation within healthcare domains, thereby fostering
-                  heightened precision and efficiency in kidney tumor diagnosis.
-                  Additionally, we envisage our developed framework to furnish
-                  valuable insights into the scalability and versatility of
-                  these sophisticated architectures in tackling intricate
-                  medical imaging obstacles, thereby culminating in improved
-                  patient care outcomes
-                </p>
-              </div>
-            </div>
-
+            {/* Research Progress */}
             <div className="w-full h-auto bg-slate-200 py-6 flex flex-col gap-y-10 rounded-lg">
               <h3 className="text-2xl text-darkblue font-semibold font-sans text-center">
                 Research Progress
               </h3>
-              <div className="min-h-96 w-full flex flex-row px-2 gap-x-2">
-                <div className="w-7/12 min-h-96 transition ease-in-out duration-500">
+              <div className="min-h-96 w-full flex flex-col-reverse lg:flex-row px-2 gap-2">
+                <div className="w-full lg:w-7/12 h-auto lg:min-h-96 transition ease-in-out duration-500">
                   <div
                     className={`rp h-10 w-full bg-white px-4 pb-6 cursor-pointer overflow-hidden rounded-lg`}
                   >
@@ -224,7 +251,7 @@ export default function Project() {
                     </p>
                   </div>
                 </div>
-                <div className="w-5/12 h-96 sticky top-0 font-sans">
+                <div className="w-full lg:w-5/12 h-96 sticky top-0 font-sans">
                   <Swiper
                     direction={"vertical"}
                     autoplay={{
@@ -252,119 +279,76 @@ export default function Project() {
               </div>
             </div>
 
-            <div className="research w-full h-auto">
-              <div className="ro w-full h-auto flex flex-col gap-y-8">
-                <h4 className="text-lg text-darkblue font-bold font-sans">
-                  Impact of the Research
-                </h4>
-                <p className="text-grey font-bold text-justify opacity-95 font-sans">
-                  Clinical Impact: The development of a robust computational
-                  framework for kidney tumor segmentation and detection presents
-                  a substantial opportunity to revolutionize clinical practice.
-                  Healthcare professionals stand to benefit significantly from
-                  the implementation of these advanced tools, as they hold the
-                  potential to enhance the accuracy and efficiency of kidney
-                  tumor diagnosis. This advancement could facilitate earlier
-                  detection, enable the formulation of more tailored treatment
-                  plans, and ultimately contribute to improved patient outcomes.
-                  <br></br>
-                  Reduction of Manual Workload: Traditional manual segmentation
-                  methods are burdened by time constraints and subjectivity,
-                  leading to variability in results. The integration of
-                  automated segmentation algorithms offers a viable solution,
-                  markedly reducing the workload on radiologists and clinicians.
-                  This shift allows healthcare professionals to allocate more
-                  time and attention to patient care and result interpretation,
-                  rather than being consumed by labor-intensive segmentation
-                  tasks.
-                  <br></br>
-                  Standardization and Consistency: Automated segmentation
-                  algorithms promise a paradigm shift towards standardized and
-                  reproducible analysis of medical imaging data. By providing a
-                  consistent approach to tumor delineation, these algorithms can
-                  mitigate inter-observer variability across healthcare
-                  institutions and radiologists. Consequently, this
-                  standardization enhances the reliability of diagnosis and
-                  informs more confident treatment decisions.
-                  <br></br>
-                  Advancements in Medical Imaging: The adoption of sophisticated
-                  deep learning architectures such as UNet, MIScnn, MONAI, and
-                  NNUnet represents a significant stride forward in medical
-                  imaging research. These architectures not only bolster kidney
-                  tumor segmentation but also hold promise for broader
-                  application across diverse healthcare domains. The
-                  adaptability of these methodologies opens avenues for
-                  innovation in medical imaging, fostering advancements that may
-                  benefit a wide spectrum of healthcare applications.
-                  <br></br>
-                  Continuation of Research: The findings gleaned from this
-                  project lay a solid foundation for continued exploration and
-                  development within the realm of medical imaging and
-                  computational healthcare. Ongoing research endeavors stand to
-                  refine existing methodologies, paving the way for even more
-                  sophisticated algorithms and tools. This iterative process
-                  underscores a commitment to advancing the accuracy and
-                  efficacy of medical image analysis, ultimately enhancing
-                  patient care on a global scale.
-                </p>
-              </div>
-            </div>
+            {subPost &&
+              subPost.slice(subPost.length - 1).map((post) => {
+                return (
+                  <div key={post._id} className="research w-full h-auto">
+                    <div className="ro w-full h-auto flex flex-col gap-y-8">
+                      <h4 className="text-lg text-darkblue font-bold font-sans">
+                        {post.sectionName}
+                      </h4>
+                      <p className="text-grey font-bold text-justify opacity-95 font-sans">
+                        {post.subSectionContent}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
           </div>
 
           {/* contributors */}
           <div
             className={`${
-              menu === "contributors" ? "grid grid-cols-3" : "hidden"
+              menu === "contributors" ? "grid grid-rows-1 md:grid-cols-2 2xl:grid-cols-3 gap-10" : "hidden"
             } w-full h-auto`}
           >
-            <div className="profile flex flex-col gap-y-4 justify-center items-center">
-              <div className="h-40 w-40 rounded-full border-2 border-grey overflow-hidden bg-blue">
-                <img
-                  className="h-full w-full object-cover"
-                  src={
-                    "https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                  }
-                  alt="error"
-                />
-              </div>
-              <div className="flex flex-col items-center justify-center">
-                <span className="text-grey font-medium font-sans text-base">Name</span>
-                <span className="text-grey font-medium font-sans text-sm">Degree</span>
-                <span className="text-grey font-medium font-sans text-sm">
-                  College Name
-                </span>
-              </div>
-            </div>
-
-            <div className="profile flex flex-col gap-y-4 justify-center items-center">
-              <div className="h-40 w-40 rounded-full overflow-hidden bg-blue border-2 border-grey">
-                <img
-                  className="h-full w-full object-cover"
-                  src={
-                    "https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                  }
-                  alt="error"
-                />
-              </div>
-              <div className="flex flex-col items-center justify-center">
-                <span className="text-grey font-medium font-sans text-base">Name</span>
-                <span className="text-grey font-medium font-sans text-sm">Degree</span>
-                <span className="text-grey font-medium font-sans text-sm">
-                  College Name
-                </span>
-              </div>
-            </div>
+            {contributors &&
+              contributors.map((profile) => {
+                return (
+                  <div
+                    key={profile._id}
+                    className="profile flex flex-col gap-y-4 justify-center items-center"
+                  >
+                    <div className="h-40 w-40 rounded-full border-2 border-grey overflow-hidden bg-blue">
+                      <img
+                        className="h-full w-full object-cover"
+                        src={profile.profilePic}
+                        alt="error"
+                      />
+                    </div>
+                    <div className="flex flex-col items-center justify-center">
+                      <span className="text-grey font-medium font-sans text-base">
+                        {profile.name}
+                      </span>
+                      <span className="text-center text-grey font-medium font-sans text-sm">
+                        {profile.qualifications.length > 40
+                          ? profile.qualifications.slice(0, 40) + "..."
+                          : profile.qualifications}
+                      </span>
+                      <span className="text-center text-grey font-medium font-sans text-sm">
+                        {profile.designation.length > 40
+                          ? profile.designation.slice(0, 40) + "..."
+                          : profile.designation}
+                      </span>
+                    </div>
+                  </div>
+                );
+              })}
           </div>
-          
+
           {/* faq's */}
-          <div className={`${
+          <div
+            className={`${
               menu === "faq's" ? "flex flex-col gap-y-10" : "hidden"
-            } w-full h-auto bg-slate-200 py-10 rounded-lg`}>
+            } w-full h-auto bg-slate-200 px-4 py-10 rounded-lg`}
+          >
             {/* <!-- component --> */}
-            <h2 className="text-center text-xl text-darkblue font-semibold font-sans">For Any Query - Reach Out to Us </h2>
+            <h2 className="text-center text-xl text-darkblue font-semibold font-sans">
+              For Any Query - Reach Out to Us{" "}
+            </h2>
             <div className="flex items-center justify-center">
               <div className="mx-auto w-full max-w-[550px]">
-              {/* action="https://formbold.com/s/FORM_ID" */}
+                {/* action="https://formbold.com/s/FORM_ID" */}
                 <div>
                   <div className="mb-5">
                     <label
@@ -435,7 +419,6 @@ export default function Project() {
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </>
