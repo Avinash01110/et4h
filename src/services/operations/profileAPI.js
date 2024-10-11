@@ -43,9 +43,9 @@ export async function addProfile(data,token) {
         });
         console.log("ADD_PROFILE_API RESPONSE............", response);
 
-        if (!response?.data?.success) {
-            throw new Error(response.data.message);
-        }
+        // if (!response?.data?.success) {
+        //     throw new Error(response.data.message);
+        // }
         result = response?.data?.data;
         toast.success("Profile Added Successfully");
     } catch (error) {
@@ -65,9 +65,9 @@ export async function updateProfile(data,token) {
     });
     console.log("UPDATE_PROFILE_API RESPONSE............", response);
 
-    if (!response?.data?.success) {
-        throw new Error(response.data.message);
-    }
+    // if (!response?.data?.success) {
+    //     throw new Error(response.data.message);
+    // }
     result = response?.data?.data;
     toast.success("Profile Updated Successfully");
   } catch (error) {
@@ -88,9 +88,9 @@ export async function deleteProfile(profileId,token) {
         });
         console.log("DELETE_PROFILE_API RESPONSE............", response);
 
-        if (!response?.data?.success) {
-            throw new Error(response.data.message);
-        }
+        // if (!response?.data?.success) {
+        //     throw new Error(response.data.message);
+        // }
         result = response?.data?.data;
         toast.success("Profile Deleted Successfully");
     } catch (error) {

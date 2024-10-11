@@ -75,9 +75,9 @@ export const getAllPosts = () => async (dispatch) => {
       });
       console.log("UPDATE_POST_API RESPONSE:", response);
   
-      if (!response?.data?.success) {
-        throw new Error(response.data.message);
-      }
+      // if (!response?.success) {
+      //   throw new Error(response.data.message);
+      // }
       result = response?.data?.data;
       toast.success("Post Updated Successfully");
     } catch (error) {
@@ -97,9 +97,9 @@ export const getAllPosts = () => async (dispatch) => {
       });
       console.log("DELETE_POST_API RESPONSE:", response);
   
-      if (!response?.data?.success) {
-        throw new Error(response.data.message);
-      }
+      // if (!response?.data?.success) {
+      //   throw new Error(response.data.message);
+      // }
       result = response?.data?.data;
       toast.success("Post Deleted Successfully");
     } catch (error) {
@@ -118,9 +118,9 @@ export const getAllPosts = () => async (dispatch) => {
       console.log("GETSINGLE_POST_API RESPONSE:", response);
   
       // Check if the API returned an error message
-      if (response.data.error) {
-        throw new Error(response.data.error);
-      }
+      // if (response.data.error) {
+      //   throw new Error(response.data.error);
+      // }
   
       // Update the way you access the post data based on the response structure
       result = response.data.post || response.data.data;
@@ -141,9 +141,9 @@ export const getAllPosts = () => async (dispatch) => {
       });
       console.log("CREATE_SUBPOST_API RESPONSE:", response);
   
-      if (!response?.data?.success) {
-        throw new Error(response.data.message);
-      }
+      // if (!response?.data?.success) {
+      //   throw new Error(response.data.message);
+      // }
       result = response?.data?.data;
       toast.success("Subpost Created Successfully");
     } catch (error) {
@@ -163,9 +163,9 @@ export const getAllPosts = () => async (dispatch) => {
       });
       console.log("UPDATE_SUBPOST_API RESPONSE:", response);
   
-      if (!response?.data?.success) {
-        throw new Error(response.data.message);
-      }
+      // if (!response?.data?.success) {
+      //   throw new Error(response.data.message);
+      // }
       result = response?.data?.data;
       toast.success("Subpost Updated Successfully");
     } catch (error) {
@@ -185,9 +185,9 @@ export const getAllPosts = () => async (dispatch) => {
       });
       console.log("DELETE_SUBPOST_API RESPONSE:", response);
   
-      if (!response?.data?.success) {
-        throw new Error(response.data.message);
-      }
+      // if (!response?.data?.success) {
+      //   throw new Error(response.data.message);
+      // }
       result = response?.data?.data;
       toast.success("Subpost Deleted Successfully");
     } catch (error) {
@@ -207,9 +207,9 @@ export const getAllPosts = () => async (dispatch) => {
       });
       console.log("REMOVE_IMAGE_FROM_SUBPOST_API RESPONSE:", response);
   
-      if (!response?.data?.success) {
-        throw new Error(response.data.message);
-      }
+      // if (!response?.data?.success) {
+      //   throw new Error(response.data.message);
+      // }
       result = response?.data?.data;
       toast.success("Image Removed from Subpost Successfully");
     } catch (error) {
@@ -229,9 +229,9 @@ export const getAllPosts = () => async (dispatch) => {
       });
       console.log("CREATE_MILESTONE_API RESPONSE:", response);
   
-      if (!response?.data?.success) {
-        throw new Error(response.data.message);
-      }
+      // if (!response?.data?.success) {
+      //   throw new Error(response.data.message);
+      // }
       result = response?.data?.data;
       toast.success("Milestone Created Successfully");
     } catch (error) {
@@ -251,9 +251,9 @@ export const getAllPosts = () => async (dispatch) => {
       });
       console.log("UPDATE_MILESTONE_API RESPONSE:", response);
   
-      if (!response?.data?.success) {
-        throw new Error(response.data.message);
-      }
+      // if (!response?.data?.success) {
+      //   throw new Error(response.data.message);
+      // }
       result = response?.data?.data;
       toast.success("Milestone Updated Successfully");
     } catch (error) {
@@ -273,9 +273,9 @@ export const getAllPosts = () => async (dispatch) => {
       });
       console.log("DELETE_MILESTONE_API RESPONSE:", response);
   
-      if (!response?.data?.success) {
-        throw new Error(response.data.message);
-      }
+      // if (!response?.data?.success) {
+      //   throw new Error(response.data.message);
+      // }
       result = response?.data?.data;
       toast.success("Milestone Deleted Successfully");
     } catch (error) {

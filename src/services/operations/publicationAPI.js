@@ -20,9 +20,9 @@ export async function addPublication(data, token) {
         });
         console.log("ADD_PUBLICATION_API RESPONSE............", response);
 
-        if (!response?.data?.success) {
-            throw new Error(response.data.message);
-        }
+        // if (!response?.data?.success) {
+        //     throw new Error(response.data.message);
+        // }
         result = response?.data?.data;
         toast.success("Publication Added Successfully");
     } catch (error) {
@@ -41,9 +41,9 @@ export async function updatePublication(data, token) {
             Authorization: `Bearer ${token}`,
         });
         console.log("UPDATE Publication API RESPONSE............", response);
-        if (!response?.data?.success) {
-            throw new Error("Could Not Update Publication");
-        }
+        // if (!response?.data?.success) {
+        //     throw new Error("Could Not Update Publication");
+        // }
         toast.success("Publication Updated");
         result = response?.data?.data;
         console.log("UPDATE Publication API RESULT............", result);
@@ -64,9 +64,9 @@ export async function deletePublication(data, token) {
             Authorization: `Bearer ${token}`,
         });
         console.log("DELETE Publication API RESPONSE............", response);
-        if (!response?.data?.success) {
-            throw new Error("Could Not Delete Publication");
-        }
+        // if (!response?.data?.success) {
+        //     throw new Error("Could Not Delete Publication");
+        // }
         toast.success("Publication Deleted");
         result = response?.data?.data;
     } catch (error) {
@@ -83,9 +83,9 @@ export async function getAllPublications() {
     try {
         const response = await apiConnector("GET", GET_ALL_PUBLICATIONS_API);
         console.log("GET_ALL_PUBLICATIONS_API RESPONSE............", response);
-        if (!response?.data?.success) {
-            throw new Error("Could Not Get Publications");
-        }
+        // if (!response?.data?.success) {
+        //     throw new Error("Could Not Get Publications");
+        // }
         result = response?.data?.publications;
         console.log("GET_ALL_PUBLICATIONS_API RESULT............", result);
     } catch (error) {
