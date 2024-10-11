@@ -19,7 +19,6 @@ gsap.registerPlugin(useGSAP, ScrollTrigger);
 export default function Project() {
   const params = useParams();
   const { id, title } = params;
-  console.log(id);
 
   const [parameter, setparameter] = useState({ rotate: 0 });
 
@@ -76,20 +75,20 @@ export default function Project() {
         />
       </Helmet>
 
-      <div className="h-[82vh] w-full flex items-end bg-lightblue">
-        <div className="h-96 w-full relative flex flex-wrap items-end justify-start">
+      <div className="pt-20 lg:pt-0 h-auto w-full flex items-end bg-lightblue">
+        <div className="h-[25rem] md:h-[28rem] 2xl:h-[32rem] w-full relative flex flex-wrap items-end justify-start">
           <img className="h-full w-full object-cover" src={lp1} alt="error" />
           <h4 className="capitalize text-3xl sm:text-4xl lg:text-5xl px-4 sm:px-10 py-20 text-purewhite font-bold font-sans absolute">
-            {title}
+            {project ? project.title : ""}
           </h4>
         </div>
       </div>
 
       <div className="h-auto w-full bg-lightblue flex flex-col lg:flex-row">
-      {/* mobile side menu */}
+        {/* mobile side menu */}
         <div className="flex flex-row items-start justify-center gap-6 xs:gap-10 sm:gap-16 md:gap-20 lg:hidden w-full h-10 my-16 border-t-2 border-solid border-grey/40">
           <div
-          onClick={menuChange}
+            onClick={menuChange}
             className={`flex justify-center items-center group rounded-b-lg border-t-2 border-solid transition-all duration-300 ease-in-out ${
               menu === "research" ? "border-darkblue" : ""
             }`}
@@ -105,7 +104,7 @@ export default function Project() {
             </button>
           </div>
           <div
-          onClick={menuChange}
+            onClick={menuChange}
             className={`flex justify-center items-center group rounded-b-lg border-t-2 border-solid transition-all duration-300 ease-in-out ${
               menu === "contributors" ? "border-darkblue" : ""
             }`}
@@ -121,7 +120,7 @@ export default function Project() {
             </button>
           </div>
           <div
-          onClick={menuChange}
+            onClick={menuChange}
             className={`flex justify-center items-center group rounded-b-lg border-t-2 border-solid transition-all duration-300 ease-in-out ${
               menu === "faq's" ? "border-darkblue" : ""
             }`}
@@ -299,7 +298,9 @@ export default function Project() {
           {/* contributors */}
           <div
             className={`${
-              menu === "contributors" ? "grid grid-rows-1 md:grid-cols-2 2xl:grid-cols-3 gap-10" : "hidden"
+              menu === "contributors"
+                ? "grid grid-rows-1 md:grid-cols-2 2xl:grid-cols-3 gap-10"
+                : "hidden"
             } w-full h-auto`}
           >
             {contributors &&
