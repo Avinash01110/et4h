@@ -186,24 +186,32 @@ const ProjectList = () => {
         ))}
       <ul>
         {post.map((postItem) => (
-          <li key={postItem._id}>
-            <span onClick={() => handlePostClick(postItem._id)}>
+          <li
+            className="bg-black hover:bg-black flex flex-col gap-4"
+            key={postItem._id}
+          >
+            <span
+              className="text-white"
+              onClick={() => handlePostClick(postItem._id)}
+            >
               {postItem.title}
             </span>
-            <button
-              className="bg-blue-700 hover:bg-blue-700 text-black font-bold py-2 px-4 rounded ml-2"
-              onClick={() => handleEditPostClick(postItem)}
-            >
-              Edit
-            </button>
-            <button
-              className="bg-blue-700 hover:bg-blue-700 text-black font-bold py-2 px-4 rounded ml-2"
-              onClick={() =>
-                handleDeletePostClick(postItem._id, postItem.category)
-              }
-            >
-              Delete
-            </button>
+            <div className="flex flex-row gap-2">
+              <button
+                className="bg-green-600 hover:bg-green-500 text-black font-bold py-2 px-4 rounded"
+                onClick={() => handleEditPostClick(postItem)}
+              >
+                Edit
+              </button>
+              <button
+                className="bg-red-600 hover:bg-red-500 text-black font-bold py-2 px-4 rounded"
+                onClick={() =>
+                  handleDeletePostClick(postItem._id, postItem.category)
+                }
+              >
+                Delete
+              </button>
+            </div>
           </li>
         ))}
       </ul>

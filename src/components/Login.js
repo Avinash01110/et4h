@@ -1,73 +1,89 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-import { useDispatch } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
-import { login } from '../services/operations/authAPI';
+import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { login } from "../services/operations/authAPI";
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 
-const Login = ({setIsLoggedIn}) => {
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
-    const [showPassword, setShowPassword] = useState(false);
-    const [loginData, setLoginData] = useState({
-        email: "",
-        password: "",
-    });
+const Login = ({ setIsLoggedIn }) => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [showPassword, setShowPassword] = useState(false);
+  const [loginData, setLoginData] = useState({
+    email: "",
+    password: "",
+  });
 
-    function changeHandler(e) {
-        setLoginData((prevData) => ({
-            ...prevData,
-            [e.target.name]: e.target.value,
-        }));
-    }
+  function changeHandler(e) {
+    setLoginData((prevData) => ({
+      ...prevData,
+      [e.target.name]: e.target.value,
+    }));
+  }
 
-    function submitHandler(e) {
-        e.preventDefault();
-        console.log(loginData);
-        dispatch(login(loginData.email, loginData.password, navigate));
-    }
+  function submitHandler() {
+    console.log(loginData);
+    dispatch(login(loginData.email, loginData.password, navigate));
+  }
 
-    return (
-        <div className="flex justify-center items-center h-screen bg-slate-700">
-            <form onSubmit={submitHandler} className="w-[300px] p-8 bg-gray-800 rounded-lg">
-                <label htmlFor="email" className="block text-white font-semibold mb-2">
-                    Email
-                </label>
-                <input 
-                    type="email" 
-                    name="email" 
-                    id="email" 
-                    value={loginData.email} 
-                    onChange={changeHandler} 
-                    className="w-full p-2 mb-4 bg-gray-700 rounded text-white focus:outline-none focus:ring-2 focus:ring-yellow-500" 
-                />
+  return (
+    <div className="flex justify-center items-center h-screen bg-black">
+      <div className="flex flex-col gap-2 items-center justify-center w-[300px] p-8 bg-black rounded-lg border border-white/50">
+        <label htmlFor="email" className="block text-white font-semibold mb-2">
+          Email
+        </label>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          value={loginData.email}
+          onChange={changeHandler}
+          placeholder="Email"
+          className="w-full text-sm py-2 px-2 mb-4 bg-black outline-none rounded text-white border border-white/50 focus:border-white"
+        />
 
-                <label htmlFor="password" className="block text-white font-semibold mb-2">
-                    Password
-                </label>
-                <div className="flex items-center">
-                    <input 
-                        type={showPassword ? "text" : "password"} 
-                        name="password" 
-                        id="password" 
-                        value={loginData.password} 
-                        onChange={changeHandler} 
-                        className="w-full p-2 bg-gray-700 rounded-l text-white focus:outline-none focus:ring-2 focus:ring-yellow-500" 
-                    />
-                    <button 
-                        type="button" 
-                        onClick={() => setShowPassword(!showPassword)} 
-                        className="p-2 w-6 mx-2 bg-yellow-500 text-gray-900 rounded-r"
-                    >
-                        {showPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
-                    </button>
-                </div>
-
-                <button type="submit" className="w-full mt-4 p-2 bg-yellow-500 text-gray-900 font-semibold rounded">
-                    Login
-                </button>
-            </form>
+        <label
+          htmlFor="password"
+          className="block text-white font-semibold mb-2"
+        >
+          Password
+        </label>
+        <div className="h-10 w-full flex items-center bg-transparent border-[1.5px] border-white/50 rounded px-2 group focus-within:border-white">
+          <input
+            type={showPassword ? "" : "password"}
+            id="password"
+            name="password"
+            onChange={changeHandler}
+            placeholder="Password"
+            value={loginData.password}
+            className="w-full text-sm bg-transparent py-2 mr-3 rounded outline-none focus:outline-none border-none focus:border-none text-white"
+          />
+          {showPassword ? (
+            <FaRegEye
+              size={22}
+              onClick={() => setShowPassword(!showPassword)}
+              className="text-white cursor-pointer"
+            />
+          ) : (
+            <FaRegEyeSlash
+              size={22}
+              onClick={() => setShowPassword(!showPassword)}
+              className="text-white cursor-pointer"
+            />
+          )}
         </div>
-    );
-}
+
+        <button
+          onClick={submitHandler}
+          className="mt-4 py-2 px-4 bg-black hover:bg-black border border-solid border-white/20 text-white text-md font-semibold menu-item 
+              font-sans hover:[text-shadow:1px_3px_15px_var(--tw-shadow-color)] 
+              shadow-white tracking-wide rounded-lg"
+        >
+          Login
+        </button>
+      </div>
+    </div>
+  );
+};
 
 export default Login;

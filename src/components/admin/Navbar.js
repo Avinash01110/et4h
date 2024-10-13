@@ -1,9 +1,13 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 
 export default function Navbar() {
 
   const [Menu, setMenu] = useState(false);
   const [Nav, setNav] = useState(false)
+
+  const navigate = useNavigate();
 
   const toggleMenu = () => {
     setMenu(!Menu);
@@ -14,7 +18,7 @@ export default function Navbar() {
   }
   const logout = () => {
     localStorage.removeItem("token");
-    window.location.href = "/login";
+    navigate("/login");
   }
 
   return (

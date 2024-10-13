@@ -29,7 +29,7 @@ import LogoManagement from "./components/LogoManagement";
 
 
 function App() {
-  const [showPreloader, setShowPreloader] = useState(false);
+  const [showPreloader, setShowPreloader] = useState(true);
   const [loading, setLoading] = useState(false);
   const location = useLocation();
 
@@ -54,9 +54,9 @@ function App() {
       }, 14100);
     }
 
-    // if (!showPreloader) {
-    //   setLoading(true);
-    // }
+    if (!showPreloader) {
+      setLoading(true);
+    }
     
     const timeoutId = setTimeout(() => {
       setLoading(false);
