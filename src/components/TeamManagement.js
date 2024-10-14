@@ -91,22 +91,22 @@ const TeamManagement = () => {
     if (error) return <p className="text-center mt-4 text-red-500">Error: {error}</p>;
 
     return (
-        <div className="flex items-center justify-center min-h-screen py-24 bg-black">
-            <div className="w-full max-w-4xl bg-black p-6 rounded-lg shadow-lg">
-                <h1 className="text-2xl font-bold mb-4 text-center">Team Management</h1>
+        <div className="flex items-center justify-center min-h-screen bg-black">
+            <div className="w-full max-w-4xl bg-black px-6 rounded-lg shadow-lg py-10 h-auto mt-52">
+                <h1 className="text-2xl text-white font-bold mb-4 text-center">Team Management</h1>
                 <ul className="text-white bg-black">
                     {teams && teams.length > 0 ? (
                         teams.map((team) => (
                             <li
                                 key={team._id}
-                                className="cursor-pointer py-2 px-4 mb-2 rounded-md bg-blue-500 text-black hover:bg-blue-600 flex flex-col justify-between items-start gap-y-2"
+                                className="cursor-pointer py-2 px-4 mb-2 rounded-md bg-black text-white hover:bg-black flex flex-col justify-between items-start gap-y-2"
                             >
                                 <div>
                                     <p>{team.name}</p>
                                     <p>Profiles: {team.peoples.map(profile => profile.name).join(", ")}</p>
                                 </div>
                                 <div className="flex flex-row gap-x-2">
-                                    <button onClick={() => handleOpenModal("edit", team)} className="bg-yellow-500 text-black px-3 py-1 rounded-md mr-2 hover:bg-yellow-600">
+                                    <button onClick={() => handleOpenModal("edit", team)} className="bg-green-600 text-black px-3 py-1 rounded-md mr-2 hover:bg-green-500">
                                         Edit
                                     </button>
                                     <button onClick={() => handleDelete(team._id)} className="bg-red-500 text-white px-3 py-1 rounded-md hover:bg-red-600">

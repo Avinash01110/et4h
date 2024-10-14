@@ -26,12 +26,12 @@ import FrontPagePosts from "./components/frontPagePosts";
 import TeamManagement from "./components/TeamManagement";
 import LogoManagement from "./components/LogoManagement";
 
-
-
 function App() {
-  const [showPreloader, setShowPreloader] = useState(true);
+  const [showPreloader, setShowPreloader] = useState(false);
   const [loading, setLoading] = useState(false);
   const location = useLocation();
+
+  const [postId, setPostId] = useState();
 
   const paths = [
     "/admin/dashboard",
@@ -39,13 +39,10 @@ function App() {
     "/signup",
     "/verify-email",
     "/admin/profile",
+    `/post/${postId}`,
   ];
 
   const showNavbarAndFooter = !paths.includes(location.pathname.toLowerCase());
-
-  useEffect(() => {
-    
-  }, [showPreloader]);
 
   useEffect(() => {
     if (showPreloader) {
@@ -53,11 +50,14 @@ function App() {
         setShowPreloader(false);
       }, 14100);
     }
+    setPostId(location.pathname.split("/")[2]);
+  }, [showPreloader]);
 
-    if (!showPreloader) {
-      setLoading(true);
-    }
-    
+  useEffect(() => {
+    // if (!showPreloader) {
+    //   setLoading(true);
+    // }
+
     const timeoutId = setTimeout(() => {
       setLoading(false);
     }, 5050);
@@ -65,7 +65,6 @@ function App() {
     return () => clearTimeout(timeoutId);
   }, [location]);
 
-  
   return (
     <>
       {showPreloader && <Preloader />}
@@ -87,12 +86,12 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/admin/dashboard" element={<Dashboard />} />
           <Route path="/profile" element={<ProfileList />} />
-          <Route path="post" element={<ProjectList />} />
-          <Route path="post/:postId" element={<SinglePost />} />
-          <Route path="pub" element={<Publication />} />
-          <Route path="f" element={<FrontPagePosts />} />
-          <Route path="t" element={<TeamManagement />} />
-          <Route path="l" element={<LogoManagement />} />
+          <Route path="/post" element={<ProjectList />} />
+          <Route path="/post/:postId" element={<SinglePost />} />
+          <Route path="/pub" element={<Publication />} />
+          <Route path="/f" element={<FrontPagePosts />} />
+          <Route path="/t" element={<TeamManagement />} />
+          <Route path="/l" element={<LogoManagement />} />
         </Routes>
       )}
       {!showPreloader && !loading && showNavbarAndFooter && <Footer />}

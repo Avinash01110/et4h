@@ -97,7 +97,7 @@ const FrontPagePost = () => {
   const handleDelete = async (postId) => {
     if (window.confirm("Are you sure you want to delete this post?")) {
       try {
-        await deleteFrontPage({postId}, token);
+        await deleteFrontPage({ postId }, token);
         dispatch(getAllFrontPages());
       } catch (error) {
         toast.error("Failed to delete post");
@@ -106,7 +106,8 @@ const FrontPagePost = () => {
   };
 
   if (loading) return <p>Loading...</p>;
-  if (error) return <p className="text-center mt-4 text-red-500">Error: {error}</p>;
+  if (error)
+    return <p className="text-center mt-4 text-red-500">Error: {error}</p>;
 
   return (
     <div className="flex items-center justify-center h-auto">
@@ -116,7 +117,7 @@ const FrontPagePost = () => {
             frontPage.map((post) => (
               <li
                 key={post._id}
-                className="cursor-pointer py-2 px-4 mb-2 rounded-md bg-black text-white flex flex-col gap-y-6 justify-between items-end hover:bg-slate-300 hover:text-black"
+                className="cursor-pointer p-4 mb-2 rounded-md bg-black text-white flex flex-col gap-y-6 justify-between items-end hover:bg-black"
               >
                 <div className="flex flex-col justify-center items-start w-full">
                   <h2 className="text-justify">{post.title}</h2>
@@ -128,10 +129,16 @@ const FrontPagePost = () => {
                 </div>
                 {token && (
                   <div className="flex space-x-2">
-                    <button onClick={() => handleOpenModal("edit", post)} className="bg-yellow-500 text-black px-4 py-2 rounded-md">
+                    <button
+                      onClick={() => handleOpenModal("edit", post)}
+                      className="bg-green-600 hover:bg-green-500 text-black px-4 py-2 rounded-md"
+                    >
                       Edit
                     </button>
-                    <button onClick={() => handleDelete(post._id)} className="bg-red-500 text-white px-4 py-2 rounded-md">
+                    <button
+                      onClick={() => handleDelete(post._id)}
+                      className="bg-red-500 text-white px-4 py-2 rounded-md"
+                    >
                       Delete
                     </button>
                   </div>
@@ -144,8 +151,10 @@ const FrontPagePost = () => {
         </ul>
         {token && (
           <button
+            className="py-2 px-4 bg-black hover:bg-black border border-solid border-white/20 text-white text-md font-semibold menu-item 
+                font-sans hover:[text-shadow:1px_3px_15px_var(--tw-shadow-color)] 
+                shadow-white tracking-wide rounded-lg"
             onClick={() => handleOpenModal("add")}
-            className="bg-green-500 text-black px-4 py-2 rounded-md mt-16"
           >
             Add Post
           </button>
@@ -155,10 +164,14 @@ const FrontPagePost = () => {
       {isModalOpen && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
           <div className="bg-white p-4 rounded-md w-full max-w-md">
-            <h2 className="text-xl mb-4">{modalType === "add" ? "Add Post" : "Edit Post"}</h2>
+            <h2 className="text-xl mb-4">
+              {modalType === "add" ? "Add Post" : "Edit Post"}
+            </h2>
             <form>
               <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700">Title</label>
+                <label className="block text-sm font-medium text-gray-700">
+                  Title
+                </label>
                 <input
                   type="text"
                   name="title"
@@ -168,7 +181,9 @@ const FrontPagePost = () => {
                 />
               </div>
               <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700">Description</label>
+                <label className="block text-sm font-medium text-gray-700">
+                  Description
+                </label>
                 <textarea
                   name="description"
                   value={formData.description}
@@ -177,7 +192,9 @@ const FrontPagePost = () => {
                 />
               </div>
               <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700">Image</label>
+                <label className="block text-sm font-medium text-gray-700">
+                  Image
+                </label>
                 <input
                   type="file"
                   name="pic"
@@ -186,7 +203,9 @@ const FrontPagePost = () => {
                 />
               </div>
               <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700">Link</label>
+                <label className="block text-sm font-medium text-gray-700">
+                  Link
+                </label>
                 <input
                   type="text"
                   name="link"

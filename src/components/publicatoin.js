@@ -198,7 +198,7 @@ const Publications = () => {
             </p>
             <p className="truncate">{publication.publicationSummary}</p>
             <button onClick={() => handleUpdate(publication)}>Update</button>
-            <button onClick={() => handleDelete(publication._id)}>
+            <button className="mt-4" onClick={() => handleDelete(publication._id)}>
               Delete
             </button>
           </li>
