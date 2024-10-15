@@ -73,4 +73,5 @@ CREATE_RESEARCH_PROGRESS_API: BASE_URL + "/researchProgress/createResearchProgre
 UPDATE_RESEARCH_PROGRESS_API: BASE_URL + "/researchProgress/updateResearchProgress",
 DELETE_SINGLE_IMAGE_API: BASE_URL + "/researchProgress/deleteSingleImage",
 GET_RESEARCH_PROGRESS_API: BASE_URL + "/researchProgress/getResearchProgress",
+DELETE_RESEARCH_PROGRESS_API: BASE_URL + "/researchProgress/deleteResearchProgress",
 }

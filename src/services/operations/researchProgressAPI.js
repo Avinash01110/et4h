@@ -8,6 +8,7 @@ const {
     UPDATE_RESEARCH_PROGRESS_API,
     DELETE_SINGLE_IMAGE_API,
     GET_RESEARCH_PROGRESS_API,
+    DELETE_RESEARCH_PROGRESS_API
 
 } = researchProgressEndpoints;
 
@@ -97,3 +98,26 @@ export async function getResearchProgress(postId) {
     return result; 
 }
 
+
+export async function deleteResearchProgress(data, token) {
+    let result = null;
+    const toastId = toast.loading("Deleting Research Progress...");
+    try {
+        const response = await apiConnector("DELETE", DELETE_RESEARCH_PROGRESS_API, data, {
+            Authorization: `Bearer ${token}`,
+        });
+        console.log("DELETE_RESEARCH_PROGRESS_API RESPONSE:", response);
+
+        // if (!response?.data?.success) {
+        //     throw new Error(response.data.message);
+        // }
+        result = response?.data?.data;
+        toast.success("Research Progress Deleted Successfully");
+    } catch (error) {
+        console.error("DELETE_RESEARCH_PROGRESS_API ERROR:", error);
+        toast.error("Could Not Delete Research Progress");
+    } finally {
+        toast.dismiss(toastId);
+    }
+    return result;
+}
