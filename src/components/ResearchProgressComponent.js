@@ -14,7 +14,8 @@ import Modal from "react-modal";
 const ResearchProgressComponent = ({ postId, token }) => {
   const dispatch = useDispatch();
   const [researchProgressList, setResearchProgressList] = useState([]); // List of research progress entries
-  const [selectedResearchProgress, setSelectedResearchProgress] = useState(null);
+  const [selectedResearchProgress, setSelectedResearchProgress] =
+    useState(null);
   const [description, setDescription] = useState("");
   const [contributors, setContributors] = useState([]);
   const [images, setImages] = useState([]);
@@ -33,27 +34,30 @@ const ResearchProgressComponent = ({ postId, token }) => {
 
   // Fetch Research Progress List
   // Fetch Research Progress List
-useEffect(() => {
-  async function fetchResearchProgressList() {
-    const result = await getResearchProgress(postId);
-    if (Array.isArray(result)) {
-      setResearchProgressList(result);
-    } else {
-      setResearchProgressList([]); // Default to an empty array if the response is not as expected
+  useEffect(() => {
+    async function fetchResearchProgressList() {
+      const result = await getResearchProgress(postId);
+      if (Array.isArray(result)) {
+        setResearchProgressList(result);
+      } else {
+        setResearchProgressList([]); // Default to an empty array if the response is not as expected
+      }
     }
-  }
 
-  fetchResearchProgressList();
-}, [postId]);
+    fetchResearchProgressList();
+  }, [postId]);
 
-const handleDeleteImage = async (researchProgressId, imageUrl) => {
-  const result = await deleteSingleImage({ id: researchProgressId, url: imageUrl }, token);
-  if (result) {
+  const handleDeleteImage = async (researchProgressId, imageUrl) => {
+    const result = await deleteSingleImage(
+      { id: researchProgressId, url: imageUrl },
+      token
+    );
+    if (result) {
       // Refresh the research progress list after deleting the image
       setResearchProgressList(await getResearchProgress(postId));
       toast.success("Image deleted successfully");
-  }
-};
+    }
+  };
 
   // Handle Image Upload
   const handleImageUpload = (e) => {
@@ -102,9 +106,14 @@ const handleDeleteImage = async (researchProgressId, imageUrl) => {
 
   // Handle Delete Research Progress
   const handleDeleteResearchProgress = async (researchProgressId) => {
-    const result = await deleteResearchProgress({ postId, researchProgressId }, token);
+    const result = await deleteResearchProgress(
+      { postId, researchProgressId },
+      token
+    );
     if (result) {
-      setResearchProgressList(researchProgressList.filter(rp => rp._id !== researchProgressId));
+      setResearchProgressList(
+        researchProgressList.filter((rp) => rp._id !== researchProgressId)
+      );
       toast.success("Research Progress deleted successfully");
     }
   };
@@ -114,7 +123,7 @@ const handleDeleteImage = async (researchProgressId, imageUrl) => {
     if (researchProgress) {
       setSelectedResearchProgress(researchProgress);
       setDescription(researchProgress.description || "");
-      setContributors(researchProgress.contributors.map(c => c._id));
+      setContributors(researchProgress.contributors.map((c) => c._id));
       setImages(researchProgress.imageUrls || []);
     }
     setIsModalOpen(true);
@@ -135,64 +144,80 @@ const handleDeleteImage = async (researchProgressId, imageUrl) => {
       </button>
 
       {/* List of Research Progress */}
-    {/* List of Research Progress */}
-    <div className="research-progress-list">
-  {Array.isArray(researchProgressList) && researchProgressList.length > 0 ? (
-    researchProgressList.map((researchProgress, index) => (
-      <div key={researchProgress._id} className="research-progress-item bg-gray-800 p-4 rounded-lg mb-4">
-        <h3 className="text-white">Research Progress {index + 1}</h3>
-        <p><strong>Description:</strong> {researchProgress.description || "No description available."}</p>
-        <p><strong>Contributors:</strong></p>
-        
-        {researchProgress.contributors.length > 0 ? (
-          researchProgress.contributors.map(contributor => (
-            <p key={contributor._id}>{contributor.name || "Unnamed Contributor"}</p>
+      {/* List of Research Progress */}
+      <div className="research-progress-list">
+        {Array.isArray(researchProgressList) &&
+        researchProgressList.length > 0 ? (
+          researchProgressList.map((researchProgress, index) => (
+            <div
+              key={researchProgress._id}
+              className="research-progress-item bg-black p-4 rounded-lg mb-4 border border-white flex flex-col gap-2"
+            >
+              <h3 className="text-white">Research Progress {index + 1}</h3>
+              <p className="text-white">
+                <span className="text-white">Description:</span>{" "}
+                {researchProgress.description || "No description available."}
+              </p>
+              <p className="text-white">Contributors:</p>
+
+              {researchProgress.contributors.length > 0 ? (
+                researchProgress.contributors.map((contributor) => (
+                  <p className="text-white" key={contributor._id}>
+                    {contributor.name || "Unnamed Contributor"}
+                  </p>
+                ))
+              ) : (
+                <p className="text-white">No contributors available.</p>
+              )}
+
+              {/* Display Images with Delete Button */}
+              <div className="image-list flex flex-col gap-4">
+                {researchProgress.imageUrls &&
+                researchProgress.imageUrls.length > 0 ? (
+                  researchProgress.imageUrls.map((url, idx) => (
+                    <div key={idx} className="flex flex-row items-center gap-2">
+                      <img
+                        src={url}
+                        alt={`Research Progress Image ${idx + 1}`}
+                        className="w-16 h-16 mr-2"
+                      />
+                      <button
+                        className="w-fit py-1 px-2 bg-red-600 hover:bg-red-500 text-white text-sm rounded-lg mt-2"
+                        onClick={() =>
+                          handleDeleteImage(researchProgress._id, url)
+                        }
+                      >
+                        Delete Image
+                      </button>
+                    </div>
+                  ))
+                ) : (
+                  <p className="text-white">No images available.</p>
+                )}
+              </div>
+
+              {/* Delete Button */}
+              <button
+                className="w-fit py-2 px-4 bg-red-500 hover:bg-red-700 text-white text-md font-semibold rounded-lg mt-2"
+                onClick={() =>
+                  handleDeleteResearchProgress(researchProgress._id)
+                }
+              >
+                Delete
+              </button>
+              {/* Update Button */}
+              <button
+                className="w-fit py-2 px-4 bg-green-600 hover:bg-green-500 text-white text-md font-semibold rounded-lg mt-2"
+                onClick={() => handleOpenModal(researchProgress)}
+              >
+                Update
+              </button>
+            </div>
           ))
         ) : (
-          <p>No contributors available.</p>
+          <p className="text-white">No research progress entries available.</p>
         )}
-        
-        {/* Display Images with Delete Button */}
-        <div className="image-list">
-          {researchProgress.imageUrls && researchProgress.imageUrls.length > 0 ? (
-            researchProgress.imageUrls.map((url, idx) => (
-              <div key={idx} className="flex items-center">
-                <img src={url} alt={`Research Progress Image ${idx + 1}`} className="w-16 h-16 mr-2" />
-                <button
-                  className="w-fit py-1 px-2 bg-red-500 hover:bg-red-700 text-white text-sm rounded-lg mt-2"
-                  onClick={() => handleDeleteImage(researchProgress._id, url)}
-                >
-                  Delete Image
-                </button>
-              </div>
-            ))
-          ) : (
-            <p>No images available.</p>
-          )}
-        </div>
-
-        {/* Delete Button */}
-        <button
-          className="w-fit py-2 px-4 bg-red-500 hover:bg-red-700 text-white text-md font-semibold rounded-lg mt-2"
-          onClick={() => handleDeleteResearchProgress(researchProgress._id)}
-        >
-          Delete
-        </button>
-        {/* Update Button */}
-        <button
-          className="w-fit py-2 px-4 bg-blue-500 hover:bg-blue-700 text-white text-md font-semibold rounded-lg mt-2 ml-2"
-          onClick={() => handleOpenModal(researchProgress)}
-        >
-          Update
-        </button>
       </div>
-    ))
-  ) : (
-    <p className="text-white">No research progress entries available.</p>
-  )}
-</div>
-
-
 
       {/* Modal for Add/Update */}
       <Modal

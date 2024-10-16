@@ -3,9 +3,8 @@ import { useParams } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import lp1 from "../Photos/Home/landingPage/lp1.jpg";
 import { FaPlus } from "react-icons/fa6";
-import { fetchSingleProject } from "../services/fetchData";
 import { getSinglePost } from "../services/operations/postAPI";
-
+import { getResearchProgress } from "../services/operations/researchProgressAPI";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Autoplay, Mousewheel, Pagination } from "swiper/modules";
@@ -20,24 +19,33 @@ export default function Project() {
   const params = useParams();
   const { id, title } = params;
 
-  const [parameter, setparameter] = useState({ rotate: 0 });
+  const [parameters, setParameters] = useState({});
 
   const [menu, setmenu] = useState("research");
 
   const [project, setProject] = useState(null);
   const [subPost, setSubPost] = useState(null);
+  const [research, setResearch] = useState(null);
+  const researchImages = [];
   const [contributors, setContributors] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const researchProgress = () => {
-    if (parameter.rotate == 0) {
-      setparameter({ rotate: 45 });
-      gsap.to(".rp", { height: "auto", ease: "expo.inOut", duration: 0.5 });
-    } else {
-      setparameter({ rotate: 0 });
-      gsap.to(".rp", { height: "2.5rem", ease: "expo.inOut", duration: 0.5 });
-    }
+  const researchProgress = (id) => {
+    setParameters((prevState) => {
+      const newRotation = prevState[id]?.rotate === 45 ? 0 : 45;
+      const newState = { ...prevState, [id]: { rotate: newRotation } };
+
+      const targetClass = `.rp-${id}`;
+      const targetHeight = newRotation === 45 ? "auto" : "2.5rem";
+      gsap.to(targetClass, {
+        height: targetHeight,
+        ease: "expo.inOut",
+        duration: 0.5,
+      });
+
+      return newState;
+    });
   };
 
   const menuChange = (e) => {
@@ -53,7 +61,20 @@ export default function Project() {
         setContributors(data.contributors);
       }
     } catch (err) {
-      setError("Failed to load teams");
+      setError("Failed to load project");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const getResearch = async () => {
+    try {
+      const data = await getResearchProgress(id);
+      if (data) {
+        setResearch(data);
+      }
+    } catch (err) {
+      setError("Failed to load research progress");
     } finally {
       setIsLoading(false);
     }
@@ -61,6 +82,7 @@ export default function Project() {
 
   useEffect(() => {
     getSingleProject();
+    getResearch();
   }, []);
 
   return (
@@ -201,57 +223,43 @@ export default function Project() {
                 Research Progress
               </h3>
               <div className="min-h-96 w-full flex flex-col-reverse lg:flex-row px-2 gap-2">
-                <div className="w-full lg:w-7/12 h-auto lg:min-h-96 transition ease-in-out duration-500">
-                  <div
-                    className={`rp h-10 w-full bg-white px-4 pb-6 cursor-pointer overflow-hidden rounded-lg`}
-                  >
-                    <div className="flex flex-row justify-between items-center h-10">
-                      <span className="text-sm text-grey font-semibold font-sans">
-                        Contributed By - Rahul Lalwani, Akshada Telang
-                      </span>
-                      <FaPlus
-                        onClick={researchProgress}
-                        className={`text-xl hover:text-blue rotate-${parameter.rotate} transition ease-in-out duration-500`}
-                      />
-                    </div>
-                    <p className="text-grey text-justify text-sm font-normal font-sans">
-                      In our pursuit of developing an effective methodology for
-                      kidney tumor segmentation and detection, we systematically
-                      explored and implemented various state-of-the-art models
-                      and frameworks. Commencing with a UNet-based approach, we
-                      meticulously trained the model on the KiTS19 dataset
-                      utilizing Kaggle's P100 GPU, overcoming initial challenges
-                      related to memory optimization to attain a Dice score of
-                      6%. Subsequently, our investigation delved into the
-                      implementation of the MISCNN framework. While encountering
-                      notable challenges pertaining to extended training
-                      durations, we observed promising outcomes when afforded
-                      adequate computational resources. Our exploration of the
-                      MONAI framework yielded significant insights. Leveraging a
-                      UNet model with the KiTS19 dataset, we achieved
-                      commendable results following training iterations of 10
-                      and 100 epochs. Furthermore, the development of a Patch
-                      dataset augmented our training data, further enhancing
-                      performance. Additionally, our scrutiny extended to the
-                      nnU-Net framework, renowned for its robustness and
-                      adaptability. Training the model over 100 epochs yielded
-                      results closely aligning with ground truth labels.
-                      Furthermore, our assessment encompassed the Total
-                      Segmentation tool, demonstrating potential for
-                      segmentation across diverse classes in CT images with a
-                      user-friendly interface. Lastly, preliminary
-                      investigations into the Segment Anything for Medical
-                      Imaging (Med Sem) model showcased promising advancements,
-                      particularly in fine-tuning processes, surpassing previous
-                      segmentation methodologies. As our research progresses, we
-                      remain committed to optimizing these models further and
-                      exploring novel methodologies to advance kidney tumor
-                      segmentation and detection capabilities.
-                    </p>
-                  </div>
+                <div className="flex flex-col gap-2 w-full lg:w-7/12 h-auto lg:min-h-96 transition ease-in-out duration-500">
+                  {research &&
+                    research.map((research) => {
+                      research.imageUrls.map((image) => {
+                        researchImages.push(image);
+                      });
+                      return (
+                        <div
+                          key={research._id}
+                          className={`rp-${research._id} h-10 w-full bg-white px-4 pb-6 cursor-pointer overflow-hidden rounded-lg`}
+                        >
+                          <div className="flex flex-row justify-between items-center h-10">
+                            <span className="text-sm text-grey font-semibold font-sans">
+                              Contributed By -{" "}
+                              {research.contributors &&
+                                research.contributors
+                                  .map((contributor) => contributor.name)
+                                  .join(", ")}
+                            </span>
+                            <FaPlus
+                              onClick={() => researchProgress(research._id)}
+                              className={`text-xl hover:text-blue rotate-${
+                                parameters[research._id]?.rotate || 0
+                              } transition ease-in-out duration-500`}
+                            />
+                          </div>
+                          <p className="text-grey text-justify text-sm font-normal font-sans">
+                            {research.description}
+                          </p>
+                        </div>
+                      );
+                    })}
                 </div>
-                <div className="w-full lg:w-5/12 h-96 sticky top-0 font-sans">
+
+                <div className="w-full lg:w-5/12 h-96 lg:sticky lg:top-0 font-sans">
                   <Swiper
+                    key={researchImages ? researchImages.length : "no-images"}
                     direction={"vertical"}
                     autoplay={{
                       delay: 2000,
@@ -264,15 +272,18 @@ export default function Project() {
                     modules={[Mousewheel, Pagination, Autoplay]}
                     className="mySwiper rounded-lg overflow-hidden"
                   >
-                    <SwiperSlide>Slide 1</SwiperSlide>
-                    <SwiperSlide>Slide 2</SwiperSlide>
-                    <SwiperSlide>Slide 3</SwiperSlide>
-                    <SwiperSlide>Slide 4</SwiperSlide>
-                    <SwiperSlide>Slide 5</SwiperSlide>
-                    <SwiperSlide>Slide 6</SwiperSlide>
-                    <SwiperSlide>Slide 7</SwiperSlide>
-                    <SwiperSlide>Slide 8</SwiperSlide>
-                    <SwiperSlide>Slide 9</SwiperSlide>
+                    {researchImages &&
+                      researchImages.map((image, index) => {
+                        return (
+                          <SwiperSlide key={index}>
+                            <img
+                              className="h-full w-full object-cover"
+                              src={image}
+                              alt="Research Images"
+                            />
+                          </SwiperSlide>
+                        );
+                      })}
                   </Swiper>
                 </div>
               </div>

@@ -31,7 +31,6 @@ function App() {
   const [loading, setLoading] = useState(false);
   const location = useLocation();
 
-  const [postId, setPostId] = useState();
 
   const paths = [
     "/admin/dashboard",
@@ -39,7 +38,7 @@ function App() {
     "/signup",
     "/verify-email",
     "/admin/profile",
-    `/post/${postId}`,
+    `/post/${location.pathname.split("/")[2]}`,
   ];
 
   const showNavbarAndFooter = !paths.includes(location.pathname.toLowerCase());
@@ -50,7 +49,6 @@ function App() {
         setShowPreloader(false);
       }, 14100);
     }
-    setPostId(location.pathname.split("/")[2]);
   }, [showPreloader]);
 
   useEffect(() => {
