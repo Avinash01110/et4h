@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import lp1 from "../Photos/Home/landingPage/lp1.jpg";
+import spinner from "../Photos/Preloader/spinner.gif";
 import { FaPlus } from "react-icons/fa6";
 import { getSinglePost } from "../services/operations/postAPI";
 import { getResearchProgress } from "../services/operations/researchProgressAPI";
@@ -23,12 +24,13 @@ export default function Project() {
 
   const [menu, setmenu] = useState("research");
 
-  const [project, setProject] = useState(null);
-  const [subPost, setSubPost] = useState(null);
-  const [research, setResearch] = useState(null);
+  const [project, setProject] = useState([]);
+  const [subPost, setSubPost] = useState([]);
+  const [research, setResearch] = useState([]);
   const researchImages = [];
   const [contributors, setContributors] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [singleProjectLoading, setSingleProjectLoading] = useState(false);
+  const [researchLoading, setResearchLoading] = useState(false);
   const [error, setError] = useState("");
 
   const researchProgress = (id) => {
@@ -53,6 +55,7 @@ export default function Project() {
   };
 
   const getSingleProject = async () => {
+    setSingleProjectLoading(true);
     try {
       const data = await getSinglePost(id, toast);
       if (data) {
@@ -63,11 +66,12 @@ export default function Project() {
     } catch (err) {
       setError("Failed to load project");
     } finally {
-      setIsLoading(false);
+      setSingleProjectLoading(false);
     }
   };
 
   const getResearch = async () => {
+    setResearchLoading(true);
     try {
       const data = await getResearchProgress(id);
       if (data) {
@@ -76,13 +80,14 @@ export default function Project() {
     } catch (err) {
       setError("Failed to load research progress");
     } finally {
-      setIsLoading(false);
+      setResearchLoading(false);
     }
   };
 
   useEffect(() => {
     getSingleProject();
     getResearch();
+    setParameters({})
   }, []);
 
   return (
@@ -196,115 +201,125 @@ export default function Project() {
 
         <div className="right w-full lg:w-10/12 h-full px-4 sm:px-6 md:px-10 pt-6 lg:pt-32 pb-32">
           {/* research */}
-          <div
-            className={`${
-              menu === "research" ? "flex flex-col gap-y-20" : "hidden"
-            }`}
-          >
-            {subPost &&
-              subPost.slice(0, subPost.length - 1).map((post) => {
-                return (
-                  <div key={post._id} className="research w-full h-auto">
-                    <div className="ro w-full h-auto flex flex-col gap-y-8">
-                      <h4 className="capitalize text-lg text-darkblue font-bold font-sans">
-                        {post.sectionName}
-                      </h4>
-                      <p className="text-grey font-bold text-justify opacity-95 font-sans">
-                        {post.subSectionContent}
-                      </p>
+
+          {subPost.length == 0 && singleProjectLoading && (
+            <div className="flex items-center justify-center">
+              <img className="h-10 w-10" src={spinner} alt="loading spinner" />
+            </div>
+          )}
+          {subPost && !singleProjectLoading && (
+            <div
+              className={`${
+                menu === "research" ? "flex flex-col gap-y-20" : "hidden"
+              }`}
+            >
+              {subPost &&
+                subPost.slice(0, subPost.length - 1).map((post) => {
+                  return (
+                    <div key={post._id} className="research w-full h-auto">
+                      <div className="ro w-full h-auto flex flex-col gap-y-8">
+                        <h4 className="capitalize text-lg text-darkblue font-bold font-sans">
+                          {post.sectionName}
+                        </h4>
+                        <p className="text-grey font-bold text-justify opacity-95 font-sans">
+                          {post.subSectionContent}
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                );
-              })}
+                  );
+                })}
 
-            {/* Research Progress */}
-            <div className="w-full h-auto bg-slate-200 py-6 flex flex-col gap-y-10 rounded-lg">
-              <h3 className="text-2xl text-darkblue font-semibold font-sans text-center">
-                Research Progress
-              </h3>
-              <div className="min-h-96 w-full flex flex-col-reverse lg:flex-row px-2 gap-2">
-                <div className="flex flex-col gap-2 w-full lg:w-7/12 h-auto lg:min-h-96 transition ease-in-out duration-500">
-                  {research &&
-                    research.map((research) => {
-                      research.imageUrls.map((image) => {
-                        researchImages.push(image);
-                      });
-                      return (
-                        <div
-                          key={research._id}
-                          className={`rp-${research._id} h-10 w-full bg-white px-4 pb-6 cursor-pointer overflow-hidden rounded-lg`}
-                        >
-                          <div className="flex flex-row justify-between items-center h-10">
-                            <span className="text-sm text-grey font-semibold font-sans">
-                              Contributed By -{" "}
-                              {research.contributors &&
-                                research.contributors
-                                  .map((contributor) => contributor.name)
-                                  .join(", ")}
-                            </span>
-                            <FaPlus
-                              onClick={() => researchProgress(research._id)}
-                              className={`text-xl hover:text-blue rotate-${
-                                parameters[research._id]?.rotate || 0
-                              } transition ease-in-out duration-500`}
-                            />
-                          </div>
-                          <p className="text-grey text-justify text-sm font-normal font-sans">
-                            {research.description}
-                          </p>
-                        </div>
-                      );
-                    })}
-                </div>
-
-                <div className="w-full lg:w-5/12 h-96 lg:sticky lg:top-0 font-sans">
-                  <Swiper
-                    key={researchImages ? researchImages.length : "no-images"}
-                    direction={"vertical"}
-                    autoplay={{
-                      delay: 2000,
-                      disableOnInteraction: false,
-                    }}
-                    loop={true}
-                    mousewheel={true}
-                    slidesPerView={1}
-                    pagination={{ clickable: true }}
-                    modules={[Mousewheel, Pagination, Autoplay]}
-                    className="mySwiper rounded-lg overflow-hidden"
-                  >
-                    {researchImages &&
-                      researchImages.map((image, index) => {
+              {/* Research Progress */}
+              <div className="w-full h-auto bg-slate-200 py-6 flex flex-col gap-y-10 rounded-lg">
+                <h3 className="text-2xl text-darkblue font-semibold font-sans text-center">
+                  Research Progress
+                </h3>
+                <div className="min-h-96 w-full flex flex-col-reverse lg:flex-row px-2 gap-2">
+                  <div className="flex flex-col gap-2 w-full lg:w-7/12 h-auto lg:min-h-96 transition ease-in-out duration-500">
+                    {research &&
+                      research.map((research) => {
+                        research.imageUrls.map((image) => {
+                          researchImages.push(image);
+                        });
                         return (
-                          <SwiperSlide key={index}>
-                            <img
-                              className="h-full w-full object-cover"
-                              src={image}
-                              alt="Research Images"
-                            />
-                          </SwiperSlide>
+                          <div
+                            key={research._id}
+                            className={`rp-${research._id} h-10 w-full bg-white px-4 py-2 cursor-pointer rounded-lg flex flex-col gap-2 overflow-hidden`}
+                          >
+                            <div className={`flex flex-row gap-3 justify-between items-start h-auto`}>
+                              <span className={`w-full text-sm text-grey font-semibold font-sans transition-all ease-in-out duration-300 ${parameters[research._id]?.rotate == 45 ? "" : "truncate"}`}>
+                                Contributed By -{" "}
+                                {research.contributors &&
+                                  research.contributors
+                                    .map((contributor) => contributor.name)
+                                    .join(", ")}
+                              </span>
+                              <FaPlus
+                                onClick={() => researchProgress(research._id)}
+                                className={`w-4 text-xl hover:text-blue rotate-${
+                                  parameters[research._id]?.rotate || 0
+                                } transition ease-in-out duration-500`}
+                              />
+                            </div>
+                            <div>
+                            <p className="text-grey text-justify text-sm font-normal font-sans">
+                              {research.description}
+                            </p>
+                            </div>
+                          </div>
                         );
                       })}
-                  </Swiper>
+                  </div>
+
+                  <div className="w-full lg:w-5/12 h-96 lg:sticky lg:top-0 font-sans">
+                    <Swiper
+                      key={researchImages ? researchImages.length : "no-images"}
+                      direction={"vertical"}
+                      autoplay={{
+                        delay: 2000,
+                        disableOnInteraction: false,
+                      }}
+                      loop={true}
+                      mousewheel={true}
+                      slidesPerView={1}
+                      pagination={{ clickable: true }}
+                      modules={[Mousewheel, Pagination, Autoplay]}
+                      className="mySwiper rounded-lg overflow-hidden"
+                    >
+                      {researchImages &&
+                        researchImages.map((image, index) => {
+                          return (
+                            <SwiperSlide key={index}>
+                              <img
+                                className="h-full w-full object-cover"
+                                src={image}
+                                alt="Research Images"
+                              />
+                            </SwiperSlide>
+                          );
+                        })}
+                    </Swiper>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            {subPost &&
-              subPost.slice(subPost.length - 1).map((post) => {
-                return (
-                  <div key={post._id} className="research w-full h-auto">
-                    <div className="ro w-full h-auto flex flex-col gap-y-8">
-                      <h4 className="text-lg text-darkblue font-bold font-sans">
-                        {post.sectionName}
-                      </h4>
-                      <p className="text-grey font-bold text-justify opacity-95 font-sans">
-                        {post.subSectionContent}
-                      </p>
+              {subPost &&
+                subPost.slice(subPost.length - 1).map((post) => {
+                  return (
+                    <div key={post._id} className="research w-full h-auto">
+                      <div className="ro w-full h-auto flex flex-col gap-y-8">
+                        <h4 className="text-lg text-darkblue font-bold font-sans">
+                          {post.sectionName}
+                        </h4>
+                        <p className="text-grey font-bold text-justify opacity-95 font-sans">
+                          {post.subSectionContent}
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                );
-              })}
-          </div>
+                  );
+                })}
+            </div>
+          )}
 
           {/* contributors */}
           <div

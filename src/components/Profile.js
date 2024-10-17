@@ -1,12 +1,31 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../style/Profile.css";
-import { FaFacebookF, FaLinkedinIn } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
-
-
+import { FaLinkedinIn } from "react-icons/fa";
+import {
+  FaXTwitter,
+  FaGoogleScholar,
+  FaResearchgate,
+  FaOrcid,
+} from "react-icons/fa6";
 
 export default function Profile({ info, open, close }) {
+  const handleIcon = (social) => {
+    if (social.name === "twitter") {
+      return <FaXTwitter />;
+    } else if (social.name === "linkedin") {
+      return <FaLinkedinIn />;
+    } else if (social.name === "google-scholar") {
+      return <FaGoogleScholar />;
+    } else if (social.name === "researchgate") {
+      return <FaResearchgate />;
+    } else if (social.name === "orcid") {
+      return <FaOrcid />;
+    } else {
+      return null;
+    }
+  };
+
   return (
     <>
       {open && (
@@ -16,16 +35,6 @@ export default function Profile({ info, open, close }) {
           role="dialog"
           aria-modal="true"
         >
-          {/* <!--
-    Background backdrop, show/hide based on modal state.
-
-    Entering: "ease-out duration-300"
-      From: "opacity-0"
-      To: "opacity-100"
-    Leaving: "ease-in duration-200"
-      From: "opacity-100"
-      To: "opacity-0"
-  --> */}
           <div
             className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
             aria-hidden="true"
@@ -33,18 +42,8 @@ export default function Profile({ info, open, close }) {
 
           <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
             <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-              {/* <!--
-        Modal panel, show/hide based on modal state.
-
-        Entering: "ease-out duration-300"
-          From: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-          To: "opacity-100 translate-y-0 sm:scale-100"
-        Leaving: "ease-in duration-200"
-          From: "opacity-100 translate-y-0 sm:scale-100"
-          To: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-      --> */}
+             
               <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg h-auto border border-solid border-darkblue">
-
                 <div className="h-auto w-full bg-lightblue p-5 flex flex-col sm:flex-row items-center gap-x-16 gap-y-2 border-b border-solid border-darkblue">
                   <div className="profile h-40 w-40 bg-blue overflow-hidden border border-solid border-grey">
                     <img
@@ -83,28 +82,23 @@ export default function Profile({ info, open, close }) {
                         </span>
                       </span>
                     </div>
-                    <div className="flex flex-row gap-x-2">
-                    <Link to={info.twitter}>
-                          <div className="h-7 w-7 bg-white bg-opacity-70 backdrop-blur-lg border border-solid border-lightgrey border-opacity-20 flex justify-center items-center rounded-md hover:bg-opacity-50 hover:text-darkblue text-lg">
-                            <FaXTwitter />
-                          </div>
-                        </Link>
-                        <Link to={info.facebook}>
-                          <div className="h-7 w-7 bg-white bg-opacity-70 backdrop-blur-lg border border-solid border-lightgrey border-opacity-20 flex justify-center items-center rounded-md hover:bg-opacity-50 hover:text-darkblue text-lg">
-                            <FaFacebookF />
-                          </div>
-                        </Link>
-                        <Link to={info.linkedin}>
-                          <div className="h-7 w-7 bg-white bg-opacity-70 backdrop-blur-lg border border-solid border-lightgrey border-opacity-20 flex justify-center items-center rounded-md hover:bg-opacity-50 hover:text-darkblue text-lg">
-                            <FaLinkedinIn />
-                          </div>
-                        </Link>
+                    <div className="flex flex-row flex-wrap gap-2">
+                      {info.socialLinks &&
+                        info.socialLinks.map((social) => {
+                          return (
+                            <Link key={social._id} to={social.url}>
+                              <div className="h-6 w-6 bg-white bg-opacity-45 backdrop-blur-lg border border-solid border-lightgrey border-opacity-20 flex justify-center items-center rounded-md hover:bg-opacity-20 hover:text-darkblue">
+                                {handleIcon(social)}
+                              </div>
+                            </Link>
+                          );
+                        })}
                     </div>
                   </div>
                 </div>
 
                 <div className="bg-gray-50 h-52 w-full p-5 overflow-y-scroll text-sm text-justify font-medium font-sans">
-                {info.about}
+                  {info.about}
                 </div>
 
                 <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">

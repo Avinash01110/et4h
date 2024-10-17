@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from "react-helmet-async";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import LazyLoadedVideo from "../utils/lazyLoadedVideo";
 import { fetchLogo, fetchLatestPost } from "../services/fetchData";
@@ -34,7 +34,7 @@ import { IoAccessibilityOutline } from "react-icons/io5";
 import { SiFuturelearn } from "react-icons/si";
 import { GrTechnology } from "react-icons/gr";
 import { MdOutlineHealthAndSafety } from "react-icons/md";
-
+import spinner from "../Photos/Preloader/spinner.gif";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -47,120 +47,43 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
-
-
 export default function Home() {
-
   const [logo, setLogo] = useState([]);
-  const [loadinglogo, setLoadinglogo] = useState(true);
+  const [loadinglogo, setLoadinglogo] = useState(false);
   const [errorlogo, setErrorlogo] = useState(null);
-  
+
   const [latestPost, setLatestPost] = useState([]);
-  const [loadingpost, setLoadingPost] = useState(true);
+  const [loadingpost, setLoadingPost] = useState(false);
   const [errorpost, setErrorPost] = useState(null);
 
+  const getLogos = async () => {
+    setLoadinglogo(true);
+    try {
+      const data = await fetchLogo();
+      setLogo(data.logo);
+    } catch (error) {
+      setErrorlogo("Failed to load teams");
+    } finally {
+      setLoadinglogo(false);
+    }
+  };
+
+  const getLatestPost = async () => {
+    setLoadingPost(true);
+    try {
+      const data = await fetchLatestPost();
+      setLatestPost(data.frontPages);
+    } catch (error) {
+      setErrorPost("Failed to load teams");
+    } finally {
+      setLoadingPost(false);
+    }
+  };
+
   useEffect(() => {
-    const getLogos = async () => {
-      try {
-        const data = await fetchLogo();
-        setLogo(data.logo);
-      } catch (error) {
-        setErrorlogo("Failed to load teams");
-      } finally {
-        setLoadinglogo(false);
-      }
-    };
-
-    const getLatestPost = async () => {
-      try {
-        const data = await fetchLatestPost();
-        setLatestPost(data.frontPages);
-      } catch (error) {
-        setErrorPost("Failed to load teams");
-      } finally {
-        setLoadingPost(false);
-      }
-    };
-
     getLogos();
     getLatestPost();
-
   }, []);
-
-  // const latestPost = [
-  //   {
-  //     title: "The Future of Healthcare : AI Innovations",
-  //     description:
-  //       "Welcome to Emerging Tech4 Health, a Biotechnology Startup that leverages cutting-edge technology, particularly",
-  //     link: "/",
-  //     image: lp_image1,
-  //   },
-  //   {
-  //     title: "The Future of Healthcare : AI Innovations",
-  //     description:
-  //       "Welcome to Emerging Tech4 Health, a Biotechnology Startup that leverages cutting-edge technology, particularly",
-  //     link: "/",
-  //     image: lp_image1,
-  //   },
-  //   {
-  //     title: "The Future of Healthcare : AI Innovations",
-  //     description:
-  //       "Welcome to Emerging Tech4 Health, a Biotechnology Startup that leverages cutting-edge technology, particularly",
-  //     link: "/",
-  //     image: lp_image1,
-  //   },
-  // ];
-
-  const Projects = [
-    {
-      index: "01",
-      title: "Liver Tumor Segmentation",
-      description: "description",
-      link: "/",
-    },
-    {
-      index: "02",
-      title: "Kidney Tumor Segmentation",
-      description: "description",
-      link: "/",
-    },
-    {
-      index: "03",
-      title: "Breast Tumor Segmentation",
-      description: "description",
-      link: "/",
-    },
-    {
-      index: "04",
-      title: "Electroencephalogram (EEG)",
-      description: "description",
-      link: "/",
-    },
-    {
-      index: "05",
-      title: "Electrocardiogram (ECG)",
-      description: "description",
-      link: "/",
-    },
-  ];
-
-  const Projectsimage = [
-    {
-      image: liverimage,
-    },
-    {
-      image: kidneyimage,
-    },
-    {
-      image: breastimage,
-    },
-    {
-      image: EEGimage,
-    },
-    {
-      image: ECGimage,
-    },
-  ];
 
   const coreValues = [
     {
@@ -195,21 +118,24 @@ export default function Home() {
     if (swiperRef && swiperRef.current && swiperRef.current.swiper) {
       swiperRef.current.swiper.slidePrev();
     }
-  };  
+  };
 
   return (
     <>
-
       <Helmet>
-        <title>Home | Emerging Tech 4 Health - AI-Powered Health Research</title>
-        <meta name="description" content="Emerging Tech 4 Health is a platform dedicated to showcasing cutting-edge research in the health sector, powered by Artificial Intelligence. Explore the latest innovations, breakthroughs, and applications of AI in healthcare." />
+        <title>
+          Home | Emerging Tech 4 Health - AI-Powered Health Research
+        </title>
+        <meta
+          name="description"
+          content="Emerging Tech 4 Health is a platform dedicated to showcasing cutting-edge research in the health sector, powered by Artificial Intelligence. Explore the latest innovations, breakthroughs, and applications of AI in healthcare."
+        />
       </Helmet>
 
       {/* Landing page */}
       <div className="h-[120vh] sm:h-[72vh] xl:h-[110vh] 2xl:h-[75vh] w-full flex items-end bg-white relative z-10 overflow-hidden">
-        
         <div className="absolute sm:hidden xl:flex xl:h-[50rem] xl:w-[50rem] 2xl:h-[55rem] 2xl:w-[55rem] bg-lightblue z-0 rounded-xl rotate-45 -left-12 -bottom-16"></div>
-        
+
         <div className="sm:hidden xl:flex xl:h-[26rem] xl:w-[26rem] 2xl:h-[30rem] 2xl:w-[30rem] rounded-xl absolute right-14 top-0 -rotate-45 bg-lightgrey opacity-60"></div>
 
         {/* mobile banner video */}
@@ -226,7 +152,7 @@ export default function Home() {
         </div>
 
         <div className="xl:hidden h-full w-full bg-lightblue bg-opacity-65 backdrop-blur-5xl absolute"></div>
-        
+
         <div className="h-full sm:h-full xl:h-[39rem] 2xl:h-[35rem] w-full flex sm:items-center sm:justify-center z-10">
           <div className="left xl:w-1/2 2xl:w-2/3 h-full px-4 sm:px-4 md:px-10 lg:px-20 font-sans mt-0 lg:mt-8 xl:mt-0">
             <div className="flex w-full 2xl:w-full h-full flex-col justify-center items-center sm:items-center xl:items-start gap-y-10 sm:gap-y-10 xl:gap-y-6">
@@ -288,27 +214,51 @@ export default function Home() {
             }}
           ></div>
 
-          <div className="py-12 flex flex-row animate-marquee whitespace-nowrap">
-            {logo.map((logo, index) => (
-            <div key={index} className="h-32 w-32 mx-20 overflow-hidden rounded-full">
-              <img className="h-full w-full object-contain" 
-                src={logo.link}
-                alt="logo"
-              />
+          {logo.length == 0 && loadinglogo && (
+            <div className="py-12">
+              <div className="h-32 w-32 flex justify-center items-center rounded-full">
+                <img
+                  className="h-10 w-10"
+                  src={spinner}
+                  alt="loading spinner"
+                />
+              </div>
             </div>
-            ))}
-          </div>
+          )}
 
-          <div className="absolute py-12 flex flex-row animate-marquee2 whitespace-nowrap">
-          {logo.map((logo, index) => (
-            <div key={index} className="h-32 w-32 mx-20 overflow-hidden rounded-full">
-              <img className="h-full w-full object-contain" 
-                src={logo.logo}
-                alt="logo"
-              />
+          {logo && !loadinglogo && (
+            <div className="py-12 flex flex-row animate-marquee whitespace-nowrap">
+              {logo.map((logo, index) => (
+                <div
+                  key={index}
+                  className="h-32 w-32 mx-20 overflow-hidden rounded-full"
+                >
+                  <img
+                    className="h-full w-full object-contain"
+                    src={logo.link}
+                    alt="logo"
+                  />
+                </div>
+              ))}
             </div>
-            ))}
-          </div>
+          )}
+
+          {logo && !loadinglogo && (
+            <div className="absolute py-12 flex flex-row animate-marquee2 whitespace-nowrap">
+              {logo.map((logo, index) => (
+                <div
+                  key={index}
+                  className="h-32 w-32 mx-20 overflow-hidden rounded-full"
+                >
+                  <img
+                    className="h-full w-full object-contain"
+                    src={logo.logo}
+                    alt="logo"
+                  />
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
 
@@ -323,58 +273,71 @@ export default function Home() {
             Latest Posts
           </h2>
 
-          <Swiper
-            key={latestPost ? latestPost.length : 'no-posts'}
-            ref={swiperRef}
-            navigation={{
-              prevEl: ".custom-prev",
-              nextEl: ".custom-next",
-            }}
-            autoplay={{
-              delay: 2000,
-              disableOnInteraction: false,
-              pauseOnMouseEnter: true,
-            }}
-            spaceBetween={30}
-            loop={true}
-            mousewheel={true}
-            slidesPerView={1}
-            pagination={{ clickable: true }}
-            modules={[Mousewheel, Pagination, Navigation, Autoplay]}
-            className="mySwiper"
-          >
-            {latestPost.map((post, index) => (
-              <SwiperSlide key={index}>
-                <div className="h-auto lg:h-[20rem] w-full bg-white p-5 sm:p-10 flex flex-col-reverse lg:flex-row rounded-lg">
-                  <div className="h-auto md:h-full w-auto lg:w-7/12 p-4 flex flex-col justify-between items-center lg:items-start gap-y-8">
-                    <div className="flex flex-col gap-y-5 pr-2 lg:pr-16">
-                      <h3 className="text-2xl text-justify sm:text-start text-blue font-bold font-sans">
-                        {post.title.length > 60 ? `${post.title.slice(0, 60)}...` : post.title}
-                      </h3>
-                      <p className="text-grey text-justify text-sm font-medium font-sans">
-                      {post.description.length > 226 ? `${post.description.slice(0, 226)}...` : post.description}
-                      </p>
+          {latestPost.length == 0 && loadingpost && (
+            <div className="flex justify-center items-center h-auto lg:h-[20rem] w-full bg-white rounded-lg">
+              <img className="h-10 w-10" src={spinner} alt="loading spinner" />
+            </div>
+          )}
+          {latestPost && !loadingpost && (
+            <Swiper
+              key={latestPost ? latestPost.length : "no-posts"}
+              ref={swiperRef}
+              navigation={{
+                prevEl: ".custom-prev",
+                nextEl: ".custom-next",
+              }}
+              autoplay={{
+                delay: 2000,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true,
+              }}
+              spaceBetween={30}
+              loop={true}
+              mousewheel={true}
+              slidesPerView={1}
+              pagination={{ clickable: true }}
+              modules={[Mousewheel, Pagination, Navigation, Autoplay]}
+              className="mySwiper"
+            >
+              {latestPost &&
+                !loadingpost &&
+                latestPost.map((post, index) => (
+                  <SwiperSlide key={index}>
+                    <div className="h-auto lg:h-[20rem] w-full bg-white p-5 sm:p-10 flex flex-col-reverse lg:flex-row rounded-lg">
+                      <div className="h-auto md:h-full w-auto lg:w-7/12 p-4 flex flex-col justify-between items-center lg:items-start gap-y-8">
+                        <div className="flex flex-col gap-y-5 pr-2 lg:pr-16">
+                          <h3 className="text-2xl text-justify sm:text-start text-blue font-bold font-sans">
+                            {post.title.length > 60
+                              ? `${post.title.slice(0, 60)}...`
+                              : post.title}
+                          </h3>
+                          <p className="text-grey text-justify text-sm font-medium font-sans">
+                            {post.description.length > 226
+                              ? `${post.description.slice(0, 226)}...`
+                              : post.description}
+                          </p>
+                        </div>
+                        <div className="content-start">
+                          <Link to={post.link}>
+                            <button className="button bg-blue text-[#FFFFFF] py-2 px-3 rounded-lg text-sm font-medium font-sans active:bg-blue hover:bg-darkblue hover:shadow-md hover:shadow-lightgrey transition ease-in-out duration-300">
+                              Read More
+                            </button>
+                          </Link>
+                        </div>
+                      </div>
+                      <div className="h-full w-auto lg:w-5/12">
+                        <img
+                          className="h-full w-full object-cover rounded-lg"
+                          src={post.pic}
+                          alt="post image"
+                          loading="lazy"
+                        />
+                      </div>
                     </div>
-                    <div className="content-start">
-                      <Link to={post.link}>
-                        <button className="button bg-blue text-[#FFFFFF] py-2 px-3 rounded-lg text-sm font-medium font-sans active:bg-blue hover:bg-darkblue hover:shadow-md hover:shadow-lightgrey transition ease-in-out duration-300">
-                          Read More
-                        </button>
-                      </Link>
-                    </div>
-                  </div>
-                  <div className="h-full w-auto lg:w-5/12">
-                    <img
-                      className="h-full w-full object-cover rounded-lg"
-                      src={post.pic}
-                      alt="post image"
-                      loading="lazy"
-                    />
-                  </div>
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+                  </SwiperSlide>
+                ))}
+            </Swiper>
+          )}
 
           <div className="flex justify-end gap-x-4 pr-10">
             <div
@@ -441,29 +404,54 @@ export default function Home() {
         </p>
         <div className="lg:h-[45rem] xl:h-[40rem] w-full flex flex-col-reverse sm:flex-col-reverse lg:flex-row px-4 sm:px-12 gap-x-4 justify-center items-center">
           <div className="left h-full w-full lg:w-6/12 flex flex-col justify-start gap-y-5 px-0 sm:px-0 lg:px-6">
+            <div className="h-auto w-full py-5 flex flex-col gap-y-2 border-b-2 border-grey hover:border-blue group transition ease-in-out duration-300 cursor-pointer">
+              <div className="h-10 w-10 bg-white rounded-lg flex justify-center items-center border border-grey group-hover:border-blue transition ease-in-out duration-300">
+                <GiArtificialIntelligence className="text-2xl group-hover:text-blue transition ease-in-out duration-300" />
+              </div>
+              <h3 className="text-lg font-sans font-bold text-grey group-hover:text-blue transition ease-in-out duration-300">
+                Integrating AI with Healthcare
+              </h3>
+              <span className="text-sm text-grey font-sans font-bold opacity-80">
+                Pioneering the integration of AI to revolutionize medical
+                solutions.
+              </span>
+            </div>
+            <div className="h-auto w-full py-5 flex flex-col gap-y-2 border-b-2 border-grey hover:border-blue group transition ease-in-out duration-300 cursor-pointer">
+              <div className="h-10 w-10 bg-white rounded-lg flex justify-center items-center border border-grey group-hover:border-blue transition ease-in-out duration-300">
+                <SiFuturelearn className="text-2xl group-hover:text-blue transition ease-in-out duration-300" />
+              </div>
+              <h3 className="text-lg font-sans font-bold text-grey group-hover:text-blue transition ease-in-out duration-300">
+                Anticipating Future Challenges
+              </h3>
+              <span className="text-sm text-grey font-sans font-bold opacity-80">
+                Innovating today to solve tomorrow's healthcare challenges.
+              </span>
+            </div>
+            <div className="h-auto w-full py-5 flex flex-col gap-y-2 border-b-2 border-grey hover:border-blue group transition ease-in-out duration-300 cursor-pointer">
+              <div className="h-10 w-10 bg-white rounded-lg flex justify-center items-center border border-grey group-hover:border-blue transition ease-in-out duration-300">
+                <GrTechnology className="text-2xl group-hover:text-blue transition ease-in-out duration-300" />
+              </div>
 
-            <div className="h-auto w-full py-5 flex flex-col gap-y-2 border-b-2 border-grey hover:border-blue group transition ease-in-out duration-300 cursor-pointer">
-              <div className="h-10 w-10 bg-white rounded-lg flex justify-center items-center border border-grey group-hover:border-blue transition ease-in-out duration-300"><GiArtificialIntelligence className="text-2xl group-hover:text-blue transition ease-in-out duration-300"/></div>
-              <h3 className="text-lg font-sans font-bold text-grey group-hover:text-blue transition ease-in-out duration-300">Integrating AI with Healthcare</h3>
-              <span className="text-sm text-grey font-sans font-bold opacity-80">Pioneering the integration of AI to revolutionize medical solutions.</span>
+              <h3 className="text-lg font-sans font-bold text-grey group-hover:text-blue transition ease-in-out duration-300">
+                Patient-Centered Technology
+              </h3>
+              <span className="text-sm text-grey font-sans font-bold opacity-80">
+                Ensuring every patient benefits from cutting-edge medical
+                advancements.
+              </span>
             </div>
             <div className="h-auto w-full py-5 flex flex-col gap-y-2 border-b-2 border-grey hover:border-blue group transition ease-in-out duration-300 cursor-pointer">
-            <div className="h-10 w-10 bg-white rounded-lg flex justify-center items-center border border-grey group-hover:border-blue transition ease-in-out duration-300"><SiFuturelearn className="text-2xl group-hover:text-blue transition ease-in-out duration-300"/></div>
-              <h3 className="text-lg font-sans font-bold text-grey group-hover:text-blue transition ease-in-out duration-300">Anticipating Future Challenges</h3>
-              <span className="text-sm text-grey font-sans font-bold opacity-80">Innovating today to solve tomorrow's healthcare challenges.</span>
+              <div className="h-10 w-10 bg-white rounded-lg flex justify-center items-center border border-grey group-hover:border-blue transition ease-in-out duration-300">
+                <MdOutlineHealthAndSafety className="text-2xl group-hover:text-blue transition ease-in-out duration-300" />
+              </div>
+              <h3 className="text-lg font-sans font-bold text-grey group-hover:text-blue transition ease-in-out duration-300">
+                Empowering Healthcare Providers
+              </h3>
+              <span className="text-sm text-grey font-sans font-bold opacity-80">
+                Equipping healthcare providers with AI tools for exceptional
+                care delivery.
+              </span>
             </div>
-            <div className="h-auto w-full py-5 flex flex-col gap-y-2 border-b-2 border-grey hover:border-blue group transition ease-in-out duration-300 cursor-pointer">
-            <div className="h-10 w-10 bg-white rounded-lg flex justify-center items-center border border-grey group-hover:border-blue transition ease-in-out duration-300"><GrTechnology className="text-2xl group-hover:text-blue transition ease-in-out duration-300"/></div>
-            
-              <h3 className="text-lg font-sans font-bold text-grey group-hover:text-blue transition ease-in-out duration-300">Patient-Centered Technology</h3>
-              <span className="text-sm text-grey font-sans font-bold opacity-80">Ensuring every patient benefits from cutting-edge medical advancements.</span>
-            </div>
-            <div className="h-auto w-full py-5 flex flex-col gap-y-2 border-b-2 border-grey hover:border-blue group transition ease-in-out duration-300 cursor-pointer">
-              <div className="h-10 w-10 bg-white rounded-lg flex justify-center items-center border border-grey group-hover:border-blue transition ease-in-out duration-300"><MdOutlineHealthAndSafety className="text-2xl group-hover:text-blue transition ease-in-out duration-300"/></div>
-              <h3 className="text-lg font-sans font-bold text-grey group-hover:text-blue transition ease-in-out duration-300">Empowering Healthcare Providers</h3>
-              <span className="text-sm text-grey font-sans font-bold opacity-80">Equipping healthcare providers with AI tools for exceptional care delivery.</span>
-            </div>
-
           </div>
           <div className="right h-96 lg:h-full w-full lg:w-6/12 px-0 sm:px-0 lg:px-6 rounded-lg">
             <img
@@ -506,7 +494,6 @@ export default function Home() {
         </div>
       </div>
 
-
       {/* About us */}
       <div className="h-[30rem] w-full bg-lightblue flex justify-start items-center relative group overflow-hidden">
         <div className="about bg-[url('https://img.freepik.com/free-photo/medium-shot-scientists-lab_23-2148970019.jpg?t=st=1712730077~exp=1712733677~hmac=bedf57e8cb70e08b3778d1ee268ea54a591de2697719a6ed13c7327098a90c1c&w=740')] h-full w-full bg-cover bg-no-repeat bg-start gradient-mask-l-[rgba(0,0,0,1.0)_10%,rgba(0,0,0,1.0)_30px,rgba(0,0,0,0.3)_40%] group-hover:scale-110 transition ease-in-out duration-1000"></div>
@@ -530,7 +517,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-
 
       {/* Our Leadership */}
       <div className="h-auto w-full flex flex-col pb-16 sm:pb-16 sm:flex-col lg:py-0 lg:flex-row items-center bg-white">
