@@ -27,10 +27,7 @@ import TeamManagement from "./components/TeamManagement";
 import LogoManagement from "./components/LogoManagement";
 
 function App() {
-  const [showPreloader, setShowPreloader] = useState(false);
-  const [loading, setLoading] = useState(false);
   const location = useLocation();
-
 
   const paths = [
     "/admin/dashboard",
@@ -41,7 +38,15 @@ function App() {
     `/post/${location.pathname.split("/")[2]}`,
   ];
 
+  const [showPreloader, setShowPreloader] = useState(
+    !paths.includes(location.pathname.toLowerCase()) ? true : false
+  );
+  const [loading, setLoading] = useState(false);
+
   const showNavbarAndFooter = !paths.includes(location.pathname.toLowerCase());
+  const showLoadingAndPreloading = !paths.includes(
+    location.pathname.toLowerCase()
+  );
 
   useEffect(() => {
     if (showPreloader) {
@@ -52,9 +57,9 @@ function App() {
   }, [showPreloader]);
 
   useEffect(() => {
-    // if (!showPreloader) {
-    //   setLoading(true);
-    // }
+    if (!showPreloader && showLoadingAndPreloading) {
+      setLoading(true);
+    }
 
     const timeoutId = setTimeout(() => {
       setLoading(false);
