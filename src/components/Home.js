@@ -171,9 +171,11 @@ export default function Home() {
                 solutions to enhance care accessibility and efficiency. Join us
                 in creating a healthier tomorrow.
               </h4>
+              <Link to={"/Projects"}>
               <button className="button bg-blue text-[#FFFFFF] py-2 px-5 rounded-lg text-sm font-medium active:bg-blue hover:bg-darkblue hover:shadow-md hover:shadow-lightgrey transition ease-in-out duration-300">
                 Learn More
               </button>
+              </Link>
             </div>
           </div>
 
@@ -510,11 +512,11 @@ export default function Home() {
               healthcare more accessible and efficient for everyone.
             </span>
           </div>
-          <div className="flex justify-end w-full">
+          {/* <div className="flex justify-end w-full">
             <button className="button bg-blue text-[#FFFFFF] py-3 px-5 rounded-lg text-sm font-medium font-sans active:bg-blue hover:bg-darkblue hover:shadow-md hover:shadow-lightgrey transition ease-in-out duration-300">
               Discover More
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
 
@@ -537,9 +539,11 @@ export default function Home() {
               </span>
             </div>
             <div className="flex justify-start w-full">
+              <Link to={"/Team"}>
               <button className="button bg-blue text-[#FFFFFF] py-3 px-5 rounded-lg text-sm font-medium font-sans active:bg-blue hover:bg-darkblue hover:shadow-md hover:shadow-lightgrey transition ease-in-out duration-300">
                 Meet Team
               </button>
+              </Link>
             </div>
           </div>
         </div>

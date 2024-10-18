@@ -45,7 +45,7 @@ export default function Profile({ info, open, close }) {
              
               <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg h-auto border border-solid border-darkblue">
                 <div className="h-auto w-full bg-lightblue p-5 flex flex-col sm:flex-row items-center gap-x-16 gap-y-2 border-b border-solid border-darkblue">
-                  <div className="profile h-40 w-40 bg-blue overflow-hidden border border-solid border-grey">
+                  <div className="profile h-40 w-40 bg-lightblue overflow-hidden border border-solid border-grey">
                     <img
                       className="h-full w-full object-cover"
                       src={info.profilePic}

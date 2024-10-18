@@ -1,6 +1,11 @@
 import React, { useState, Fragment, useEffect } from "react";
 import logo from "../Photos/Home/logo.png";
-import { IoIosArrowDown, IoIosPaper, IoIosMenu, IoIosArrowRoundUp } from "react-icons/io";
+import {
+  IoIosArrowDown,
+  IoIosPaper,
+  IoIosMenu,
+  IoIosArrowRoundUp,
+} from "react-icons/io";
 import { GiArchiveResearch } from "react-icons/gi";
 import { RiExchangeFundsLine, RiTeamFill } from "react-icons/ri";
 import { FaHandshake } from "react-icons/fa";
@@ -11,7 +16,6 @@ import { Popover, Transition } from "@headlessui/react";
 import "../style/Navbar.css";
 
 export default function Navbar() {
-
   const More = [
     {
       name: "Research & Development",
@@ -69,20 +73,18 @@ export default function Navbar() {
     }
   };
 
-
-
   return (
     <>
       {/* Desktop Nav */}
       <div className="w-full h-14 hidden sm:hidden md:hidden lg:flex justify-between items-center px-6 mt-6 fixed z-50">
         <Link to={"/"}>
-        <div className="logo h-20 w-20">
-          <img
-            className="h-full w-full object-cover cursor-pointer"
-            src={logo}
-            alt="error"
-          />
-        </div>
+          <div className="logo h-20 w-20">
+            <img
+              className="h-full w-full object-cover cursor-pointer"
+              src={logo}
+              alt="error"
+            />
+          </div>
         </Link>
         <div className="items w-96 h-9 bg-purewhite list-none flex flex-row justify-center items-center gap-5 rounded-full text-sm font-semibold border-2 border-darkblue">
           <Link to={"/"}>
@@ -105,12 +107,6 @@ export default function Navbar() {
               </div>
             </li>
           </Link>
-
-          {/* <Link to= {"/About"}>
-          <li className={`text-grey cursor-pointer flex items-center justify-center px-2 py-1 rounded-lg ${activePage === 'About' ? 'bg-blue text-purewhite' : 'hover:text-blue hover:bg-lightblue'} transition ease-in-out duration-300`}>
-            About
-          </li>
-          </Link> */}
 
           <Link to={"/Projects"}>
             <li
@@ -210,44 +206,6 @@ export default function Navbar() {
               </>
             )}
           </Popover>
-
-          {/* navbar-menu
-          <div className='navbar-menu h-auto w-72 bg-purewhite border border-lightgrey absolute top-8 -right-5 flex flex-col  items-start justify-center gap-y-2 rounded-lg px-4 py-4'>
-
-            <div className='flex flex-row gap-4 w-full py-2 cursor-pointer'>
-              <div className='h-10 w-10 bg-lightgrey text-grey rounded-full flex justify-center items-center text-xl'><GiArchiveResearch /></div>
-              <div className='flex flex-col text-grey hover:text-blue'>Research & Development
-                <span className='text-xs text-grey'>description</span>
-              </div>
-            </div>
-            <div className='flex flex-row gap-4 w-full py-2 cursor-pointer'>
-              <div className='h-10 w-10 bg-lightgrey text-grey rounded-full flex justify-center items-center text-xl'><IoIosPaper /></div>
-              <div className='flex flex-col text-grey hover:text-blue'>Publications
-                <span className='text-xs text-grey'>description</span>
-              </div>
-            </div>
-            <div className='flex flex-row gap-4 w-full py-2 cursor-pointer text-blue'>
-              <div className='h-10 w-10 bg-lightgrey text-grey rounded-full flex justify-center items-center text-xl'><RiExchangeFundsLine />
-              </div>
-              <div className='flex flex-col text-grey hover:text-blue'>Grants
-                <span className='text-xs text-grey'>description</span>
-              </div>
-            </div>
-            <div className='flex flex-row gap-4 w-full py-2 cursor-pointer text-blue'>
-              <div className='h-10 w-10 bg-lightgrey text-grey rounded-full flex justify-center items-center text-xl'><FaHandshake />
-</div>
-              <div className='flex flex-col text-grey hover:text-blue'>Collaboration Opportunities
-                <span className='text-xs text-grey'>description</span>
-              </div>
-            </div>
-            <div className='flex flex-row gap-4 w-full py-2 cursor-pointer hover:bg-blue'>
-              <div className='h-10 w-10 bg-lightgrey text-grey rounded-full flex justify-center items-center text-xl'><RiTeamFill /></div>
-              <div className='flex flex-col text-grey hover:text-blue'>Team
-                <span className='text-xs text-grey'>description</span>
-              </div>
-            </div>
-            
-          </div> */}
         </div>
 
         <button className="contactus font-sans bg-blue text-[#FFFFFF] py-2 px-5 rounded-lg text-sm font-medium active:bg-blue hover:bg-darkblue transition ease-in-out duration-300">
@@ -255,19 +213,16 @@ export default function Navbar() {
         </button>
       </div>
 
-
-
-
       {/* Mobile Nav */}
       <div className="w-full h-20 flex sm:flex md:flex lg:hidden justify-between items-center px-6 fixed z-50 bg-lightblue bg-opacity-20 backdrop-blur-lg">
         <Link to={"/"}>
-        <div className="logo h-20 w-20">
-          <img
-            className="h-full w-full object-cover cursor-pointer"
-            src={logo}
-            alt="error"
-          />
-        </div>
+          <div className="logo h-20 w-20">
+            <img
+              className="h-full w-full object-cover cursor-pointer"
+              src={logo}
+              alt="error"
+            />
+          </div>
         </Link>
         {menu == "invisible" ? (
           <IoIosMenu
@@ -317,7 +272,12 @@ export default function Navbar() {
               </span>
             </Link>
 
-            <div onClick={()=>{setMore(!more)}} className="w-full flex flex-row items-center justify-center cursor-pointer relative">
+            <div
+              onClick={() => {
+                setMore(!more);
+              }}
+              className="w-full flex flex-row items-center justify-center cursor-pointer relative"
+            >
               <span className="py-2 flex justify-center text-2xl text-grey font-sans font-bold tracking-wide ml-10">
                 More
               </span>
@@ -326,8 +286,12 @@ export default function Navbar() {
                   ${more ? "-rotate-180" : ""}
                 `}
               />
-              <div className={`h-auto w-full bg-lightblue opacity-70 backdrop-blur-5xl absolute top-12 py-4 flex-col justify-center items-center gap-y-4 ${!more ? "hidden" : "flex"}`}>
-              {more &&
+              <div
+                className={`h-auto w-full bg-lightblue opacity-70 backdrop-blur-5xl absolute top-12 py-4 flex-col justify-center items-center gap-y-4 ${
+                  !more ? "hidden" : "flex"
+                }`}
+              >
+                {more &&
                   More.map((item, index) => (
                     <Link
                       onClick={togglemenu}
@@ -338,7 +302,7 @@ export default function Navbar() {
                       <span className="ml-14">{item.name}</span>
                       <IoIosArrowRoundUp className="ml-4 text-4xl text-grey font-sans font-extralight rotate-[35deg] group-hover:rotate-0 group-hover:text-darkblue transition ease-in-out duration-500" />
                     </Link>
-              ))}
+                  ))}
               </div>
             </div>
           </div>

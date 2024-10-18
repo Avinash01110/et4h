@@ -308,7 +308,7 @@ export default function Team() {
                                   key={index}
                                 >
                                   <div className="h-full w-64 px-5 py-4 rounded-md bg-white bg-opacity-20 backdrop-blur-lg border border-solid border-white border-opacity-20 shadow-md shadow-grey flex flex-col gap-y-5 hover:-translate-y-2 transition duration-500 ease-in-out cursor-pointer">
-                                    <div className="h-48 w-full bg-sky-200 rounded-lg overflow-hidden">
+                                    <div className="h-48 w-full bg-lightblue rounded-lg overflow-hidden">
                                       <img
                                         className="h-full w-full object-cover"
                                         src={people.profilePic}

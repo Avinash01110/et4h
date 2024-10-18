@@ -87,7 +87,7 @@ export default function Project() {
   useEffect(() => {
     getSingleProject();
     getResearch();
-    setParameters({})
+    setParameters({});
   }, []);
 
   return (
@@ -246,8 +246,16 @@ export default function Project() {
                             key={research._id}
                             className={`rp-${research._id} h-10 w-full bg-white px-4 py-2 cursor-pointer rounded-lg flex flex-col gap-2 overflow-hidden`}
                           >
-                            <div className={`flex flex-row gap-3 justify-between items-start h-auto`}>
-                              <span className={`w-full text-sm text-grey font-semibold font-sans transition-all ease-in-out duration-300 ${parameters[research._id]?.rotate == 45 ? "" : "truncate"}`}>
+                            <div
+                              className={`flex flex-row gap-3 justify-between items-start h-auto`}
+                            >
+                              <span
+                                className={`w-full text-sm text-grey font-semibold font-sans transition-all ease-in-out duration-300 ${
+                                  parameters[research._id]?.rotate == 45
+                                    ? ""
+                                    : "truncate"
+                                }`}
+                              >
                                 Contributed By -{" "}
                                 {research.contributors &&
                                   research.contributors
@@ -262,9 +270,9 @@ export default function Project() {
                               />
                             </div>
                             <div>
-                            <p className="text-grey text-justify text-sm font-normal font-sans">
-                              {research.description}
-                            </p>
+                              <p className="text-grey text-justify text-sm font-normal font-sans">
+                                {research.description}
+                              </p>
                             </div>
                           </div>
                         );
@@ -279,22 +287,31 @@ export default function Project() {
                         delay: 2000,
                         disableOnInteraction: false,
                       }}
+                      spaceBetween={30}
                       loop={true}
                       mousewheel={true}
                       slidesPerView={1}
                       pagination={{ clickable: true }}
                       modules={[Mousewheel, Pagination, Autoplay]}
-                      className="mySwiper rounded-lg overflow-hidden"
+                      className="mySwiper"
                     >
                       {researchImages &&
                         researchImages.map((image, index) => {
                           return (
                             <SwiperSlide key={index}>
-                              <img
-                                className="h-full w-full object-cover"
-                                src={image}
-                                alt="Research Images"
-                              />
+                              <div className="flex justify-center items-center rounded-lg overflow-hidden">
+                                <img
+                                  className="object-contain"
+                                  src={image}
+                                  alt="Research Images"
+                                  style={{
+                                    width: "auto",
+                                    height: "auto",
+                                    maxWidth: "100%",
+                                    maxHeight: "100%",
+                                  }}
+                                />
+                              </div>
                             </SwiperSlide>
                           );
                         })}
@@ -336,7 +353,7 @@ export default function Project() {
                     key={profile._id}
                     className="profile flex flex-col gap-y-4 justify-center items-center"
                   >
-                    <div className="h-40 w-40 rounded-full border-2 border-grey overflow-hidden bg-blue">
+                    <div className="h-40 w-40 rounded-full border-2 border-grey overflow-hidden bg-lightblue">
                       <img
                         className="h-full w-full object-cover"
                         src={profile.profilePic}
