@@ -77,7 +77,7 @@ export default function Profile({ info, open, close }) {
                       </span>
                       <span className="text-sm font-sans font-semibold">
                         Email id:{" "}
-                        <span className="text-sm font-sans font-normal capitalize">
+                        <span className="text-sm font-sans font-normal">
                           {info.email}
                         </span>
                       </span>
