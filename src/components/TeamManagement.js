@@ -12,7 +12,7 @@ import { getAllProfile } from "../services/operations/profileAPI";
 const TeamManagement = () => {
     const dispatch = useDispatch();
     const { teams, loading, error } = useSelector((state) => state.team);
-    const { profile } = useSelector((state) => state.profile);
+    const { profile, loading: profileLoading } = useSelector((state) => state.profile); // Corrected profile state access
     const { token } = useSelector((state) => state.auth);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalType, setModalType] = useState("");
@@ -24,7 +24,7 @@ const TeamManagement = () => {
 
     useEffect(() => {
         dispatch(getAllTeams());
-        dispatch(getAllProfile());
+        dispatch(getAllProfile()); // Fetch profiles to get the contributors
     }, [dispatch]);
 
     const handleOpenModal = (type, team = null) => {
@@ -87,7 +87,7 @@ const TeamManagement = () => {
         }
     };
 
-    if (loading) return <p className="text-center mt-4">Loading...</p>;
+    if (loading || profileLoading) return <p className="text-center mt-4">Loading...</p>; // Updated loading condition
     if (error) return <p className="text-center mt-4 text-red-500">Error: {error}</p>;
 
     return (
@@ -125,7 +125,7 @@ const TeamManagement = () => {
                     shadow-white tracking-wide py-2 px-4 rounded-lg"
                     onClick={() => handleOpenModal("add")}
                 >
-                    Add Profile
+                    Add Team
                 </button>
 
                 {isModalOpen && (
@@ -158,13 +158,15 @@ const TeamManagement = () => {
                                         onChange={handleProfileSelection}
                                         className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md"
                                     >
-                                        {profile &&
-                                            profile.profiles &&
-                                            profile.profiles.map((prof) => (
+                                        {profile && profile.length > 0 ? ( // Corrected profile handling
+                                            profile.map((prof) => (
                                                 <option key={prof._id} value={prof._id}>
                                                     {prof.name}
                                                 </option>
-                                            ))}
+                                            ))
+                                        ) : (
+                                            <option>No profiles available</option>
+                                        )}
                                     </select>
                                 </div>
                                 <div className="flex justify-end">
