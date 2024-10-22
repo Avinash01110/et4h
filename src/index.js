@@ -4,13 +4,10 @@ import App from "./App";
 import "./index.css";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
-import { configureStore } from "@reduxjs/toolkit";
-import rootReducer from "./reducers"; // Ensure this path is correct
-import { Helmet, HelmetProvider } from 'react-helmet-async';
+import rootReducer from "./reducers";
 
-import { createStore, applyMiddleware } from 'redux';
-import {thunk} from 'redux-thunk';
-// import rootReducer from './reducers';
+import { createStore, applyMiddleware } from "redux";
+import { thunk } from "redux-thunk";
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
@@ -19,9 +16,7 @@ root.render(
   <>
     <Provider store={store}>
       <BrowserRouter>
-      <HelmetProvider>
         <App />
-      </HelmetProvider>
       </BrowserRouter>
     </Provider>
   </>
