@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
 import { FaLinkedinIn } from "react-icons/fa";
 import {
   FaXTwitter,
@@ -9,6 +8,8 @@ import {
   FaOrcid,
 } from "react-icons/fa6";
 import spinner from "../Photos/Preloader/spinner.gif";
+import Seo from "../utils/seo.js";
+import seoData from "../utils/seoConfig.js";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -77,15 +78,7 @@ export default function Team() {
 
   return (
     <>
-      <Helmet>
-        <title>
-          Team | Emerging Tech 4 Health - AI-Powered Health Research
-        </title>
-        <meta
-          name="description"
-          content="Emerging Tech 4 Health is a platform dedicated to showcasing cutting-edge research in the health sector, powered by Artificial Intelligence. Explore the latest innovations, breakthroughs, and applications of AI in healthcare."
-        />
-      </Helmet>
+      <Seo {...seoData.team} />
 
       <Profile info={profInfo} open={isOpen} close={closeModal} />
 

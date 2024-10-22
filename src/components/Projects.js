@@ -1,13 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
 import { fetchProject } from "../services/fetchData";
+import Seo from "../utils/seo.js"
+import seoData from "../utils/seoConfig.js"
+
 import spinner from "../Photos/Preloader/spinner.gif";
-import liverimage from "../Photos/Projects/liverimage.png";
-import kidneyimage from "../Photos/Projects/kidneyimage.png";
-import breastimage from "../Photos/Projects/breastimage.png";
-import ECGimage from "../Photos/Projects/ECGimage.png";
-import EEGimage from "../Photos/Projects/EEGimage.png";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -65,15 +62,7 @@ export default function Projects() {
 
   return (
     <>
-      <Helmet>
-        <title>
-          Projects | Emerging Tech 4 Health - AI-Powered Health Research
-        </title>
-        <meta
-          name="description"
-          content="Emerging Tech 4 Health is a platform dedicated to showcasing cutting-edge research in the health sector, powered by Artificial Intelligence. Explore the latest innovations, breakthroughs, and applications of AI in healthcare."
-        />
-      </Helmet>
+      <Seo {...seoData.projects} />
 
       <div className="project h-auto w-full bg-lightblue pt-16 opacity-100">
         <div className="bg-lightblue h-auto w-full flex flex-col items-center gap-y-1">

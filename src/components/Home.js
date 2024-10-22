@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import LazyLoadedVideo from "../utils/lazyLoadedVideo";
 import { fetchLogo, fetchLatestPost } from "../services/fetchData";
+import Seo from "../utils/seo.js";
+import seoData from "../utils/seoConfig.js";
 
-import lp_image1 from "../Photos/Home/landingPage/lp_image1.png";
 import lp1 from "../Photos/Home/landingPage/lp1.jpg";
 import lp2 from "../Photos/Home/landingPage/lp2.jpg";
 import lp3 from "../Photos/Home/landingPage/lp3.jpg";
@@ -15,19 +15,10 @@ import lp6 from "../Photos/Home/landingPage/lp6.jpg";
 import lp7 from "../Photos/Home/landingPage/lp7.jpg";
 import lp8 from "../Photos/Home/landingPage/lp8.jpg";
 import leadership from "../Photos/Home/leadership1.mp4";
-import liverimage from "../Photos/Projects/liverimage.png";
-import kidneyimage from "../Photos/Projects/kidneyimage.png";
-import breastimage from "../Photos/Projects/breastimage.png";
-import ECGimage from "../Photos/Projects/ECGimage.png";
-import EEGimage from "../Photos/Projects/EEGimage.png";
 import about_us2 from "../Photos/Home/about_us2.png";
 import vision from "../Photos/Home/vision1.jpg";
-import image from "../Photos/Home/image.png";
-import v1 from "../Video/v1.mp4";
 import v2 from "../Video/v2.mp4";
-import v3 from "../Video/v3.mp4";
-import v4 from "../Video/v4.mp4";
-import v5 from "../Video/v5.mp4";
+
 import { FaRegLightbulb } from "react-icons/fa";
 import { GiShakingHands, GiArtificialIntelligence } from "react-icons/gi";
 import { IoAccessibilityOutline } from "react-icons/io5";
@@ -122,15 +113,7 @@ export default function Home() {
 
   return (
     <>
-      <Helmet>
-        <title>
-          Home | Emerging Tech 4 Health - AI-Powered Health Research
-        </title>
-        <meta
-          name="description"
-          content="Emerging Tech 4 Health is a platform dedicated to showcasing cutting-edge research in the health sector, powered by Artificial Intelligence. Explore the latest innovations, breakthroughs, and applications of AI in healthcare."
-        />
-      </Helmet>
+      <Seo {...seoData.home} />
 
       {/* Landing page */}
       <div className="h-[120vh] sm:h-[72vh] xl:h-[110vh] 2xl:h-[75vh] w-full flex items-end bg-white relative z-10 overflow-hidden">
@@ -172,9 +155,9 @@ export default function Home() {
                 in creating a healthier tomorrow.
               </h4>
               <Link to={"/Projects"}>
-              <button className="button bg-blue text-[#FFFFFF] py-2 px-5 rounded-lg text-sm font-medium active:bg-blue hover:bg-darkblue hover:shadow-md hover:shadow-lightgrey transition ease-in-out duration-300">
-                Learn More
-              </button>
+                <button className="button bg-blue text-[#FFFFFF] py-2 px-5 rounded-lg text-sm font-medium active:bg-blue hover:bg-darkblue hover:shadow-md hover:shadow-lightgrey transition ease-in-out duration-300">
+                  Learn More
+                </button>
               </Link>
             </div>
           </div>
@@ -540,9 +523,9 @@ export default function Home() {
             </div>
             <div className="flex justify-start w-full">
               <Link to={"/Team"}>
-              <button className="button bg-blue text-[#FFFFFF] py-3 px-5 rounded-lg text-sm font-medium font-sans active:bg-blue hover:bg-darkblue hover:shadow-md hover:shadow-lightgrey transition ease-in-out duration-300">
-                Meet Team
-              </button>
+                <button className="button bg-blue text-[#FFFFFF] py-3 px-5 rounded-lg text-sm font-medium font-sans active:bg-blue hover:bg-darkblue hover:shadow-md hover:shadow-lightgrey transition ease-in-out duration-300">
+                  Meet Team
+                </button>
               </Link>
             </div>
           </div>

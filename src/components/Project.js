@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
+import Seo from "../utils/seo.js";
+import seoData from "../utils/seoConfig.js";
+
 import lp1 from "../Photos/Home/landingPage/lp1.jpg";
 import spinner from "../Photos/Preloader/spinner.gif";
 import { FaPlus } from "react-icons/fa6";
@@ -19,6 +21,8 @@ gsap.registerPlugin(useGSAP, ScrollTrigger);
 export default function Project() {
   const params = useParams();
   const { id, title } = params;
+
+  const name = title + { ...seoData.project }.title;
 
   const [parameters, setParameters] = useState({});
 
@@ -92,15 +96,7 @@ export default function Project() {
 
   return (
     <>
-      <Helmet>
-        <title>
-          {title} | Emerging Tech 4 Health - AI-Powered Health Research
-        </title>
-        <meta
-          name="description"
-          content="Emerging Tech 4 Health is a platform dedicated to showcasing cutting-edge research in the health sector, powered by Artificial Intelligence. Explore the latest innovations, breakthroughs, and applications of AI in healthcare."
-        />
-      </Helmet>
+      <Seo title={name} />
 
       <div className="pt-20 lg:pt-0 h-auto w-full flex items-end bg-lightblue">
         <div className="h-[25rem] md:h-[28rem] 2xl:h-[32rem] w-full relative flex flex-wrap items-end justify-start">

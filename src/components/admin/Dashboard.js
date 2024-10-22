@@ -6,36 +6,33 @@ import CategoryList from "../CategoryList.js";
 import ProjectList from "../ProjectList.js";
 import ProfileList from "../ProfileList.js";
 import Publications from "../publicatoin.js";
-import { IoDesktopOutline } from "react-icons/io5";
-import FrontPagePosts from "../frontPagePosts.js"; // Correctly import the component
+import Seo from "../../utils/seo.js";
+import seoData from "../../utils/seoConfig.js";
+import FrontPagePosts from "../frontPagePosts.js";
 import TeamManagement from "../TeamManagement.js";
 import LogoManagement from "../LogoManagement.js";
 import { useNavigate } from "react-router-dom";
-
-
 
 export default function Dashboard() {
   const [isOpen, setIsOpen] = useState(false);
   const [currentMenu, setcurrentMenu] = useState("");
   const [teamCategory, setteamCategory] = useState("");
 
-
   const navigate = useNavigate();
-
 
   const handleEvent = (e) => {
     setteamCategory(e.target.value);
   };
 
   useEffect(() => {
-    if(!localStorage.getItem('token')) {
-      navigate('/login');
+    if (!localStorage.getItem("token")) {
+      navigate("/login");
     }
-  }, [])
-  
+  }, []);
 
   return (
     <>
+      <Seo {...seoData.dashboard} />
       <div className="hidden sm:hidden xl:flex xl:flex-col">
         <Navbar />
         <div className="bg-black h-screen w-full flex flex-row">
