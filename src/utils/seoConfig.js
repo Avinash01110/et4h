@@ -16,6 +16,9 @@ const seoData = {
   publications: {
     title: "Publications | Emerging Tech 4 Health - AI-Powered Health Research",
   },
+  contactus:{
+    title: "Contact Us | Emerging Tech 4 Health - AI-Powered Health Research",
+  },
   login: {
     title: "Login | Emerging Tech 4 Health - AI-Powered Health Research",
   },

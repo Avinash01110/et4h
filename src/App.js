@@ -25,6 +25,7 @@ import Loader from "./components/Loader";
 import FrontPagePosts from "./components/frontPagePosts";
 import TeamManagement from "./components/TeamManagement";
 import LogoManagement from "./components/LogoManagement";
+import ContactUs from "./components/ContactUs";
 
 function App() {
   const location = useLocation();
@@ -82,6 +83,7 @@ function App() {
           <Route path="/project/:id/:title" element={<Project />} />
           <Route path="/team" element={<Team />} />
           <Route path="/publications" element={<Publications />} />
+          <Route path="/contactus" element={<ContactUs />} />
           <Route path="/categories" element={<CategoryList />} />
           <Route path="/category/:categoryId" element={<CategoryPage />} />
           <Route path="/signup" element={<Signup />} />

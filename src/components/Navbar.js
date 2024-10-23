@@ -7,8 +7,7 @@ import {
   IoIosArrowRoundUp,
 } from "react-icons/io";
 import { GiArchiveResearch } from "react-icons/gi";
-import { RiExchangeFundsLine, RiTeamFill } from "react-icons/ri";
-import { FaHandshake } from "react-icons/fa";
+import { RiExchangeFundsLine } from "react-icons/ri";
 import { IoClose } from "react-icons/io5";
 
 import { Link, useLocation } from "react-router-dom";
@@ -207,10 +206,11 @@ export default function Navbar() {
             )}
           </Popover>
         </div>
-
-        <button className="contactus font-sans bg-blue text-[#FFFFFF] py-2 px-5 rounded-lg text-sm font-medium active:bg-blue hover:bg-darkblue transition ease-in-out duration-300">
-          Contact us
-        </button>
+        <Link to={"/Contactus"}>
+          <button className="contactus font-sans bg-blue text-[#FFFFFF] py-2 px-5 rounded-lg text-sm font-medium active:bg-blue hover:bg-darkblue transition ease-in-out duration-300">
+            Contact us
+          </button>
+        </Link>
       </div>
 
       {/* Mobile Nav */}
