@@ -3,38 +3,44 @@ import { Link } from "react-router-dom";
 import logo from "../Photos/Home/logo.png";
 import "../style/Footer.css";
 import { IoSend } from "react-icons/io5";
-import { FaGithub, FaYoutube, FaTwitter, FaLinkedin, FaInstagramSquare} from "react-icons/fa";
+import {
+  FaGithub,
+  FaYoutube,
+  FaLinkedin,
+  FaInstagramSquare,
+} from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 
 export default function Footer() {
-
+  
   const socialMedia = [
     {
       name: "Github",
-      link: "/",
-      icon: FaGithub 
+      link: "https://github.com/EmergingTech4Health?tab=repositories",
+      icon: FaGithub,
     },
     {
       name: "youtube",
       link: "/",
-      icon: FaYoutube
+      icon: FaYoutube,
     },
     {
-      name: "twitter",
-      link: "/",
-      icon: FaTwitter 
+      name: "x",
+      link: "https://x.com/EmergHealthTech",
+      icon: FaXTwitter,
     },
     {
       name: "linkedin",
       link: "/",
-      icon: FaLinkedin
+      icon: FaLinkedin,
     },
     {
       name: "instagram",
       link: "/",
-      icon: FaInstagramSquare
+      icon: FaInstagramSquare,
     },
   ];
-  
+
   return (
     <div className="h-auto w-full bg-lightblue border-2 border-t-darkblue rounded-t-xl flex flex-col items-center gap-y-10 px-10 py-8">
       <div className="flex flex-row justify-center items-center gap-x-2">
@@ -45,14 +51,17 @@ export default function Footer() {
             alt="error"
           />
         </div>
-        <h2 className="text-2xl text-grey font-bold font-sans">Emerging Tech4 Health</h2>
+        <h2 className="text-2xl text-grey font-bold font-sans">
+          Emerging Tech4 Health
+        </h2>
       </div>
 
       <div className="h-auto w-11/12 px-10 flex flex-wrap flex-row justify-between gap-y-10 sm:gap-y-10 lg:gap-y-10 xl:gap-0 2xl:gap-0">
-      
-      {/* Links */}
+        {/* Links */}
         <div className="h-full w-60 flex flex-col justify-start items-start gap-y-4">
-          <h3 className="text-xl text-blue font-bold font-sans">Important links</h3>
+          <h3 className="text-xl text-blue font-bold font-sans">
+            Important links
+          </h3>
           <div className="list-none flex flex-col gap-y-1 text-grey font-semibold font-sans opacity-85">
             <Link to={"/"}>
               <div className="link w-fit text-sm relative h-auto hover:text-darkblue transition ease-in-out duration-300">
@@ -107,7 +116,9 @@ export default function Footer() {
         {/* Connect with us */}
         <div className="h-full w-80 flex flex-col gap-y-2">
           <div className="bg-gradient-to-bl from-darkblue to-blue h-auto w-full p-5 flex flex-wrap flex-col justify-center items-center gap-y-5 rounded-lg">
-            <h3 className="text-xl text-white font-bold font-sans">Connect with Us!</h3>
+            <h3 className="text-xl text-white font-bold font-sans">
+              Connect with Us!
+            </h3>
             <div className="w-auto h-auto rounded-xl flex flex-wrap flex-row gap-x-4 gap-y-4">
               <input
                 className="w-auto h-10 text-grey font-sans bg-lightblue border-2 border-lightblue rounded-lg p-2 focus:ring-1 focus:ring-white"
@@ -121,18 +132,17 @@ export default function Footer() {
           </div>
           <div className="h-auto w-full flex flex-wrap flex-row gap-x-2">
             {socialMedia.map((item, index) => (
-            <Link key={index} to={item.link}>
-            <div className="mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full bg-lightgrey group hover:bg-purewhite transition ease-in-out duration-300">
-              <item.icon
-                className="h-5 w-5 text-grey group-hover:text-darkblue transition ease-in-out duration-300"
-                aria-hidden="true"
-              />
-            </div>
-            </Link>
+              <Link key={index} to={item.link}>
+                <div className="mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full bg-lightgrey group hover:bg-purewhite transition ease-in-out duration-300">
+                  <item.icon
+                    className="h-5 w-5 text-grey group-hover:text-darkblue transition ease-in-out duration-300"
+                    aria-hidden="true"
+                  />
+                </div>
+              </Link>
             ))}
           </div>
         </div>
-
       </div>
     </div>
   );

@@ -1,5 +1,3 @@
-import PageNotFound from "../components/PageNotFound";
-
 const seoData = {
   home: {
     title: "Home | Emerging Tech 4 Health - AI-Powered Health Research",
@@ -16,7 +14,7 @@ const seoData = {
   publications: {
     title: "Publications | Emerging Tech 4 Health - AI-Powered Health Research",
   },
-  contactus:{
+  contactus: {
     title: "Contact Us | Emerging Tech 4 Health - AI-Powered Health Research",
   },
   login: {
